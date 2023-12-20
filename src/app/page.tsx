@@ -6,6 +6,9 @@ const Home = () => {
     <>
       <div className="text-2xl font-bold">JohnJud Project</div>
       <div>Welcome, Developers!</div>
+      <div>
+        ทดสอบ<span className="font-bold">ฟอนต์</span>
+      </div>
     </>
   );
 };

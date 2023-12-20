@@ -3,6 +3,11 @@
 export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {},
-  extend: {},
-  plugins: []
+  extend: {
+    fontFamily: {
+      poppins: ["Poppins", "sans-serif"],
+      "ibm-plex-sans-thai": ["IBM Plex Sans Thai", "sans-serif"],
+    },
+  },
+  plugins: [],
 };
