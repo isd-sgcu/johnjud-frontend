@@ -8,6 +8,12 @@ export default {
       poppins: ["Poppins", "sans-serif"],
       "ibm-plex-sans-thai": ["IBM Plex Sans Thai", "sans-serif"],
     },
+    colors: {
+      primary: "#08878E",
+      "primary-variant": "#83C3C6",
+      secondary: "#C81425",
+      "johnjud-purple": "#3D0D40",
+    },
   },
   plugins: [],
 };
