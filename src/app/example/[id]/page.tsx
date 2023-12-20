@@ -1,13 +1,13 @@
-import { usePageParams } from '../../../hooks/usePageParams';
-import MainLayout from '../../../layouts/MainLayout';
+import { usePageParams } from "../../../hooks/usePageParams";
+import MainLayout from "../../../layouts/MainLayout";
 
 // Page
 const ExampleParamPage = () => {
-  const param = usePageParams(['id']);
+  const param = usePageParams(["id"]);
 
   return (
-    <div className="min-h-screen flex flex-col justify-center items-center">
-      <h2 className="font-bold text-2xl">ExampleParamPage</h2>
+    <div className="flex min-h-screen flex-col items-center justify-center">
+      <h2 className="text-2xl font-bold">ExampleParamPage</h2>
       <div>{param.id}</div>
     </div>
   );

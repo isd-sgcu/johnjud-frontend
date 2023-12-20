@@ -2,6 +2,7 @@
   "name": "johnjud-frontend",
   "private": true,
   "version": "0.0.0",
+  "packageManager": "pnpm@8.9.2",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -12,6 +13,8 @@
     "format": "prettier --write \"src/**/*.{js,jsx,ts,tsx,css,md}\" --config ./.prettierrc.json"
   },
   "dependencies": {
+    "prettier-plugin-organize-imports": "^3.2.4",
+    "prettier-plugin-tailwindcss": "^0.5.9",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
