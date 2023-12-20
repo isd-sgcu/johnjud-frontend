@@ -4,8 +4,11 @@ import MainLayout from "../layouts/MainLayout";
 const Home = () => {
   return (
     <>
-      <div className="font-bold text-2xl">JohnJud Project</div>
+      <div className="text-2xl font-bold">JohnJud Project</div>
       <div>Welcome, Developers!</div>
+      <div>
+        ทดสอบ<span className="font-bold">ฟอนต์</span>
+      </div>
     </>
   );
 };
