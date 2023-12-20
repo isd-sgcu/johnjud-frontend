@@ -1,5 +1,7 @@
 import { usePageParams } from '../../../hooks/usePageParams';
+import MainLayout from '../../../layouts/MainLayout';
 
+// Page
 const ExampleParamPage = () => {
   const param = usePageParams(['id']);
 
@@ -12,3 +14,6 @@ const ExampleParamPage = () => {
 };
 
 export default ExampleParamPage;
+
+// Layout
+export const Layout = MainLayout;
