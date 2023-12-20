@@ -1,14 +1,24 @@
-const App = () => {
+import { StrictMode, Suspense } from 'react';
+import { RouterProvider } from 'react-router-dom';
+import { router } from './routes';
+
+function AppRoot() {
   return (
-    <div className="min-h-screen flex flex-col justify-center items-center">
-      <div className="text-2xl font-bold">JohnJud Project</div>
-      <div>
-        <div>
-          <div>dasd</div>
-        </div>
-      </div>
-    </div>
+    <Suspense
+      fallback={
+        <div className="min-h-screen flex flex-col justify-center items-center">Loading...</div>
+      }>
+      <RouterProvider router={router} />
+    </Suspense>
   );
-};
+}
+
+function App() {
+  return (
+    <StrictMode>
+      <AppRoot />
+    </StrictMode>
+  );
+}
 
 export default App;
