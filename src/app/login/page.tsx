@@ -1,6 +1,4 @@
-import { Link } from "react-router-dom";
 import LoginForm from "../../components/Form/LoginForm";
-import SubmitButton from "../../components/Form/SubmitButton";
 import MainLayout from "../../layouts/MainLayout";
 
 // Page
@@ -16,18 +14,6 @@ const Login = () => {
         </p>
       </div>
       <LoginForm />
-      <div className="flex flex-col items-center justify-center">
-        <SubmitButton text="เข้าสู่ระบบ" />
-        <div className="flex space-x-2 px-2.5 py-2">
-          <span className="text-base-johnjud-gray">ยังไม่มีบัญชี?</span>
-          <Link
-            to="/register"
-            className="text-base font-semibold text-black underline"
-          >
-            ลงทะเบียน
-          </Link>
-        </div>
-      </div>
     </div>
   );
 };
