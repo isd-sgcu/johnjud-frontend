@@ -8,7 +8,6 @@ const Home = () => {
       <div>
         ทดสอบ<span className="font-bold">ฟอนต์</span>
       </div>
-      <Faq/>
     </>
   );
 };
