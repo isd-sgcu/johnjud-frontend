@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import LoginForm from "../../components/Form/RegisterForm";
+import LoginForm from "../../components/Form/LoginForm";
 import SubmitButton from "../../components/Form/SubmitButton";
 import MainLayout from "../../layouts/MainLayout";
 
