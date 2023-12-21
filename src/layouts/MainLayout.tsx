@@ -10,9 +10,10 @@ const MainLayout = ({ children }: MainLayoutProps) => {
   return (
     <div
       style={{
-        backgroundImage: `url(${background})`
+        backgroundImage: `url(${background})`,
       }}
-      className="min-h-screen flex flex-col bg-cover bg-center">
+      className="flex min-h-screen flex-col bg-cover bg-center"
+    >
       <Navbar />
       {children}
       <Footer />

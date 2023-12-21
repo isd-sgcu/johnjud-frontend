@@ -1,12 +1,13 @@
-import MainLayout from "../layouts/MainLayout";
-import Faq from "./faq";
-
+import MainLayout from "../layouts/MainLayout"
 // Page
 const Home = () => {
   return (
     <>
-      <div className="font-bold text-2xl">JohnJud Project</div>
+      <div className="text-2xl font-bold">JohnJud Project</div>
       <div>Welcome, Developers!</div>
+      <div>
+        ทดสอบ<span className="font-bold">ฟอนต์</span>
+      </div>
       <Faq/>
     </>
   );
