@@ -1,4 +1,3 @@
-import React from 'react';
 import johnjudLogo from '../assets/footer/JohnJudLogo.svg';
 import facebookLogo from '../assets/footer/FacebookLogo.svg';
 import twitterLogo from '../assets/footer/InstagramLogo.svg';
@@ -8,9 +7,7 @@ const Footer = () => {
   return (
     <div className="w-full mt-auto">
       <div className="w-full h-[243px] xl:h-[215px] relative shrink-0 mx-auto">
-
         <div className="w-full h-full left-0 top-0 absolute bg-teal-600">
-
           <div className="hidden xl:block">
             <div className="left-[1.85%] top-[40.46%] w-[8.74%] h-[19.53%] absolute
           md:justify-start md:items-center md:gap-3 inline-flex ">
