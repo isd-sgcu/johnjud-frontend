@@ -1,19 +1,17 @@
-import React, { ReactNode } from 'react';
+import React, { ReactNode } from "react";
 
 interface SubmitButtonProps {
-    text: ReactNode;
+  text: ReactNode;
 }
 
 const SubmitButton: React.FC<SubmitButtonProps> = ({
-    text,
+  text,
 }: SubmitButtonProps) => {
-    return (
-        <button
-            className='text-white text-2xl text-nowrap bg-primary rounded-3xl font-semibold w-full focus:outline-none py-3 px-28'
-        >
-            {text}
-        </button>
-    );
-}
+  return (
+    <button className="w-full text-nowrap rounded-3xl bg-primary px-28 py-3 text-2xl font-semibold text-white focus:outline-none">
+      {text}
+    </button>
+  );
+};
 
 export default SubmitButton;
