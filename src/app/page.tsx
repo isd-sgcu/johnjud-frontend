@@ -1,4 +1,5 @@
 import MainLayout from "../layouts/MainLayout";
+import Faq from "./faq";
 
 // Page
 const Home = () => {
@@ -6,6 +7,7 @@ const Home = () => {
     <>
       <div className="font-bold text-2xl">JohnJud Project</div>
       <div>Welcome, Developers!</div>
+      <Faq/>
     </>
   );
 };
