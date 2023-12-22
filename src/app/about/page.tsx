@@ -1,4 +1,5 @@
 import MainLayout from "../../layouts/MainLayout";
+import johnjudLogo from "../../assets/johnjud-with-text.png";
 
 const About = () => {
     return (
@@ -10,14 +11,14 @@ const About = () => {
                 <div className="font-bold text-[40px] text-primary text-center lg:text-start w-full">
                     ชมรมสวัสดิภาพสัตว์
                 </div>
-                <img src="johnjud-with-text.png" className="w-[55%] max-w-[300px] lg:w-[75%] lg:max-w-none" />
+                <img src={johnjudLogo} className="w-[55%] max-w-[300px] lg:w-[75%] lg:max-w-none" />
             </div>
 
-            <div className="relative mt-[10px] lg:mt-0 lg:col-start-2 lg:col-span-2 flex flex-col items-center">
-                <div className="font-bold text-[40px] underline decoration-2 underline-offset-8 text-primary text-center lg:text-start lg:pl-[12%] w-full">
+            <div className="relative mt-[10px] lg:mt-0 lg:col-start-2 lg:col-span-2 flex flex-col items-center lg:ml-[4%]">
+                <div className="font-bold text-[40px] underline decoration-2 underline-offset-8 text-primary text-center lg:text-start lg:pl-[8%] w-full">
                     พวกเราเป็นใคร?
                 </div>
-                <p className="mt-[5px] mx-[8%] lg:mr-0 lg:ml-[12%] bg-white rounded-[20px] shadow-lg py-[12px] lg:py-[24px] px-[24px] text-[20px] text-center">
+                <p className="mt-[5px] mx-[8%] bg-white rounded-[20px] shadow-lg py-[12px] lg:py-[24px] px-[24px] text-[20px] text-center">
                     พวกเราชมรม <span className="font-bold">นิสิตสัตวแพทย์จุฬาฯเพื่อสวัสดิภาพสัตว์</span>เรียกย่อๆกันว่า <span className="font-bold">ชมรมสวัสดิภาพสัตว์</span> หรือ <span className="font-bold text-primary">ชมรมจรจัด</span><br />เป็นชมรมจิตอาสาที่มีหน้าที่เข้าไปช่วยสอดส่องดูแลสุขภาพและเพิ่มสวัสดิภาพที่ดีขึ้นให้แก่สุนัขและแมวจรจัด ภายในบริเวณจุฬาลงกรณ์มหาวิทยาลัยและชุมชนโดยรอบโดยจะทําการ สํารวจจํานวน ทําข้อมูลทะเบียนประวัติสัตว์ ช่วยดูแลสุขภาพ ฉีดวัคซีนรวมและวัคซีนพิษสุนัขบ้า เป็นประจําทุกปีและให้ยากําจัดปรสิต เป็นประจําอย่างต่อเนื่อง รวมถึงการควบคุมอัตราการเพิ่มของประชากร สุนัขและแมวจรจัดเหล่านี้โดยการ ทําหมันและประชาสัมพันธ์เพื่อหาผู้รับอุปการะในกรณี สุนัขและแมวที่ได้รับ การประเมินว่ามีโอกาสที่จะปรับพฤติกรรมเพื่อหาบ้านได้ ในกรณีสัตว์ป่วยจะมีการจัดตั้งทีมเข้าไปช่วยดูแลหาทุนค่ารักษาพยาบาล
                 </p>
                 <div className="flex flex-col items-center my-[24px] max-w-fit relative">
