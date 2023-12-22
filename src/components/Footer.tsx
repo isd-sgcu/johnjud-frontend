@@ -6,59 +6,30 @@ console.log(facebookLogo);
 const Footer = () => {
   return (
     <div className="mt-auto w-full">
-      <div className="relative mx-auto h-[243px] w-full shrink-0 xl:h-[215px]">
-        <div className="absolute left-0 top-0 h-full w-full bg-teal-600">
-          <div className="hidden xl:block">
-            <div
-              className="absolute left-[1.85%] top-[40.46%] inline-flex h-[19.53%]
-          w-[8.74%] md:items-center md:justify-start md:gap-3 "
-            >
-              <img
-                className="h-[42px] w-[42px] rounded-full"
-                src={johnjudLogo}
-                alt="Johnjud Logo"
-              />
-              <div className="font-Poppins text-base font-bold text-white">
-                JOHNJUD
-              </div>
-            </div>
-            {/*Text*/}
-            <div className="absolute inline-flex h-[66.6%] w-[30.3%] flex-col items-start justify-center gap-4 md:left-[14%] md:top-[17.21%]">
-              <div className="font-Poppins w-full text-xl font-normal leading-[25px] text-white md:w-full">
-                สโมสรนิสิตคณะสัตวแพทยศาสตร์ จุฬาลงกรณ์มหาวิทยาลัย ถนน
-                อังรีดูนังต์ แขวงปทุมวัน เขตปทุมวัน กรุงเทพ ฯ 10330
-              </div>
-              <div className="font-Poppins w-full text-xl font-normal leading-[25px] text-white md:w-[86.69%]">
-                พัฒนาโดย ฝ่ายพัฒนาระบบสารสนเทศ
-                องค์การบริหารสโมสรนิสิตจุฬาลงกรณ์มหาวิทยาลัย
-              </div>
-            </div>
-          </div>
+      <div className="relative mx-auto h-[215px] w-full shrink-0 lg:h-[215px]">
+        <div className="relative flex h-full w-full justify-between bg-teal-600 px-[7.63%] py-[6.80%] lg:px-[1.85%]">
           {/* Below md*/}
-          <div className="absolute left-[7.63%] top-[12.20%] flex h-[76.27%] w-[55%] flex-col items-start justify-start gap-4 xl:hidden">
-            <div className="left-[0%] top-[0%] inline-flex h-[25.61%] w-[62.85%] items-center justify-start gap-3">
+          <div className="flex-start inline-flex w-[66%] flex-col justify-between gap-4 lg:w-[50%] lg:flex-row lg:items-center">
+            <div className="mr-12 inline-flex h-[25.61%] items-center justify-start gap-3">
               <img
                 className="h-[42px] w-[42px] rounded-full"
                 src={johnjudLogo}
                 alt="Johnjud Logo"
               />
-              <div className="font-['Poppins'] text-base font-bold text-white">
-                JOHNJUD
-              </div>
+              <div className="text-sm font-bold text-white">JOHNJUD</div>
             </div>
             {/*Text*/}
-
-            <div className="font-'Poppins' text-xs font-normal leading-[15px] text-white">
-              สโมสรนิสิตคณะสัตวแพทยศาสตร์ จุฬาลงกรณ์มหาวิทยาลัย ถนน อังรีดูนังต์
-              แขวงปทุมวัน เขตปทุมวัน กรุงเทพ ฯ 10330
-            </div>
-            <div className="font-'Poppins' text-xs font-normal leading-[15px] text-white">
-              พัฒนาโดย ฝ่ายพัฒนาระบบสารสนเทศ
-              องค์การบริหารสโมสรนิสิตจุฬาลงกรณ์มหาวิทยาลัย
+            <div className="relative inline-flex flex-col gap-4 lg:w-full lg:gap-3">
+              <div className="text-xs font-normal leading-[15px] text-white lg:text-xl lg:leading-[25px]">
+                สโมสรนิสิตคณะสัตวแพทยศาสตร์ จุฬาลงกรณ์มหาวิทยาลัย ถนน อังรีดูนังต์ แขวงปทุมวัน เขตปทุมวัน กรุงเทพ ฯ 10330
+              </div>
+              <div className="text-xs font-normal leading-[15px] text-white lg:text-xl lg:leading-[25px] lg:w-[90%]">
+                พัฒนาโดย ฝ่ายพัฒนาระบบสารสนเทศ องค์การบริหารสโมสรนิสิตจุฬาลงกรณ์มหาวิทยาลัย
+              </div>
             </div>
           </div>
           {/*Social*/}
-          <div className="relative left-[81.42%] top-[20%]  inline-flex  flex-col items-center justify-start gap-6 xl:left-[92%] xl:top-[13.6%]">
+          <div className="inline-flex flex-col items-center justify-center gap-6">
             <div className="relative flex items-center justify-center">
               <img className="h-8 w-8" src={facebookLogo} alt="Facebook Logo" />
             </div>
