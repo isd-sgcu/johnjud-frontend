@@ -3,14 +3,17 @@ import johnjudLogo from "../../assets/johnjud-with-text.png";
 
 const About = () => {
     return (
-        <div className="lg:grid lg:grid-col-3 lg:ml-[7.5%] lg:mr-[12%] justify-center mt-[28px]">
+        <div className="lg:grid lg:grid-cols-3 lg:ml-[7.5%] lg:mr-[12%] justify-center mt-[28px]">
             <div className="relative flex flex-col items-center">
-                <div className="text-[20px] text-center lg:text-start w-full">
-                    เกี่ยวกับ
+                <div className="flex flex-col">
+                    <div className="text-[20px] text-center lg:text-start">
+                        เกี่ยวกับ
+                    </div>
+                    <div className="font-bold text-[40px] text-primary text-center lg:text-start">
+                        ชมรมสวัสดิภาพสัตว์
+                    </div>
                 </div>
-                <div className="font-bold text-[40px] text-primary text-center lg:text-start w-full">
-                    ชมรมสวัสดิภาพสัตว์
-                </div>
+
                 <img src={johnjudLogo} className="w-[55%] max-w-[300px] lg:w-[75%] lg:max-w-none" />
             </div>
 
