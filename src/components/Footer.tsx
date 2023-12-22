@@ -7,9 +7,9 @@ const Footer = () => {
   return (
     <div className="mt-auto w-full">
       <div className="relative mx-auto h-[215px] w-full shrink-0 lg:h-[215px]">
-        <div className="relative flex h-full w-full justify-between bg-teal-600 px-[7.63%] py-[6.80%] lg:px-[1.85%]">
-          {/* Below md*/}
-          <div className="flex-start inline-flex w-[66%] flex-col justify-between gap-4 lg:w-[50%] lg:flex-row lg:items-center">
+        <div className="relative flex h-full w-full justify-between bg-teal-600 px-[7.63%] py-[6.80%] lg:px-[1.85%] lg:py-[0%]">
+          {/* Text & Logo*/}
+          <div className="flex-start inline-flex w-[66%] flex-col justify-start gap-4 lg:w-[55%] lg:flex-row lg:items-center">
             <div className="mr-12 inline-flex h-[25.61%] items-center justify-start gap-3">
               <img
                 className="h-[42px] w-[42px] rounded-full"
@@ -19,12 +19,15 @@ const Footer = () => {
               <div className="text-sm font-bold text-white">JOHNJUD</div>
             </div>
             {/*Text*/}
-            <div className="relative inline-flex flex-col gap-4 lg:w-full lg:gap-3">
-              <div className="text-xs font-normal leading-[15px] text-white lg:text-xl lg:leading-[25px]">
-                สโมสรนิสิตคณะสัตวแพทยศาสตร์ จุฬาลงกรณ์มหาวิทยาลัย ถนน อังรีดูนังต์ แขวงปทุมวัน เขตปทุมวัน กรุงเทพ ฯ 10330
+            <div className="inline-flex flex-col gap-4 lg:w-[458px] lg:gap-3">
+              <div className="w-full p-0 text-xs font-normal leading-[15px] text-white lg:text-[20px] lg:leading-[25px]">
+                สโมสรนิสิตคณะสัตวแพทยศาสตร์ <br className="gap-3"></br>
+                จุฬาลงกรณ์มหาวิทยาลัย ถนน อังรีดูนังต์ แขวงปทุมวัน เขตปทุมวัน
+                กรุงเทพ ฯ 10330
               </div>
-              <div className="text-xs font-normal leading-[15px] text-white lg:text-xl lg:leading-[25px] lg:w-[90%]">
-                พัฒนาโดย ฝ่ายพัฒนาระบบสารสนเทศ องค์การบริหารสโมสรนิสิตจุฬาลงกรณ์มหาวิทยาลัย
+              <div className="w-full text-xs font-normal leading-[15px] text-white lg:pr-[5%] lg:text-[20px] lg:leading-[25px]">
+                พัฒนาโดย ฝ่ายพัฒนาระบบสารสนเทศ <br className="gap-3"></br>
+                องค์การบริหารสโมสรนิสิตจุฬาลงกรณ์มหาวิทยาลัย
               </div>
             </div>
           </div>
