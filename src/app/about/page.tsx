@@ -3,26 +3,23 @@ import MainLayout from "../../layouts/MainLayout";
 
 const About = () => {
   return (
-    <div className="mt-[28px] justify-center lg:ml-[7.5%] lg:mr-[12%] lg:grid lg:grid-cols-3">
+    <div className="mt-2 justify-center lg:ml-[7.5%] lg:mr-[12%] lg:grid lg:grid-cols-3">
       <div className="relative flex flex-col items-center">
         <div className="flex flex-col">
-          <div className="text-center text-[20px] lg:text-start">เกี่ยวกับ</div>
-          <div className="text-center text-[40px] font-bold text-primary lg:text-start">
+          <div className="text-center text-xl lg:text-start">เกี่ยวกับ</div>
+          <div className="text-center text-[2.5rem] font-bold text-primary lg:text-start">
             ชมรมสวัสดิภาพสัตว์
           </div>
         </div>
 
-        <img
-          src={johnjudLogo}
-          className="w-[55%] max-w-[300px] lg:w-[75%] lg:max-w-none"
-        />
+        <img src={johnjudLogo} className="w-[60%] max-w-60 " />
       </div>
 
-      <div className="relative mt-[10px] flex flex-col items-center lg:col-span-2 lg:col-start-2 lg:ml-[4%] lg:mt-0">
-        <div className="w-full text-center text-[40px] font-bold text-primary underline decoration-2 underline-offset-8 lg:pl-[8%] lg:text-start">
+      <div className="relative mt-3 flex flex-col items-center lg:col-span-2 lg:col-start-2 lg:ml-[4%] lg:mt-7">
+        <div className="w-full text-center text-[2.5rem] font-bold text-primary underline decoration-2 underline-offset-8 lg:pl-[8%] lg:text-start">
           พวกเราเป็นใคร?
         </div>
-        <p className="mx-[8%] mt-[5px] rounded-[20px] bg-white px-[24px] py-[12px] text-center text-[20px] shadow-lg lg:py-[24px]">
+        <p className="mx-[8%] mt-1 rounded-3xl bg-white px-6 py-3 text-center shadow-lg lg:py-6">
           พวกเราชมรม{" "}
           <span className="font-bold">
             นิสิตสัตวแพทย์จุฬาฯเพื่อสวัสดิภาพสัตว์
@@ -40,17 +37,17 @@ const About = () => {
           การประเมินว่ามีโอกาสที่จะปรับพฤติกรรมเพื่อหาบ้านได้
           ในกรณีสัตว์ป่วยจะมีการจัดตั้งทีมเข้าไปช่วยดูแลหาทุนค่ารักษาพยาบาล
         </p>
-        <div className="relative my-[24px] flex max-w-fit flex-col items-center">
-          <div className="text-center text-[36px] text-primary">
+        <div className="relative my-6 flex max-w-fit flex-col items-center lg:mb-16 lg:mt-9">
+          <div className="text-center text-4xl text-primary">
             หากมีข้อสงสัยเพิ่มเติม
           </div>
-          <div className="text-center text-[16px]">
+          <div className="text-center text-base lg:text-xl">
             ช่องทางการติดต่อเพิ่มเติม
           </div>
-          <div className="mt-[12px] h-[200px] w-full bg-[#D9D9D9]"></div>
-          <div className="mx-[29px] mt-[24px] flex flex-row space-x-[24px] rounded-full bg-primary px-[18px] py-[12px]">
+          <div className="mt-3 h-52 w-full bg-[#D9D9D9]"></div>
+          <div className="mt-6 flex flex-row space-x-6 rounded-full bg-primary px-5 py-3">
             {/* FB logo */}
-            <div className="flex h-[55px] w-[55px] items-center justify-center rounded-[20px] bg-[#0866FF]">
+            <div className="flex h-14 w-14 items-center justify-center rounded-3xl bg-[#0866FF]">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="36"
@@ -75,7 +72,7 @@ const About = () => {
                   background:
                     "linear-gradient(to top right, #FEDA77, #F58529, #DD2A7B, #8134AF, #515BD4)",
                 }}
-                className="flex h-[55px] w-[55px] items-center justify-center rounded-[20px]"
+                className="flex h-14 w-14 items-center justify-center rounded-3xl"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -97,7 +94,7 @@ const About = () => {
             </div>
 
             {/* X logo */}
-            <div className="flex h-[55px] w-[55px] items-center justify-center rounded-[20px] bg-black">
+            <div className="flex h-14 w-14 items-center justify-center rounded-3xl bg-black">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="24"
