@@ -36,10 +36,13 @@ const questionBox = ({
       </div>
       <div
         className={
-          "transition-all duration-300 flex justify-center " + (showed ? "block" : "hidden")
+          "flex justify-center transition-all duration-300 " +
+          (showed ? "block" : "hidden")
         }
       >
-        <p className="mx-7 mb-6 max-w-md text-lg text-start font-light text-gray-500">{answer}</p>
+        <p className="mx-7 mb-6 max-w-md text-start text-lg font-light text-gray-500">
+          {answer}
+        </p>
       </div>
     </div>
   );
