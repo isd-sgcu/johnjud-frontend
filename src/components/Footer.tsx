@@ -8,7 +8,7 @@ const Footer = () => {
       <div>
         <div className="mx-auto flex h-full w-full justify-between bg-teal-600 px-7 py-5 lg:py-9">
           {/* Text & Logo*/}
-          <div className="flex-start m-0 inline-flex w-[66%] flex-col justify-start gap-4 lg:w-[45%] lg:flex-row lg:items-center lg:gap-0">
+          <div className="flex-start m-0 inline-flex w-[66%] flex-col justify-start gap-4 lg:w-[55%] lg:flex-row lg:items-center lg:gap-0">
             <div className="mr-12 inline-flex items-center justify-start gap-3">
               <img
                 className="h-11 w-11 rounded-full"
@@ -18,13 +18,13 @@ const Footer = () => {
               <div className="text-sm font-bold text-white">JOHNJUD</div>
             </div>
             {/*Text*/}
-            <div className="lg:w-114rem m-0 inline-flex flex-col gap-4 p-0 lg:flex-wrap lg:gap-3">
-              <div className="w-full text-xs font-normal text-white lg:w-[90%] lg:text-base">
+            <div className="m-0 inline-flex flex-col gap-4 p-0 lg:w-96 lg:flex-wrap lg:gap-3">
+              <div className="w-full text-wrap text-xs font-normal text-white lg:w-[95%] lg:text-base">
                 สโมสรนิสิตคณะสัตวแพทยศาสตร์ <br className="gap-3"></br>
                 จุฬาลงกรณ์มหาวิทยาลัย ถนน อังรีดูนังต์ แขวงปทุมวัน เขตปทุมวัน
                 กรุงเทพ ฯ 10330
               </div>
-              <div className="w-full text-xs font-normal text-white lg:w-[80%] lg:text-base">
+              <div className="lg:w-90rem w-full text-xs font-normal text-white lg:w-[88%] lg:text-base">
                 พัฒนาโดย ฝ่ายพัฒนาระบบสารสนเทศ <br className="gap-3"></br>
                 องค์การบริหารสโมสรนิสิตจุฬาลงกรณ์มหาวิทยาลัย
               </div>
