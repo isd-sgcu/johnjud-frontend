@@ -2,15 +2,14 @@ import facebookLogo from "../assets/footer/FacebookLogo.svg";
 import twitterLogo from "../assets/footer/InstagramLogo.svg";
 import johnjudLogo from "../assets/footer/JohnJudLogo.svg";
 import instagramLogo from "../assets/footer/TwitterLogo.svg";
-console.log(facebookLogo);
 const Footer = () => {
   return (
-    <div className="mt-auto w-full">
-      <div className="relative mx-auto h-[215px] w-full shrink-0 lg:h-[215px]">
-        <div className="relative flex h-full w-full justify-between bg-teal-600 px-[7.63%] py-[6.80%] lg:px-[1.85%] lg:py-[0%]">
+    <div className="mt-auto w-full shrink-0 ">
+      <div>
+        <div className="mx-auto flex h-full w-full justify-between bg-teal-600 px-7 py-5 lg:py-9">
           {/* Text & Logo*/}
-          <div className="flex-start inline-flex w-[66%] flex-col justify-start gap-4 lg:w-[55%] lg:flex-row lg:items-center">
-            <div className="mr-12 inline-flex h-[25.61%] items-center justify-start gap-3">
+          <div className="flex-start m-0 inline-flex w-[66%] flex-col justify-start gap-4 lg:w-[45%] lg:flex-row lg:items-center lg:gap-0">
+            <div className="mr-12 inline-flex items-center justify-start gap-3">
               <img
                 className="h-[42px] w-[42px] rounded-full"
                 src={johnjudLogo}
@@ -19,27 +18,27 @@ const Footer = () => {
               <div className="text-sm font-bold text-white">JOHNJUD</div>
             </div>
             {/*Text*/}
-            <div className="inline-flex flex-col gap-4 lg:w-[458px] lg:gap-3">
-              <div className="w-full p-0 text-xs font-normal leading-[15px] text-white lg:text-[20px] lg:leading-[25px]">
+            <div className="m-0 inline-flex flex-col gap-4 p-0 lg:w-[458px] lg:flex-wrap lg:gap-3">
+              <div className="w-full text-xs font-normal text-white lg:text-base">
                 สโมสรนิสิตคณะสัตวแพทยศาสตร์ <br className="gap-3"></br>
                 จุฬาลงกรณ์มหาวิทยาลัย ถนน อังรีดูนังต์ แขวงปทุมวัน เขตปทุมวัน
                 กรุงเทพ ฯ 10330
               </div>
-              <div className="w-full text-xs font-normal leading-[15px] text-white lg:pr-[5%] lg:text-[20px] lg:leading-[25px]">
+              <div className="w-full text-xs font-normal text-white lg:w-[90%] lg:text-base">
                 พัฒนาโดย ฝ่ายพัฒนาระบบสารสนเทศ <br className="gap-3"></br>
                 องค์การบริหารสโมสรนิสิตจุฬาลงกรณ์มหาวิทยาลัย
               </div>
             </div>
           </div>
           {/*Social*/}
-          <div className="inline-flex flex-col items-center justify-center gap-6">
-            <div className="relative flex items-center justify-center">
+          <div className="flex flex-col items-center justify-center gap-6">
+            <div className="flex items-center justify-center">
               <img className="h-8 w-8" src={facebookLogo} alt="Facebook Logo" />
             </div>
-            <div className="relative flex items-center justify-center">
+            <div className="flex items-center justify-center">
               <img className="h-8 w-8" src={twitterLogo} alt="Instagram Logo" />
             </div>
-            <div className="relative flex items-center justify-center">
+            <div className="flex items-center justify-center">
               <img className="h-6 w-6" src={instagramLogo} alt="Twitter Logo" />
             </div>
           </div>
