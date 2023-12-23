@@ -26,9 +26,9 @@ const Questions = [
 
 const FAQ = () => {
   return (
-    <>
-      <div className="relative mt-9 max-w-sm px-10 pb-16 text-teal-600">
-        <div className="mb-6 flex flex-col items-center">
+    <div className="relative flex justify-center ">
+      <div className="relative mt-9 max-w-2xl px-10 pb-16 text-teal-600">
+        <div className="mb-6 max-w-2xl flex flex-col items-center">
           <div className="mb-3 items-center text-4xl font-semibold leading-normal">
             <p>คำถามที่พบบ่อย</p>
           </div>
@@ -51,7 +51,7 @@ const FAQ = () => {
           );
         })}
       </div>
-    </>
+    </div>
   );
 };
 
