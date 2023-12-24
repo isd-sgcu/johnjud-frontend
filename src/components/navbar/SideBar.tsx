@@ -28,7 +28,7 @@ const SideBar : React.FC<props> = ({page}) => {
     }
 
     return (  
-        <div className={`h-full text-white w-52 p-6 ${color}`}>
+        <div className={`h-full text-white w-44 p-4 pt-8 ${color}`}>
             <div className="flex items-center gap-4 pb-6 mb-6 border-b border-white">
                 <img src={blankProfile} alt="blank-profile" />
                 <span>เข้าสู่ระบบ</span>
