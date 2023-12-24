@@ -6,10 +6,29 @@ import questionIcon from "/src/assets/navbar/Question.svg";
 import infoIcon from "/src/assets/navbar/Info.svg";
 import lockKeyIcon from "/src/assets/navbar/LockKey.svg";
 import blankProfile from "/src/assets/navbar/blankProfile.svg";
+import Page from "./Page";
+import React from "react";
 
-const SideBar = () => {
+interface props{
+    page : Page,
+}
+
+const SideBar : React.FC<props> = ({page}) => {
+    let color;
+    switch(page){
+        case Page.MAIN :
+            color = "bg-primary";
+            break;
+        case Page.ADMIN :
+            color = "bg-secondary";
+            break;
+        case Page.FORTUNE :
+            color = "bg-johnjud-purple";
+            break;
+    }
+
     return (  
-        <div className="h-full text-white bg-primary w-52 p-6">
+        <div className={`h-full text-white w-52 p-6 ${color}`}>
             <div className="flex items-center gap-4 pb-6 mb-6 border-b border-white">
                 <img src={blankProfile} alt="blank-profile" />
                 <span>เข้าสู่ระบบ</span>

@@ -1,20 +1,39 @@
-import logo from "/src/assets/navbar/logo.svg";
+import logoPrimary from "/src/assets/navbar/logoPrimary.svg";
+import logoSecondary from "/src/assets/navbar/logoSecondary.svg";
 import hamburgerIcon from "/src/assets/navbar/hamburger.svg";
 import { useState } from "react";
 import SideBarWrapper from "./SideBarWrapper";
-
+import Page from "./Page";
 
 const Navbar = () => {
   const [toggle, setToggle] = useState(false);
+  const [page, setPage] = useState(Page.FORTUNE);
+  
+  let header = "JOHNJUD";
+  let color = "bg-primary";
+  let logo = logoPrimary;
+
+  switch(page){
+    case Page.ADMIN:
+      header = "JOHNJUD แอดมิน";
+      color = "bg-secondary";
+      break;
+    case Page.FORTUNE:
+      color = "bg-johnjud-purple";
+      logo = logoSecondary;
+      break;
+  }
+    
+
 
   return (
-  <div className="flex items-center bg-primary justify-between py-3 px-4">
+  <div className={`flex items-center justify-between py-3 px-4 ${color}`}>
       <div className="flex items-center gap-3">
         <img src={logo} alt="logo" className="w-12 h-12"/>
-        <div className="font-poppins font-bold text-white">JOHNJUD</div>
+        <div className="font-poppins font-bold text-white">{header}</div>
       </div>
       <img src={hamburgerIcon} alt="hamburger-icon" onClick={() => setToggle(true)}/>
-      { toggle && <SideBarWrapper setToggle={setToggle}/>}
+      { toggle && <SideBarWrapper setToggle={setToggle} page={page} />}
   </div>
   );
 };
