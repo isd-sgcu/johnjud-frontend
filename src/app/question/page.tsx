@@ -27,7 +27,7 @@ const Questions = [
 
 const Faq = () => {
   return (
-    <div className="relative flex justify-center ">
+    <div className="relative flex justify-center">
       <div className="relative mt-9 max-w-2xl px-10 pb-16 text-teal-600">
         <div className="mb-6 flex max-w-2xl flex-col items-center">
           <div className="mb-3 items-center text-4xl font-semibold leading-normal">
