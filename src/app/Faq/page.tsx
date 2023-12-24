@@ -1,3 +1,4 @@
+import Bubble from "../../assets/faq/bubble.svg";
 import QuestionBox from "../../components/QuestionBox";
 import MainLayout from "../../layouts/MainLayout";
 
@@ -24,7 +25,7 @@ const Questions = [
   },
 ];
 
-const FAQ = () => {
+const Faq = () => {
   return (
     <div className="relative flex justify-center ">
       <div className="relative mt-9 max-w-2xl px-10 pb-16 text-teal-600">
@@ -33,7 +34,7 @@ const FAQ = () => {
             <p>คำถามที่พบบ่อย</p>
           </div>
           <div className="relative flex w-full rounded-full bg-gray-100 p-3 shadow">
-            <img src="../../public/bubble.svg" alt="_blank" />
+            <img src={Bubble} alt="_blank" />
             <input
               type="text"
               placeholder="ค้นหาคำถาม"
@@ -55,5 +56,5 @@ const FAQ = () => {
   );
 };
 
-export default FAQ;
+export default Faq;
 export const Layout = MainLayout;

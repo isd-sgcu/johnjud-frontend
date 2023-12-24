@@ -1,4 +1,6 @@
 import { useState } from "react";
+import BackIcon from "../assets/faq/back_icon.svg";
+import QuestionIcon from "../assets/faq/question_icon.svg";
 
 const questionBox = ({
   question,
@@ -17,12 +19,10 @@ const questionBox = ({
       >
         <div className="flex items-center justify-between">
           <div className="flex items-center">
-            <img
-              className="mr-3 h-6 w-6"
-              src="../../public/question_icon.svg"
-              alt="_blank"
-            />
-            <h2 className="text-xl font-medium leading-normal">{question}</h2>
+            <img className="mr-3 h-6 w-6" src={QuestionIcon} alt="_blank" />
+            <h2 className="mr-6 text-xl font-medium leading-normal">
+              {question}
+            </h2>
           </div>
         </div>
         <img
@@ -30,7 +30,7 @@ const questionBox = ({
             "h-2 w-4 transition-all duration-300 " +
             (showed ? "rotate-180" : "")
           }
-          src="../../public/back_icon.svg"
+          src={BackIcon}
           alt="_blank"
         />
       </div>
