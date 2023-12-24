@@ -44,7 +44,7 @@ pnpm install
 pnpm dev
 ```
 
-5. Go to [http://localhost:3000](http://localhost:3000) in your fav browser.
+5. Go to [http://localhost:5173](http://localhost:5173) in your fav browser.
 
 ## Contributing
 
