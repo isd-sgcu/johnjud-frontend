@@ -12,7 +12,7 @@ const questionBox = ({
   const [showed, setShowed] = useState(false);
 
   return (
-    <div className="mb-6 flex flex-col rounded-3xl bg-white shadow-lg cursor-pointer">
+    <div className="mb-6 flex cursor-pointer flex-col rounded-3xl bg-white shadow-lg">
       <div
         className="my-3 flex flex-row items-center justify-between rounded-3xl px-8 py-4 "
         onClick={() => setShowed(!showed)}
