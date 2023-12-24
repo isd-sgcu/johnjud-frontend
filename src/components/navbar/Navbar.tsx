@@ -14,7 +14,7 @@ const Navbar = () => {
         <div className="font-poppins font-bold text-white">JOHNJUD</div>
       </div>
       <img src={hamburgerIcon} alt="hamburger-icon" onClick={() => setToggle(true)}/>
-      { toggle && <SideBarWrapper />}
+      { toggle && <SideBarWrapper setToggle={setToggle}/>}
   </div>
   );
 };
