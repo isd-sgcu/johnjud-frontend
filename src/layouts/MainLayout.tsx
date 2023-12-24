@@ -12,7 +12,7 @@ const MainLayout = ({ children }: MainLayoutProps) => {
       style={{
         backgroundImage: `url(${background})`,
       }}
-      className="flex min-h-screen flex-col bg-cover bg-center"
+      className="flex min-h-screen flex-col bg-auto bg-top"
     >
       <Navbar />
       {children}

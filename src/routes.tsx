@@ -78,8 +78,16 @@ Object.keys(pages).forEach((path) => {
 routes.push({
   path: "/*",
   lazy: async () => {
-    const module = await import("./app/404.tsx");
-    const Component = module.default as React.ComponentType;
+    const { default: Component, Layout } = await import("./app/404.tsx");
+    if (Layout) {
+      return {
+        Component: () => (
+          <Layout>
+            <Component />
+          </Layout>
+        ),
+      };
+    }
     return { Component };
   },
 });
