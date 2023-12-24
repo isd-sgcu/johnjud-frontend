@@ -7,7 +7,7 @@ import Page from "./Page";
 
 const Navbar = () => {
   const [toggle, setToggle] = useState(false);
-  const [page, setPage] = useState(Page.FORTUNE);
+  let page : Page = Page.ADMIN;
   
   let header = "JOHNJUD";
   let color = "bg-primary";
