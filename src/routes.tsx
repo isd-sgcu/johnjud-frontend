@@ -6,12 +6,14 @@ const pages = import.meta.glob<{
   default: React.ComponentType;
   Layout?: React.ComponentType<{ children: React.ReactNode }>;
 }>("./app/**/page.tsx");
+
 const loaders = import.meta.glob<{ default: LoaderFunction }>(
   "./app/**/loader.ts",
   {
     eager: true,
   }
 );
+
 const errors = import.meta.glob<{ default: React.FunctionComponent }>(
   "./app/**/error.tsx",
   {
