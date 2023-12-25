@@ -4,17 +4,16 @@ import catImage from "../../assets/main/catImage.svg";
 const Main = () => {
     return (
         <div className="bg-primary mt-auto w-full shrink-0">
-            <div className="flex justify-center">
-                <img className="h-52 w-52" src={johnjudLogo} alt="Johnjud Logo" />
-            </div>
-            <div className="mt-1.5 xl:flex xl:flex-col xl:content-end">
-                <div className="uppercase text-white text-center text-4xl font-bold py-2.5
-                xl:text-[156px]">
-                    johnjud
-                </div>
-                <div className="uppercase text-white text-center text-base font-medium py-1
-                xl:text-2xl xl:ml-96">
-                    Best Option - Adoption
+            <div className="xl:flex xl:flex-row-reverse">
+                <img className="h-52 w-52 mx-auto" src={johnjudLogo} alt="Johnjud Logo" />
+                <div className="uppercase text-white text-center mt-1.5 
+                xl:flex xl:flex-col xl:content-end xl:mt-16 xl:ml-56">
+                    <div className="text-4xl font-bold py-2.5 xl:text-[156px]">
+                        johnjud
+                    </div>
+                    <div className="text-base font-medium py-1 xl:text-2xl xl:ml-96">
+                        Best Option - Adoption
+                    </div>
                 </div>
             </div>
             <div className="flex justify-center items-center align-middle">
