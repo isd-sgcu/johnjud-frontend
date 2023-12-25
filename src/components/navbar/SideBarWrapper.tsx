@@ -1,23 +1,23 @@
 import React from "react";
-import SideBar from "./SideBar";
 import Page from "./Page";
+import SideBar from "./SideBar";
 
-interface props{
-    page : Page,
-    setToggle : React.Dispatch<React.SetStateAction<boolean>>
+interface props {
+  page: Page;
+  setToggle: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-const SideBarWrapper : React.FC<props> = ({page, setToggle}) => {
-    function handleBackgroundClick(){
-        setToggle(false);
-    }
+const SideBarWrapper: React.FC<props> = ({ page, setToggle }) => {
+  function handleBackgroundClick() {
+    setToggle(false);
+  }
 
-    return (  
-        <div className="fixed top-0 bottom-0 left-0 right-0 flex">
-            <div className="flex-1 h-full" onClick={handleBackgroundClick}></div>
-            <SideBar page={page} />
-        </div>
-    );
-}
- 
+  return (
+    <div className="fixed bottom-0 left-0 right-0 top-0 flex">
+      <div className="h-full flex-1" onClick={handleBackgroundClick}></div>
+      <SideBar page={page} />
+    </div>
+  );
+};
+
 export default SideBarWrapper;
