@@ -35,31 +35,31 @@ const SideBar : React.FC<props> = ({page}) => {
             </div>
             <div className="p-2 text-sm">
                 <div className="flex flex-col gap-6 justify-start">
-                    <div className="flex items-center gap-1.5">
+                    <div className="flex items-center gap-1.5 cursor-pointer">
                     <img src={houseIcon} alt="home-icon" className="w-6 h-6"/>
                     <span>หน้าหลัก</span>
                     </div>
-                    <div className="flex items-center gap-1.5">
+                    <div className="flex items-center gap-1.5 cursor-pointer">
                     <img src={chessIcon} alt="pets-icon" className="w-6 h-6"/>
                     <span>สัตว์เลี้ยง</span>
                     </div>
-                    <div className="flex items-center gap-1.5">
+                    <div className="flex items-center gap-1.5 cursor-pointer">
                     <img src={gameControllerIcon} alt="game-icon" className="w-6 h-6"/>
                     <span>เล่นเกม</span>
                     </div>
-                    <div className="flex items-center gap-1.5">
+                    <div className="flex items-center gap-1.5 cursor-pointer">
                     <img src={moonStarIcon} alt="luck-icon" className="w-6 h-6"/>
                     <span>ดูดวง</span>
                     </div>
-                    <div className="flex items-center gap-1.5">
+                    <div className="flex items-center gap-1.5 cursor-pointer">
                     <img src={questionIcon} alt="qa-icon" className="w-6 h-6"/>
                     <span>คำถามที่พบบ่อย</span>
                     </div>
-                    <div className="flex items-center gap-1.5">
+                    <div className="flex items-center gap-1.5 cursor-pointer">
                     <img src={infoIcon} alt="about-icon" className="w-6 h-6"/>
                     <span>เกี่ยวกับเรา</span>
                     </div>
-                    <div className="flex items-center gap-1.5">
+                    <div className="flex items-center gap-1.5 cursor-pointer">
                     <img src={lockKeyIcon} alt="login-icon" className="w-6 h-6"/>
                     <span >Admin Login</span>
                     </div>

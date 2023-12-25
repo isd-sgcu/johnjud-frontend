@@ -33,9 +33,9 @@ const Navbar = () => {
   <div className={`flex items-center justify-between py-3 px-4 ${color}`}>
       <div className="flex items-center gap-3">
         {logo && <img src={logo} alt="logo" className="w-12 h-12"/>}
-        <div className="font-poppins font-bold text-white">{header}</div>
+        <div className="font-poppins font-bold text-white cursor-pointer">{header}</div>
       </div>
-      <img src={hamburgerIcon} alt="hamburger-icon" onClick={() => setToggle(true)}/>
+      <img src={hamburgerIcon} alt="hamburger-icon" onClick={() => setToggle(true)} className="cursor-pointer" />
       { toggle && <SideBarWrapper setToggle={setToggle} page={page} />}
   </div>
   );
