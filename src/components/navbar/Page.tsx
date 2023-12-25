@@ -1,7 +1,8 @@
 enum Page{
-    MAIN,
+    HOME,
     ADMIN,
-    FORTUNE
+    FORTUNE,
+    MAIN,
 }
 
 export default Page;

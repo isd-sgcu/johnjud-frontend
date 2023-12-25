@@ -7,7 +7,7 @@ import Page from "./Page";
 
 const Navbar = () => {
   const [toggle, setToggle] = useState(false);
-  let page : Page = Page.ADMIN;
+  let page : Page = Page.MAIN;
   
   let header = "JOHNJUD";
   let color = "bg-primary";
@@ -22,6 +22,9 @@ const Navbar = () => {
       color = "bg-johnjud-purple";
       logo = logoSecondary;
       break;
+    case Page.MAIN:
+      logo = "";
+      break;
   }
     
 
@@ -29,7 +32,7 @@ const Navbar = () => {
   return (
   <div className={`flex items-center justify-between py-3 px-4 ${color}`}>
       <div className="flex items-center gap-3">
-        <img src={logo} alt="logo" className="w-12 h-12"/>
+        {logo && <img src={logo} alt="logo" className="w-12 h-12"/>}
         <div className="font-poppins font-bold text-white">{header}</div>
       </div>
       <img src={hamburgerIcon} alt="hamburger-icon" onClick={() => setToggle(true)}/>
