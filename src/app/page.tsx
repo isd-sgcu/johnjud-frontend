@@ -4,7 +4,7 @@ import MainLayout from "../layouts/MainLayout";
 
 const Main = () => {
   return (
-    <div className="w-full shrink-0 bg-primary pt-7 xl:pt-16">
+    <div className="w-full shrink-0 bg-primary pt-7 min-h-screen flex flex-col justify-between xl:pt-16">
       <div className="xl:flex xl:flex-row-reverse xl:justify-center xl:gap-5">
         <img
           className="mx-auto h-52 w-52 xl:mx-0"
