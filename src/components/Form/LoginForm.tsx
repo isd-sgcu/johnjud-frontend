@@ -11,8 +11,8 @@ const LoginForm = () => {
         <div className="focus: flex w-full items-center rounded-lg bg-johnjud-light-gray px-2.5 py-2.5 outline-none">
           <img src={userIcon} alt="Icon" className="mx-2" />
           <input
-            type="text"
-            placeholder="ชื่อผู้ใช้"
+            type="email"
+            placeholder="อีเมล"
             className="focus: w-full rounded-lg bg-johnjud-light-gray font-semibold text-johnjud-gray outline-none"
           />
         </div>
