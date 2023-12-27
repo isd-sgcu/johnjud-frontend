@@ -8,6 +8,7 @@ import moonStarIcon from "../../assets/navbar/MoonStars.svg";
 import questionIcon from "../../assets/navbar/Question.svg";
 import blankProfile from "../../assets/navbar/blankProfile.svg";
 import Page from "./Page";
+import {Icon} from "@iconify/react";
 
 interface SideBarProps {
   page: Page;
@@ -29,6 +30,7 @@ const SideBar: React.FC<SideBarProps> = ({ page }) => {
 
   return (
     <div className={`h-full p-8 text-white ${color}`}>
+      <Icon icon={"ph:house-light"} color="white" className="w-6 h-6"/>
       <div className="mb-6 flex items-center gap-4 border-b border-white pb-6">
         <img src={blankProfile} alt="blank-profile" />
         <span>เข้าสู่ระบบ</span>
