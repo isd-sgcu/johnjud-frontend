@@ -9,11 +9,11 @@ import questionIcon from "../../assets/navbar/Question.svg";
 import blankProfile from "../../assets/navbar/blankProfile.svg";
 import Page from "./Page";
 
-interface props {
+interface SideBarProps {
   page: Page;
 }
 
-const SideBar: React.FC<props> = ({ page }) => {
+const SideBar: React.FC<SideBarProps> = ({ page }) => {
   let color;
   switch (page) {
     case Page.MAIN:
@@ -28,7 +28,7 @@ const SideBar: React.FC<props> = ({ page }) => {
   }
 
   return (
-    <div className={`h-full w-44 p-4 pt-8 text-white ${color}`}>
+    <div className={`h-full p-8 text-white ${color}`}>
       <div className="mb-6 flex items-center gap-4 border-b border-white pb-6">
         <img src={blankProfile} alt="blank-profile" />
         <span>เข้าสู่ระบบ</span>

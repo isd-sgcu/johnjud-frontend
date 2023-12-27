@@ -39,7 +39,7 @@ const Navbar = () => {
         src={hamburgerIcon}
         alt="hamburger-icon"
         onClick={() => setToggle(true)}
-        className="cursor-pointer"
+        className="cursor-pointer w-6"
       />
       {toggle && <SideBarWrapper setToggle={setToggle} page={page} />}
     </div>

@@ -2,12 +2,12 @@ import React from "react";
 import Page from "./Page";
 import SideBar from "./SideBar";
 
-interface props {
+interface SideBarWrapperProps {
   page: Page;
   setToggle: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-const SideBarWrapper: React.FC<props> = ({ page, setToggle }) => {
+const SideBarWrapper: React.FC<SideBarWrapperProps> = ({ page, setToggle }) => {
   function handleBackgroundClick() {
     setToggle(false);
   }
