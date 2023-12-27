@@ -4,6 +4,7 @@ import logoPrimary from "../../assets/navbar/logoPrimary.svg";
 import logoSecondary from "../../assets/navbar/logoSecondary.svg";
 import Page from "../../types/Page";
 import SideBarWrapper from "./SideBarWrapper";
+import { useLocation } from "react-router-dom";
 
 const Navbar = () => {
   const [toggle, setToggle] = useState(false);
