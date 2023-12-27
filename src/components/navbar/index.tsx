@@ -2,7 +2,7 @@ import { useState } from "react";
 import hamburgerIcon from "../../assets/navbar/hamburger.svg";
 import logoPrimary from "../../assets/navbar/logoPrimary.svg";
 import logoSecondary from "../../assets/navbar/logoSecondary.svg";
-import Page from "./Page";
+import Page from "../../types/Page";
 import SideBarWrapper from "./SideBarWrapper";
 
 const Navbar = () => {

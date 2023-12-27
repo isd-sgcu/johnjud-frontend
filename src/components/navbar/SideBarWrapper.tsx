@@ -1,5 +1,5 @@
 import React from "react";
-import Page from "./Page";
+import Page from "../../types/Page";
 import SideBar from "./SideBar";
 
 interface SideBarWrapperProps {
