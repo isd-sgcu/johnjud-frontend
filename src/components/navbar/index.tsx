@@ -8,22 +8,22 @@ import { useLocation } from "react-router-dom";
 
 const Navbar = () => {
   const [toggle, setToggle] = useState(false);
-  const page: Page = null;
+  const pathname = useLocation().pathname;
 
   let header = "JOHNJUD";
   let color = "bg-primary";
   let logo = logoPrimary;
 
-  switch (page) {
-    case Page.ADMIN:
+  switch (pathname) {
+    case "/":
       header = "JOHNJUD แอดมิน";
       color = "bg-secondary";
       break;
-    case Page.FORTUNE:
+    case "/":
       color = "bg-johnjud-purple";
       logo = logoSecondary;
       break;
-    case Page.MAIN:
+    case "/main":
       logo = "";
       break;
   }
