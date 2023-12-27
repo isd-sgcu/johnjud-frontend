@@ -9,12 +9,12 @@ interface SideBarProps {
 const SideBar: React.FC<SideBarProps> = ({ color }) => {
 
   return (
-    <div className={`h-full p-8 text-white  ${color}`}>
+    <div className={`h-full p-6 py-8  text-sm text-white ${color} w-[180px] xl:w-64 xl:pl-10 xl:pr-16 xl:pt-10`}>
       <div className="mb-6 flex items-center gap-4 border-b border-white pb-6 cursor-pointer">
         <img src={blankProfile} alt="blank-profile" />
-        <span>เข้าสู่ระบบ</span>
+        <span className="font-bold underline">เข้าสู่ระบบ</span>
       </div>
-      <div className="p-2 text-sm">
+      <div>
         <div className="flex flex-col justify-start gap-6">
           <div className="flex cursor-pointer items-center gap-1.5">
             <Icon icon={"ph:house"} color="white" className="w-6 h-6"/>
