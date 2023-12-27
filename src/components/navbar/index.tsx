@@ -7,7 +7,7 @@ import SideBarWrapper from "./SideBarWrapper";
 
 const Navbar = () => {
   const [toggle, setToggle] = useState(false);
-  const page: Page = Page.MAIN;
+  const page: Page = Page.FORTUNE;
 
   let header = "JOHNJUD";
   let color = "bg-primary";
@@ -28,7 +28,7 @@ const Navbar = () => {
   }
 
   return (
-    <div className={`flex items-center justify-between px-4 py-3 ${color}`}>
+    <div className={`flex items-center justify-between h-[72px] px-4 py-3 transition-all ${color}`}>
       <div className="flex items-center gap-3">
         {logo && <img src={logo} alt="logo" className="h-12 w-12" />}
         <div className="cursor-pointer font-poppins font-bold text-white">
@@ -41,7 +41,7 @@ const Navbar = () => {
         onClick={() => setToggle(true)}
         className="cursor-pointer w-6"
       />
-      {toggle && <SideBarWrapper setToggle={setToggle} page={page} />}
+      <SideBarWrapper setToggle={setToggle} color={color} toggle={toggle}/>
     </div>
   );
 };

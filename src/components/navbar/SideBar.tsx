@@ -1,29 +1,16 @@
 import React from "react";
 import blankProfile from "../../assets/navbar/blankProfile.svg";
-import Page from "../../types/Page";
 import {Icon} from "@iconify/react";
 
 interface SideBarProps {
-  page: Page;
+  color: string;
 }
 
-const SideBar: React.FC<SideBarProps> = ({ page }) => {
-  let color;
-  switch (page) {
-    case Page.MAIN:
-      color = "bg-primary";
-      break;
-    case Page.ADMIN:
-      color = "bg-secondary";
-      break;
-    case Page.FORTUNE:
-      color = "bg-johnjud-purple";
-      break;
-  }
+const SideBar: React.FC<SideBarProps> = ({ color }) => {
 
   return (
-    <div className={`h-full p-8 text-white ${color}`}>
-      <div className="mb-6 flex items-center gap-4 border-b border-white pb-6">
+    <div className={`h-full p-8 text-white  ${color}`}>
+      <div className="mb-6 flex items-center gap-4 border-b border-white pb-6 cursor-pointer">
         <img src={blankProfile} alt="blank-profile" />
         <span>เข้าสู่ระบบ</span>
       </div>
