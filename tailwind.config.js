@@ -16,6 +16,7 @@ export default {
         "johnjud-gray": "#808086",
         "johnjud-yellow": "#FFFF31",
         "johnjud-light-gray": "#D9D9D9",
+        "johnjud-emerald": "#E6F3F3"
       },
     },
   },
