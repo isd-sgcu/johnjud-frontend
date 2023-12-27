@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import hamburgerIcon from "../../assets/navbar/hamburger.svg";
 import logoPrimary from "../../assets/navbar/logoPrimary.svg";
 import logoSecondary from "../../assets/navbar/logoSecondary.svg";
@@ -14,20 +14,26 @@ const Navbar = () => {
   let color = "bg-primary";
   let logo = logoPrimary;
 
-  switch (pathname) {
-    case "/":
-      header = "JOHNJUD แอดมิน";
-      color = "bg-secondary";
-      break;
-    case "/":
-      color = "bg-johnjud-purple";
-      logo = logoSecondary;
-      break;
-    case "/main":
-      logo = "";
-      break;
-  }
-
+  useMemo(() => {
+    header = "JOHNJUD";
+    color = "bg-primary";
+    logo = logoPrimary;
+    
+    switch (pathname) {
+      case "/example":
+        header = "JOHNJUD แอดมิน";
+        color = "bg-secondary";
+        break;
+      case "/fortune":
+        color = "bg-johnjud-purple";
+        logo = logoSecondary;
+        break;
+      case "/main":
+        logo = "";
+        break;
+    }
+  }, [pathname]);
+  
   return (
     <div className={`flex items-center justify-between px-4 xl:px-6 py-3 transition-all ${color}`}>
       <div className="flex items-center gap-3 h-18 ">
