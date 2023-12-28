@@ -10,12 +10,16 @@ const Info = () => {
                 <div className="text-primary w-80">
                     <div className="text-2xl font-bold underline underline-offset-8 mb-4 flex justify-between">
                         <span>รายละเอียด</span>
-                        {admin &&
+                        {admin ?
                             <Icon
                                 icon="mynaui:pencil"
                                 color="#c81425"
-                                className="h-fit m-2 w-6"
-                        />}
+                                className="h-fit m-2 w-6"/>
+                            : <Icon 
+                                icon="ph:heart" 
+                                color="#c81425" 
+                                className="w-8 h-fit xl:hidden"/>
+                        }
                     </div>
                     <div className="flex gap-3 mb-3">
                         <span className="flex items-center">

@@ -5,7 +5,7 @@ const BigPetCard = () => {
     const admin = true;
 
     return (  
-        <div className="grid grid-cols-2 gap-3 xl:grid-cols-[2rem_20rem_1fr] xl:grid-rows-[60px_40px_1fr] xl:gap-8 xl:pr-28 xl:pl-14">
+        <div className="grid grid-cols-2 px-6 gap-3 xl:grid-cols-[2rem_20rem_1fr] xl:grid-rows-[60px_40px_1fr] xl:gap-8 xl:pr-28 xl:pl-14">
             <div className="col-start-1 flex items-center xl:col-span-3">
                 <Icon icon="material-symbols-light:arrow-back-ios-new"  color="#08878E"  width="24" height="24" className="xl:w-8 xl:h-8 cursor-pointer"/>
             </div>
