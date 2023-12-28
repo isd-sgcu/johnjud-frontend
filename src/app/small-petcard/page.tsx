@@ -1,6 +1,4 @@
-import Check from "../../assets/small-petcard/Check.svg";
-import Gift from "../../assets/small-petcard/Gift.svg";
-import PawPrint from "../../assets/small-petcard/PawPrint.svg";
+import SmallpetCard from "../../components/card/SmallPetCard";
 import MainLayout from "../../layouts/MainLayout";
 enum genders {
   male = "male",
@@ -10,7 +8,7 @@ enum status {
   findhome = "findhome",
   adopted = "adopted",
 }
-const SmallPetCard = [
+const smallPetCardArray = [
   {
     name: "ลุงเริง",
     species: "ไซบีเรียน",
@@ -19,54 +17,24 @@ const SmallPetCard = [
     is_sterile: false,
     status: status.findhome,
   },
-  {
-    name: "หอมมาก",
-    species: "บางแก้ว",
-    gender: genders.female,
-    birthdate: "Sun, 14 Oct 2003 15:00:00 GMT",
-    is_sterile: true,
-    status: status.adopted,
-  },
 ];
 
 const smallpetcard = () => {
   return (
-    <div className="m-0 h-64 w-44 shrink-0 rounded-3xl bg-white p-0 shadow-md ">
-      <div className="mx-3.5 mb-3.5 mt-3.5 flex flex-shrink-0 flex-col items-center justify-center gap-y-3.5 rounded-3xl">
-        <div className="flex w-36 rounded-3xl bg-zinc-300">
-          <img
-            className="rounded-3xl"
-            src="https://via.placeholder.com/144x144"
-            alt="PetPic 144*144"
+    <>
+      {smallPetCardArray.map((petData) => {
+        return (
+          <SmallpetCard
+            key={petData.name}
+            name={petData.name}
+            species={petData.species}
+            gender={petData.gender}
+            birthdate={petData.birthdate}
+            status={petData.status}
           />
-        </div>
-        <div className="flex-start m-0 flex w-full flex-col items-start justify-center gap-1 p-0">
-          <div className="text-sm font-semibold text-black">
-            ไรลีย์ พันธุ์แลบราดอร์
-          </div>
-          <div className="flex-start m-0 flex flex-col justify-center gap-1 p-0 ">
-            <div className="flex-start m-0 flex flex-row items-center justify-start gap-1.5 p-0 ">
-              <div>
-                <img src={PawPrint} alt="PawPrint Logo" />
-              </div>
-              <div className="text-sm font-normal  text-zinc-500">ตัวผู้</div>
-            </div>
-            <div className="flex-start m-0 flex flex-row items-center justify-start gap-1.5 p-0 ">
-              <div>
-                <img src={Gift} alt="Gift Logo" />
-              </div>
-              <div className="text-sm font-normal  text-zinc-500">
-                อายุ 1 ปี 2 เดือน
-              </div>
-              <div className="mr-0 h-6 w-6 rounded-full bg-teal-600">
-                <img className="px-1 py-1" src={Check} alt="Gift Logo" />
-              </div>
-            </div>
-            <div className="flex-start m-0 flex flex-row justify-start gap-1.5 p-0 "></div>
-          </div>
-        </div>
-      </div>
-    </div>
+        );
+      })}
+    </>
   );
 };
 export default smallpetcard;
