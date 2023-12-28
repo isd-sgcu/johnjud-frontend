@@ -1,18 +1,35 @@
+import { useEffect, useState } from "react";
 interface IMiniPetCardProps {
   name: string;
   species: string;
+  gender: string;
   birthdate: string;
 }
-function timeDif(thatDate): {
-  const currentDate = new Date();
-  const givenUtcDatetime = new Date(thatDate);
-  
+const calculateYearDifference = (utcString: string) => {
+  const inputDatetime = new Date(utcString);
+  const currentUtcTime = new Date();
+
+  const timeDifference = currentUtcTime - inputDatetime;
+
+  // Convert milliseconds to years (assuming 365 days per year)
+  const yearsDifference = Math.floor(
+    timeDifference / (365 * 24 * 60 * 60 * 1000)
+  );
+
+  return yearsDifference;
 };
-const minipetcard = ({
+const MiniPetCard = ({
   name,
   species,
+  gender,
   birthdate,
-}: ISmallPetCardProps) => {
+}: IMiniPetCardProps) => {
+  const [yearsDifference, setYearsDifference] = useState<number | null>(null);
+  useEffect(() => {
+    const result = calculateYearDifference(birthdate);
+    setYearsDifference(result);
+  }, []);
+  const genderAns = gender == "male" ? "ผู้" : "เมีย";
   // render button with props
   return (
     <div className="m-0 flex h-52 w-40 flex-shrink-0 flex-col gap-0 rounded-3xl bg-white p-0 shadow-md">
@@ -34,16 +51,17 @@ const minipetcard = ({
         <div className="flex-start items m-0 flex flex-row justify-start gap-1.5 p-0 ">
           <div className="flex w-auto items-center justify-center rounded-lg bg-slate-200">
             <div className="px-1.5 text-sm font-semibold text-blue-600">
-              เพศผู้
+              เพศ{genderAns}
             </div>
           </div>
           <div className="flex w-auto items-center justify-center rounded-lg bg-zinc-300 ">
-            <div className="px-1.5 text-sm font-semibold text-black">1 ขวบ</div>
+            <div className="px-1.5 text-sm font-semibold text-black">
+              {yearsDifference} ขวบ
+            </div>
           </div>
         </div>
       </div>
     </div>
   );
 };
-
-export default minipetcard;
+export default MiniPetCard;
