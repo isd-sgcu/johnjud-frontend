@@ -37,7 +37,7 @@ const minipetcard = () => {
           alt="PetPic 168*112"
         />
       </div>
-      <div className="flex-start flex flex-col items-start justify-start gap-1.5 ml-3.5 mt-1">
+      <div className="flex-start ml-3.5 mt-1 flex flex-col items-start justify-start gap-1.5">
         <div className="flex-start m-0 inline-flex flex-col justify-center gap-1">
           <div className="text-sm font-semibold text-black">ไรลีย์</div>
           <div className="inline-flex flex-row items-start justify-start gap-1">
@@ -45,7 +45,7 @@ const minipetcard = () => {
             <div className="text-sm font-normal text-black">แลบราดดอร์</div>
           </div>
         </div>
-        <div className="flex-start m-0 flex flex-row justify-start items gap-1.5 p-0 ">
+        <div className="flex-start items m-0 flex flex-row justify-start gap-1.5 p-0 ">
           <div className="flex w-auto items-center justify-center rounded-lg bg-slate-200">
             <div className="px-1.5 text-sm font-semibold text-blue-600">
               เพศผู้
