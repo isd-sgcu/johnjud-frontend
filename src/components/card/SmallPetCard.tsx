@@ -12,8 +12,6 @@ const UtcStringToList = (utcString: string) => {
   const date = new Date(utcString);
   const year = date.getUTCFullYear();
   const month = date.getUTCMonth() + 1; // Month is 0-based, so we add 1
-  console.log("Parsed Date:", date);
-  console.log("Is NaN:", isNaN(date.getTime()));
 
   return (
     <div className="text-sm font-normal  text-zinc-500">
