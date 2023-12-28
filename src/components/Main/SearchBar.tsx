@@ -7,7 +7,7 @@ const SearchBar = () => {
       <input
         type="text"
         placeholder="ค้นหาชื่อสัตว์เลี้ยง"
-        className="text-medium focus: text-johnjud-gray outline-none "
+        className="text-medium focus: w-full text-johnjud-gray outline-none"
       />
     </div>
   );
