@@ -15,7 +15,7 @@ export default {
         "johnjud-purple": "#3D0D40",
         "johnjud-gray": "#808086",
         "johnjud-yellow": "#FFFF31",
-      }
+      },
     },
   },
   plugins: [],
