@@ -7,10 +7,10 @@ const Details = () => {
     return (  
         <div className="pt-4">
             <BigPetCard/>
-            <div className="flex my-10 gap-20">
+            {<div className="flex my-10 gap-20">
                 <Info/>
                 <img src={logo} alt="logo" className="w-[22rem] hidden xl:block"/>
-            </div>
+            </div>}
         </div>
     );
 }

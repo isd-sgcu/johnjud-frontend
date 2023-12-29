@@ -6,10 +6,10 @@ const BigPetCard = () => {
 
     return (  
         <div className="grid grid-cols-2 px-6 gap-3 xl:grid-cols-[2rem_20rem_1fr] xl:grid-rows-[60px_40px_1fr] xl:gap-8 xl:pr-28 xl:pl-14">
-            <div className="col-start-1 flex items-center xl:col-span-3">
+            <div className="col-start-1 row-start-1 flex items-center xl:col-span-3">
                 <Icon icon="material-symbols-light:arrow-back-ios-new"  color="#08878E"  width="24" height="24" className="xl:w-8 xl:h-8 cursor-pointer"/>
             </div>
-            <div className="col-start-2 flex justify-end xl:row-start-2 xl:justify-start xl:h-fit xl:items-end xl:col-start-3">
+            <div className="col-start-2 row-start-1 flex justify-end xl:row-start-2 xl:justify-start xl:h-fit xl:items-end xl:col-start-3">
                 <div className="w-fit">
                     <div className="flex items-center xl:flex-row-reverse">
                         {admin && <Icon icon="mynaui:pencil" color="#c81425" className="w-6 h-6"/>}
@@ -20,13 +20,13 @@ const BigPetCard = () => {
                     <div className="bg-primary w-full h-[2px] rounded-full"></div>
                 </div>
             </div>
-            <div className="w-full col-start-1 row-start-2 col-span-2 flex justify-center xl:col-span-2 xl:row-span-2 xl:justify-end">
+            <div className="col-start-1 row-start-2 col-span-2 flex justify-center xl:col-span-2 xl:row-span-2 xl:justify-end">
                 <div className="relative">
                     <img 
                         src={petImg} 
                         alt="pet-img" 
                         className="rounded-3xl shadow shadow-zinc-300 bg-zinc-300 w-80" />
-                    <div className="relative flex justify-center -top-[20.9rem] left-24 h-0">
+                    <div className="relative flex justify-center -top-[20.9rem] ml-40 h-0">
                         <Icon
                             icon="material-symbols:bookmark"
                             color="#08878e"
