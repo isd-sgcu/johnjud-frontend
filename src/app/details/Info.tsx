@@ -1,8 +1,7 @@
 import { Icon } from "@iconify/react/dist/iconify.js";
 import ButtonWrapper from "./ButtonWrapper";
 
-const Info = () => {
-    const admin = true;
+const Info = ({isAdmin} : {isAdmin: boolean}) => {
 
     return ( 
         <div className="bg-white shadow shadow-zinc-300 flex flex-col items-center p-6 w-full xl:w-fit xl:rounded-2xl xl:-ml-2">
@@ -10,7 +9,7 @@ const Info = () => {
                 <div className="text-primary w-80">
                     <div className="text-2xl font-bold underline underline-offset-8 mb-4 flex justify-between">
                         <span>รายละเอียด</span>
-                        {admin ?
+                        {isAdmin ?
                             <Icon
                                 icon="mynaui:pencil"
                                 color="#c81425"
@@ -59,7 +58,7 @@ const Info = () => {
                     </div>
                 </div>
                 <div className="w-[0.1px] bg-zinc-300 shadow-2xl shadow-zinc-500 hidden xl:inline-block" ></div>
-                <ButtonWrapper/>
+                <ButtonWrapper isAdmin={isAdmin}/>
             </div>
         </div>
      );

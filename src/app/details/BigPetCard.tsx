@@ -1,8 +1,7 @@
 import { Icon } from "@iconify/react/dist/iconify.js";
 import petImg from "../../assets/details/pet.svg";
 
-const BigPetCard = () => {
-    const admin = true;
+const BigPetCard = ({isAdmin} : {isAdmin: boolean}) => {
 
     return (  
         <div className="grid grid-cols-2 px-6 gap-3 xl:grid-cols-[2rem_20rem_1fr] xl:grid-rows-[60px_40px_1fr] xl:gap-8 xl:pr-28 xl:pl-14">
@@ -12,7 +11,7 @@ const BigPetCard = () => {
             <div className="col-start-2 row-start-1 flex justify-end xl:row-start-2 xl:justify-start xl:h-fit xl:items-end xl:col-start-3">
                 <div className="w-fit">
                     <div className="flex items-center xl:flex-row-reverse">
-                        {admin && <Icon icon="mynaui:pencil" color="#c81425" className="w-6 h-6"/>}
+                        {isAdmin && <Icon icon="mynaui:pencil" color="#c81425" className="w-6 h-6"/>}
                         <p className="flex items-center justify-end text-3xl font-bold text-primary"> 
                             ไรลีย์
                         </p>
@@ -41,7 +40,7 @@ const BigPetCard = () => {
                             สัตว์เลี้ยง
                             <br />
                             ชมรม
-                            {admin && <Icon
+                            {isAdmin && <Icon
                                 icon="prime:arrow-right-arrow-left" color="white"
                                 className="w-4 h-4 inline-block"
                             />}
@@ -56,7 +55,7 @@ const BigPetCard = () => {
                         ทาวน์เทปวโรกาส ลิมูซีนเพลซบาร์บี้อุเทนเพลย์บอย ฟลุก เซอร์ไพรส์ รูบิคบึมเฝอมายาคติ ทรู ภคันทลาพาธ วาไรตี้ ท็อปบูตสงบสุขวอลนัต โนติส เบลอ แรงใจ เป่ายิงฉุบโยโย่ ภควัทคีตา อิเหนาช็อปนินจารูบิคคาสิโน คีตกวีบอกซ์โพลารอยด์ดิกชันนารี แกสโซฮอล์ผู้นำ จิ๊กโก๋ธัมโมคอร์รัปชั่น เหี่ยวย่นออทิสติก เวเฟอร์เดโมเจ๊วีนโอวัลติน
                     </span>
                     {
-                        admin && <Icon icon="mynaui:pencil" color="#c81425" className="xl:w-16 h-fit m-2 w-40"/>
+                        isAdmin && <Icon icon="mynaui:pencil" color="#c81425" className="xl:w-16 h-fit m-2 w-40"/>
                     }
                 </div>
             </div>
