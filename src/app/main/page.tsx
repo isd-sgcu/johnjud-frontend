@@ -12,7 +12,7 @@ import { mockPetData } from "../../mock/mockPetData";
 const MainPage = () => {
   const pets = mockPetData;
   return (
-    <main className="flex h-full flex-col space-y-6 p-2  md:p-10">
+    <main className="flex h-full flex-col space-y-6 p-3 md:p-10">
       <div className="flex w-full flex-col space-y-8 md:flex-row md:space-x-8 md:space-y-0">
         <div className="flex w-full items-center justify-center rounded-3xl bg-johnjud-emerald md:w-4/12">
           <img src={JohnjudImage} alt="Johnjud" className="px-10 py-7" />

@@ -10,11 +10,11 @@ const Filter: React.FC = () => {
   const getButtonClass = useCallback(
     (selectedFilter: string): string => {
       const baseClass =
-        "rounded-3xl text-base shadow-md transition-all duration-700 ease-in-out py-3";
+        "text-xs md:text-md rounded-3xl text-base shadow-md transition-all duration-700 ease-in-out py-3";
       const activeClass =
-        "bg-primary text-white px-10 rounded-full flex items-center justify-center py-3";
+        "bg-primary text-white px-6 md:px-10 rounded-full flex items-center justify-center py-3";
       const inactiveClass =
-        "text-xs bg-white text-black px-6 flex flex-col items-center justify-center";
+        "bg-white text-black px-4 md:px-6 flex flex-col items-center justify-center";
 
       return `${baseClass} ${
         selectedFilter === filter ? activeClass : inactiveClass
