@@ -18,7 +18,7 @@ const MockSmallPetCard: React.FC<MockSmallPetCardProps> = ({
       </div>
       <div className="flex-grow px-6 py-4">
         <div className="text-xl font-bold">{name}</div>
-        <p className="text-sm text-gray-700">พันธ์: {breed}</p>
+        <p className="text-xs text-gray-700">{breed}</p>
       </div>
       <div className="px-6 pb-2 pt-4">
         <span className="inline-block rounded-full bg-blue-200 px-3 py-1 text-xs font-semibold text-gray-700">

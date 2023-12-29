@@ -10,9 +10,13 @@ const AdvertiseBox: React.FC<AdvertiseBoxProps> = ({
   altText = "Advertisement",
 }) => {
   return (
-    <div className="flex h-96 w-full items-center justify-center rounded-3xl bg-johnjud-light-gray">
+    <div className="m-0 flex h-full items-center justify-center rounded-3xl bg-johnjud-light-gray overflow-hidden">
       {adSrc && (
-        <img src={adSrc} alt={altText} className="max-h-full max-w-full" />
+        <img
+          src={adSrc}
+          alt={altText}
+          className="max-w-full max-h-full object-contain"
+        />
       )}
     </div>
   );
