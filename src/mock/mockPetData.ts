@@ -169,5 +169,3 @@ export const mockPetData = [
     is_club_pet: true,
   },
 ];
-
-export default mockPetData;
