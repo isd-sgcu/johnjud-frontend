@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import BlankPic168x112 from "../../assets/small-petcard/BlankPic168x112.svg";
 interface IMiniPetCardProps {
   name: string;
   species: string;
@@ -36,7 +37,7 @@ const MiniPetCard = ({
       <div className="flex w-full rounded-3xl bg-zinc-300">
         <img
           className="rounded-3xl"
-          src="https://via.placeholder.com/168x112"
+          src={BlankPic168x112}
           alt="PetPic 168*112"
         />
       </div>
