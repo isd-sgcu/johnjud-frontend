@@ -1,7 +1,7 @@
+import BlankPic144x144 from "../../assets/small-petcard/BlankPic144x144.svg";
 import Check from "../../assets/small-petcard/Check.svg";
 import Gift from "../../assets/small-petcard/Gift.svg";
 import PawPrint from "../../assets/small-petcard/PawPrint.svg";
-import BlankPic144x144 from "../../assets/small-petcard/BlankPic144x144.svg";
 interface ISmallPetCardProps {
   name: string;
   species: string;
@@ -11,12 +11,11 @@ interface ISmallPetCardProps {
 }
 const UtcStringToList = ({ utcString }: { utcString: string }) => {
   const date = new Date(utcString);
-  const year = date.getUTCFullYear();
   const currentUtcTime = new Date();
   const currentYear = currentUtcTime.getUTCFullYear;
   console.log(currentYear);
   const month = date.getUTCMonth() + 1; // Month is 0-based, so we add 1
-  const timeDifference =  currentUtcTime-date;
+  const timeDifference = currentUtcTime - date;
   const yearDifference = Math.floor(
     timeDifference / (365 * 24 * 60 * 60 * 1000)
   );
