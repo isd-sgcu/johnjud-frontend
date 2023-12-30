@@ -1,6 +1,7 @@
 import Check from "../../assets/small-petcard/Check.svg";
 import Gift from "../../assets/small-petcard/Gift.svg";
 import PawPrint from "../../assets/small-petcard/PawPrint.svg";
+import BlankPic144x144 from "../../assets/small-petcard/BlankPic144x144.svg";
 interface ISmallPetCardProps {
   name: string;
   species: string;
@@ -33,7 +34,7 @@ const smallpetcard = ({
         <div className="flex w-36 rounded-3xl bg-zinc-300">
           <img
             className="rounded-3xl"
-            src="https://via.placeholder.com/144x144"
+            src={BlankPic144x144}
             alt="PetPic 144*144"
           />
         </div>
