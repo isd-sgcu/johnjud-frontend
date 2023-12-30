@@ -1,3 +1,4 @@
+import BlankPic144x144 from "../../assets/small-petcard/BlankPic144x144.svg";
 import Check from "../../assets/small-petcard/Check.svg";
 import Gift from "../../assets/small-petcard/Gift.svg";
 import PawPrint from "../../assets/small-petcard/PawPrint.svg";
@@ -8,14 +9,19 @@ interface ISmallPetCardProps {
   birthdate: string;
   status: string;
 }
-const UtcStringToList = (utcString: string) => {
+const UtcStringToList = ({ utcString }: { utcString: string }) => {
   const date = new Date(utcString);
-  const year = date.getUTCFullYear();
+  const currentUtcTime = new Date();
+  const currentYear = currentUtcTime.getUTCFullYear;
+  console.log(currentYear);
   const month = date.getUTCMonth() + 1; // Month is 0-based, so we add 1
-
+  const timeDifference = currentUtcTime - date;
+  const yearDifference = Math.floor(
+    timeDifference / (365 * 24 * 60 * 60 * 1000)
+  );
   return (
     <div className="text-sm font-normal  text-zinc-500">
-      อายุ {year} ปี {month} เดือน
+      อายุ {yearDifference} ปี {month} เดือน
     </div>
   );
 };
@@ -33,7 +39,7 @@ const smallpetcard = ({
         <div className="flex w-36 rounded-3xl bg-zinc-300">
           <img
             className="rounded-3xl"
-            src="https://via.placeholder.com/144x144"
+            src={BlankPic144x144}
             alt="PetPic 144*144"
           />
         </div>
@@ -42,7 +48,7 @@ const smallpetcard = ({
             {name} พันธุ์{species}
           </div>
           <div className="flex-start m-0 flex flex-col justify-center gap-1 p-0 ">
-            <div className="flex-start m-0 flex flex-row items-center justify-start gap-1.5 p-0 ">
+            <div className="flex-start m-0 flex flex-row items-center justify-start gap-1 p-0 ">
               <div>
                 <img src={PawPrint} alt="PawPrint Logo" />
               </div>
@@ -50,7 +56,7 @@ const smallpetcard = ({
                 ตัว{genderAns}
               </div>
             </div>
-            <div className="flex-start m-0 flex flex-row items-center justify-start gap-1.5 p-0 ">
+            <div className="flex-start m-0 flex flex-row items-center justify-start gap-1 p-0 ">
               <div>
                 <img src={Gift} alt="Gift Logo" />
               </div>
@@ -63,7 +69,6 @@ const smallpetcard = ({
                 <img className="px-1 py-1" src={Check} alt="Gift Logo" />
               </div>
             </div>
-            <div className="flex-start m-0 flex flex-row justify-start gap-1.5 p-0 "></div>
           </div>
         </div>
       </div>
