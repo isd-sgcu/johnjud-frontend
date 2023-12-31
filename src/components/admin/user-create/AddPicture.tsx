@@ -1,14 +1,13 @@
-import { useRef, useState, useEffect } from 'react';
-import PlusIcon from './PlusIcon';
+import PlusIcon from "./PlusIcon";
 
 const AddPicture = (props) => {
-    return (
-        <div className='flex flex-col w-full'>
-            <div className='flex w-full aspect-square items-center justify-center border-2 border-[#D9D9D9] bg-white rounded-3xl drop-shadow-sm '>
-                <PlusIcon />
-            </div>
-        </div>
-    );
-}
+  return (
+    <div className="flex w-full flex-col">
+      <div className="flex aspect-square w-full items-center justify-center rounded-3xl border-2 border-[#D9D9D9] bg-white drop-shadow-sm ">
+        <PlusIcon />
+      </div>
+    </div>
+  );
+};
 
 export default AddPicture;
