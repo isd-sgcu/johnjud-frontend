@@ -1,21 +1,24 @@
 import { useEffect, useRef, useState } from "react";
 import TextareaAutosize from "react-autosize-textarea";
-import PencilIcon from "./PencilIcon";
+import { Icon } from '@iconify/react';
 
 const EditText = (props) => {
   const ref = useRef(null);
+  const pencilRef = useRef(null);
 
   const [enableEdit, setEnableEdit] = useState(false);
   const handleOnClick = () => {
     setEnableEdit(!enableEdit);
   };
-  const handleOnBlur = () => {
-    setEnableEdit(false);
+  const handleOnBlur = (event) => {
+    const currentFocus = event.relatedTarget;
+    if (currentFocus !== pencilRef.current) setEnableEdit(false);
   };
   const handleOnChange = (event) => {
     props.setValue(event.target.value);
   };
 
+  // focus at the end of text when enable
   useEffect(() => {
     if (enableEdit && ref.current) {
       ref.current.focus();
@@ -35,7 +38,7 @@ const EditText = (props) => {
         placeholder="ใส่ข้อความตรงนี้..."
       />
       <div className="absolute right-5 top-4">
-        <PencilIcon onClick={handleOnClick} />
+        <Icon icon="mynaui:pencil" color="#C81425" className="flex flex-none w-6 h-6 cursor-pointer" onClick={handleOnClick}/>
       </div>
     </div>
   );

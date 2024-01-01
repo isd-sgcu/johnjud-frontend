@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import TextareaAutosize from "react-autosize-textarea";
-import PencilIcon from "./PencilIcon";
+import { Icon } from '@iconify/react';
 
 const EditName = (props) => {
   const ref = useRef(null);
@@ -17,6 +17,7 @@ const EditName = (props) => {
     props.setValue(event.target.value);
   };
 
+  // focus at the end of text when enable
   useEffect(() => {
     if (enableEdit && ref.current) {
       ref.current.focus();
@@ -25,14 +26,14 @@ const EditName = (props) => {
     }
   }, [enableEdit]);
   return (
-    <div className="flex w-full pl-6">
+    <div className="flex w-full">
       <div
         className={`flex w-full flex-row items-center justify-end ${
           enableEdit ? "hidden" : "visible"
         }`}
       >
-        <PencilIcon onClick={() => handleClickEdit()} />
-        <span className="pl-1 w-full flex text-wrap break-all text-right text-3xl font-bold text-primary">
+        <Icon icon="mynaui:pencil" color="#C81425" className="flex flex-none w-6 h-6 cursor-pointer" onClick={handleClickEdit} />
+        <span className="pl-1 flex text-wrap break-all text-right text-3xl font-bold text-primary">
           {props.value}
         </span>
       </div>
@@ -43,7 +44,7 @@ const EditName = (props) => {
           enableEdit ? "visible" : "hidden"
         }`}
         disabled={!enableEdit}
-        onBlur={() => handleOnBlur()}
+        onBlur={handleOnBlur}
         ref={ref}
         rows={1}
       />
