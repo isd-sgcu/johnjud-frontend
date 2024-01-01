@@ -36,6 +36,19 @@ const EditInfo = (props) => {
             ...updateValue
         });
     }
+    const handleOnClickButton = (tag: string) => {
+        if (enableEdit) {
+            const updateValue = { [tag]: !props.value[tag] };
+            props.setValue({
+                ...props.value,
+                ...updateValue
+            });
+        }
+    }
+    // useEffect(() => {
+    //     console.log(props.value);
+    // }, [props.value]);
+
     return (
         <div className="flex flex-col w-full bg-white px-[9%] pt-4 pb-12 lg:py-7 border-2 border-[#D9D9D9] border-opacity-50">
             <div className="flex flex-row justify-between items-center">
@@ -91,6 +104,22 @@ const EditInfo = (props) => {
                         <span className="ml-1 text-primary">อายุ:</span>
                     </div>
                     <TextareaAutosize className={`w-full ml-3 px-2 font-semibold bg-white rounded-lg ${enableEdit ? "border border-[#D9D9D9]" : ""}`} value={props.value.nature} disabled={!enableEdit} onBlur={handleOnBlur} ref={ref.nature} onChange={(event) => handleOnChange(event, "nature")} />
+                </div>
+
+                {/* Vaccine */}
+                <div className={"flex flex-row w-fit px-2 py-1 items-center rounded-full " + ((props.value["vaccine"]) ? "bg-[#C81425] " : "bg-[#808086] bg-opacity-50 ") + (enableEdit ? "cursor-pointer" : "")} onClick={() => handleOnClickButton("vaccine")} onBlur={handleOnBlur} ref={ref.vaccine} tabIndex={1}>
+                    <div className={"mr-1 " + ((props.value["vaccine"]) ? "" : "rounded-full p-1 bg-[#808086]")}>
+                        <Icon icon={(props.value["vaccine"]) ? "ph:eyedropper" : "ic:round-check"} className={((props.value["vaccine"]) ? "w-6 h-6" : "w-4 h-4")} color="white" />
+                    </div>
+                    <div className={"font-semibold " + ((props.value["vaccine"]) ? "text-white" : "text-[#808086]")}>ฉีดวัคซีนแล้ว</div>
+                </div>
+
+                {/* Sterile */}
+                <div className={"flex flex-row w-fit pl-2 pr-5 py-1 items-center rounded-full " + ((props.value["sterile"]) ? "bg-[#C81425] " : "bg-[#808086] bg-opacity-50 ") + (enableEdit ? "cursor-pointer" : "")} onClick={() => handleOnClickButton("sterile")} onBlur={handleOnBlur} ref={ref.sterile} tabIndex={2}>
+                    <div className={"mr-1 " + ((props.value["sterile"]) ? "" : "rounded-full p-1 bg-[#808086]")}>
+                        <Icon icon={(props.value["sterile"]) ? "ph:medal" : "ic:round-check"} className={((props.value["sterile"]) ? "w-6 h-6" : "w-4 h-4")} color="white" />
+                    </div>
+                    <div className={"font-semibold " + ((props.value["sterile"]) ? "text-white" : "text-[#808086]")}>ทำหมันแล้ว</div>
                 </div>
             </div>
         </div>
