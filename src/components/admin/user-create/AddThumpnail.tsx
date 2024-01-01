@@ -18,19 +18,19 @@ addIcon("custom:plus", {
       <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_694_2885" result="shape"/>
     </filter>
   </defs>
-</svg>`,
+  </svg>`,
   width: 96,
   height: 96
 })
 
-const AddPicture = (props) => {
+const AddThumpnail = (props) => {
   return (
     <div className="flex w-full flex-col max-w-80">
       <div className="flex aspect-square w-full items-center justify-center rounded-3xl border-2 border-[#D9D9D9] bg-white drop-shadow-sm ">
-        <Icon icon="custom:plus" className="w-[30%] h-[30%]"/>
+        <Icon icon="custom:plus" className="w-[30%] h-[30%]" />
       </div>
     </div>
   );
 };
 
-export default AddPicture;
+export default AddThumpnail;

@@ -1,14 +1,16 @@
 import { useState } from "react";
 import { Icon } from '@iconify/react';
-import AddPicture from "../../../components/admin/user-create/AddPicture";
+import AddThumpnail from "../../../components/admin/user-create/AddThumpnail";
 import EditName from "../../../components/admin/user-create/EditName";
 import EditText from "../../../components/admin/user-create/EditText";
 import MainLayout from "../../../layouts/MainLayout";
 import EditInfo from "../../../components/admin/user-create/EditInfo";
+import AddSmallPicture from "../../../components/admin/user-create/AddSmallPicture";
 
 const userCreate = () => {
   const [name, setName] = useState("...กรุณาใส่ชื่อ");
   const [text, setText] = useState("");
+  const [pictures, setPictures] = useState(["sample1" , "sample2"]);
   const [info, setInfo] = useState({
     gender: "-",
     breed: "-",
@@ -26,17 +28,17 @@ const userCreate = () => {
       </div>
       <div className="mx-[10%] flex h-1 w-1/5 self-end bg-primary" />
       <div className="flex flex-col px-[10%] pt-6 items-center">
-        <AddPicture />
+        <AddThumpnail />
+        <AddSmallPicture value={pictures} setValue={setPictures}/>
         <EditText value={text} setValue={setText} />
       </div>
-      <div className="flex flex-col mt-6 lg:mt-12">
+      <div className="flex flex-col mt-6 lg:mt-10">
         <EditInfo value={info} setValue={setInfo} />
       </div>
       <div className="flex px-[10%] w-full mt-6">
         <div className="py-2 rounded-3xl bg-[#C81425] text-center text-white font-semibold text-2xl w-full">
           โพสต์เลย
         </div>
-        
       </div>
     </div>
   );
