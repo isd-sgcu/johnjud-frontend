@@ -1,6 +1,6 @@
 import TextareaAutosize from "react-autosize-textarea";
-import PencilIcon from "./PencilIcon";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import { Icon } from '@iconify/react';
 
 const EditInfo = (props) => {
     const ref = {
@@ -30,7 +30,7 @@ const EditInfo = (props) => {
         }
     }
     const handleOnChange = (event, tag: string) => {
-        const updateValue = { [tag]: event.target.value }
+        const updateValue = { [tag]: event.target.value };
         props.setValue({
             ...props.value,
             ...updateValue
@@ -41,7 +41,7 @@ const EditInfo = (props) => {
             <div className="flex flex-row justify-between items-center">
                 <span className="text-3xl text-primary font-bold underline underline-offset-[12px]">รายละเอียด</span>
                 <div ref={pencilRef} tabIndex={0}>
-                    <PencilIcon onClick={handleOnClick} />
+                    <Icon icon="mynaui:pencil" color="#C81425" className="flex flex-none w-6 h-6 cursor-pointer" onClick={handleOnClick} />
                 </div>
             </div>
             <div className="flex flex-col mt-5 space-y-3">
