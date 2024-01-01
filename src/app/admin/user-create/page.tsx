@@ -21,7 +21,7 @@ const userCreate = () => {
   return (
     <div className="flex w-screen flex-col pb-28 pt-6 lg:pb-20 lg:pt-8">
       <div className="flex items-center justify-between overflow-clip px-[10%] py-2">
-        <Icon icon="ion:chevron-back" color="#08878E" className="flex flex-none w-8 h-8"/>
+        <Icon icon="ion:chevron-back" color="#08878E" className="flex flex-none w-8 h-8" />
         <EditName value={name} setValue={setName} />
       </div>
       <div className="mx-[10%] flex h-1 w-1/5 self-end bg-primary" />
@@ -30,7 +30,13 @@ const userCreate = () => {
         <EditText value={text} setValue={setText} />
       </div>
       <div className="flex flex-col mt-6 lg:mt-12">
-        <EditInfo value={info} setValue={setInfo}/>
+        <EditInfo value={info} setValue={setInfo} />
+      </div>
+      <div className="flex px-[10%] w-full mt-6">
+        <div className="py-2 rounded-3xl bg-[#C81425] text-center text-white font-semibold text-2xl w-full">
+          โพสต์เลย
+        </div>
+        
       </div>
     </div>
   );
