@@ -32,7 +32,7 @@ const EditName = (props) => {
         }`}
       >
         <PencilIcon onClick={() => handleClickEdit()} />
-        <span className="w-[calc(100% - 1rem)] flex text-wrap break-all text-right text-3xl font-bold text-primary">
+        <span className="pl-1 w-full flex text-wrap break-all text-right text-3xl font-bold text-primary">
           {props.value}
         </span>
       </div>
