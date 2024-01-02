@@ -32,16 +32,18 @@ const userCreate = () => {
         <EditName value={name} setValue={setName} />
       </div>
       <div className="mx-[10%] flex h-1 rounded-full w-1/5 self-end bg-primary" />
-      <div className="flex flex-col px-[10%] pt-8 items-center">
+
+      <div className="flex flex-col px-6 pt-8 items-center">
         <AddThumpnail valueThumpnail={thumpnail} setThumpnail={setThumpnail} valueOrigin={origin} setOrigin={setOrigin}/>
         <EditText value={text} setValue={setText} />
       </div>
-      <div className="flex w-full pl-[10%]">
+      <div className="flex w-full pl-6">
         <AddSmallPicture value={pictures} setValue={setPictures} />
       </div>
       <div className="flex flex-col mt-8 lg:mt-10">
         <EditInfo value={info} setValue={setInfo} />
       </div>
+      
       <div className="flex px-[10%] w-full mt-6 cursor-pointer">
         <div className="py-2 rounded-3xl bg-[#C81425] text-center text-white font-semibold text-2xl w-full">
           โพสต์เลย
