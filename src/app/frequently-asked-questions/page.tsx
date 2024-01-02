@@ -33,7 +33,7 @@ const Faq = () => {
           <div className="mb-3 items-center text-4xl font-semibold leading-normal">
             <p>คำถามที่พบบ่อย</p>
           </div>
-          <div className="relative flex w-full rounded-full bg-gray-100 p-3 shadow">
+          <div className="relative flex w-full rounded-full bg-white p-3 shadow">
             <img src={Bubble} alt="_blank" />
             <input
               type="text"
