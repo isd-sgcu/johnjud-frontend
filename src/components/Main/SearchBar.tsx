@@ -1,12 +1,12 @@
-import bubbleIcon from "../../assets/main/bubble.svg";
+import magnifyingGlassesIcon from "../../assets/main/magnify-glass.svg";
 
 const SearchBar = () => {
   return (
-    <div className="flex w-full space-x-3 rounded-full bg-white p-3 shadow-sm">
-      <img src={bubbleIcon} alt="bubbleIcon" />
+    <div className="flex w-full space-x-3 rounded-full bg-white px-6 py-3 shadow">
+      <img src={magnifyingGlassesIcon} alt="magnifyingGlassesIcon" />
       <input
         type="text"
-        placeholder="ค้นหาชื่อสัตว์เลี้ยง"
+        placeholder="ค้นหาสัตว์เลี้ยง"
         className="text-medium focus: w-full text-johnjud-gray outline-none"
       />
     </div>
