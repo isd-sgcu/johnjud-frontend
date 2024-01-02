@@ -32,7 +32,7 @@ const EditName = (props) => {
           enableEdit ? "hidden" : "visible"
         }`}
       >
-        <Icon icon="mynaui:pencil" color="#C81425" className="flex flex-none w-6 h-6 cursor-pointer" onClick={handleClickEdit} />
+        <Icon icon="custom:pencil" color="#C81425" className="flex flex-none w-6 h-6 cursor-pointer" onClick={handleClickEdit} />
         <span className="pl-1 flex text-wrap break-all text-right text-3xl font-bold text-primary">
           {props.value}
         </span>
