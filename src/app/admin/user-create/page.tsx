@@ -10,7 +10,7 @@ import AddSmallPicture from "../../../components/admin/user-create/AddSmallPictu
 const userCreate = () => {
   const [name, setName] = useState("...กรุณาใส่ชื่อ");
   const [text, setText] = useState("");
-  const [pictures, setPictures] = useState(["sample1" , "sample2"]);
+  const [pictures, setPictures] = useState(["sample1", "sample2"]);
   const [info, setInfo] = useState({
     gender: "-",
     breed: "-",
@@ -32,10 +32,13 @@ const userCreate = () => {
         <AddSmallPicture value={pictures} setValue={setPictures}/>
         <EditText value={text} setValue={setText} />
       </div>
-      <div className="flex flex-col mt-6 lg:mt-10">
+      <div className="flex w-full pl-[10%]">
+        <AddSmallPicture value={pictures} setValue={setPictures} />
+      </div>
+      <div className="flex flex-col mt-8 lg:mt-10">
         <EditInfo value={info} setValue={setInfo} />
       </div>
-      <div className="flex px-[10%] w-full mt-6">
+      <div className="flex px-[10%] w-full mt-6 cursor-pointer">
         <div className="py-2 rounded-3xl bg-[#C81425] text-center text-white font-semibold text-2xl w-full">
           โพสต์เลย
         </div>
