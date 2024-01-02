@@ -7,7 +7,9 @@ import MainLayout from "../../layouts/MainLayout";
 const Pets = () => {
   return (
     <div className="space-y-10">
-      <Heading />
+      <Container>
+        <Heading />
+      </Container>
       <Container className="flex flex-row gap-x-4">
         <PetSearch />
         <div>
