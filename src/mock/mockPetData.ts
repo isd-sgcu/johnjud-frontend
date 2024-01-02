@@ -1,5 +1,5 @@
 // mock pet data for testing components
-export const mockPetData = [
+const mockPetData = [
   {
     id: "1a2b3c4d-5e6f-7a8b-9c0d-ed1e2f3a4b5c",
     type: "dog",
@@ -169,3 +169,5 @@ export const mockPetData = [
     is_club_pet: true,
   },
 ];
+
+export default mockPetData;

@@ -4,7 +4,7 @@ interface StatCardProps {
   value: number;
 }
 
-const StatCard: React.FC<StatCardProps> = ({ value }) => {
+const PetsHeading: React.FC<StatCardProps> = ({ value }) => {
   // convert value to formatted string to display commas in number
   const formattedValue = value.toLocaleString();
   return (
@@ -20,4 +20,4 @@ const StatCard: React.FC<StatCardProps> = ({ value }) => {
   );
 };
 
-export default StatCard;
+export default PetsHeading;
