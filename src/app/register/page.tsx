@@ -9,7 +9,7 @@ const Register = () => {
         <h1 className="text-nowrap text-5xl font-bold text-primary ">
           ลงทะเบียน
         </h1>
-        <p className="text-nowrap text-lg font-normal text-johnjud-gray">
+        <p className="text-johnjud-gray text-nowrap text-lg font-normal">
           ลงทะเบียนบัญชีของคุณ
         </p>
       </div>
