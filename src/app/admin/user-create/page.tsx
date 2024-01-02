@@ -6,10 +6,14 @@ import EditText from "../../../components/admin/user-create/EditText";
 import MainLayout from "../../../layouts/MainLayout";
 import EditInfo from "../../../components/admin/user-create/EditInfo";
 import AddSmallPicture from "../../../components/admin/user-create/AddSmallPicture";
+import PetBadge from "../../../components/admin/user-create/PetBadge";
 
 const userCreate = () => {
   const [name, setName] = useState("...กรุณาใส่ชื่อ");
   const [text, setText] = useState("");
+  const [thumpnail, setThumpnail] = useState();
+  const [origin, setOrigin] = useState("fromClub");
+  // fromClub / fromOutside
   const [pictures, setPictures] = useState(["sample1", "sample2"]);
   const [info, setInfo] = useState({
     gender: "-",
@@ -22,14 +26,14 @@ const userCreate = () => {
 
   return (
     <div className="flex w-screen flex-col pb-28 pt-6 lg:pb-20 lg:pt-8">
+      {/* TODO: responsive */}
       <div className="flex items-center justify-between overflow-clip px-[10%] py-2">
         <Icon icon="ion:chevron-back" color="#08878E" className="flex flex-none w-8 h-8" />
         <EditName value={name} setValue={setName} />
       </div>
-      <div className="mx-[10%] flex h-1 w-1/5 self-end bg-primary" />
-      <div className="flex flex-col px-[10%] pt-6 items-center">
-        <AddThumpnail />
-        <AddSmallPicture value={pictures} setValue={setPictures}/>
+      <div className="mx-[10%] flex h-1 rounded-full w-1/5 self-end bg-primary" />
+      <div className="flex flex-col px-[10%] pt-8 items-center">
+        <AddThumpnail valueThumpnail={thumpnail} setThumpnail={setThumpnail} valueOrigin={origin} setOrigin={setOrigin}/>
         <EditText value={text} setValue={setText} />
       </div>
       <div className="flex w-full pl-[10%]">

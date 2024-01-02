@@ -1,5 +1,6 @@
 import { addIcon } from '@iconify/react';
 import { Icon } from '@iconify/react';
+import PetBadge from './PetBadge';
 
 addIcon("custom:plus", {
   body: `<svg xmlns="http://www.w3.org/2000/svg" width="96" height="96" viewBox="0 0 96 96" fill="none">
@@ -40,6 +41,10 @@ const AddThumpnail = (props) => {
       </div>
       <div className='absolute bottom-5 right-5'>
         <Icon icon="custom:pencil" className="w-8 h-8 cursor-pointer" />
+      </div>
+
+      <div className='absolute -top-[2px] right-4'>
+        <PetBadge value={props.valueOrigin} setValue={props.setOrigin}/>
       </div>
     </div>
   );
