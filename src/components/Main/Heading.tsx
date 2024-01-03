@@ -5,17 +5,17 @@ import Search from "./Heading/Search";
 
 const Heading = () => {
   return (
-    <section className="flex flex-col md:flex-row justify-center items-center">
-    <div className="flex items-center justify-center rounded-2xl bg-primary-variant-2">
-      <img src={JohnjudImage} alt="Johnjud" className="px-10 py-7" />
-    </div>
-    <div className="flex flex-col md:items-start items-center space-y-6">
-      <PetsHeading value={4600} />
-      <Search />
-      <Filter />
-    </div> 
-  </section>
-  )
-}
+    <section className="flex flex-col items-center justify-center md:flex-row">
+      <div className="flex items-center justify-center rounded-2xl bg-primary-variant-2">
+        <img src={JohnjudImage} alt="Johnjud" className="px-10 py-7" />
+      </div>
+      <div className="flex flex-col items-center space-y-6 md:items-start">
+        <PetsHeading value={4600} />
+        <Search />
+        <Filter />
+      </div>
+    </section>
+  );
+};
 
-export default Heading
+export default Heading;
