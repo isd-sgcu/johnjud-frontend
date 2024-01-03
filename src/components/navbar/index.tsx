@@ -19,11 +19,11 @@ const Navbar = () => {
     logo = logoPrimary;
 
     switch (pathname) {
-      case "/admin":
+      case "/example":
         header = "JOHNJUD แอดมิน";
         color = "bg-secondary";
         break;
-      case "/horo":
+      case "/fortune":
         color = "bg-johnjud-purple";
         logo = logoSecondary;
         break;
@@ -34,8 +34,10 @@ const Navbar = () => {
   }, [pathname]);
 
   return (
-    <div className={`flex items-center justify-between px-4 xl:px-6 py-3 transition-all ${color}`}>
-      <div className="flex items-center gap-3 h-18 ">
+    <div
+      className={`flex items-center justify-between px-8 py-6 transition-all xl:px-6 ${color}`}
+    >
+      <div className="h-18 flex items-center gap-3 ">
         {logo && <img src={logo} alt="logo" className="h-12 w-12" />}
         <div className="cursor-pointer text-2xl font-bold text-white">
           {header}
@@ -45,7 +47,7 @@ const Navbar = () => {
         src={hamburgerIcon}
         alt="hamburger-icon"
         onClick={() => setToggle(true)}
-        className="cursor-pointer w-6 xl:w-8"
+        className="w-15 h-8 cursor-pointer"
       />
       <SideBarWrapper setToggle={setToggle} color={color} toggle={toggle} />
     </div>
