@@ -10,7 +10,7 @@ const calculateYearDifference = (utcString: string) => {
   const inputDatetime = new Date(utcString);
   const currentUtcTime = new Date();
 
-  const timeDifference = currentUtcTime - inputDatetime;
+  const timeDifference = currentUtcTime.getTime() - inputDatetime.getTime();
 
   // Convert milliseconds to years (assuming 365 days per year)
   const yearsDifference = Math.floor(
