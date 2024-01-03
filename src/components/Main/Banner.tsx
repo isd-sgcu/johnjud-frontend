@@ -1,11 +1,11 @@
 import React from "react";
 
-interface AdvertiseBoxProps {
+interface BannerProps {
   adSrc: string;
   altText?: string;
 }
 
-const AdBanner: React.FC<AdvertiseBoxProps> = ({
+const Banner: React.FC<BannerProps> = ({
   adSrc,
   altText = "Advertisement",
 }) => {
@@ -18,4 +18,4 @@ const AdBanner: React.FC<AdvertiseBoxProps> = ({
   );
 };
 
-export default AdBanner;
+export default Banner;

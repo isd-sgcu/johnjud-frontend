@@ -1,8 +1,8 @@
 import { useState } from "react";
-import catEffectIcon from "../../assets/main/cat-primary.svg";
-import catIcon from "../../assets/main/cat.svg";
-import dogEffectIcon from "../../assets/main/dog-primary.svg";
-import dogIcon from "../../assets/main/dog.svg";
+import catEffectIcon from "../../../assets/main/cat-primary.svg";
+import catIcon from "../../../assets/main/cat.svg";
+import dogEffectIcon from "../../../assets/main/dog-primary.svg";
+import dogIcon from "../../../assets/main/dog.svg";
 
 const Filter = () => {
   // There are 3 states for filtering in home search (all, dog, cat)

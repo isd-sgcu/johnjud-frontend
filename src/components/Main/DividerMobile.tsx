@@ -8,4 +8,4 @@ const DividerMobile = () => {
   )
 }
 
-export default DividerMobile
+export default DividerMobile;
