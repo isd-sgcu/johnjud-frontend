@@ -9,9 +9,9 @@ interface SideBarProps {
 const SideBar: React.FC<SideBarProps> = ({ color }) => {
   return (
     <div
-      className={`h-full p-16 text-sm text-white ${color} w-[337px]`}
+      className={`h-full p-16 text-sm text-white ${color}`}
     >
-      <div className="mb-9 pb-9 flex cursor-pointer items-center gap-4 border-b border-white ">
+      <div className="mb-9 pb-9 flex cursor-pointer items-center gap-4 border-b border-white">
         <img src={blankProfile} alt="blank-profile" className="w-16 h-16"/>
         <span className="font-bold underline text-xl">เข้าสู่ระบบ</span>
       </div>
