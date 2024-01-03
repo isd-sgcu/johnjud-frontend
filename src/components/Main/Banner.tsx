@@ -10,7 +10,7 @@ const Banner: React.FC<BannerProps> = ({
   altText = "Banner",
 }) => {
   return (
-    <div className="flex items-center justify-center rounded-2xl bg-accent-light-gray">
+    <div className="flex items-center justify-center rounded-2xl bg-accent-light-gray md:w-full">
       {imageUrl && (
         <img src={imageUrl} alt={altText} className="h-full w-full object-fill rounded-2xl" />
       )}
