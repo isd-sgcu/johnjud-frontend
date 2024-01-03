@@ -33,18 +33,38 @@ addIcon("custom:pencil", {
 })
 
 const AddThumpnail = (props) => {
+  const handleOnChange = (event) => {
+    const selectedImg = event.target.files;
+    console.log(selectedImg);
+    if (selectedImg.length !== 0) {
+      props.setThumpnail(selectedImg[0]);
+    }
+
+  }
+
   return (
     <div className="flex w-full aspect-square flex-col max-w-80 relative">
       {/* TODO: Add Thumpnail system */}
-      <div className="flex w-full h-full items-center justify-center rounded-3xl border-2 border-[#D9D9D9] bg-white drop-shadow-sm ">
-        <Icon icon="custom:plus" className="w-[30%] h-[30%]" />
-      </div>
+      {props.valueThumpnail === null ? (
+        <div className="flex w-full h-full items-center justify-center rounded-3xl border-2 border-[#D9D9D9] bg-white drop-shadow-sm ">
+          <Icon icon="custom:plus" className="w-[30%] h-[30%]" />
+        </div>
+      ) : (
+        <div className='flex w-full h-full'>
+          <img src={URL.createObjectURL(props.valueThumpnail)} alt="Thumpnail" className='w-full h-full object-cover object-center border-2 border-[#D9D9D9] drop-shadow-sm rounded-3xl'></img>
+        </div>
+      )
+      }
+
       <div className='absolute bottom-5 right-5'>
-        <Icon icon="custom:pencil" className="w-8 h-8 cursor-pointer" />
+        <input type='file' id='thumpnailPicture' accept=".jpeg, .jpg, .png" multiple={false} className='hidden' onChange={handleOnChange} />
+        <label htmlFor='thumpnailPicture'>
+          <Icon icon="custom:pencil" className="w-8 h-8 cursor-pointer" />
+        </label>
       </div>
 
       <div className='absolute -top-[2px] right-4'>
-        <PetBadge value={props.valueOrigin} setValue={props.setOrigin}/>
+        <PetBadge value={props.valueOrigin} setValue={props.setOrigin} />
       </div>
     </div>
   );
