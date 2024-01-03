@@ -34,12 +34,10 @@ const Navbar = () => {
   }, [pathname]);
 
   return (
-    <div
-      className={`flex items-center justify-between px-4 py-3 transition-all xl:px-6 ${color}`}
-    >
-      <div className="h-18 flex items-center gap-3 ">
+    <div className={`flex items-center justify-between px-4 xl:px-6 py-3 transition-all ${color}`}>
+      <div className="flex items-center gap-3 h-18 ">
         {logo && <img src={logo} alt="logo" className="h-12 w-12" />}
-        <div className="cursor-pointer font-poppins font-bold text-white">
+        <div className="cursor-pointer text-2xl font-bold text-white">
           {header}
         </div>
       </div>
@@ -47,7 +45,7 @@ const Navbar = () => {
         src={hamburgerIcon}
         alt="hamburger-icon"
         onClick={() => setToggle(true)}
-        className="w-6 cursor-pointer xl:w-8"
+        className="cursor-pointer w-6 xl:w-8"
       />
       <SideBarWrapper setToggle={setToggle} color={color} toggle={toggle} />
     </div>

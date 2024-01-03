@@ -10,11 +10,12 @@ export default {
       },
       colors: {
         primary: "#08878E",
-        "primary-variant": "#83C3C6", 
+        "primary-variant": "#83C3C6",
         secondary: "#C81425",
         "johnjud-purple": "#3D0D40",
         "johnjud-gray": "#808086",
         "johnjud-yellow": "#FFFF31",
+        "johnjud-light-gray": "#D9D9D9",
       },
     },
   },

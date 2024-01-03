@@ -1,6 +1,6 @@
 import background from "../assets/background/background.png";
 import Footer from "../components/Footer";
-import Navbar from "../components/navbar";
+import Navbar from "../components/navbar/index.tsx";
 
 type MainLayoutProps = {
   children: React.ReactNode;
@@ -12,7 +12,7 @@ const MainLayout = ({ children }: MainLayoutProps) => {
       style={{
         backgroundImage: `url(${background})`,
       }}
-      className="flex min-h-screen flex-col bg-cover bg-center"
+      className="flex min-h-screen flex-col bg-auto bg-top"
     >
       <Navbar />
       {children}

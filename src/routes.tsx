@@ -6,12 +6,14 @@ const pages = import.meta.glob<{
   default: React.ComponentType;
   Layout?: React.ComponentType<{ children: React.ReactNode }>;
 }>("./app/**/page.tsx");
+
 const loaders = import.meta.glob<{ default: LoaderFunction }>(
   "./app/**/loader.ts",
   {
     eager: true,
   }
 );
+
 const errors = import.meta.glob<{ default: React.FunctionComponent }>(
   "./app/**/error.tsx",
   {
@@ -78,8 +80,16 @@ Object.keys(pages).forEach((path) => {
 routes.push({
   path: "/*",
   lazy: async () => {
-    const module = await import("./app/404.tsx");
-    const Component = module.default as React.ComponentType;
+    const { default: Component, Layout } = await import("./app/404.tsx");
+    if (Layout) {
+      return {
+        Component: () => (
+          <Layout>
+            <Component />
+          </Layout>
+        ),
+      };
+    }
     return { Component };
   },
 });
