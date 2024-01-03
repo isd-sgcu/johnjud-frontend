@@ -34,9 +34,9 @@ addIcon("custom:pencil", {
 
 const AddThumpnail = (props) => {
   return (
-    <div className="flex w-full flex-col max-w-80 relative">
+    <div className="flex w-full aspect-square flex-col max-w-80 relative">
       {/* TODO: Add Thumpnail system */}
-      <div className="flex aspect-square w-full items-center justify-center rounded-3xl border-2 border-[#D9D9D9] bg-white drop-shadow-sm ">
+      <div className="flex w-full h-full items-center justify-center rounded-3xl border-2 border-[#D9D9D9] bg-white drop-shadow-sm ">
         <Icon icon="custom:plus" className="w-[30%] h-[30%]" />
       </div>
       <div className='absolute bottom-5 right-5'>
