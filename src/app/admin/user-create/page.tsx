@@ -1,12 +1,12 @@
+import { Icon } from "@iconify/react";
 import { useState } from "react";
-import { Icon } from '@iconify/react';
+import johnjudLogo from "../../../assets/johnjud-with-text.png";
+import AddSmallPicture from "../../../components/admin/user-create/AddSmallPicture";
 import AddThumpnail from "../../../components/admin/user-create/AddThumpnail";
+import EditInfoAndSubmit from "../../../components/admin/user-create/EditInfoAndSubmit";
 import EditName from "../../../components/admin/user-create/EditName";
 import EditText from "../../../components/admin/user-create/EditText";
 import MainLayout from "../../../layouts/MainLayout";
-import EditInfoAndSubmit from "../../../components/admin/user-create/EditInfoAndSubmit";
-import AddSmallPicture from "../../../components/admin/user-create/AddSmallPicture";
-import johnjudLogo from "../../../assets/johnjud-with-text.png"
 
 const userCreate = () => {
   const [name, setName] = useState("กรุณาใส่ชื่อ...");
@@ -21,31 +21,38 @@ const userCreate = () => {
     age: "-",
     nature: "-",
     vaccine: false,
-    sterile: false
+    sterile: false,
   });
 
-  const handleSubmit = () => {
-
-  }
+  const handleSubmit = () => {};
 
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-3 w-screen flex-col pb-28 pt-6 lg:pb-20 lg:pt-8">
+    <div className="grid w-screen grid-cols-1 flex-col pb-28 pt-6 lg:grid-cols-3 lg:pb-20 lg:pt-8">
       {/* Icon return & small EditName */}
-      <div className="flex lg:col-span-3 justify-between overflow-clip px-[10%] lg:px-12 py-2">
-        <Icon icon="ion:chevron-back" color="#08878E" className="flex flex-none w-8 h-8 mt-1" />
-        <div className="flex flex-col w-full visible lg:hidden">
+      <div className="flex justify-between overflow-clip px-[10%] py-2 lg:col-span-3 lg:px-12">
+        <Icon
+          icon="ion:chevron-back"
+          color="#08878E"
+          className="mt-1 flex h-8 w-8 flex-none"
+        />
+        <div className="visible flex w-full flex-col lg:hidden">
           <EditName value={name} setValue={setName} />
         </div>
       </div>
 
       {/* Thumpnail */}
-      <div className="flex w-full justify-center px-6 pt-8 lg:pl-[25%] lg:pr-0 lg:justify-start">
-        <AddThumpnail valueThumpnail={thumpnail} setThumpnail={setThumpnail} valueOrigin={origin} setOrigin={setOrigin} />
+      <div className="flex w-full justify-center px-6 pt-8 lg:justify-start lg:pl-[25%] lg:pr-0">
+        <AddThumpnail
+          valueThumpnail={thumpnail}
+          setThumpnail={setThumpnail}
+          valueOrigin={origin}
+          setOrigin={setOrigin}
+        />
       </div>
 
       {/* large EditName + EditText */}
-      <div className="flex flex-col w-full px-6 pt-8 lg:col-span-2 lg:justify-between lg:pr-[12.5%]">
-        <div className="w-full hidden lg:flex lg:flex-col lg:mb-4">
+      <div className="flex w-full flex-col px-6 pt-8 lg:col-span-2 lg:justify-between lg:pr-[12.5%]">
+        <div className="hidden w-full lg:mb-4 lg:flex lg:flex-col">
           <EditName value={name} setValue={setName} />
         </div>
         <EditText value={text} setValue={setText} />
@@ -57,12 +64,16 @@ const userCreate = () => {
       </div>
 
       {/* Edit info + Pose Button*/}
-      <div className="flex flex-col mt-8 lg:mt-10 lg:col-span-2 lg:h-full">
-        <EditInfoAndSubmit value={info} setValue={setInfo} onSubmit={handleSubmit}/>
+      <div className="mt-8 flex flex-col lg:col-span-2 lg:mt-10 lg:h-full">
+        <EditInfoAndSubmit
+          value={info}
+          setValue={setInfo}
+          onSubmit={handleSubmit}
+        />
       </div>
 
-      <div className="hidden lg:flex w-full justify-center object-contain lg:mt-10">
-        <img src={johnjudLogo} className="flex w-44 h-64"></img>
+      <div className="hidden w-full justify-center object-contain lg:mt-10 lg:flex">
+        <img src={johnjudLogo} className="flex h-64 w-44"></img>
       </div>
     </div>
   );
