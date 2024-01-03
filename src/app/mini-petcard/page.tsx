@@ -11,7 +11,7 @@ enum status {
 }
 const minipetcardArray = [
   {
-    id: "009669"
+    id: "009669",
     name: "ลุงเริง",
     species: "ไซบีเรียน",
     gender: genders.male,

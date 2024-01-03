@@ -10,6 +10,7 @@ enum status {
 }
 const smallPetCardArray = [
   {
+    id: "009669",
     name: "ลุงเริง",
     species: "ไซบีเรียน",
     gender: genders.male,
@@ -25,7 +26,8 @@ const smallpetcard = () => {
       {smallPetCardArray.map((petData) => {
         return (
           <SmallpetCard
-            key={petData.name}
+            key={petData.id}
+            id = {petData.id}
             name={petData.name}
             species={petData.species}
             gender={petData.gender}
