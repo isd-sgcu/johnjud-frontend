@@ -15,7 +15,7 @@ const Filter = () => {
             ${
               filter === "all"
                 ? "flex-row rounded-full bg-primary px-6 text-white"
-                : "flex-col rounded-2xl bg-white px-2.5 text-xs text-johnjud-gray"
+                : "flex-col rounded-2xl bg-white px-2.5 text-xs text-accent-gray"
             } shrink-0`}
         onClick={() => setFilter("all")}
       >
