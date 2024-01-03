@@ -5,6 +5,7 @@ import Heading from "../../components/Main/Heading";
 import MobilePetsHeading from "../../components/Main/Heading/MobilePetsHeading";
 import MiniPetCardContainer from "../../components/Main/PetCardContainer/MiniPetCardContainer";
 import MainLayout from "../../layouts/MainLayout";
+import Divider from '../../components/Main/Divider';
 // Page
 const MainPage = () => {
   return (
@@ -18,9 +19,14 @@ const MainPage = () => {
         </div>
         <MiniPetCardContainer />
       </section>
-      <AllPetsButton />
+      <div className="flex justify-center items-center md:justify-end">
+        <AllPetsButton />
+      </div>
       <DividerMobile />
-      <Banner imageUrl="https://via.placeholder.com/468x600?text=Your+Ad+Here" />
+      <div className="flex md:hidden">
+        <Banner imageUrl="https://via.placeholder.com/468x600?text=Your+Ad+Here" />
+      </div>
+      <Divider/>
       <DividerMobile />
     </main>
   );
