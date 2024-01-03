@@ -11,10 +11,10 @@ import johnjudLogo from "../../../assets/johnjud-with-text.png"
 const userCreate = () => {
   const [name, setName] = useState("กรุณาใส่ชื่อ...");
   const [text, setText] = useState("");
-  const [thumpnail, setThumpnail] = useState();
+  const [thumpnail, setThumpnail] = useState(null);
   const [origin, setOrigin] = useState("fromClub");
-  // fromClub / fromOutside
-  const [pictures, setPictures] = useState(["sample1", "sample2"]);
+  // origin : fromClub / fromOutside
+  const [pictures, setPictures] = useState([]);
   const [info, setInfo] = useState({
     gender: "-",
     breed: "-",
@@ -31,8 +31,8 @@ const userCreate = () => {
   return (
     <div className="grid grid-cols-1 lg:grid-cols-3 w-screen flex-col pb-28 pt-6 lg:pb-20 lg:pt-8">
       {/* Icon return & small EditName */}
-      <div className="flex items-center lg:col-span-3 justify-between overflow-clip px-[10%] lg:px-12 py-2">
-        <Icon icon="ion:chevron-back" color="#08878E" className="flex flex-none w-8 h-8" />
+      <div className="flex lg:col-span-3 justify-between overflow-clip px-[10%] lg:px-12 py-2">
+        <Icon icon="ion:chevron-back" color="#08878E" className="flex flex-none w-8 h-8 mt-1" />
         <div className="flex flex-col w-full visible lg:hidden">
           <EditName value={name} setValue={setName} />
         </div>
