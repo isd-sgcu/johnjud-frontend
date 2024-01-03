@@ -6,7 +6,7 @@ const AddSmallPicture = (props) => {
             {/* TODO: Add picture system */}
             {
                 props.value.map((picture) => {
-                    return <div className='flex flex-shrink-0 w-[60%] max-w-48 aspect-square snap-start items-center justify-center rounded-3xl border-2 border-[#D9D9D9] bg-white' key={picture}>
+                    return <div className='flex flex-shrink-0 w-[60%] max-w-48 aspect-square snap-start items-center justify-center rounded-3xl border-2 border-[#D9D9D9] border-opacity-50 bg-white' key={picture}>
                         {/* TODO: change key and image */}
                     </div>
                 })
