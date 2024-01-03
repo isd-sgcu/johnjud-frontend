@@ -39,7 +39,7 @@ const MiniPetCard = ({
   return (
     <Link to={linkTo}>
       <div className="m-0 flex h-52 w-40 flex-shrink-0 flex-col gap-0 rounded-3xl bg-white p-0 shadow-md">
-        <div className="flex w-full rounded-3xl bg-zinc-300">
+        <div className="flex w-full h-28 rounded-3xl bg-zinc-300">
           <img
             className="rounded-3xl"
             src={BlankPic168x112}
@@ -48,19 +48,19 @@ const MiniPetCard = ({
         </div>
         <div className="flex-start ml-3.5 mt-1 flex flex-col items-start justify-start gap-1.5">
           <div className="flex-start m-0 inline-flex flex-col justify-center gap-1">
-            <div className="text-sm font-semibold text-black">{name}</div>
+            <div className="text-base font-semibold text-black">{name}</div>
             <div className="inline-flex flex-row items-start justify-start gap-1">
               <div className="text-sm font-normal text-zinc-500">พันธ์ุ:</div>
               <div className="text-sm font-normal text-black">{species}</div>
             </div>
           </div>
           <div className="flex-start items m-0 flex flex-row justify-start gap-1.5 p-0 ">
-            <div className="flex w-auto items-center justify-center rounded-lg bg-slate-200">
-              <div className="px-1.5 text-sm font-semibold text-blue-600">
+            <div className="flex h-6 w-auto items-center justify-center rounded-lg bg-accent-blue-variant">
+              <div className="px-1.5 text-sm font-semibold text-accent-blue">
                 เพศ{genderAns}
               </div>
             </div>
-            <div className="flex w-auto items-center justify-center rounded-lg bg-zinc-300 ">
+            <div className="flex h-6 w-auto items-center justify-center rounded-lg bg-zinc-300 ">
               <div className="px-1.5 text-sm font-semibold text-black">
                 {yearsDifference} ขวบ
               </div>
