@@ -15,7 +15,7 @@ const ButtonWrapper = ({isAdmin} : {isAdmin: boolean}) => {
                         <span>ทําหมั่นแล้ว</span>
                     </div>
                 </div>
-                <Icon icon="ph:heart" color="#c81425" className="w-8 h-fit"/>
+                <Icon icon="ph:heart" color="#c81425" className="w-8 h-fit cursor-pointer"/>
             </div>
             {isAdmin ? <div className="flex gap-3 text-white">
                         <button className="bg-primary flex gap-2 items-center  font-semibold py-2 px-7 text-sm rounded-2xl ">

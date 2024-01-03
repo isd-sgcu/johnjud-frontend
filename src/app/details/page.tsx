@@ -4,7 +4,7 @@ import Info from "./Info";
 import logo from "../../assets/details/logo.svg";
 
 const Details = () => {
-    const isAdmin = false;
+    const isAdmin = true;
 
     return (  
         <div className="pt-4">
