@@ -11,11 +11,9 @@ const MobilePetsHeading: React.FC<StatCardProps> = ({ value }) => {
     <div className="flex flex-col items-center justify-center md:hidden">
       <h2>พบสัตว์เลี้ยงทั้งหมด</h2>
       <div className="flex items-center justify-center space-x-0.5">
-        <span className=" text-primary font-bold">
-          {formattedValue}
-        </span>
+        <span className=" font-bold text-primary">{formattedValue}</span>
         <p>ตัว</p>
-      </div>  
+      </div>
     </div>
   );
 };

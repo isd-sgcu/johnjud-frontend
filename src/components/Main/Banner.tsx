@@ -1,18 +1,18 @@
 import React from "react";
 
 interface BannerProps {
-  adSrc: string;
+  imageUrl: string;
   altText?: string;
 }
 
 const Banner: React.FC<BannerProps> = ({
-  adSrc,
-  altText = "Advertisement",
+  imageUrl,
+  altText = "Banner",
 }) => {
   return (
     <div className="flex items-center justify-center rounded-2xl bg-accent-light-gray">
-      {adSrc && (
-        <img src={adSrc} alt={altText} className="h-full w-full object-fill" />
+      {imageUrl && (
+        <img src={imageUrl} alt={altText} className="h-full w-full object-fill rounded-2xl" />
       )}
     </div>
   );

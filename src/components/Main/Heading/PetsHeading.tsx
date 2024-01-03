@@ -15,7 +15,7 @@ const PetsHeading: React.FC<StatCardProps> = ({ value }) => {
           {formattedValue}
         </span>
         <p className="text-3xl">ตัว</p>
-      </div>  
+      </div>
     </div>
   );
 };
