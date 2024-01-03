@@ -35,11 +35,11 @@ const Navbar = () => {
 
   return (
     <div
-      className={`flex items-center justify-between px-4 py-3 transition-all xl:px-6 ${color}`}
+      className={`flex items-center justify-between px-8 py-6 transition-all xl:px-6 ${color}`}
     >
       <div className="h-18 flex items-center gap-3 ">
         {logo && <img src={logo} alt="logo" className="h-12 w-12" />}
-        <div className="cursor-pointer font-poppins font-bold text-white">
+        <div className="cursor-pointer text-2xl font-bold text-white">
           {header}
         </div>
       </div>
@@ -47,7 +47,7 @@ const Navbar = () => {
         src={hamburgerIcon}
         alt="hamburger-icon"
         onClick={() => setToggle(true)}
-        className="w-6 cursor-pointer xl:w-8"
+        className="w-15 h-8 cursor-pointer"
       />
       <SideBarWrapper setToggle={setToggle} color={color} toggle={toggle} />
     </div>
