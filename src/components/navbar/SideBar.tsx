@@ -18,35 +18,59 @@ const SideBar: React.FC<SideBarProps> = ({ color }) => {
       <div>
         <div className="flex flex-col justify-start gap-6">
           <div className="flex cursor-pointer items-center gap-4">
-            <Icon icon={"ph:house"} color="white" className="h-6 w-6" />
+            <Icon 
+              icon={"ph:house"} 
+              color="white" 
+              className="h-6 w-6" 
+            />
             <span>หน้าหลัก</span>
           </div>
           <div className="flex cursor-pointer items-center gap-4">
             <Icon
-              icon="streamline:chess-knight"
+              icon="ph:horse"
               color="white"
               className="h-6 w-6"
             />
             <span>สัตว์เลี้ยง</span>
           </div>
           <div className="flex cursor-pointer items-center gap-4">
-            <Icon icon="ph:game-controller" color="white" className="h-6 w-6" />
+            <Icon 
+              icon="ph:game-controller" 
+              color="white" 
+              className="h-6 w-6" 
+            />
             <span>เล่นเกม</span>
           </div>
           <div className="flex cursor-pointer items-center gap-4">
-            <Icon icon="ph:moon-stars" color="white" className="h-6 w-6" />
+            <Icon 
+              icon="ph:moon-stars" 
+              color="white" 
+              className="h-6 w-6" 
+            />
             <span>ดูดวง</span>
           </div>
           <div className="flex cursor-pointer items-center gap-4">
-            <Icon icon="ph:question" color="white" width="24" height="24" />
+            <Icon 
+              icon="ph:question" 
+              color="white" 
+              className="h-6 w-6"  
+            />
             <span>คำถามที่พบบ่อย</span>
           </div>
           <div className="flex cursor-pointer items-center gap-4">
-            <Icon icon="ph:info" color="white" width="24" height="24" />
+            <Icon 
+              icon="ph:info" 
+              color="white" 
+              className="h-6 w-6" 
+            />
             <span>เกี่ยวกับเรา</span>
           </div>
           <div className="flex cursor-pointer items-center gap-4">
-            <Icon icon="ph:lock-key" color="white" width="24" height="24" />
+            <Icon 
+              icon="ph:lock-key" 
+              color="white" 
+              className="h-6 w-6" 
+            />
             <span>Admin Login</span>
           </div>
         </div>
