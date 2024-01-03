@@ -13,7 +13,7 @@ const MainPage = () => {
       <Heading />
       <DividerMobile />
       <MobilePetsHeading value={4600} />
-      <section className="flex justify-between">
+      <section className="flex justify-center md:justify-between">
         <div className="hidden md:flex md:w-4/12">
           <Banner imageUrl="https://via.placeholder.com/440x440?text=Your+Ad+Here" />
         </div>
