@@ -1,8 +1,14 @@
 import TextareaAutosize from "react-autosize-textarea";
 
-const EditText = (props) => {
-  const handleOnChange = (event) => {
-    props.setValue(event.target.value);
+interface EditTextProps {
+  value: string,
+  setValue: React.Dispatch<React.SetStateAction<string>>
+}
+
+const EditText = (props: EditTextProps) => {
+  const handleOnChange = (event : React.FormEvent<HTMLTextAreaElement>) => {
+    const element = event.target as HTMLInputElement;
+    props.setValue(element.value);
   };
   return (
     <div className={`relative flex min-h-60 w-full`}>

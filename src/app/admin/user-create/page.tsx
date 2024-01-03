@@ -11,10 +11,10 @@ import johnjudLogo from "../../../assets/johnjud-with-text.png"
 const userCreate = () => {
   const [name, setName] = useState("กรุณาใส่ชื่อ...");
   const [text, setText] = useState("");
-  const [thumpnail, setThumpnail] = useState(null);
+  const [thumpnail, setThumpnail] = useState<File | null>(null);
   const [origin, setOrigin] = useState("fromClub");
   // origin : fromClub / fromOutside
-  const [pictures, setPictures] = useState([]);
+  const [pictures, setPictures] = useState<File[]>([]);
   const [info, setInfo] = useState({
     gender: "-",
     breed: "-",

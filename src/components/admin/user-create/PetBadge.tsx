@@ -26,7 +26,12 @@ addIcon("custom:chess" , {
   height: 24
 })
 
-const PetBadge = (props) => {
+interface PetBadgeProps {
+  value: string,
+  setValue:  React.Dispatch<React.SetStateAction<string>>
+}
+
+const PetBadge = (props: PetBadgeProps) => {
     const handleOnClick = () => {
         props.setValue((props.value === "fromClub" ? "fromOutside" : "fromClub"))
     }

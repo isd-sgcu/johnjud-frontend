@@ -2,8 +2,13 @@ import { useEffect, useRef, useState } from "react";
 import TextareaAutosize from "react-autosize-textarea";
 import { Icon } from '@iconify/react';
 
-const EditName = (props) => {
-  const ref = useRef(null);
+interface EditNameProps {
+  value : string,
+  setValue: React.Dispatch<React.SetStateAction<string>>
+}
+
+const EditName = (props: EditNameProps) => {
+  const ref = useRef<HTMLTextAreaElement>(null);
 
   const handleClickEdit = () => {
     setEnableEdit(true);
@@ -13,8 +18,9 @@ const EditName = (props) => {
   };
 
   const [enableEdit, setEnableEdit] = useState(false);
-  const handleOnChange = (event) => {
-    props.setValue(event.target.value);
+  const handleOnChange = (event : React.FormEvent<HTMLTextAreaElement>) => {
+    const element = event.target as HTMLInputElement
+    props.setValue(element.value);
   };
 
   // focus at the end of text when enable

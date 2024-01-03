@@ -1,8 +1,23 @@
 import TextareaAutosize from "react-autosize-textarea";
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import { Icon } from '@iconify/react';
 
-const EditInfoAndSubmit = (props) => {
+type info = {
+    gender: string;
+    breed: string;
+    age: string;
+    nature: string;
+    vaccine: boolean;
+    sterile: boolean;
+}
+
+interface EditInfoAndSubmitProps {
+    value : info,
+    setValue : React.Dispatch<React.SetStateAction<info>> ,
+    onSubmit : () => void
+}
+
+const EditInfoAndSubmit = (props : EditInfoAndSubmitProps) => {
     const ref = {
         gender: useRef(null),
         breed: useRef(null),
@@ -16,7 +31,7 @@ const EditInfoAndSubmit = (props) => {
     const handleOnClick = () => {
         setEnableEdit(!enableEdit);
     }
-    const handleOnBlur = (event) => {
+    const handleOnBlur = (event : React.FocusEvent<HTMLTextAreaElement | HTMLDivElement>) => {
         const currentFocus = event.relatedTarget;
         let stillFocus = false;
         for (const val of Object.values(ref)) {
@@ -29,14 +44,15 @@ const EditInfoAndSubmit = (props) => {
             setEnableEdit(false);
         }
     }
-    const handleOnChange = (event, tag: string) => {
-        const updateValue = { [tag]: event.target.value };
+    const handleOnChange = (event : React.FormEvent<HTMLTextAreaElement>, tag: string) => {
+        const element = event.target as HTMLInputElement;
+        const updateValue = { [tag]: element.value };
         props.setValue({
             ...props.value,
             ...updateValue
         });
     }
-    const handleOnClickButton = (tag: string) => {
+    const handleOnClickButton = (tag: keyof info) => {
         if (enableEdit) {
             const updateValue = { [tag]: !props.value[tag] };
             props.setValue({

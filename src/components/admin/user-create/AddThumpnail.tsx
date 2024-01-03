@@ -32,11 +32,17 @@ addIcon("custom:pencil", {
   height: 25
 })
 
-const AddThumpnail = (props) => {
-  const handleOnChange = (event) => {
+interface AddThumpnailProps {
+  valueThumpnail : File | null,
+  setThumpnail : React.Dispatch<React.SetStateAction<File  | null>>;
+  valueOrigin : string,
+  setOrigin : React.Dispatch<React.SetStateAction<string>>;
+}
+
+const AddThumpnail = (props : AddThumpnailProps) => {
+  const handleOnChange = (event : React.ChangeEvent<HTMLInputElement>) => {
     const selectedImg = event.target.files;
-    console.log(selectedImg);
-    if (selectedImg.length !== 0) {
+    if (selectedImg && selectedImg.length !== 0) {
       props.setThumpnail(selectedImg[0]);
     }
 

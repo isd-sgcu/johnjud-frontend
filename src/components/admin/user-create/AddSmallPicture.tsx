@@ -1,13 +1,18 @@
 import { Icon } from '@iconify/react';
-import { useEffect } from 'react';
 
-const AddSmallPicture = (props) => {
-    const handleOnChange = (event) => {
+interface AddSmallPictureProps {
+    value: File[];
+    setValue: React.Dispatch<React.SetStateAction<File[]>>;
+}
+
+const AddSmallPicture = (props: AddSmallPictureProps) => {
+    const handleOnChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         const selectedFiles = event.target.files;
-        if (selectedFiles.length !== 0) {
+        if (selectedFiles && selectedFiles.length !== 0) {
+            const newFiles: File[] = Array.from(selectedFiles);
             props.setValue([
                 ...props.value,
-                ...selectedFiles
+                ...Array.from(newFiles)
             ])
         }
     }
@@ -16,7 +21,7 @@ const AddSmallPicture = (props) => {
             {
                 Array.from(props.value).map((picture, index) => {
                     return (<div className='flex flex-shrink-0 w-[60%] max-w-48 aspect-square snap-start items-center justify-center bg-white' key={index}>
-                        <img src={URL.createObjectURL(picture)} alt={picture.name} className='w-full h-full object-cover object-center  rounded-3xl border-2 border-[#D9D9D9] border-opacity-50'/>
+                        <img src={URL.createObjectURL(picture)} alt={picture.name} className='w-full h-full object-cover object-center  rounded-3xl border-2 border-[#D9D9D9] border-opacity-50' />
                     </div>)
                 })
             }
