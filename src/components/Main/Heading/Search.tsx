@@ -1,4 +1,4 @@
-import magnifyingGlassesIcon from "../../assets/main/magnify-glass.svg";
+import magnifyingGlassesIcon from "../../../assets/main/magnify-glass.svg";
 
 const SearchBar = () => {
   return (
