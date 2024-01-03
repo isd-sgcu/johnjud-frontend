@@ -28,21 +28,21 @@ const EditName = (props) => {
   return (
     <div className="flex flex-col w-full relative">
       <div
-        className={`flex w-fit flex-row items-center self-end lg:self-start ${
+        className={`flex flex-row w-fit items-center self-end lg:self-start ${
           enableEdit ? "hidden" : "visible"
         }`}
       >
         <Icon icon="custom:pencil" color="#C81425" className="flex flex-none w-6 h-6 cursor-pointer lg:hidden" onClick={handleClickEdit} />
-        <span className="pl-1 flex text-wrap break-all text-right lg:text-left text-3xl font-bold text-primary">
+        <div className="pl-1 break-all text-right lg:text-left text-3xl font-bold text-primary">
           {props.value}
-        </span>
+        </div>
         <Icon icon="custom:pencil" color="#C81425" className="hidden flex-none w-6 h-6 cursor-pointer lg:flex lg:ml-3" onClick={handleClickEdit} />
       </div>
 
       <TextareaAutosize
         value={props.value}
         onChange={handleOnChange}
-        className={`flex w-full resize-none text-wrap break-all rounded-lg p-2 text-right lg:text-left text-3xl font-bold text-primary focus:outline-[#D9D9D9] ${
+        className={`flex w-full resize-none text-wrap break-words rounded-lg p-2 text-right lg:text-left text-3xl font-bold text-primary focus:outline-[#D9D9D9] ${
           enableEdit ? "visible" : "hidden"
         }`}
         disabled={!enableEdit}
