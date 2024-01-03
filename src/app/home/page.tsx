@@ -1,11 +1,11 @@
 import AllPetsButton from "../../components/Main/AllPetsButton";
 import Banner from "../../components/Main/Banner";
+import Divider from "../../components/Main/Divider";
 import DividerMobile from "../../components/Main/DividerMobile";
 import Heading from "../../components/Main/Heading";
 import MobilePetsHeading from "../../components/Main/Heading/MobilePetsHeading";
 import MiniPetCardContainer from "../../components/Main/PetCardContainer/MiniPetCardContainer";
 import MainLayout from "../../layouts/MainLayout";
-import Divider from '../../components/Main/Divider';
 // Page
 const MainPage = () => {
   return (
@@ -19,14 +19,14 @@ const MainPage = () => {
         </div>
         <MiniPetCardContainer />
       </section>
-      <div className="flex justify-center items-center md:justify-end">
+      <div className="flex items-center justify-center md:justify-end">
         <AllPetsButton />
       </div>
       <DividerMobile />
       <div className="flex md:hidden">
         <Banner imageUrl="https://via.placeholder.com/468x600?text=Your+Ad+Here" />
       </div>
-      <Divider/>
+      <Divider />
       <DividerMobile />
     </main>
   );
