@@ -28,7 +28,7 @@ const Navbar = () => {
   }
 
   return (
-    <div className={`flex items-center justify-between px-4 py-3 ${color}`}>
+    <div className={`flex items-center justify-between px-8 py-6 ${color}`}>
       <div className="flex items-center gap-3">
         {logo && <img src={logo} alt="logo" className="h-12 w-12" />}
         <div className="cursor-pointer font-poppins font-bold text-white">
