@@ -8,11 +8,16 @@ import MainLayout from "../../layouts/MainLayout";
 // Page
 const MainPage = () => {
   return (
-    <main className="flex h-full flex-col space-y-6 p-6">
+    <main className="flex h-full flex-col space-y-6 p-6 md:p-16">
       <Heading />
       <DividerMobile />
       <MobilePetsHeading value={4600} />
-      <MiniPetCardContainer />
+      <section className="flex justify-between">
+        <div className="hidden md:flex md:w-4/12">
+          <Banner imageUrl = "https://via.placeholder.com/440x440?text=Your+Ad+Here"/>
+        </div>
+        <MiniPetCardContainer />
+      </section>
       <AllPetsButton />
       <DividerMobile />
       <Banner imageUrl = "https://via.placeholder.com/468x600?text=Your+Ad+Here"/>
