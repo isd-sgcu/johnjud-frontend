@@ -49,7 +49,7 @@ const EditInfoAndSubmit = (props) => {
     return (
         <div className="flex flex-col w-full">
             {/* EditInfo */}
-            <div className="flex flex-col w-full bg-white px-[9%] py-6 lg:py-8 lg:pl-[12.5%] lg:pr-0 border-2 rounded-2xl border-[#D9D9D9] border-opacity-50">
+            <div className="flex flex-col w-full bg-white px-6 py-6 lg:py-8 lg:pl-[12.5%] lg:pr-0 border-2 rounded-2xl border-[#D9D9D9] border-opacity-50">
                 <div className="flex flex-col lg:grid lg:grid-cols-2 lg:divide-x-2">
 
                     <div className="flex flex-col space-y-3 lg:pr-8 lg:space-y-4">
