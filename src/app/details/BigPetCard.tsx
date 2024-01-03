@@ -53,7 +53,7 @@ const BigPetCard = ({isAdmin} : {isAdmin: boolean}) => {
                         ไรลีย์
                     </p>
                 </div>
-                <article className="flex px-5 py-3.5 shadow-zinc-300 shadow-[0_0_4px_0.5px] rounded-2xl border-zinc-300">
+                <article className="flex px-5 py-3.5 shadow-zinc-300 shadow-[0_0_4px_0.5px] rounded-2xl border-zinc-300 bg-white">
                     <p className="flex-1">
                         ทาวน์เทปวโรกาส ลิมูซีนเพลซบาร์บี้อุเทนเพลย์บอย ฟลุก เซอร์ไพรส์ รูบิคบึมเฝอมายาคติ ทรู ภคันทลาพาธ วาไรตี้ ท็อปบูตสงบสุขวอลนัต โนติส เบลอ แรงใจ เป่ายิงฉุบโยโย่ ภควัทคีตา อิเหนาช็อปนินจารูบิคคาสิโน คีตกวีบอกซ์โพลารอยด์ดิกชันนารี แกสโซฮอล์ผู้นำ จิ๊กโก๋ธัมโมคอร์รัปชั่น เหี่ยวย่นออทิสติก เวเฟอร์เดโมเจ๊วีนโอวัลติน
                     </p>
