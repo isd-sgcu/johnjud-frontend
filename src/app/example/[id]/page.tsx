@@ -1,5 +1,5 @@
-import { usePageParams } from "../../../hooks/usePageParams";
-import MainLayout from "../../../layouts/MainLayout";
+import { usePageParams } from "@/hooks/usePageParams";
+import MainLayout from "@/layouts/MainLayout";
 
 // Page
 const ExampleParamPage = () => {
