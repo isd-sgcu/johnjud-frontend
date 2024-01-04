@@ -9,7 +9,7 @@ const FilterButton = ({ text, isOpen, onClick }: FilterButtonProps) => {
   return (
     <button
       onClick={onClick}
-      className="bg-accent-red flex w-full cursor-pointer flex-row items-center justify-between rounded-lg p-3 text-white hover:brightness-90"
+      className="flex w-full cursor-pointer flex-row items-center justify-between rounded-lg bg-accent-red p-3 text-white hover:brightness-90"
     >
       <div>{text}</div>
       <div>
