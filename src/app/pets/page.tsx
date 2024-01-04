@@ -1,5 +1,6 @@
 import Container from "../../components/Container";
-import PetFilter from "../../components/Filter/PetFilter";
+import FilterPanel from "../../components/Filter/FilterPanel";
+import PetFilterIcon from "../../components/Filter/PetFilterIcon";
 import Heading from "../../components/Pets/Heading";
 import PetSearch from "../../components/Search/PetSearch";
 import MainLayout from "../../layouts/MainLayout";
@@ -12,8 +13,9 @@ const Pets = () => {
       </Container>
       <Container className="flex flex-row gap-x-4">
         <PetSearch />
-        <div>
-          <PetFilter />
+        <div className="relative">
+          <PetFilterIcon />
+          <FilterPanel />
         </div>
       </Container>
       <Container>
