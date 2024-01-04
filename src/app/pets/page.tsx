@@ -21,7 +21,10 @@ const Pets = () => {
       <Container className="flex flex-row gap-x-4">
         <PetSearch />
         <div className="relative">
-          <PetFilterIcon onClick={toggleIsOpenFilterPanel} />
+          <PetFilterIcon
+            isOpen={isOpenFilterPanel}
+            onClick={toggleIsOpenFilterPanel}
+          />
           <FilterPanel isOpen={isOpenFilterPanel} />
         </div>
       </Container>
