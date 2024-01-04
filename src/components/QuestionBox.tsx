@@ -1,6 +1,6 @@
+import BackIcon from "@/assets/faq/back_icon.svg";
+import QuestionIcon from "@/assets/faq/question_icon.svg";
 import { useState } from "react";
-import BackIcon from "../assets/faq/back_icon.svg";
-import QuestionIcon from "../assets/faq/question_icon.svg";
 
 const questionBox = ({
   question,
