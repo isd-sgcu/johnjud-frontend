@@ -1,5 +1,7 @@
 import { tv } from "tailwind-variants";
 import FilterButton from "./FilterButton";
+import NumberInput from "./NumberInput";
+import ToggleInput from "./ToggleInput";
 
 interface FilterPanelProps {
   isOpen: boolean;
@@ -11,7 +13,7 @@ const filterPanel = tv({
     headingContainer: "space-y-1",
     heading: "text-accent-red font-semibold",
     headingLine: "bg-accent-red h-0.5 w-60 rounded-full",
-    filterContainer: "space-y-3",
+    filterContainer: "space-y-3 max-h-96 overflow-y-auto",
   },
   variants: {
     isOpen: {
@@ -33,10 +35,27 @@ const FilterPanel = ({ isOpen }: FilterPanelProps) => {
       </div>
       <div className={filterContainer()}>
         <FilterButton text="ประเภทสัตว์เลี้ยง" />
+        <div className="flex flex-wrap items-center justify-center gap-2">
+          <ToggleInput id="type-dog" text="สุนัข" />
+          <ToggleInput id="type-cat" text="แมว" />
+        </div>
         <FilterButton text="เพศ" />
+        <div className="flex flex-wrap items-center justify-center gap-2">
+          <ToggleInput id="gender-male" text="ผู้" />
+          <ToggleInput id="gender-female" text="เมีย" />
+        </div>
         <FilterButton text="สี" />
+        <div className="flex flex-wrap items-center justify-center gap-2">
+          <ToggleInput id="color-white" text="ขาว" />
+          <ToggleInput id="color-black" text="ดำ" />
+          <ToggleInput id="color-brown" text="น้ำตาล" />
+          <ToggleInput id="color-blonde" text="บลอนด์" />
+        </div>
         <FilterButton text="อายุ" />
-        <FilterButton text="ที่มา" />
+        <div className="flex flex-wrap items-center justify-center gap-2">
+          <NumberInput id="age-min" text="ต่ำสุด" />
+          <NumberInput id="age-max" text="สูงสุด" />
+        </div>
       </div>
     </div>
   );
