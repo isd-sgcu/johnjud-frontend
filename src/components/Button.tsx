@@ -15,7 +15,7 @@ interface ButtonProps {
 const button = tv({
   slots: {
     base: "px-6 py-2 disabled:cursor-not-allowed hover:brightness-90",
-    containerStyle: "flex flex-row items-center gap-2",
+    containerStyle: "flex flex-row justify-center items-center gap-2",
     iconStyle: "h-6 w-6",
   },
   variants: {

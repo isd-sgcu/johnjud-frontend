@@ -32,15 +32,17 @@ const Pets = () => {
             <Filter isOpen={isOpenFilterPanel} />
           </div>
         </div>
-        <Link to="/admin/pets/add">
-          <Button
-            icon="ph:plus"
-            text="สร้างโพสต์ใหม่"
-            variant="accent-red"
-            rounded="full"
-            className="px-24"
-          />
-        </Link>
+        <div className="w-full xl:w-auto">
+          <Link to="/admin/pets/add">
+            <Button
+              icon="ph:plus"
+              text="สร้างโพสต์ใหม่"
+              variant="accent-red"
+              rounded="full"
+              className="w-full xl:w-auto xl:px-24"
+            />
+          </Link>
+        </div>
       </Container>
       <Container>
         <div>{/* Pet Card */}</div>
