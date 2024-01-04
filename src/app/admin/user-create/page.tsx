@@ -27,7 +27,7 @@ const userCreate = () => {
   const handleSubmit = () => {};
 
   return (
-    <div className="grid w-screen grid-cols-1 flex-col pb-28 pt-6 lg:grid-cols-3 lg:pb-20 lg:pt-8">
+    <div className="grid w-screen grid-cols-1 flex-col pb-28 lg:grid-cols-3 lg:pb-20">
       {/* Icon return & small EditName */}
       <div className="flex justify-between overflow-clip px-[10%] py-2 lg:col-span-3 lg:px-12">
         <Icon
@@ -41,7 +41,7 @@ const userCreate = () => {
       </div>
 
       {/* Thumpnail */}
-      <div className="flex w-full justify-center px-6 pt-8 lg:justify-start lg:pl-[25%] lg:pr-0">
+      <div className="flex h-fit w-full justify-center px-6 pt-8 lg:justify-start lg:pl-[25%] lg:pr-0">
         <AddThumpnail
           valueThumpnail={thumpnail}
           setThumpnail={setThumpnail}
