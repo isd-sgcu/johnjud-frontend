@@ -1,5 +1,5 @@
-import johnjudLogo from "../../assets/johnjud-with-text.png";
-import MainLayout from "../../layouts/MainLayout";
+import johnjudLogo from "@/assets/johnjud-with-text.png";
+import MainLayout from "@/layouts/MainLayout";
 
 const About = () => {
   return (
