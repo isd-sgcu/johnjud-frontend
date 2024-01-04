@@ -5,7 +5,7 @@ interface FilterButtonProps {
 
 const FilterButton = ({ text }: FilterButtonProps) => {
   return (
-    <div className="bg-accent-red flex cursor-pointer flex-row items-center justify-between rounded-lg p-3 text-white hover:brightness-90">
+    <div className="flex cursor-pointer flex-row items-center justify-between rounded-lg bg-accent-red p-3 text-white hover:brightness-90">
       <div>{text}</div>
       <div>
         <Icon icon="ph:code-simple" className="h-4 w-4 rotate-90 transform" />

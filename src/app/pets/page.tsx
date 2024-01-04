@@ -1,3 +1,4 @@
+import { useCallback, useState } from "react";
 import Container from "../../components/Container";
 import FilterPanel from "../../components/Filter/FilterPanel";
 import PetFilterIcon from "../../components/Filter/PetFilterIcon";
@@ -6,6 +7,12 @@ import PetSearch from "../../components/Search/PetSearch";
 import MainLayout from "../../layouts/MainLayout";
 
 const Pets = () => {
+  const [isOpenFilterPanel, setIsOpenFilterPanel] = useState(false);
+
+  const toggleIsOpenFilterPanel = useCallback(() => {
+    setIsOpenFilterPanel((prev) => !prev);
+  }, []);
+
   return (
     <>
       <Container>
@@ -14,8 +21,8 @@ const Pets = () => {
       <Container className="flex flex-row gap-x-4">
         <PetSearch />
         <div className="relative">
-          <PetFilterIcon />
-          <FilterPanel />
+          <PetFilterIcon onClick={toggleIsOpenFilterPanel} />
+          <FilterPanel isOpen={isOpenFilterPanel} />
         </div>
       </Container>
       <Container>
