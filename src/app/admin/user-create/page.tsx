@@ -72,6 +72,7 @@ const userCreate = () => {
         />
       </div>
 
+      {/* large Logo */}
       <div className="hidden w-full justify-center object-contain lg:mt-10 lg:flex">
         <img src={johnjudLogo} className="flex h-64 w-44"></img>
       </div>
