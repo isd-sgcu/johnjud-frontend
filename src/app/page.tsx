@@ -29,6 +29,7 @@ const Main = () => {
             </p>
           </div>
         </div>
+
         <div className="flex items-center justify-center align-middle">
           <button
             className="position center border-secondary bg-secondary absolute mb-20 mt-80 cursor-pointer 
