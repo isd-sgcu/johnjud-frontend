@@ -1,7 +1,7 @@
-import catImage from "../assets/main/catImage.svg";
-import johnjudLogo from "../assets/main/johnjudLogo.svg";
-import Footer from "../components/Footer";
-import Navbar from "../components/Navbar";
+import catImage from "@/assets/main/catImage.svg";
+import johnjudLogo from "@/assets/main/johnjudLogo.svg";
+import Footer from "@/components/Footer";
+import Navbar from "@/components/Navbar";
 
 const Main = () => {
   return (

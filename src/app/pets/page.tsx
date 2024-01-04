@@ -1,10 +1,10 @@
+import Container from "@/components/Container";
+import Filter from "@/components/Filter";
+import { PetIcon } from "@/components/Filter/Icon";
+import Heading from "@/components/Pets/Heading";
+import PetSearch from "@/components/Search/PetSearch";
+import MainLayout from "@/layouts/MainLayout";
 import { useCallback, useState } from "react";
-import Container from "../../components/Container";
-import Filter from "../../components/Filter";
-import { PetIcon } from "../../components/Filter/Icon";
-import Heading from "../../components/Pets/Heading";
-import PetSearch from "../../components/Search/PetSearch";
-import MainLayout from "../../layouts/MainLayout";
 
 const Pets = () => {
   const [isOpenFilterPanel, setIsOpenFilterPanel] = useState(false);
