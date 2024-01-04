@@ -7,7 +7,7 @@ import PetSearch from "../../components/Search/PetSearch";
 import MainLayout from "../../layouts/MainLayout";
 
 const Pets = () => {
-  const [isOpenFilterPanel, setIsOpenFilterPanel] = useState(true);
+  const [isOpenFilterPanel, setIsOpenFilterPanel] = useState(false);
 
   const toggleIsOpenFilterPanel = useCallback(() => {
     setIsOpenFilterPanel((prev) => !prev);

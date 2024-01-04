@@ -1,16 +1,26 @@
 import { Icon } from "@iconify/react";
 interface FilterButtonProps {
   text: string;
+  isOpen: boolean;
+  onClick: () => void;
 }
 
-const FilterButton = ({ text }: FilterButtonProps) => {
+const FilterButton = ({ text, isOpen, onClick }: FilterButtonProps) => {
   return (
-    <div className="flex cursor-pointer flex-row items-center justify-between rounded-lg bg-accent-red p-3 text-white hover:brightness-90">
+    <button
+      onClick={onClick}
+      className="bg-accent-red flex w-full cursor-pointer flex-row items-center justify-between rounded-lg p-3 text-white hover:brightness-90"
+    >
       <div>{text}</div>
       <div>
-        <Icon icon="ph:code-simple" className="h-4 w-4 rotate-90 transform" />
+        <Icon
+          icon="ph:caret-down-fill"
+          className={`h-4 w-4 ${
+            isOpen && "-rotate-180 transform"
+          } transition-all duration-150`}
+        />
       </div>
-    </div>
+    </button>
   );
 };
 
