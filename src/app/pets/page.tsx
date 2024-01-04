@@ -6,7 +6,7 @@ import MainLayout from "../../layouts/MainLayout";
 
 const Pets = () => {
   return (
-    <div className="space-y-10">
+    <>
       <Container>
         <Heading />
       </Container>
@@ -19,7 +19,7 @@ const Pets = () => {
       <Container>
         <div></div>
       </Container>
-    </div>
+    </>
   );
 };
 

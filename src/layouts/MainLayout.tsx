@@ -12,10 +12,10 @@ const MainLayout = ({ children }: MainLayoutProps) => {
       style={{
         backgroundImage: `url(${background})`,
       }}
-      className="flex min-h-screen flex-col gap-y-6 bg-auto bg-top lg:gap-y-10"
+      className="flex min-h-screen flex-col bg-auto bg-top"
     >
       <Navbar />
-      {children}
+      <div className="my-6 space-y-6 xl:my-10 xl:space-y-10">{children}</div>
       <Footer />
     </div>
   );
