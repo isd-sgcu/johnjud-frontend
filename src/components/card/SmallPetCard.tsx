@@ -1,8 +1,6 @@
+import { Icon } from "@iconify/react";
 import { Link } from "react-router-dom";
 import BlankPic144x144 from "../../assets/small-petcard/BlankPic144x144.svg";
-import Check from "../../assets/small-petcard/Check.svg";
-import Gift from "../../assets/small-petcard/Gift.svg";
-import PawPrint from "../../assets/small-petcard/PawPrint.svg";
 interface ISmallPetCardProps {
   id: string;
   name: string;
@@ -53,11 +51,16 @@ const smallpetcard = ({
             <div className="text-base font-semibold text-black">
               {name} พันธุ์{species}
             </div>
-            <div className="w-full flex-row justify-between items-end inline-flex">
+            <div className="inline-flex w-full flex-row items-end justify-between">
               <div className="flex-start m-0 flex flex-col justify-center gap-1 p-0 ">
                 <div className="flex-start m-0 flex flex-row items-center justify-start gap-2 p-0 ">
                   <div>
-                    <img src={PawPrint} alt="PawPrint Logo" />
+                    <Icon
+                      icon="ph:paw-print"
+                      color="#808086"
+                      width="20"
+                      height="20"
+                    />
                   </div>
                   <div className="text-xs font-normal  text-accent-gray">
                     ตัว{genderAns}
@@ -65,7 +68,12 @@ const smallpetcard = ({
                 </div>
                 <div className="flex-start m-0 flex flex-row items-center justify-start gap-2 p-0 ">
                   <div>
-                    <img src={Gift} alt="Gift Logo" />
+                    <Icon
+                      icon="ph:gift"
+                      color="#808086"
+                      width="20"
+                      height="20"
+                    />
                   </div>
                   <UtcStringToList utcString={birthdate} />
                 </div>
@@ -75,7 +83,14 @@ const smallpetcard = ({
                   status === "adopted" ? "bg-accent-gray" : "bg-primary"
                 }`}
               >
-                <img className="px-1 py-1" src={Check} alt="Gift Logo" />
+                <div className="px-1 py-1">
+                  <Icon
+                    icon="ph:check-bold"
+                    color="#FFFFFF"
+                    width="16"
+                    height="16"
+                  />
+                </div>
               </div>
             </div>
           </div>
