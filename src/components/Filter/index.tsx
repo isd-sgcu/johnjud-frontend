@@ -2,11 +2,11 @@ import { tv } from "tailwind-variants";
 import FilterButton from "./FilterButton";
 import { NumberInput, ToggleInput } from "./Input";
 
-interface FilterPanelProps {
+interface FilterProps {
   isOpen: boolean;
 }
 
-const filterPanel = tv({
+const filter = tv({
   slots: {
     base: "absolute right-0 mt-4 space-y-4 rounded-2xl bg-white p-4 shadow",
     headingContainer: "space-y-1",
@@ -22,9 +22,9 @@ const filterPanel = tv({
   },
 });
 
-const FilterPanel = ({ isOpen }: FilterPanelProps) => {
+const Filter = ({ isOpen }: FilterProps) => {
   const { base, headingContainer, heading, headingLine, filterContainer } =
-    filterPanel({ isOpen });
+    filter({ isOpen });
 
   return (
     <div className={base()}>
@@ -60,4 +60,4 @@ const FilterPanel = ({ isOpen }: FilterPanelProps) => {
   );
 };
 
-export default FilterPanel;
+export default Filter;
