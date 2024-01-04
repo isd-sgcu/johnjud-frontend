@@ -29,7 +29,7 @@ const Pets = () => {
         </div>
       </Container>
       <Container>
-        <div></div>
+        <div>{/* Pet Card */}</div>
       </Container>
     </>
   );
