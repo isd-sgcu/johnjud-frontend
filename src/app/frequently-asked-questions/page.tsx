@@ -1,6 +1,6 @@
-import Bubble from "../../assets/faq/bubble.svg";
-import QuestionBox from "../../components/QuestionBox";
-import MainLayout from "../../layouts/MainLayout";
+import Bubble from "@/assets/faq/bubble.svg";
+import QuestionBox from "@/components/QuestionBox";
+import MainLayout from "@/layouts/MainLayout";
 
 const Questions = [
   {
