@@ -1,7 +1,7 @@
 import MainLayout from "../../layouts/MainLayout";
 import BigPetCard from "./BigPetCard";
 import Info from "./Info";
-import logo from "../../assets/details/logo.svg";
+import logo from "../../assets/details/logo.png";
 
 const Details = () => {
     const isAdmin = true;
@@ -9,9 +9,9 @@ const Details = () => {
     return (  
         <div className="pt-4">
             <BigPetCard isAdmin={isAdmin}/>
-            <div className="flex my-10 gap-20">
+            <div className="flex gap-20 my-8 xl:justify-between">
                 <Info isAdmin={isAdmin}/>
-                <img src={logo} alt="logo" className="w-[22rem] hidden xl:block"/>
+                <img src={logo} alt="logo" className="w-64 h-64 hidden xl:block"/>
             </div>
         </div>
     );

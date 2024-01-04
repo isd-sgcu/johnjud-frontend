@@ -1,5 +1,6 @@
 import { Icon } from "@iconify/react/dist/iconify.js";
 import petImg from "../../assets/details/pet.svg";
+import PetImgList from "./PetImgList";
 
 const BigPetCard = ({isAdmin} : {isAdmin: boolean}) => {
 
@@ -62,8 +63,7 @@ const BigPetCard = ({isAdmin} : {isAdmin: boolean}) => {
                     </article>
                 </div>
             </div>
-
-            
+            {isAdmin && <PetImgList /> }
         </div>
     );
 }
