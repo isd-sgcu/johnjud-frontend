@@ -6,7 +6,7 @@ interface PetFilterIconProps {
   onClick?: () => void;
 }
 
-const petFilterIcon = tv({
+const petIcon = tv({
   slots: {
     base: "bg-accent-red flex h-14 w-14 cursor-pointer flex-col items-center justify-center rounded-full hover:brightness-90",
     icon: "h-6 w-6",
@@ -19,8 +19,8 @@ const petFilterIcon = tv({
   },
 });
 
-const PetFilterIcon = ({ isOpen, onClick }: PetFilterIconProps) => {
-  const { base, icon } = petFilterIcon({ isOpen });
+const PetIcon = ({ isOpen, onClick }: PetFilterIconProps) => {
+  const { base, icon } = petIcon({ isOpen });
 
   return (
     <button type="button" onClick={onClick} className={base()}>
@@ -29,4 +29,4 @@ const PetFilterIcon = ({ isOpen, onClick }: PetFilterIconProps) => {
   );
 };
 
-export default PetFilterIcon;
+export default PetIcon;

@@ -1,7 +1,6 @@
 import { tv } from "tailwind-variants";
 import FilterButton from "./FilterButton";
-import NumberInput from "./NumberInput";
-import ToggleInput from "./ToggleInput";
+import { NumberInput, ToggleInput } from "./Input";
 
 interface FilterPanelProps {
   isOpen: boolean;

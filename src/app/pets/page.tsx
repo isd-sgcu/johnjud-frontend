@@ -1,7 +1,7 @@
 import { useCallback, useState } from "react";
 import Container from "../../components/Container";
-import FilterPanel from "../../components/Filter/FilterPanel";
-import PetFilterIcon from "../../components/Filter/PetFilterIcon";
+import Filter from "../../components/Filter";
+import { PetIcon } from "../../components/Filter/Icon";
 import Heading from "../../components/Pets/Heading";
 import PetSearch from "../../components/Search/PetSearch";
 import MainLayout from "../../layouts/MainLayout";
@@ -21,11 +21,11 @@ const Pets = () => {
       <Container className="flex flex-row gap-x-4">
         <PetSearch />
         <div className="relative">
-          <PetFilterIcon
+          <PetIcon
             isOpen={isOpenFilterPanel}
             onClick={toggleIsOpenFilterPanel}
           />
-          <FilterPanel isOpen={isOpenFilterPanel} />
+          <Filter isOpen={isOpenFilterPanel} />
         </div>
       </Container>
       <Container>
