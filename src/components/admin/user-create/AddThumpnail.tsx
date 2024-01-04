@@ -47,8 +47,7 @@ const AddThumpnail = (props: AddThumpnailProps) => {
   };
 
   return (
-    <div className="relative flex aspect-square w-full max-w-80 flex-col">
-      {/* TODO: Add Thumpnail system */}
+    <div className="relative flex aspect-square h-fit w-full max-w-80 flex-col">
       {props.valueThumpnail === null ? (
         <div className="flex h-full w-full items-center justify-center rounded-3xl border-2 border-[#D9D9D9] bg-white drop-shadow-sm ">
           <Icon icon="custom:plus" className="h-[30%] w-[30%]" />
