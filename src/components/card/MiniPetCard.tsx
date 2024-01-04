@@ -50,7 +50,9 @@ const MiniPetCard = ({
           <div className="flex-start m-0 inline-flex flex-col justify-center gap-1">
             <div className="text-base font-semibold text-black">{name}</div>
             <div className="inline-flex flex-row items-start justify-start gap-1">
-              <div className="text-sm font-normal text-zinc-500">พันธ์ุ:</div>
+              <div className="text-sm font-normal text-accent-gray">
+                พันธ์ุ:
+              </div>
               <div className="text-sm font-normal text-black">{species}</div>
             </div>
           </div>
@@ -60,7 +62,7 @@ const MiniPetCard = ({
                 เพศ{genderAns}
               </div>
             </div>
-            <div className="flex h-6 w-auto items-center justify-center rounded-lg bg-zinc-300 ">
+            <div className="flex h-6 w-auto items-center justify-center rounded-lg bg-accent-gray ">
               <div className="px-1.5 text-sm font-semibold text-black">
                 {yearsDifference} ขวบ
               </div>
