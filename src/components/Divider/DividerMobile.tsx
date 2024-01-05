@@ -1,9 +1,9 @@
-import pawIcon from "../../assets/main/paw.svg";
+import { Icon } from "@iconify/react";
 
 const DividerMobile = () => {
   return (
     <div className="flex items-center justify-center md:hidden">
-      <img src={pawIcon} alt="pawIcon" className="h-6 w-6" />
+      <Icon icon="ph:paw-print" className="h-6 w-6 text-primary" />
     </div>
   );
 };
