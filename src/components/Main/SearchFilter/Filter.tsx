@@ -26,7 +26,7 @@ const Filter = () => {
         onClick={() => setFilter("cat")}
       >
         <Icon
-          icon={filter == "cat" ? "custom:md:cat-white" : "custom:md:cat-gray"}
+          icon={filter == "cat" ? "custom:md:cat-green" : "custom:md:cat-gray"}
           className={`${filter === "cat" ? "h-7 w-7" : "h-6 w-6"}`}
         />
         {filter == "cat" ? (
