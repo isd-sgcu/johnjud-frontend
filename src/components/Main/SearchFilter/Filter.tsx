@@ -1,6 +1,5 @@
 import { useState } from "react";
-import catEffectIcon from "../../../assets/main/cat-primary.svg";
-import catIcon from "../../../assets/main/cat.svg";
+import { Icon }  from "@iconify/react";
 import dogEffectIcon from "../../../assets/main/dog-primary.svg";
 import dogIcon from "../../../assets/main/dog.svg";
 
@@ -28,9 +27,8 @@ const Filter = () => {
             `}
         onClick={() => setFilter("cat")}
       >
-        <img
-          src={filter == "cat" ? catEffectIcon : catIcon}
-          alt="catIcon"
+        <Icon
+          icon={filter == "cat" ? "custom:md:cat-white" : "custom:md:cat-gray"}
           className={`${filter === "cat" ? "h-7 w-7" : "h-6 w-6"}`}
         />
         {filter == "cat" ? (
@@ -43,9 +41,8 @@ const Filter = () => {
           `}
         onClick={() => setFilter("dog")}
       >
-        <img
-          src={filter === "dog" ? dogEffectIcon : dogIcon}
-          alt="dogIcon"
+        <Icon
+          icon={filter === "dog" ? "custom:md:dog-white" : "custom:md:dog-gray"}
           className={"h-6 w-6"}
         />
         {filter == "dog" ? (

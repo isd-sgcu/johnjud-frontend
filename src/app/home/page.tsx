@@ -1,19 +1,19 @@
-import Banner from "@/components/Main/Banner";
+import JohnjudImage from "@/assets/johnjud-logo-with-text-side.png";
+import Button from "@/components/Button";
+import Container from "@/components/Container";
 import Divider from "@/components/Divider/Divider";
 import DividerMobile from "@/components/Divider/DividerMobile";
-import MobilePetsHeading from "@/components/Main/Heading/MobilePetsHeading";
+import Banner from "@/components/Main/Banner";
 import MiniPetCardContainer from "@/components/Main/CardList/MiniPetCardContainer";
-import MainLayout from "@/layouts/MainLayout"
-import Container from "@/components/Container";
-import Button from "@/components/Button";
-import Filter from "@/components/Main/SearchFilter/Filter";
+import MobilePetsHeading from "@/components/Main/Heading/MobilePetsHeading";
 import PetsHeading from "@/components/Main/Heading/PetsHeading";
+import Filter from "@/components/Main/SearchFilter/Filter";
 import Search from "@/components/Main/SearchFilter/Search";
-import JohnjudImage from "@/assets/johnjud-logo-with-text-side.png";
+import MainLayout from "@/layouts/MainLayout";
 import { useNavigate } from "react-router-dom";
+
 // Page
 const MainPage = () => {
-  
   const navigate = useNavigate();
 
   return (
@@ -43,8 +43,8 @@ const MainPage = () => {
           text="ดูสัตว์เลี้ยงทั้งหมด"
           variant="primary"
           rounded="full"
-          className="w-full md:w-auto font-bold"
-          onClick ={() => navigate('/pets')} // Navigation path
+          className="w-full font-bold md:w-auto"
+          onClick={() => navigate("/pets")} // Navigation path
         />
       </Container>
       <Container>
