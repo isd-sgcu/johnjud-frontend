@@ -1,5 +1,5 @@
-import mockPetData from "../../../mock/mockPetData";
-import MiniPetCard from "../../Mock/MiniPetCard";
+import MiniPetCard from "@/components/Mock/MiniPetCard";
+import mockPetData from "@/mock/mockPetData";
 
 const MiniPetCardContainer = () => {
   const pets = mockPetData.slice(0, 8);
