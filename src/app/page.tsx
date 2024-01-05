@@ -21,18 +21,18 @@ const Main = () => {
             <p
               className="py-2.5 text-4xl font-bold xl:flex xl:flex-1
                     xl:items-center xl:py-0 xl:align-middle xl:text-[156px]"
-          >
-            johnjud
-          </p>
-          <p className="py-1 text-base font-medium xl:ml-96 xl:text-2xl">
-            Best Option - Adoption
-          </p>
+            >
+              johnjud
+            </p>
+            <p className="py-1 text-base font-medium xl:ml-96 xl:text-2xl">
+              Best Option - Adoption
+            </p>
+          </div>
         </div>
-      </div>
-      <div className="flex items-center justify-center align-middle">
-        <button
-          className="position center border-secondary bg-secondary absolute mb-20 mt-80 cursor-pointer 
-                rounded-2xl border border-solid px-32
+        <div className="flex items-center justify-center align-middle">
+          <button
+            className="position center absolute mb-20 mt-80 cursor-pointer rounded-2xl border 
+                border-solid border-secondary bg-secondary px-32
                 py-2.5 text-2xl font-semibold
                 text-white opacity-80 hover:ease-in"
           >
