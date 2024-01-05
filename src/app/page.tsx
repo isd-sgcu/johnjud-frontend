@@ -28,8 +28,8 @@ const Main = () => {
       </div>
       <div className="flex items-center justify-center align-middle">
         <button
-          className="position center border-secondary bg-secondary absolute mb-20 mt-80 cursor-pointer 
-                rounded-2xl border border-solid px-32
+          className="position center absolute mb-20 mt-80 cursor-pointer rounded-2xl border 
+                border-solid border-secondary bg-secondary px-32
                 py-2.5 text-2xl font-semibold
                 text-white opacity-80 hover:ease-in"
         >
