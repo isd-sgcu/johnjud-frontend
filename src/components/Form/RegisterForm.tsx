@@ -1,6 +1,6 @@
+import lockIcon from "@/assets/formIcon/lock.svg";
+import userIcon from "@/assets/formIcon/user.svg";
 import { Link } from "react-router-dom";
-import lockIcon from "../../assets/formIcon/lock.svg";
-import userIcon from "../../assets/formIcon/user.svg";
 import SubmitButton from "./SubmitButton";
 
 const RegisterForm = () => {

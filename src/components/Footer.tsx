@@ -1,7 +1,7 @@
-import facebookLogo from "../assets/footer/FacebookLogo.svg";
-import twitterLogo from "../assets/footer/InstagramLogo.svg";
-import johnjudLogo from "../assets/footer/JohnJudLogo.svg";
-import instagramLogo from "../assets/footer/TwitterLogo.svg";
+import facebookLogo from "@/assets/footer/FacebookLogo.svg";
+import twitterLogo from "@/assets/footer/InstagramLogo.svg";
+import johnjudLogo from "@/assets/footer/JohnJudLogo.svg";
+import instagramLogo from "@/assets/footer/TwitterLogo.svg";
 const Footer = () => {
   return (
     <div className="mt-auto w-full shrink-0 ">
