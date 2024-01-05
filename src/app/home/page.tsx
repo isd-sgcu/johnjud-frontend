@@ -6,29 +6,36 @@ import Heading from "../../components/Main/Heading";
 import MobilePetsHeading from "../../components/Main/Heading/MobilePetsHeading";
 import MiniPetCardContainer from "../../components/Main/PetCardContainer/MiniPetCardContainer";
 import MainLayout from "../../layouts/MainLayout";
+import Container from "@/components/Container";
 // Page
 const MainPage = () => {
   return (
-    <main className="flex h-full flex-col space-y-6 p-6 md:p-16">
-      <Heading />
-      <DividerMobile />
-      <MobilePetsHeading value={4600} />
-      <section className="flex justify-center md:justify-between">
+    <>
+      <Container>
+        <Heading />
+        <DividerMobile />
+        <MobilePetsHeading value={4600} />
+      </Container>
+      <Container className="flex justify-center md:justify-between">
         <div className="hidden md:flex md:w-4/12">
           <Banner imageUrl="https://via.placeholder.com/440x440?text=Your+Ad+Here" />
         </div>
         <MiniPetCardContainer />
-      </section>
-      <div className="flex items-center justify-center md:justify-end">
+      </Container>
+      <Container className="flex items-center justify-center md:justify-end">
         <AllPetsButton />
-      </div>
-      <DividerMobile />
-      <div className="flex md:hidden">
+      </Container>
+      <Container>
+        <DividerMobile />
+      </Container>
+      <Container className="flex md:hidden">
         <Banner imageUrl="https://via.placeholder.com/468x600?text=Your+Ad+Here" />
-      </div>
-      <Divider />
-      <DividerMobile />
-    </main>
+      </Container>
+      <Container>
+        <Divider />
+        <DividerMobile />
+      </Container>
+    </>
   );
 };
 
