@@ -4,8 +4,8 @@ import Container from "@/components/Container";
 import Divider from "@/components/Divider/Divider";
 import DividerMobile from "@/components/Divider/DividerMobile";
 import Banner from "@/components/Main/Banner";
-import MiniPetCardContainer from "@/components/Main/CardList/MiniPetCardContainer";
 import BigPetCardContainer from "@/components/Main/CardList/BigPetCardContainer";
+import MiniPetCardContainer from "@/components/Main/CardList/MiniPetCardContainer";
 import MobilePetsHeading from "@/components/Main/Heading/MobilePetsHeading";
 import PetsHeading from "@/components/Main/Heading/PetsHeading";
 import Filter from "@/components/Main/SearchFilter/Filter";
@@ -59,7 +59,7 @@ const MainPage = () => {
         <DividerMobile />
       </Container>
       <Container>
-        <BigPetCardContainer/>
+        <BigPetCardContainer />
       </Container>
     </>
   );
