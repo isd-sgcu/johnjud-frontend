@@ -25,7 +25,7 @@ type PetCardProps = {
   habit: string;
   isSterile: boolean;
   isLiked: boolean;
-  isVisibled?: boolean;
+  isVisibled: boolean;
   onClick?: () => void;
 };
 
@@ -48,7 +48,7 @@ const PetCard = ({
   const adoptedButton =
     status === PetStatus.adopted ? "disabled" : "accent-red";
   const [isVisible, setIsVisible] = useState(isVisibled);
-  if (role === "user") {
+  if (role === "user" && isVisibled === true) {
     return (
       <div
         className="flex w-80 flex-col items-start justify-start rounded-2xl bg-white p-4 shadow"
