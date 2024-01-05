@@ -16,7 +16,7 @@ const Pets = () => {
   return (
     <>
       <Container>
-        <Heading onSearch/>
+        <Heading onSearch />
       </Container>
       <Container className="flex flex-row gap-x-4">
         <PetSearch />

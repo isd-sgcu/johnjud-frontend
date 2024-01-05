@@ -5,8 +5,8 @@ import Divider from "@/components/Divider/Divider";
 import Banner from "@/components/Main/Banner";
 import BigPetCardContainer from "@/components/Main/CardList/BigPetCardContainer";
 import MiniPetCardContainer from "@/components/Main/CardList/MiniPetCardContainer";
-import Heading from "@/components/Pets/Heading";
 import Filter from "@/components/Main/Filter";
+import Heading from "@/components/Pets/Heading";
 import Search from "@/components/Search/PetSearchGreen";
 import MainLayout from "@/layouts/MainLayout";
 import { useNavigate } from "react-router-dom";
@@ -22,7 +22,7 @@ const MainPage = () => {
         </div>
         <div className="flex w-full flex-col items-center space-y-6 md:items-start">
           <div className="hidden md:flex">
-            <Heading onSearch/>
+            <Heading onSearch />
           </div>
           <Search />
           <Filter />
@@ -32,7 +32,7 @@ const MainPage = () => {
         <Divider />
       </Container>
       <Container className="md:hidden">
-        <Heading onSearch/>
+        <Heading onSearch />
       </Container>
       <Container className="flex justify-center md:justify-between">
         <div className="hidden md:flex md:w-4/12">
@@ -50,7 +50,7 @@ const MainPage = () => {
         />
       </Container>
       <Container>
-        <Divider/>
+        <Divider />
       </Container>
       <Container className="flex md:hidden">
         <Banner imageUrl="https://via.placeholder.com/468x600?text=Your+Ad+Here" />
