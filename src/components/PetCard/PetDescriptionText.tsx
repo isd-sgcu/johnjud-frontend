@@ -5,7 +5,7 @@ interface PetDescriptionProps {
   description: string;
 }
 
-const PetDescription = (props: PetDescriptionProps) => {
+const PetDescriptionText = (props: PetDescriptionProps) => {
   return (
     <div className="mb-1 flex items-center gap-2 text-base font-normal text-zinc-500">
       <Icon icon={props.icon} className="relative h-5 w-5" />
@@ -14,4 +14,4 @@ const PetDescription = (props: PetDescriptionProps) => {
   );
 };
 
-export default PetDescription;
+export default PetDescriptionText;
