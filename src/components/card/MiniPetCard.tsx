@@ -1,45 +1,42 @@
-import { useEffect, useState } from "react";
+import { useMemo } from "react";
 import { Link } from "react-router-dom";
 import BlankPic168x112 from "../../assets/small-petcard/BlankPic168x112.svg";
-interface IMiniPetCardProps {
+interface MiniPetCardProps {
   id: string;
   name: string;
   species: string;
   gender: string;
   birthdate: string;
 }
-const calculateYearDifference = (utcString: string) => {
-  const inputDatetime = new Date(utcString);
+const UtcStringToYear = ({ utcString }: { utcString: string }) => {
+  const birthdate = new Date(utcString);
   const currentUtcTime = new Date();
 
-  const timeDifference = currentUtcTime - inputDatetime;
-
-  // Convert milliseconds to years (assuming 365 days per year)
+  const timeDifference = currentUtcTime.getTime() - birthdate.getTime();
   const yearsDifference = Math.floor(
     timeDifference / (365 * 24 * 60 * 60 * 1000)
   );
-
-  return yearsDifference;
+  const years = yearsDifference;
+  return years;
 };
+
 const MiniPetCard = ({
   id,
   name,
   species,
   gender,
   birthdate,
-}: IMiniPetCardProps) => {
-  const [yearsDifference, setYearsDifference] = useState<number | null>(null);
-  useEffect(() => {
-    const result = calculateYearDifference(birthdate);
-    setYearsDifference(result);
-  }, []);
+}: MiniPetCardProps) => {
   const genderAns = gender == "male" ? "ผู้" : "เมีย";
   const linkTo = "/pet/" + id;
+  const years = useMemo(() => {
+    return UtcStringToYear({ utcString: birthdate });
+  }, [birthdate]);
   // render button with props
   return (
     <Link to={linkTo}>
       <div className="m-0 flex h-52 w-40 flex-shrink-0 flex-col gap-0 rounded-3xl bg-white p-0 shadow-md">
-        <div className="flex w-full h-28 rounded-3xl bg-zinc-300">
+        <div className="flex h-28 w-full rounded-3xl bg-zinc-300">
           <img
             className="rounded-3xl"
             src={BlankPic168x112}
@@ -64,7 +61,7 @@ const MiniPetCard = ({
             </div>
             <div className="flex h-6 w-auto items-center justify-center rounded-lg bg-accent-gray ">
               <div className="px-1.5 text-sm font-semibold text-black">
-                {yearsDifference} ขวบ
+                {years} ขวบ
               </div>
             </div>
           </div>

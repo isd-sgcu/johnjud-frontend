@@ -1,3 +1,4 @@
+import React, { useMemo } from 'react';
 import { Icon } from "@iconify/react";
 import { Link } from "react-router-dom";
 import BlankPic144x144 from "../../assets/small-petcard/BlankPic144x144.svg";
@@ -9,21 +10,24 @@ interface ISmallPetCardProps {
   birthdate: string;
   status: string;
 }
-const UtcStringToList = ({ utcString }: { utcString: string }) => {
-  const date = new Date(utcString);
+const UtcStringToYearMonth = ({ utcString }: { utcString: string }) => {
+  const birthdate = new Date(utcString);
   const currentUtcTime = new Date();
-  const currentYear = currentUtcTime.getUTCFullYear;
-  console.log(currentYear);
-  const month = date.getUTCMonth() + 1; // Month is 0-based, so we add 1
-  const timeDifference = currentUtcTime - date;
-  const yearDifference = Math.floor(
+
+  const timeDifference = currentUtcTime.getTime() - birthdate.getTime();
+  const yearsDifference = Math.floor(
     timeDifference / (365 * 24 * 60 * 60 * 1000)
   );
-  return (
-    <div className="text-xs font-normal text-accent-gray">
-      อายุ {yearDifference} ปี {month} เดือน
-    </div>
+  const remainingMonths = Math.floor(
+    (timeDifference % (365 * 24 * 60 * 60 * 1000)) /
+      (24 * 60 * 60 * 1000) /
+      (365 / 12)
   );
+
+  const years = yearsDifference;
+  const months = remainingMonths;
+
+  return { years, months };
 };
 const smallpetcard = ({
   id,
@@ -35,6 +39,9 @@ const smallpetcard = ({
 }: ISmallPetCardProps) => {
   const genderAns = gender == "male" ? "ผู้" : "เมีย";
   const linkTo = "/pet/" + id;
+  const { years, months } = useMemo(() => {
+    return UtcStringToYearMonth({ utcString: birthdate });
+  }, [birthdate]);
   return (
     <Link to={linkTo}>
       <div className="m-0 h-64 w-44 shrink-0 rounded-2xl bg-white p-3 shadow-md">
@@ -75,7 +82,9 @@ const smallpetcard = ({
                       height="20"
                     />
                   </div>
-                  <UtcStringToList utcString={birthdate} />
+                  <div className="text-xs font-normal text-accent-gray">
+                    อายุ {years} ปี {months} เดือน
+                  </div>
                 </div>
               </div>
               <div
