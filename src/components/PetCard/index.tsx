@@ -1,5 +1,5 @@
 import Button from "@/components/Button";
-import PetDescription from "@/components/PetCard/PetDescription";
+import PetDescriptionText from "@/components/PetCard/PetDescriptionText";
 import TogglePetButton from "@/components/PetCard/TogglePetButton";
 import { Icon } from "@iconify/react";
 import { useState } from "react";
@@ -71,12 +71,12 @@ const PetCard = ({
         </div>
         <div className="flex w-72 flex-row items-end justify-between">
           <div className=" items-center">
-            <PetDescription
+            <PetDescriptionText
               icon={"ph:paw-print"}
               description={`${petGender}, ${age}`}
             />
-            <PetDescription icon={"ph:music-notes"} description={habit} />
-            <PetDescription icon={"ph:medal"} description={petSterile} />
+            <PetDescriptionText icon={"ph:music-notes"} description={habit} />
+            <PetDescriptionText icon={"ph:medal"} description={petSterile} />
           </div>
           <Button
             text={"รับเลี้ยง"}
@@ -110,12 +110,12 @@ const PetCard = ({
         </div>
         <div className="flex w-72 flex-row items-end justify-between">
           <div className=" items-center">
-            <PetDescription
+            <PetDescriptionText
               icon={"ph:paw-print"}
               description={`${petGender}, ${age}`}
             />
-            <PetDescription icon={"ph:music-notes"} description={habit} />
-            <PetDescription icon={"ph:medal"} description={petSterile} />
+            <PetDescriptionText icon={"ph:music-notes"} description={habit} />
+            <PetDescriptionText icon={"ph:medal"} description={petSterile} />
           </div>
           <TogglePetButton
             isVisible={isVisible}
