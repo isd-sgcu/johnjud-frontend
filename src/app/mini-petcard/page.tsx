@@ -28,7 +28,7 @@ const minipetcard = () => {
         return (
           <MinipetCard
             key={petData.id}
-            id = {petData.id}
+            id={petData.id}
             name={petData.name}
             species={petData.species}
             gender={petData.gender}
