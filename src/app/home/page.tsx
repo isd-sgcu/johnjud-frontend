@@ -6,7 +6,7 @@ import Banner from "@/components/Main/Banner";
 import BigPetCardContainer from "@/components/Main/CardList/BigPetCardContainer";
 import MiniPetCardContainer from "@/components/Main/CardList/MiniPetCardContainer";
 import Heading from "@/components/Pets/Heading";
-import Filter from "@/components/Main/SearchFilter/Filter";
+import Filter from "@/components/Main/Filter";
 import Search from "@/components/Search/PetSearchGreen";
 import MainLayout from "@/layouts/MainLayout";
 import { useNavigate } from "react-router-dom";
