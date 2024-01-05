@@ -46,7 +46,7 @@ addIcon("custom:md:cat-gray", {
   height: 21,
 });
 
-addIcon("custom:md:cat-white", {
+addIcon("custom:md:cat-green", {
   body: `
   <svg xmlns="http://www.w3.org/2000/svg" width="38" height="35" viewBox="0 0 38 35" fill="none">
   <g filter="url(#filter0_d_769_2041)">
