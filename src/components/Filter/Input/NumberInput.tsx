@@ -9,7 +9,7 @@ const NumberInput = ({ id, text }: NumberInputProps) => {
   const [value, setValue] = useState<number>(0);
 
   return (
-    <div className="flex cursor-pointer flex-row justify-between gap-2 rounded-full bg-accent-red bg-opacity-80 px-4 py-2 text-white">
+    <div className="bg-accent-red flex cursor-pointer flex-row justify-between gap-2 rounded-full bg-opacity-80 px-4 py-2 text-white">
       <label htmlFor={id}>{text}</label>
       <div className="flex flex-row">
         <button
