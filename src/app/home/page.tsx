@@ -5,17 +5,15 @@ import Divider from "@/components/Divider/Divider";
 import Banner from "@/components/Main/Banner";
 import BigPetCardContainer from "@/components/Main/CardList/BigPetCardContainer";
 import MiniPetCardContainer from "@/components/Main/CardList/MiniPetCardContainer";
-import MobilePetsHeading from "@/components/Main/Heading/MobilePetsHeading";
-import PetsHeading from "@/components/Main/Heading/PetsHeading";
+import Heading from "@/components/Pets/Heading";
 import Filter from "@/components/Main/SearchFilter/Filter";
-import Search from "@/components/Main/SearchFilter/Search";
+import Search from "@/components/Search/PetSearchGreen";
 import MainLayout from "@/layouts/MainLayout";
 import { useNavigate } from "react-router-dom";
 
 // Page
 const MainPage = () => {
   const navigate = useNavigate();
-
   return (
     <>
       <Container className="flex flex-col items-center justify-center md:flex-row md:space-x-9">
@@ -23,7 +21,9 @@ const MainPage = () => {
           <img src={JohnjudImage} alt="Johnjud" className="px-10 py-7" />
         </div>
         <div className="flex w-full flex-col items-center space-y-6 md:items-start">
-          <PetsHeading value={4600} />
+          <div className="hidden md:flex">
+            <Heading onSearch/>
+          </div>
           <Search />
           <Filter />
         </div>
@@ -31,8 +31,8 @@ const MainPage = () => {
       <Container className="flex items-center justify-center md:hidden">
         <Divider />
       </Container>
-      <Container>
-        <MobilePetsHeading value={4600} />
+      <Container className="md:hidden">
+        <Heading onSearch/>
       </Container>
       <Container className="flex justify-center md:justify-between">
         <div className="hidden md:flex md:w-4/12">
