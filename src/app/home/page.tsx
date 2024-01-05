@@ -2,7 +2,6 @@ import JohnjudImage from "@/assets/johnjud-logo-with-text-side.png";
 import Button from "@/components/Button";
 import Container from "@/components/Container";
 import Divider from "@/components/Divider/Divider";
-import DividerMobile from "@/components/Divider/DividerMobile";
 import Banner from "@/components/Main/Banner";
 import BigPetCardContainer from "@/components/Main/CardList/BigPetCardContainer";
 import MiniPetCardContainer from "@/components/Main/CardList/MiniPetCardContainer";
@@ -29,8 +28,10 @@ const MainPage = () => {
           <Filter />
         </div>
       </Container>
+      <Container className="flex items-center justify-center md:hidden">
+        <Divider />
+      </Container>
       <Container>
-        <DividerMobile />
         <MobilePetsHeading value={4600} />
       </Container>
       <Container className="flex justify-center md:justify-between">
@@ -49,14 +50,13 @@ const MainPage = () => {
         />
       </Container>
       <Container>
-        <DividerMobile />
+        <Divider/>
       </Container>
       <Container className="flex md:hidden">
         <Banner imageUrl="https://via.placeholder.com/468x600?text=Your+Ad+Here" />
       </Container>
-      <Container>
+      <Container className="flex items-center justify-center md:hidden">
         <Divider />
-        <DividerMobile />
       </Container>
       <Container>
         <BigPetCardContainer />
