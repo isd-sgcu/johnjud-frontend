@@ -1,4 +1,4 @@
-import { UtcStringToYearMonth } from "@/utils/dateConverter";
+import { UtcStringToYear } from "@/utils/dateConverter";
 import { useMemo } from "react";
 import { Link } from "react-router-dom";
 import BlankPic168x112 from "../../assets/small-petcard/BlankPic168x112.svg";
@@ -24,8 +24,8 @@ const MiniPetCard = ({
   const linkTo = useMemo(() => {
     return "/pet/" + id;
   }, [id]);
-  const { years,months } = useMemo(() => {
-    return UtcStringToYearMonth({ utcString: birthdate });
+  const years = useMemo(() => {
+    return UtcStringToYear({ utcString: birthdate });
   }, [birthdate]);
   // render button with props
   return (
