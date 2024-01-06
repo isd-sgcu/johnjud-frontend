@@ -21,10 +21,10 @@ const Navbar = () => {
     switch (pathname) {
       case "/example":
         header = "JOHNJUD แอดมิน";
-        color = "bg-secondary";
+        color = "bg-accent-red";
         break;
       case "/fortune":
-        color = "bg-johnjud-purple";
+        color = "bg-accent-purple";
         logo = logoSecondary;
         break;
       case "/main":
