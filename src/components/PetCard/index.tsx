@@ -30,7 +30,7 @@ type PetCardProps = {
 };
 
 const PetCard = ({
-  role = "user",
+  role = "admin",
   type = "dog",
   name = "ไรลีย์, พันธุ์แลบราดดอร์",
   status = PetStatus.adopted,
@@ -38,7 +38,7 @@ const PetCard = ({
   age = "อายุ 6 ปี 11 เดือน",
   habit = "นิสัยขี้เล่น",
   isSterile = true,
-  isLiked = true,
+  isLiked = false,
   isVisibled = true,
   onClick,
 }: PetCardProps) => {
@@ -99,10 +99,10 @@ const PetCard = ({
         />
         <div className="mb-2 flex w-72 flex-row items-center justify-between">
           <p className="text-2xl font-bold text-black">{name}</p>
-          <button onClick={() => {}}>
+          <button onClick={() => {}} className="text-accent-red cursor-pointer">
             <Icon
               icon={"ph:pencil-simple"}
-              className="relative h-9 w-9 text-accent-red"
+              className="relative h-9 w-9"
             />
           </button>
         </div>
@@ -116,8 +116,8 @@ const PetCard = ({
             <PetDetail icon={"ph:medal"} description={petSterile} />
           </div>
           <TogglePetButton
-            isVisible={isVisible}
-            onChange={() => setIsVisible(!isVisible)}
+            visibility={isVisible}
+            onChange={()=>{}}
           />
         </div>
       </div>
