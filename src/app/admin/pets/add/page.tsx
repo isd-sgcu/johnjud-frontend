@@ -1,12 +1,12 @@
 import { Icon } from "@iconify/react";
 import { useState } from "react";
-import johnjudLogo from "../../../assets/johnjud-with-text.png";
-import AddSmallPicture from "../../../components/admin/user-create/AddSmallPicture";
-import AddThumpnail from "../../../components/admin/user-create/AddThumpnail";
-import EditInfoAndSubmit from "../../../components/admin/user-create/EditInfoAndSubmit";
-import EditName from "../../../components/admin/user-create/EditName";
-import EditText from "../../../components/admin/user-create/EditText";
-import MainLayout from "../../../layouts/MainLayout";
+import johnjudLogo from "../../../../assets/johnjud-with-text.png";
+import AddSmallPicture from "../../../../components/admin/user-create/AddSmallPicture";
+import AddThumpnail from "../../../../components/admin/user-create/AddThumpnail";
+import EditInfoAndSubmit from "../../../../components/admin/user-create/EditInfoAndSubmit";
+import EditName from "../../../../components/admin/user-create/EditName";
+import EditText from "../../../../components/admin/user-create/EditText";
+import MainLayout from "../../../../layouts/MainLayout";
 
 const userCreate = () => {
   const [name, setName] = useState("กรุณาใส่ชื่อ...");
