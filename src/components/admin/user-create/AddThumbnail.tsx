@@ -53,7 +53,7 @@ const AddThumbnail = (props: AddThumbnailProps) => {
           onChange={handleOnChange}
         />
         <label htmlFor="thumbnailPicturePencil">
-          <Icon icon="custom:pencil" className="h-8 w-8 cursor-pointer" />
+          <Icon icon="custom:pencil" className="h-6 w-6 cursor-pointer" />
         </label>
       </div>
 
