@@ -33,8 +33,7 @@ const userCreate = () => {
       <div className="flex justify-between overflow-clip px-[10%] py-2 lg:col-span-3 lg:px-12">
         <Icon
           icon="ion:chevron-back"
-          color="#08878E"
-          className="mt-1 flex h-8 w-8 flex-none"
+          className="flex h-8 w-8 flex-none text-primary self-center mb-1"
         />
         <div className="visible flex w-full flex-col lg:hidden">
           <EditName value={name} setValue={setName} />

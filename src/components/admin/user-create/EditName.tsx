@@ -34,41 +34,42 @@ const EditName = (props: EditNameProps) => {
   return (
     <div className="relative flex w-full flex-col">
       <div
-        className={`flex w-fit flex-row items-center self-end lg:self-start ${
-          enableEdit ? "hidden" : "visible"
-        }`}
+        className={`flex max-w-full text-pretty flex-row items-center self-end lg:self-start ${enableEdit ? "hidden" : "visible"
+          }`}
       >
         <Icon
           icon="custom:pencil"
-          color="#C81425"
           className="flex h-6 w-6 flex-none cursor-pointer lg:hidden"
           onClick={handleClickEdit}
         />
-        <div className="break-all pl-1 text-right text-3xl font-bold text-primary lg:text-left">
-          {props.value}
+        <div className="relative flex flex-col">
+          <div className="flex break-all pl-1 text-right text-3xl font-bold text-primary lg:text-left">
+            {props.value}
+          </div>
+          <div className="w-full h-[3px] mt-1 bg-primary rounded-full"/>
         </div>
+
         <Icon
           icon="custom:pencil"
-          color="#C81425"
           className="hidden h-6 w-6 flex-none cursor-pointer lg:ml-3 lg:flex"
           onClick={handleClickEdit}
         />
       </div>
 
-      <TextareaAutosize
-        value={props.value}
-        onChange={handleOnChange}
-        className={`flex w-full resize-none text-wrap break-words rounded-lg p-2 text-right text-3xl font-bold text-primary focus:outline-[#D9D9D9] lg:text-left ${
-          enableEdit ? "visible" : "hidden"
-        }`}
-        disabled={!enableEdit}
-        onBlur={handleOnBlur}
-        ref={ref}
-        rows={1}
-        placeholder="กรุณาใส่ชื่อ..."
-      />
-
-      <div className="mt-1 flex w-full max-w-20 self-end rounded-full bg-primary pt-1 lg:max-w-32 lg:self-start" />
+      <div className={"flex flex-row items-center gap-4 " + ((enableEdit) ? "visible" : "hidden")}>
+        <TextareaAutosize
+          value={props.value}
+          onChange={handleOnChange}
+          className={`flex w-full resize-none text-wrap break-words rounded-lg p-2 text-right text-3xl font-bold text-primary focus:outline-[#D9D9D9] lg:text-left ${enableEdit ? "visible" : "hidden"
+            }`}
+          disabled={!enableEdit}
+          onBlur={handleOnBlur}
+          ref={ref}
+          rows={1}
+          placeholder="กรุณาใส่ชื่อ..."
+        />
+        <Icon icon="ph:floppy-disk" className="w-6 h-6 text-accent-red cursor-pointer" />
+      </div>
     </div>
   );
 };
