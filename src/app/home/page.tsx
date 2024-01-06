@@ -7,7 +7,7 @@ import BigPetCardContainer from "@/components/Main/CardList/BigPetCardContainer"
 import MiniPetCardContainer from "@/components/Main/CardList/MiniPetCardContainer";
 import Filter from "@/components/Main/Filter";
 import Heading from "@/components/Pets/Heading";
-import Search from "@/components/Search/PetSearchGreen";
+import Search from "@/components/Search/PetSearch";
 import MainLayout from "@/layouts/MainLayout";
 import { useNavigate } from "react-router-dom";
 
@@ -24,7 +24,7 @@ const MainPage = () => {
           <div className="hidden md:flex">
             <Heading onSearch />
           </div>
-          <Search />
+          <Search variant="green"/>
           <Filter />
         </div>
       </Container>
