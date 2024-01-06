@@ -7,6 +7,7 @@ import EditInfoAndSubmit from "../../../../components/admin/user-create/EditInfo
 import EditName from "../../../../components/admin/user-create/EditName";
 import EditText from "../../../../components/admin/user-create/EditText";
 import MainLayout from "../../../../layouts/MainLayout";
+import Container from "@/components/Container";
 
 const userCreate = () => {
   const [name, setName] = useState("กรุณาใส่ชื่อ...");
@@ -24,7 +25,7 @@ const userCreate = () => {
     sterile: false,
   });
 
-  const handleSubmit = () => {};
+  const handleSubmit = () => { };
 
   return (
     <div className="grid w-screen grid-cols-1 flex-col pb-28 lg:grid-cols-3 lg:pb-20">
@@ -41,22 +42,22 @@ const userCreate = () => {
       </div>
 
       {/* Thumpnail */}
-      <div className="flex h-fit w-full justify-center px-6 pt-8 lg:justify-start lg:pl-[25%] lg:pr-0">
+      <Container className="flex h-fit w-full justify-center px-6 pt-8 lg:justify-start lg:pl-[25%] lg:pr-0 xl:pl-[25%]">
         <AddThumpnail
           valueThumpnail={thumpnail}
           setThumpnail={setThumpnail}
           valueOrigin={origin}
           setOrigin={setOrigin}
         />
-      </div>
+      </Container>
 
       {/* large EditName + EditText */}
-      <div className="flex w-full flex-col px-6 pt-8 lg:col-span-2 lg:justify-between lg:pr-[12.5%]">
+      <Container className="flex w-full flex-col px-6 pt-8 lg:col-span-2 lg:justify-between lg:pr-[12.5%] xl:pr-[12.5%] xl:pl-6">
         <div className="hidden w-full lg:mb-4 lg:flex lg:flex-col">
           <EditName value={name} setValue={setName} />
         </div>
         <EditText value={text} setValue={setText} />
-      </div>
+      </Container>
 
       {/* Small Picture */}
       <div className="flex w-full pl-6 lg:col-span-3 lg:pl-[8.33%]">
@@ -73,9 +74,9 @@ const userCreate = () => {
       </div>
 
       {/* large Logo */}
-      <div className="hidden w-full justify-center object-contain lg:mt-10 lg:flex">
+      <Container className="hidden w-full justify-center object-contain lg:mt-10 lg:flex">
         <img src={johnjudLogo} className="flex h-64 w-44"></img>
-      </div>
+      </Container>
     </div>
   );
 };
