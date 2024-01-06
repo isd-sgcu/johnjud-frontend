@@ -1,15 +1,14 @@
-import React from "react"
 import { Icon } from "@iconify/react";
+import React from "react";
 /*
   for pets page use : @custom:md:bubble-red
   for home page use: @custom:md:bubble-green
-*/ 
+*/
 interface PetSearchProps {
-    variant: "red" | "green";
+  variant: "red" | "green";
 }
 
 const PetSearch: React.FC<PetSearchProps> = ({ variant }) => {
-  
   return (
     <div className="flex w-full flex-row items-center justify-start gap-3 rounded-full bg-white px-6 py-3 shadow">
       <div>
