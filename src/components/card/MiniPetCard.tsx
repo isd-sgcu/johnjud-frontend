@@ -44,7 +44,7 @@ const MiniPetCard = ({
               <div className="text-sm font-normal text-black">{species}</div>
             </div>
           </div>
-          <div className="flex-start items m-0 flex flex-row justify-start gap-1.5 p-0 ">
+          <div className="flex-start items m-0 flex flex-row justify-start gap-1.5 p-0">
             <div className="flex h-6 items-center justify-center rounded-lg bg-accent-blue-variant">
               <div className="px-1.5 text-sm font-semibold text-accent-blue">
                 เพศ{genderAns}

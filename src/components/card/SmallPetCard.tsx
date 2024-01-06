@@ -42,8 +42,8 @@ const smallpetcard = ({
               {name} พันธุ์{species}
             </div>
             <div className="inline-flex w-full flex-row items-end justify-between">
-              <div className="flex-start m-0 flex flex-col justify-center gap-1 p-0 ">
-                <div className="flex-start m-0 flex flex-row items-center justify-start gap-2 p-0 ">
+              <div className="flex-start m-0 flex flex-col justify-center gap-1 p-0">
+                <div className="flex-start m-0 flex flex-row items-center justify-start gap-2 p-0">
                   <div>
                     <Icon
                       icon="ph:paw-print"
@@ -54,7 +54,7 @@ const smallpetcard = ({
                     ตัว{genderAns}
                   </div>
                 </div>
-                <div className="flex-start m-0 flex flex-row items-center justify-start gap-2 p-0 ">
+                <div className="flex-start m-0 flex flex-row items-center justify-start gap-2 p-0">
                   <div>
                     <Icon icon="ph:gift" className="h-5 w-5 text-accent-gray" />
                   </div>
