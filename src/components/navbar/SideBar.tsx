@@ -22,7 +22,7 @@ const SideBar: React.FC<SideBarProps> = ({ color }) => {
       <div>
         <div className="flex flex-col justify-start gap-6">
           <div className="flex cursor-pointer items-center gap-1.5 xl:gap-4">
-            <Icon icon={"ph:house"} color="white" className="h-6 w-6" />
+            <Icon icon="ph:house" color="white" className="h-6 w-6" />
             <span>หน้าหลัก</span>
           </div>
           <div className="flex cursor-pointer items-center gap-1.5 xl:gap-4">
