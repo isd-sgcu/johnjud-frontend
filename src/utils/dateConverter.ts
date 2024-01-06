@@ -17,4 +17,8 @@ const UtcStringToYearMonth = ({ utcString }: { utcString: string }) => {
 
   return { years, months };
 };
-export { UtcStringToYearMonth };
+const UtcStringToYear = ({ utcString }: { utcString: string }) => {
+  const { years } = UtcStringToYearMonth({ utcString });
+  return years;
+};
+export { UtcStringToYear, UtcStringToYearMonth };
