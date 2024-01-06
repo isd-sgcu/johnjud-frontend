@@ -5,10 +5,9 @@ interface PetsHeadingProps {
 }
 
 const Heading: React.FC<PetsHeadingProps> = ({ onSearch }) => {
-  
   // if we search, display "ค้นหาสัตว์เลี้ยง"
   const displayText = useMemo(() => {
-    return onSearch ? "พบสัตว์เลี้ยงทั้งหมด" : "สัตว์เลี้ยงมากกว่า"
+    return onSearch ? "พบสัตว์เลี้ยงทั้งหมด" : "สัตว์เลี้ยงมากกว่า";
   }, [onSearch]);
 
   return (

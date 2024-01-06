@@ -24,7 +24,7 @@ const MainPage = () => {
           <div className="hidden md:flex">
             <Heading onSearch />
           </div>
-          <Search variant="green"/>
+          <Search variant="green" />
           <Filter />
         </div>
       </Container>
