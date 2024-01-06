@@ -16,10 +16,10 @@ const Pets = () => {
   return (
     <>
       <Container>
-        <Heading />
+        <Heading onSearch />
       </Container>
       <Container className="flex flex-row gap-x-4">
-        <PetSearch />
+        <PetSearch variant="red" />
         <div className="relative">
           <PetIcon
             isOpen={isOpenFilterPanel}
