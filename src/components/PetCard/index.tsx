@@ -1,5 +1,5 @@
 import Button from "@/components/Button";
-import PetDescriptionText from "@/components/PetCard/PetDescriptionText";
+import PetDetail from "@/components/PetCard/PetDetail";
 import TogglePetButton from "@/components/PetCard/TogglePetButton";
 import { Icon } from "@iconify/react";
 import { useState } from "react";
@@ -64,19 +64,18 @@ const PetCard = ({
           <button onClick={() => {}}>
             <Icon
               icon={likedHeart}
-              color={"#C81425"}
-              className="relative h-8 w-8"
+              className="relative h-8 w-8 text-accent-red"
             />
           </button>
         </div>
         <div className="flex w-72 flex-row items-end justify-between">
           <div className=" items-center">
-            <PetDescriptionText
+            <PetDetail
               icon={"ph:paw-print"}
               description={`${petGender}, ${age}`}
             />
-            <PetDescriptionText icon={"ph:music-notes"} description={habit} />
-            <PetDescriptionText icon={"ph:medal"} description={petSterile} />
+            <PetDetail icon={"ph:music-notes"} description={habit} />
+            <PetDetail icon={"ph:medal"} description={petSterile} />
           </div>
           <Button
             text={"รับเลี้ยง"}
@@ -103,19 +102,18 @@ const PetCard = ({
           <button onClick={() => {}}>
             <Icon
               icon={"ph:pencil-simple"}
-              color={"#C81425"}
-              className="relative h-9 w-9"
+              className="relative h-9 w-9 text-accent-red"
             />
           </button>
         </div>
         <div className="flex w-72 flex-row items-end justify-between">
           <div className=" items-center">
-            <PetDescriptionText
+            <PetDetail
               icon={"ph:paw-print"}
               description={`${petGender}, ${age}`}
             />
-            <PetDescriptionText icon={"ph:music-notes"} description={habit} />
-            <PetDescriptionText icon={"ph:medal"} description={petSterile} />
+            <PetDetail icon={"ph:music-notes"} description={habit} />
+            <PetDetail icon={"ph:medal"} description={petSterile} />
           </div>
           <TogglePetButton
             isVisible={isVisible}
