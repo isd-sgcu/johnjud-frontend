@@ -1,12 +1,15 @@
-import React from "react";
+import React, { useMemo } from "react";
 
 interface PetsHeadingProps {
   onSearch: boolean;
 }
 
 const Heading: React.FC<PetsHeadingProps> = ({ onSearch }) => {
+  
   // if we search, display "ค้นหาสัตว์เลี้ยง"
-  const displayText = onSearch ? "พบสัตว์เลี้ยงทั้งหมด" : "สัตว์เลี้ยงมากกว่า";
+  const displayText = useMemo(() => {
+    return onSearch ? "พบสัตว์เลี้ยงทั้งหมด" : "สัตว์เลี้ยงมากกว่า"
+  }, [onSearch]);
 
   return (
     <div className="flex flex-col items-center justify-center">
