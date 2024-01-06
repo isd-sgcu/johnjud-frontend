@@ -4,6 +4,7 @@ import hamburgerIcon from "../../assets/navbar/hamburger.svg";
 import logoPrimary from "../../assets/navbar/logoPrimary.svg";
 import logoSecondary from "../../assets/navbar/logoSecondary.svg";
 import SideBarWrapper from "./SideBarWrapper";
+import { Icon } from "@iconify/react/dist/iconify.js";
 
 const Navbar = () => {
   const [toggle, setToggle] = useState(false);
@@ -52,11 +53,11 @@ const Navbar = () => {
           JOHNJUD
         </div>
       </div>
-      <img
-        src={hamburgerIcon}
-        alt="hamburger-icon"
+      <Icon 
+        icon="radix-icons:hamburger-menu" 
+        color="white" 
+        className="h-8 w-8 xl:h-12 xl:w-12 cursor-pointer"
         onClick={() => setToggle(true)}
-        className="xl:w-15 h-8 w-8 cursor-pointer"
       />
       <SideBarWrapper setToggle={setToggle} color={style.color} toggle={toggle} />
     </div>
