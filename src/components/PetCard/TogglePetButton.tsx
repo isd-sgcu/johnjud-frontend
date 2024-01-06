@@ -1,41 +1,52 @@
-interface TogglePetButtonProps {
-  isVisible: boolean;
-  rounded?: "none" | "2xl";
+import { useState } from "react";
+import { tv } from "tailwind-variants";
+
+interface ToggleProps {
+  visibility: boolean;
   className?: string;
-  onChange: () => void;
+  onChange?: () => void;
 }
 
-const ToggleSwitch = ({ isVisible, onChange }: TogglePetButtonProps) => {
-  const toggleClass = "transfrom translate-x-2";
+const toggleSwitch = tv({
+  slots: {
+    base: "flex w-24 cursor-pointer items-center rounded-[20px] p-2",
+    switchStyle:
+      "min-h-9 min-w-9 transform rounded-full bg-white transition duration-500",
+    textStyle:
+      "text-[10px] text-center text-white transition duration-500 font-normal ",
+  },
+  variants: {
+    variant: {
+      enabled: {
+        base: "bg-teal-600",
+        switchStyle: "transform translate-x-11",
+        textStyle: "transfrom -translate-x-8",
+      },
+      disabled: {
+        base: "bg-accent-red",
+      },
+    },
+  },
+});
+
+const TogglePetButton = ({ visibility, onChange }: ToggleProps) => {
+  const { base, switchStyle, textStyle } = toggleSwitch();
+  const [isVisible, setIsVisible] = useState(visibility);
+  const variant = isVisible ? "enabled" : "disabled";
+  const text = isVisible ? "มองเห็น" : "ปิดการมองเห็น";
+
   return (
     <div
-      onClick={onChange}
-      className={`flex min-h-10 w-24 transform cursor-pointer items-center rounded-[20px] p-2 ${
-        isVisible ? "bg-teal-600" : "bg-accent-red"
-      }`}
+      className={base({ variant })}
+      onClick={() => {
+        onChange;
+        setIsVisible(!isVisible);
+      }}
     >
-      <div
-        className={`text-center text-xs text-white  ${
-          isVisible ? "block" : "hidden"
-        }`}
-      >
-        มองเห็น
-      </div>
-      <div
-        className={`min-h-9 min-w-9 transform rounded-full bg-white transition duration-500 ${
-          isVisible ? toggleClass : null
-        }`}
-      ></div>
-
-      <div
-        className={`text-center text-xs text-white ${
-          isVisible ? "hidden" : "block"
-        }`}
-      >
-        ปิดการมองเห็น
-      </div>
+      <div className={switchStyle({ variant })}></div>
+      <p className={textStyle({ variant })}>{text}</p>
     </div>
   );
 };
 
-export default ToggleSwitch;
+export default TogglePetButton;
