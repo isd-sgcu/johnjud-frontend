@@ -1,6 +1,6 @@
 import background from "@/assets/background/background.png";
 import Footer from "@/components/Footer";
-import Navbar from "@/components/navbar/index";
+import Navbar from "@/components/Navbar";
 
 type MainLayoutProps = {
   children: React.ReactNode;
