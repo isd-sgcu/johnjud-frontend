@@ -8,41 +8,48 @@ import SideBarWrapper from "./SideBarWrapper";
 const Navbar = () => {
   const [toggle, setToggle] = useState(false);
   const pathname = useLocation().pathname;
-
-  let header = "JOHNJUD";
-  let color = "bg-primary";
-  let logo = logoPrimary;
+  const [style, setStyle] = useState({
+    color : "bg-primary",
+    logo : logoPrimary
+  })
 
   useMemo(() => {
-    header = "JOHNJUD";
-    color = "bg-primary";
-    logo = logoPrimary;
-
     switch (pathname) {
-      case "/example":
-        header = "JOHNJUD แอดมิน";
-        color = "bg-accent-red";
+      case "/admin":
+        setStyle({
+          color : "bg-accent-red",
+          logo : logoPrimary
+        });
         break;
-      case "/fortune":
-        color = "bg-accent-purple";
-        logo = logoSecondary;
+      case "/horo":
+        setStyle({
+          color : "bg-accent-purple",
+          logo : logoSecondary
+        });
         break;
-      case "/main":
-        logo = "";
+      case "/no-logo":
+        setStyle({
+          color: "bg-primary",
+          logo : ""
+        });
+        break;
+      default :
+        setStyle({
+          color: "bg-primary",
+          logo : logoPrimary
+        });
         break;
     }
   }, [pathname]);
 
   return (
-    <div
-      className={`flex items-center justify-between px-4 py-3 transition-all xl:px-8 xl:py-6 ${color}`}
-    >
+    <div className={`flex items-center justify-between px-4 py-3 transition-all xl:px-8 xl:py-6 ${style.color}`}>
       <div className="h-18 flex items-center gap-3 ">
-        {logo && (
-          <img src={logo} alt="logo" className="h-12 w-12 xl:h-16 xl:w-16" />
+        {style.logo && (
+          <img src={style.logo} alt="logo" className="h-12 w-12 xl:h-16 xl:w-16" />
         )}
         <div className="cursor-pointer text-lg font-bold text-white xl:text-2xl">
-          {header}
+          JOHNJUD
         </div>
       </div>
       <img
@@ -51,7 +58,7 @@ const Navbar = () => {
         onClick={() => setToggle(true)}
         className="xl:w-15 h-8 w-8 cursor-pointer"
       />
-      <SideBarWrapper setToggle={setToggle} color={color} toggle={toggle} />
+      <SideBarWrapper setToggle={setToggle} color={style.color} toggle={toggle} />
     </div>
   );
 };
