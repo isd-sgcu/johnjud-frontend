@@ -82,7 +82,6 @@ const EditInfoAndSubmit = (props: EditInfoAndSubmitProps) => {
                 <div ref={pencilRef} tabIndex={0}>
                   <Icon
                     icon="custom:pencil"
-                    color="#C81425"
                     className="ml-2 flex h-8 w-8 flex-none cursor-pointer"
                     onClick={handleOnClick}
                   />
@@ -94,7 +93,7 @@ const EditInfoAndSubmit = (props: EditInfoAndSubmitProps) => {
             {/* Gender */}
             <div className="flex flex-row items-start">
               <div className="flex flex-row items-center">
-                <Icon icon="ph:paw-print" className="h-5 w-5" color="#08878E" />
+                <Icon icon="ph:paw-print" className="h-5 w-5 text-primary" />
                 <span className="ml-1 text-primary">เพศ:</span>
               </div>
               <TextareaAutosize
@@ -112,7 +111,7 @@ const EditInfoAndSubmit = (props: EditInfoAndSubmitProps) => {
             {/* Breed */}
             <div className="flex flex-row items-start">
               <div className="flex flex-row items-center">
-                <Icon icon="ph:star" className="h-5 w-5" color="#08878E" />
+                <Icon icon="ph:star" className="h-5 w-5 text-primary" />
                 <span className="ml-1 text-primary">พันธุ์:</span>
               </div>
               <TextareaAutosize
@@ -132,8 +131,7 @@ const EditInfoAndSubmit = (props: EditInfoAndSubmitProps) => {
               <div className="flex flex-row items-center">
                 <Icon
                   icon="carbon:calendar"
-                  className="h-5 w-5"
-                  color="#08878E"
+                  className="h-5 w-5 text-primary"
                 />
                 <span className="ml-1 text-primary">อายุ:</span>
               </div>
@@ -154,8 +152,7 @@ const EditInfoAndSubmit = (props: EditInfoAndSubmitProps) => {
               <div className="flex flex-row items-center">
                 <Icon
                   icon="ph:music-notes"
-                  className="h-5 w-5"
-                  color="#08878E"
+                  className="h-5 w-5 text-primary"
                 />
                 <span className="ml-1 text-primary">นิสัย:</span>
               </div>
