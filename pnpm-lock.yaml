@@ -11,9 +11,6 @@ dependencies:
   '@headlessui/react':
     specifier: ^1.7.17
     version: 1.7.17(react-dom@18.2.0)(react@18.2.0)
-  '@iconify/react':
-    specifier: ^4.1.1
-    version: 4.1.1(react@18.2.0)
   eslint-import-resolver-typescript:
     specifier: ^3.6.1
     version: 3.6.1(@typescript-eslint/parser@6.15.0)(eslint-plugin-import@2.29.1)(eslint@8.56.0)
@@ -26,14 +23,14 @@ dependencies:
   react:
     specifier: ^18.2.0
     version: 18.2.0
-  react-autosize-textarea:
-    specifier: ^7.1.0
-    version: 7.1.0(react-dom@18.2.0)(react@18.2.0)
   react-dom:
     specifier: ^18.2.0
     version: 18.2.0(react@18.2.0)
 
 devDependencies:
+  '@iconify/react':
+    specifier: ^4.1.1
+    version: 4.1.1(react@18.2.0)
   '@iconify/tools':
     specifier: ^4.0.0
     version: 4.0.0
@@ -91,6 +88,9 @@ devDependencies:
   postcss:
     specifier: ^8.4.32
     version: 8.4.32
+  react-autosize-textarea:
+    specifier: ^7.1.0
+    version: 7.1.0(react-dom@18.2.0)(react@18.2.0)
   react-router-dom:
     specifier: ^6.21.0
     version: 6.21.0(react-dom@18.2.0)(react@18.2.0)
@@ -644,7 +644,7 @@ packages:
     dependencies:
       '@iconify/types': 2.0.0
       react: 18.2.0
-    dev: false
+    dev: true
 
   /@iconify/tools@4.0.0:
     resolution: {integrity: sha512-/NMAuWm9njrEpTfxIgTapaHW2JdgcEAOQgpWMHPD4/gOgmK7qrVjPkGj9pPcoBjEDotISsffv51F6nj4QvaJ6Q==}
@@ -666,6 +666,7 @@ packages:
 
   /@iconify/types@2.0.0:
     resolution: {integrity: sha512-+wluvCrRhXrhyOmRDJ3q8mux9JkKy5SJ/v8ol2tu4FVjyYvtEzkc/3pK15ET6RKg4b4w4BmTk1+gsCUhf21Ykg==}
+    dev: true
 
   /@iconify/utils@2.1.14:
     resolution: {integrity: sha512-9pKIntkbLbjVVFxH32td21Am3AGGJfyI2KY2d8yDQxkZe4BBZtufJI8NgcamFn8B5QKLU9ai2VMo8OEov8jAtw==}
@@ -1230,7 +1231,7 @@ packages:
 
   /autosize@4.0.4:
     resolution: {integrity: sha512-5yxLQ22O0fCRGoxGfeLSNt3J8LB1v+umtpMnPW6XjkTWXKoN0AmXAIhelJcDtFT/Y/wYWmfE+oqU10Q0b8FhaQ==}
-    dev: false
+    dev: true
 
   /available-typed-arrays@1.0.5:
     resolution: {integrity: sha512-DMD0KiN46eipeziST1LPP/STfDU0sufISXmjSgvVsoU2tqxctQeASejWcfNtxYKqETM1UxQ8sp2OrSBWpHY6sw==}
@@ -1453,7 +1454,7 @@ packages:
 
   /computed-style@0.1.4:
     resolution: {integrity: sha512-WpAmaKbMNmS3OProfHIdJiNleNJdgUrJfbKArXua28QF7+0CoZjlLn0lp6vlc+dl5r2/X9GQiQRQQU4BzSa69w==}
-    dev: false
+    dev: true
 
   /concat-map@0.0.1:
     resolution: {integrity: sha512-/Srv4dswyQNBfohGpz9o6Yb3Gz3SrUDqBH5rTuhGR7ahtlbYKnVxw2bCFMRljaA7EXHaXZ8wsHdodFvbkhKmqg==}
@@ -2821,7 +2822,7 @@ packages:
     engines: {node: '>= 4.0.0'}
     dependencies:
       computed-style: 0.1.4
-    dev: false
+    dev: true
 
   /lines-and-columns@1.2.4:
     resolution: {integrity: sha512-7ylylesZQ/PV29jhEDl3Ufjo6ZX7gCqJr5F7PKrqc93v7fzSymt1BpwEU8nAUXs8qzzvqhbjhK5QZg6Mt/HkBg==}
@@ -3034,6 +3035,7 @@ packages:
   /object-assign@4.1.1:
     resolution: {integrity: sha512-rJgTQnkUnH1sFw8yT6VSU3zD3sWmu6sZhIseY8VX+GRu3P6F7Fu+JNDoXfklElbLJSnc3FUQHVe4cU5hj+BcUg==}
     engines: {node: '>=0.10.0'}
+    dev: true
 
   /object-hash@3.0.0:
     resolution: {integrity: sha512-RSn9F68PjH9HqtltsSnqYC1XXoWe9Bju5+213R98cNGttag9q9yAOTzdbsqvIa7aNm5WffBZFpWYr2aWrklWAw==}
@@ -3421,6 +3423,7 @@ packages:
       loose-envify: 1.4.0
       object-assign: 4.1.1
       react-is: 16.13.1
+    dev: true
 
   /proxy-from-env@1.1.0:
     resolution: {integrity: sha512-D+zkORCbA9f1tdWRK0RaCR3GPv50cMxcrz4X8k5LTSUD1Dkw47mKJEZQNunItRTkWwgtaUSo1RVFRIG9ZXiFYg==}
@@ -3451,7 +3454,7 @@ packages:
       prop-types: 15.8.1
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
-    dev: false
+    dev: true
 
   /react-dom@18.2.0(react@18.2.0):
     resolution: {integrity: sha512-6IMTriUmvsjHUjNtEDudZfuDQUoWXVxKHhlEGSk81n4YFS+r/Kl99wXiwlVXtPBtJenozv2P+hxDsw9eA7Xo6g==}
@@ -3464,6 +3467,7 @@ packages:
 
   /react-is@16.13.1:
     resolution: {integrity: sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==}
+    dev: true
 
   /react-refresh@0.14.0:
     resolution: {integrity: sha512-wViHqhAd8OHeLS/IRMJjTSDHF3U9eWi62F/MledQGPdJGDhodXJ9PBLNGr6WWL7qlH12Mt3TyTpbS+hGXMjCzQ==}
