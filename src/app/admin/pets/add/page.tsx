@@ -2,7 +2,7 @@ import { Icon } from "@iconify/react";
 import { useState } from "react";
 import johnjudLogo from "../../../../assets/johnjud-with-text.png";
 import AddSmallPicture from "../../../../components/admin/user-create/AddSmallPicture";
-import AddThumpnail from "../../../../components/admin/user-create/AddThumpnail";
+import AddThumbnail from "../../../../components/admin/user-create/AddThumbnail";
 import EditInfoAndSubmit from "../../../../components/admin/user-create/EditInfoAndSubmit";
 import EditName from "../../../../components/admin/user-create/EditName";
 import EditText from "../../../../components/admin/user-create/EditText";
@@ -12,7 +12,7 @@ import Container from "@/components/Container";
 const userCreate = () => {
   const [name, setName] = useState("กรุณาใส่ชื่อ...");
   const [text, setText] = useState("");
-  const [thumpnail, setThumpnail] = useState<File | null>(null);
+  const [thumbnail, setThumbnail] = useState<File | null>(null);
   const [origin, setOrigin] = useState("fromClub");
   // origin : fromClub / fromOutside
   const [pictures, setPictures] = useState<File[]>([]);
@@ -43,9 +43,9 @@ const userCreate = () => {
 
       {/* Thumpnail */}
       <Container className="flex h-fit w-full justify-center px-6 pt-8 lg:justify-start lg:pl-[25%] lg:pr-0 xl:pl-[25%]">
-        <AddThumpnail
-          valueThumpnail={thumpnail}
-          setThumpnail={setThumpnail}
+        <AddThumbnail
+          valueThumbnail={thumbnail}
+          setThumbnail={setThumbnail}
           valueOrigin={origin}
           setOrigin={setOrigin}
         />
