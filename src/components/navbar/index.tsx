@@ -1,8 +1,7 @@
-import { useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
-import hamburgerIcon from "../../assets/navbar/hamburger.svg";
-import logoPrimary from "../../assets/navbar/logoPrimary.svg";
-import logoSecondary from "../../assets/navbar/logoSecondary.svg";
+import logoPrimary from "../../assets/Navbar/logoPrimary.svg";
+import logoSecondary from "../../assets/Navbar/logoSecondary.svg";
 import SideBarWrapper from "./SideBarWrapper";
 import { Icon } from "@iconify/react/dist/iconify.js";
 
@@ -14,7 +13,7 @@ const Navbar = () => {
     logo : logoPrimary
   })
 
-  useMemo(() => {
+  useEffect(() => {
     switch (pathname) {
       case "/admin":
         setStyle({
