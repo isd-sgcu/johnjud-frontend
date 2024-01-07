@@ -1,7 +1,6 @@
 import { Icon } from "@iconify/react/dist/iconify.js";
 
 interface ToggleInputInfoProps {
-    type: string,
     value: boolean,
     onClick: () => void,
     onBlur: (event: React.FocusEvent<HTMLTextAreaElement | HTMLDivElement>) => void,

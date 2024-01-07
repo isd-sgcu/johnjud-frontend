@@ -1,8 +1,8 @@
 import Button from "@/components/Button";
 import { Icon } from "@iconify/react";
 import { useRef, useState } from "react";
-import TextareaAutosize from "react-autosize-textarea";
 import ToggleInputInfo from "./ToggleInputInfo";
+import TextInputInfo from "./TextInputInfo";
 
 export type info = {
   gender: string;
@@ -107,79 +107,54 @@ const EditInfoAndSubmit = (props: EditInfoAndSubmitProps) => {
         <div className="mt-4 flex flex-col lg:grid lg:grid-cols-2 lg:divide-x-2">
           <div className="flex flex-col space-y-3 lg:space-y-4 lg:pr-8">
             {/* Gender */}
-            <div className="flex flex-row items-start">
-              <div className="flex flex-row items-center">
-                <Icon icon="ph:paw-print" className="h-5 w-5 text-primary" />
-                <span className="ml-1 text-primary">เพศ:</span>
-              </div>
-              <TextareaAutosize
-                className={`ml-3 w-full rounded-lg bg-white px-2 font-semibold ${enableEdit ? "border border-[#D9D9D9]" : ""
-                  }`}
-                value={showInfo.gender}
-                disabled={!enableEdit}
-                onBlur={handleOnBlur}
-                ref={ref.gender}
-                onChange={(event) => handleOnChange(event, "gender")}
-              />
-            </div>
+            <TextInputInfo 
+              text="เพศ:"
+              value={showInfo.gender}
+              enableEdit={enableEdit}
+              onBlur={handleOnBlur}
+              onChange={(event) => handleOnChange(event, "gender")}
+              inputRef={ref.gender}
+              icon={"ph:paw-print"}
+            />
 
             {/* Breed */}
-            <div className="flex flex-row items-start">
-              <div className="flex flex-row items-center">
-                <Icon icon="ph:star" className="h-5 w-5 text-primary" />
-                <span className="ml-1 text-primary">พันธุ์:</span>
-              </div>
-              <TextareaAutosize
-                className={`ml-3 w-full rounded-lg bg-white px-2 font-semibold ${enableEdit ? "border border-[#D9D9D9]" : ""
-                  }`}
-                value={showInfo.breed}
-                disabled={!enableEdit}
-                onBlur={handleOnBlur}
-                ref={ref.breed}
-                onChange={(event) => handleOnChange(event, "breed")}
-              />
-            </div>
+            <TextInputInfo 
+              text="พันธุ์:"
+              value={showInfo.breed}
+              enableEdit={enableEdit}
+              onBlur={handleOnBlur}
+              onChange={(event) => handleOnChange(event, "breed")}
+              inputRef={ref.breed}
+              icon={"ph:star"}
+            />
 
             {/* Age */}
-            <div className="flex flex-row items-start">
-              <div className="flex flex-row items-center">
-                <Icon icon="carbon:calendar" className="h-5 w-5 text-primary" />
-                <span className="ml-1 text-primary">อายุ:</span>
-              </div>
-              <TextareaAutosize
-                className={`ml-3 w-full rounded-lg bg-white px-2 font-semibold ${enableEdit ? "border border-[#D9D9D9]" : ""
-                  }`}
-                value={showInfo.age}
-                disabled={!enableEdit}
-                onBlur={handleOnBlur}
-                ref={ref.age}
-                onChange={(event) => handleOnChange(event, "age")}
-              />
-            </div>
+            <TextInputInfo 
+              text="อายุ:"
+              value={showInfo.age}
+              enableEdit={enableEdit}
+              onBlur={handleOnBlur}
+              onChange={(event) => handleOnChange(event, "age")}
+              inputRef={ref.age}
+              icon={"carbon:calendar"}
+            />
 
             {/* Nature */}
-            <div className="flex flex-row items-start">
-              <div className="flex flex-row items-center">
-                <Icon icon="ph:music-notes" className="h-5 w-5 text-primary" />
-                <span className="ml-1 text-primary">นิสัย:</span>
-              </div>
-              <TextareaAutosize
-                className={`ml-3 w-full rounded-lg bg-white px-2 font-semibold ${enableEdit ? "border border-[#D9D9D9]" : ""
-                  }`}
-                value={showInfo.nature}
-                disabled={!enableEdit}
-                onBlur={handleOnBlur}
-                ref={ref.nature}
-                onChange={(event) => handleOnChange(event, "nature")}
-              />
-            </div>
+            <TextInputInfo 
+              text="นิสัย:"
+              value={showInfo.nature}
+              enableEdit={enableEdit}
+              onBlur={handleOnBlur}
+              onChange={(event) => handleOnChange(event, "nature")}
+              inputRef={ref.nature}
+              icon={"ph:music-notes"}
+            />
           </div>
 
           <div className="mt-3 flex flex-col lg:justify-between lg:px-[10%]">
             <div className="flex flex-row flex-wrap justify-center gap-4 lg:flex-col">
               {/* Vaccine */}
               <ToggleInputInfo 
-                type="vaccine"
                 value={showInfo["vaccine"]}
                 onClick={() => handleOnClickButton("vaccine")}
                 onBlur={handleOnBlur}
@@ -190,7 +165,6 @@ const EditInfoAndSubmit = (props: EditInfoAndSubmitProps) => {
               
               {/* Sterile */}
               <ToggleInputInfo 
-                type="sterile"
                 value={showInfo["sterile"]}
                 onClick={() => handleOnClickButton("sterile")}
                 onBlur={handleOnBlur}
@@ -201,7 +175,7 @@ const EditInfoAndSubmit = (props: EditInfoAndSubmitProps) => {
             </div>
 
             {/* Post Buttom */}
-            <Button className="w-full text-2xl font-semibold mt-6" text="โพสต์เลย" onClick={props.onSubmit} variant="accent-red" rounded="2xl" />
+            <Button className="w-full text-2xl font-semibold mt-6" text="โพสต์เลย" onClick={props.onSubmit} variant="accent-red" rounded="full" />
           </div>
         </div>
       </div>
