@@ -1,8 +1,8 @@
 import Button from "@/components/Button";
 import { Icon } from "@iconify/react";
 import { useRef, useState } from "react";
-import ToggleInputInfo from "./ToggleInputInfo";
 import TextInputInfo from "./TextInputInfo";
+import ToggleInputInfo from "./ToggleInputInfo";
 
 export type info = {
   gender: string;
@@ -107,7 +107,7 @@ const EditInfoAndSubmit = (props: EditInfoAndSubmitProps) => {
         <div className="mt-4 flex flex-col lg:grid lg:grid-cols-2 lg:divide-x-2">
           <div className="flex flex-col space-y-3 lg:space-y-4 lg:pr-8">
             {/* Gender */}
-            <TextInputInfo 
+            <TextInputInfo
               text="เพศ:"
               value={showInfo.gender}
               enableEdit={enableEdit}
@@ -118,7 +118,7 @@ const EditInfoAndSubmit = (props: EditInfoAndSubmitProps) => {
             />
 
             {/* Breed */}
-            <TextInputInfo 
+            <TextInputInfo
               text="พันธุ์:"
               value={showInfo.breed}
               enableEdit={enableEdit}
@@ -129,7 +129,7 @@ const EditInfoAndSubmit = (props: EditInfoAndSubmitProps) => {
             />
 
             {/* Age */}
-            <TextInputInfo 
+            <TextInputInfo
               text="อายุ:"
               value={showInfo.age}
               enableEdit={enableEdit}
@@ -140,7 +140,7 @@ const EditInfoAndSubmit = (props: EditInfoAndSubmitProps) => {
             />
 
             {/* Nature */}
-            <TextInputInfo 
+            <TextInputInfo
               text="นิสัย:"
               value={showInfo.nature}
               enableEdit={enableEdit}
@@ -154,28 +154,36 @@ const EditInfoAndSubmit = (props: EditInfoAndSubmitProps) => {
           <div className="mt-3 flex flex-col lg:justify-between lg:px-[10%]">
             <div className="flex flex-row flex-wrap justify-center gap-4 lg:flex-col">
               {/* Vaccine */}
-              <ToggleInputInfo 
+              <ToggleInputInfo
                 value={showInfo["vaccine"]}
                 onClick={() => handleOnClickButton("vaccine")}
                 onBlur={handleOnBlur}
                 inputRef={ref.vaccine}
                 enableEdit={enableEdit}
                 icon={"ph:eyedropper"}
-                text={"ฉีดวัคซีนแล้ว"} />
-              
+                text={"ฉีดวัคซีนแล้ว"}
+              />
+
               {/* Sterile */}
-              <ToggleInputInfo 
+              <ToggleInputInfo
                 value={showInfo["sterile"]}
                 onClick={() => handleOnClickButton("sterile")}
                 onBlur={handleOnBlur}
                 inputRef={ref.sterile}
                 enableEdit={enableEdit}
                 icon={"ph:medal"}
-                text={"ทำหมันแล้ว"} />
+                text={"ทำหมันแล้ว"}
+              />
             </div>
 
             {/* Post Buttom */}
-            <Button className="w-full text-2xl font-semibold mt-6" text="โพสต์เลย" onClick={props.onSubmit} variant="accent-red" rounded="full" />
+            <Button
+              className="mt-6 w-full text-2xl font-semibold"
+              text="โพสต์เลย"
+              onClick={props.onSubmit}
+              variant="accent-red"
+              rounded="full"
+            />
           </div>
         </div>
       </div>
