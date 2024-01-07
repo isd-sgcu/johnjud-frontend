@@ -1,3 +1,4 @@
+import Container from "@/components/Container";
 import { Icon } from "@iconify/react";
 import { useState } from "react";
 import johnjudLogo from "../../../../assets/johnjud-with-text.png";
@@ -7,7 +8,6 @@ import EditInfoAndSubmit from "../../../../components/admin/user-create/EditInfo
 import EditName from "../../../../components/admin/user-create/EditName";
 import EditText from "../../../../components/admin/user-create/EditText";
 import MainLayout from "../../../../layouts/MainLayout";
-import Container from "@/components/Container";
 
 const userCreate = () => {
   const [name, setName] = useState("กรุณาใส่ชื่อ...");
@@ -25,7 +25,7 @@ const userCreate = () => {
     sterile: false,
   });
 
-  const handleSubmit = () => { };
+  const handleSubmit = () => {};
 
   return (
     <div className="grid w-screen grid-cols-1 flex-col pb-28 lg:grid-cols-3 lg:pb-20">
@@ -33,7 +33,7 @@ const userCreate = () => {
       <div className="flex justify-between overflow-clip px-[10%] py-2 lg:col-span-3 lg:px-12">
         <Icon
           icon="ion:chevron-back"
-          className="flex h-8 w-8 flex-none text-primary self-center mb-1"
+          className="mb-1 flex h-8 w-8 flex-none self-center text-primary"
         />
         <div className="visible flex w-full flex-col lg:hidden">
           <EditName value={name} setValue={setName} />
@@ -51,7 +51,7 @@ const userCreate = () => {
       </Container>
 
       {/* large EditName + EditText */}
-      <Container className="flex w-full flex-col px-6 pt-8 lg:col-span-2 lg:justify-between lg:pr-[12.5%] xl:pr-[12.5%] xl:pl-6">
+      <Container className="flex w-full flex-col px-6 pt-8 lg:col-span-2 lg:justify-between lg:pr-[12.5%] xl:pl-6 xl:pr-[12.5%]">
         <div className="hidden w-full lg:mb-4 lg:flex lg:flex-col">
           <EditName value={name} setValue={setName} />
         </div>

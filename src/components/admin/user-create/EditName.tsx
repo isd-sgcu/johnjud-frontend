@@ -13,13 +13,13 @@ const EditName = (props: EditNameProps) => {
 
   const handleClickEdit = () => {
     setEnableEdit(true);
-    setShowName(props.value)
+    setShowName(props.value);
   };
   const handleOnBlur = (event: React.FocusEvent<HTMLTextAreaElement>) => {
     setEnableEdit(false);
     const currentFocus = event.relatedTarget;
     if (currentFocus && currentFocus === saveRef.current) {
-      props.setValue(showName)
+      props.setValue(showName);
     }
   };
 
@@ -41,8 +41,9 @@ const EditName = (props: EditNameProps) => {
   return (
     <div className="relative flex w-full flex-col">
       <div
-        className={`flex max-w-full text-pretty flex-row items-center self-end lg:self-start ${enableEdit ? "hidden" : "visible"
-          }`}
+        className={`flex max-w-full flex-row items-center self-end text-pretty lg:self-start ${
+          enableEdit ? "hidden" : "visible"
+        }`}
       >
         <Icon
           icon="custom:pencil"
@@ -53,7 +54,7 @@ const EditName = (props: EditNameProps) => {
           <div className="flex break-all pl-1 text-right text-3xl font-bold text-primary lg:text-left">
             {props.value}
           </div>
-          <div className="w-full h-[3px] mt-1 bg-primary rounded-full"/>
+          <div className="mt-1 h-[3px] w-full rounded-full bg-primary" />
         </div>
 
         <Icon
@@ -63,12 +64,18 @@ const EditName = (props: EditNameProps) => {
         />
       </div>
 
-      <div className={"flex flex-row items-center gap-4 " + ((enableEdit) ? "visible" : "hidden")}>
+      <div
+        className={
+          "flex flex-row items-center gap-4 " +
+          (enableEdit ? "visible" : "hidden")
+        }
+      >
         <TextareaAutosize
           value={showName}
           onChange={handleOnChange}
-          className={`flex w-full resize-none text-wrap break-words rounded-lg p-2 text-right text-3xl font-bold text-primary focus:outline-[#D9D9D9] lg:text-left ${enableEdit ? "visible" : "hidden"
-            }`}
+          className={`flex w-full resize-none text-wrap break-words rounded-lg p-2 text-right text-3xl font-bold text-primary focus:outline-[#D9D9D9] lg:text-left ${
+            enableEdit ? "visible" : "hidden"
+          }`}
           disabled={!enableEdit}
           onBlur={handleOnBlur}
           ref={ref}
@@ -76,9 +83,11 @@ const EditName = (props: EditNameProps) => {
           placeholder="กรุณาใส่ชื่อ..."
         />
         <div ref={saveRef} tabIndex={0}>
-          <Icon icon="ph:floppy-disk" className="w-6 h-6 text-accent-red cursor-pointer" />
+          <Icon
+            icon="ph:floppy-disk"
+            className="h-6 w-6 cursor-pointer text-accent-red"
+          />
         </div>
-        
       </div>
     </div>
   );
