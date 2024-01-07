@@ -1,5 +1,5 @@
 import { Icon } from "@iconify/react/dist/iconify.js";
-import { useEffect, useState } from "react";
+import { useMemo, useState } from "react";
 import { useLocation } from "react-router-dom";
 import logoPrimary from "@/assets/Navbar/logoPrimary.svg";
 import logoSecondary from "@/assets/Navbar/logoSecondary.svg";
@@ -8,39 +8,31 @@ import SideBarWrapper from "./SideBarWrapper";
 const Navbar = () => {
   const [toggle, setToggle] = useState(false);
   const pathname = useLocation().pathname;
-  const [style, setStyle] = useState({
-    color: "bg-primary",
-    logo: logoPrimary,
-  });
-
-  useEffect(() => {
+  const style = useMemo(() => {
     switch (pathname) {
       case "/admin":
-        setStyle({
+        return {
           color: "bg-accent-red",
           logo: logoPrimary,
-        });
-        break;
+        };
       case "/horo":
-        setStyle({
+        return{
           color: "bg-accent-purple",
           logo: logoSecondary,
-        });
-        break;
+        };
       case "/no-logo":
-        setStyle({
+        return{
           color: "bg-primary",
           logo: "",
-        });
-        break;
+        };
       default:
-        setStyle({
+        return{
           color: "bg-primary",
           logo: logoPrimary,
-        });
-        break;
+        };
     }
-  }, [pathname]);
+  } ,[pathname]);
+
 
   return (
     <div
