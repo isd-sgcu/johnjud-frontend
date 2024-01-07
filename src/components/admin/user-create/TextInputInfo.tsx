@@ -22,7 +22,7 @@ const TextInputInfo = (props: TextInputInfoProps) => {
       </div>
       <TextareaAutosize
         className={`ml-3 w-full rounded-lg bg-white px-2 font-semibold ${
-          props.enableEdit ? "border border-[#D9D9D9]" : ""
+          props.enableEdit ? "border border-accent-gray-variant" : ""
         }`}
         value={props.value}
         disabled={!props.enableEdit}

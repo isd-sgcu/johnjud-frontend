@@ -49,7 +49,7 @@ const EditText = (props: EditTextProps) => {
         value={showText}
         className={
           "w-full break-words rounded-3xl border-2 border-opacity-50 bg-white p-4 drop-shadow-sm " +
-          (enableEdit ? "border-black" : "border-[#D9D9D9]")
+          (enableEdit ? "border-black" : "border-accent-gray-variant")
         }
         onChange={handleOnChange}
         onBlur={handleOnBlur}
