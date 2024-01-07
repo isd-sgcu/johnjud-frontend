@@ -1,8 +1,10 @@
+import Button from "@/components/Button";
 import { Icon } from "@iconify/react";
 import { useRef, useState } from "react";
 import TextareaAutosize from "react-autosize-textarea";
+import ToggleInputInfo from "./ToggleInputInfo";
 
-type info = {
+export type info = {
   gender: string;
   breed: string;
   age: string;
@@ -111,9 +113,8 @@ const EditInfoAndSubmit = (props: EditInfoAndSubmitProps) => {
                 <span className="ml-1 text-primary">เพศ:</span>
               </div>
               <TextareaAutosize
-                className={`ml-3 w-full rounded-lg bg-white px-2 font-semibold ${
-                  enableEdit ? "border border-[#D9D9D9]" : ""
-                }`}
+                className={`ml-3 w-full rounded-lg bg-white px-2 font-semibold ${enableEdit ? "border border-[#D9D9D9]" : ""
+                  }`}
                 value={showInfo.gender}
                 disabled={!enableEdit}
                 onBlur={handleOnBlur}
@@ -129,9 +130,8 @@ const EditInfoAndSubmit = (props: EditInfoAndSubmitProps) => {
                 <span className="ml-1 text-primary">พันธุ์:</span>
               </div>
               <TextareaAutosize
-                className={`ml-3 w-full rounded-lg bg-white px-2 font-semibold ${
-                  enableEdit ? "border border-[#D9D9D9]" : ""
-                }`}
+                className={`ml-3 w-full rounded-lg bg-white px-2 font-semibold ${enableEdit ? "border border-[#D9D9D9]" : ""
+                  }`}
                 value={showInfo.breed}
                 disabled={!enableEdit}
                 onBlur={handleOnBlur}
@@ -147,9 +147,8 @@ const EditInfoAndSubmit = (props: EditInfoAndSubmitProps) => {
                 <span className="ml-1 text-primary">อายุ:</span>
               </div>
               <TextareaAutosize
-                className={`ml-3 w-full rounded-lg bg-white px-2 font-semibold ${
-                  enableEdit ? "border border-[#D9D9D9]" : ""
-                }`}
+                className={`ml-3 w-full rounded-lg bg-white px-2 font-semibold ${enableEdit ? "border border-[#D9D9D9]" : ""
+                  }`}
                 value={showInfo.age}
                 disabled={!enableEdit}
                 onBlur={handleOnBlur}
@@ -165,9 +164,8 @@ const EditInfoAndSubmit = (props: EditInfoAndSubmitProps) => {
                 <span className="ml-1 text-primary">นิสัย:</span>
               </div>
               <TextareaAutosize
-                className={`ml-3 w-full rounded-lg bg-white px-2 font-semibold ${
-                  enableEdit ? "border border-[#D9D9D9]" : ""
-                }`}
+                className={`ml-3 w-full rounded-lg bg-white px-2 font-semibold ${enableEdit ? "border border-[#D9D9D9]" : ""
+                  }`}
                 value={showInfo.nature}
                 disabled={!enableEdit}
                 onBlur={handleOnBlur}
@@ -180,87 +178,30 @@ const EditInfoAndSubmit = (props: EditInfoAndSubmitProps) => {
           <div className="mt-3 flex flex-col lg:justify-between lg:px-[10%]">
             <div className="flex flex-row flex-wrap justify-center gap-4 lg:flex-col">
               {/* Vaccine */}
-              <div
-                className={
-                  "flex h-fit w-fit select-none flex-row items-center rounded-full px-2 py-1 " +
-                  (showInfo["vaccine"]
-                    ? "bg-[#C81425] "
-                    : "bg-[#808086] bg-opacity-50 ") +
-                  (enableEdit ? "cursor-pointer" : "")
-                }
+              <ToggleInputInfo 
+                type="vaccine"
+                value={showInfo["vaccine"]}
                 onClick={() => handleOnClickButton("vaccine")}
                 onBlur={handleOnBlur}
-                ref={ref.vaccine}
-                tabIndex={1}
-              >
-                <div
-                  className={
-                    "mr-1 " +
-                    (showInfo["vaccine"] ? "" : "rounded-full bg-[#808086] p-1")
-                  }
-                >
-                  <Icon
-                    icon="ph:eyedropper"
-                    className={showInfo["vaccine"] ? "h-6 w-6" : "h-4 w-4"}
-                    color="white"
-                  />
-                </div>
-                <div
-                  className={
-                    "font-semibold " +
-                    (showInfo["vaccine"] ? "text-white" : "text-[#808086]")
-                  }
-                >
-                  ฉีดวัคซีนแล้ว
-                </div>
-              </div>
-
+                inputRef={ref.vaccine}
+                enableEdit={enableEdit}
+                icon={"ph:eyedropper"}
+                text={"ฉีดวัคซีนแล้ว"} />
+              
               {/* Sterile */}
-              <div
-                className={
-                  "flex h-fit w-fit select-none flex-row items-center rounded-full px-2 py-1 " +
-                  (showInfo["sterile"]
-                    ? "bg-[#C81425] "
-                    : "bg-[#808086] bg-opacity-50 ") +
-                  (enableEdit ? "cursor-pointer" : "")
-                }
+              <ToggleInputInfo 
+                type="sterile"
+                value={showInfo["sterile"]}
                 onClick={() => handleOnClickButton("sterile")}
                 onBlur={handleOnBlur}
-                ref={ref.sterile}
-                tabIndex={2}
-              >
-                <div
-                  className={
-                    "mr-1 " +
-                    (showInfo["sterile"] ? "" : "rounded-full bg-[#808086] p-1")
-                  }
-                >
-                  <Icon
-                    icon="ph:medal"
-                    className={showInfo["sterile"] ? "h-6 w-6" : "h-4 w-4"}
-                    color="white"
-                  />
-                </div>
-                <div
-                  className={
-                    "ml-1 pr-2 font-semibold " +
-                    (showInfo["sterile"] ? "text-white" : "text-[#808086]")
-                  }
-                >
-                  ทำหมันแล้ว
-                </div>
-              </div>
+                inputRef={ref.sterile}
+                enableEdit={enableEdit}
+                icon={"ph:medal"}
+                text={"ทำหมันแล้ว"} />
             </div>
 
             {/* Post Buttom */}
-            <div
-              className="mt-6 w-full cursor-pointer"
-              onClick={props.onSubmit}
-            >
-              <div className="w-full select-none rounded-2xl bg-[#C81425] py-2 text-center text-2xl font-semibold text-white">
-                โพสต์เลย
-              </div>
-            </div>
+            <Button className="w-full text-2xl font-semibold mt-6" text="โพสต์เลย" onClick={props.onSubmit} variant="accent-red" rounded="2xl" />
           </div>
         </div>
       </div>
