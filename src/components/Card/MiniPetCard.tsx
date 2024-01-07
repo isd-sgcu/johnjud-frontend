@@ -36,8 +36,8 @@ const MiniPetCard = ({
         <div className="flex h-28 w-full rounded-2xl">
           <img className="rounded-2xl" src={BlankPic168x112} alt={name} />
         </div>
-        <div className="flex-start flex flex-col gap-2 px-3 py-2">
-          <div className="space-y-1">
+        <div className="space-y-2 px-3 py-2">
+          <div>
             <div className="text-base font-semibold text-black">{name}</div>
             <div className="space-x-1">
               <span className="text-sm font-normal text-accent-gray">
