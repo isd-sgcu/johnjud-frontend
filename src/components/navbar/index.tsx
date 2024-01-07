@@ -1,8 +1,8 @@
+import logoPrimary from "@/assets/Navbar/logoPrimary.svg";
+import logoSecondary from "@/assets/Navbar/logoSecondary.svg";
 import { Icon } from "@iconify/react/dist/iconify.js";
 import { useMemo, useState } from "react";
 import { useLocation } from "react-router-dom";
-import logoPrimary from "@/assets/Navbar/logoPrimary.svg";
-import logoSecondary from "@/assets/Navbar/logoSecondary.svg";
 import SideBarWrapper from "./SideBarWrapper";
 
 const Navbar = () => {
@@ -16,23 +16,22 @@ const Navbar = () => {
           logo: logoPrimary,
         };
       case "/horo":
-        return{
+        return {
           color: "bg-accent-purple",
           logo: logoSecondary,
         };
       case "/no-logo":
-        return{
+        return {
           color: "bg-primary",
           logo: "",
         };
       default:
-        return{
+        return {
           color: "bg-primary",
           logo: logoPrimary,
         };
     }
-  } ,[pathname]);
-
+  }, [pathname]);
 
   return (
     <div
@@ -46,13 +45,11 @@ const Navbar = () => {
             className="h-12 w-12 xl:h-16 xl:w-16"
           />
         )}
-        <div className="text-lg font-bold text-white xl:text-2xl">
-          JOHNJUD
-        </div>
+        <div className="text-lg font-bold text-white xl:text-2xl">JOHNJUD</div>
       </div>
       <Icon
         icon="radix-icons:hamburger-menu"
-        className="h-8 w-8 cursor-pointer xl:h-12 xl:w-12 text-white"
+        className="h-8 w-8 cursor-pointer text-white xl:h-12 xl:w-12"
         onClick={() => setToggle(true)}
       />
       <SideBarWrapper
