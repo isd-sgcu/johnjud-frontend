@@ -21,7 +21,6 @@ const PetBadge = (props: PetBadgeProps) => {
             : "custom:yellow:banner"
         }
         className="h-24 w-16"
-        color={props.value === "fromClub" ? "#08878E" : "#FFFF31"}
       />
       <div
         className={
