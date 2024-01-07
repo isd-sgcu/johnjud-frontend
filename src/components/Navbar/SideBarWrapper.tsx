@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useCallback, useEffect, useMemo, useState } from "react";
 import SideBar from "./SideBar";
 
 interface SideBarWrapperProps {
@@ -27,9 +27,9 @@ const SideBarWrapper: React.FC<SideBarWrapperProps> = ({
     }
   }, [toggle]);
 
-  function handleBackgroundClick() {
+  const handleBackgroundClick = useCallback(() => {
     setToggle(false);
-  }
+  }, [setToggle]);
 
   return (
     <div
