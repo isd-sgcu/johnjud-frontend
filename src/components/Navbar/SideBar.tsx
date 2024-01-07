@@ -10,7 +10,7 @@ interface SideBarProps {
 const SideBar: React.FC<SideBarProps> = ({ color }) => {
   return (
     <div
-      className={`h-full px-8 py-6 text-sm text-white xl:p-16 ${color} shadow-sm shadow-accent-gray`}
+      className={`h-full w-52 px-8 py-6 text-sm text-white ${color} xl:w-64 xl:text-base`}
     >
       <div className="mb-6 flex cursor-pointer  items-center gap-4 border-b border-white pb-6 xl:mb-9 xl:pb-9">
         <img
