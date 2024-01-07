@@ -1,16 +1,21 @@
 import blankProfile from "@/assets/navbar/blankProfile.svg";
 import { Icon } from "@iconify/react";
-import React from "react";
 import { Link } from "react-router-dom";
 
-interface SideBarProps {
+const SideBar = ({
+  color,
+  isShow,
+  isExist,
+}: {
   color: string;
-}
-
-const SideBar: React.FC<SideBarProps> = ({ color }) => {
+  isShow: boolean;
+  isExist: boolean;
+}) => {
   return (
     <div
-      className={`h-full w-52 px-8 py-6 text-sm text-white ${color} xl:w-64 xl:text-base`}
+      className={`bottom-0 right-0 top-0 z-[1003] px-8 py-6 text-sm text-white transition xl:w-64 xl:text-base ${color} ${
+        isExist ? "fixed" : "hidden"
+      } ${isShow ? "opacity-100" : "opacity-0"}`}
     >
       <div className="mb-6 flex cursor-pointer  items-center gap-4 border-b border-white pb-6 xl:mb-9 xl:pb-9">
         <img
