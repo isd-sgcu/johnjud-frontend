@@ -177,8 +177,8 @@ const EditInfoAndSubmit = (props: EditInfoAndSubmitProps) => {
             </div>
           </div>
 
-          <div className="mt-3 flex flex-col lg:justify-between">
-            <div className="flex flex-row flex-wrap items-center justify-center gap-4 lg:flex-col">
+          <div className="mt-3 flex flex-col lg:justify-between lg:px-[10%]">
+            <div className="flex flex-row flex-wrap justify-center gap-4 lg:flex-col">
               {/* Vaccine */}
               <div
                 className={
@@ -252,9 +252,9 @@ const EditInfoAndSubmit = (props: EditInfoAndSubmitProps) => {
               </div>
             </div>
 
-            {/* large Post Buttom */}
+            {/* Post Buttom */}
             <div
-              className="mt-6 hidden w-full cursor-pointer px-[10%] lg:flex"
+              className="mt-6 w-full cursor-pointer"
               onClick={props.onSubmit}
             >
               <div className="w-full select-none rounded-2xl bg-[#C81425] py-2 text-center text-2xl font-semibold text-white">
@@ -262,16 +262,6 @@ const EditInfoAndSubmit = (props: EditInfoAndSubmitProps) => {
               </div>
             </div>
           </div>
-        </div>
-      </div>
-
-      {/* small Post Button */}
-      <div
-        className="mt-6 flex w-full cursor-pointer px-[10%] lg:hidden"
-        onClick={props.onSubmit}
-      >
-        <div className="w-full rounded-2xl bg-[#C81425] py-2 text-center text-2xl font-semibold text-white">
-          โพสต์เลย
         </div>
       </div>
     </div>

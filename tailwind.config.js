@@ -18,6 +18,7 @@ export default {
         "accent-purple": "#3D0D40",
         "accent-yellow": "#FFFF31",
         "accent-gray": "#808086",
+        "accent-gray-variant": "#D9D9D9",
         "accent-light-gray": "#EAEAEA",
         "accent-light-gray-variant": "#C0C0C0",
       },
