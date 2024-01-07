@@ -1,7 +1,7 @@
+import BlankPic168x112 from "@/assets/small-petcard/BlankPic168x112.svg";
 import { UtcStringToYear } from "@/utils/dateConverter";
 import { useMemo } from "react";
 import { Link } from "react-router-dom";
-import BlankPic168x112 from "../../assets/small-petcard/BlankPic168x112.svg";
 
 interface MiniPetCardProps {
   id: string;
