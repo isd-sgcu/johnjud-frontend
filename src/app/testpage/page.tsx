@@ -1,3 +1,4 @@
+import BlankTest from "@/assets/small-petcard/BlankPic144x144.svg";
 import PetCard from "@/components/PetCard";
 import MainLayout from "@/layouts/MainLayout";
 
@@ -8,7 +9,7 @@ const ExamplePage = () => {
       <h2 className="text-2xl font-bold">ExamplePage</h2>
       <PetCard
         id="1"
-        image=""
+        image={BlankTest}
         type="dog"
         name="Johny the third"
         status="adopted"
