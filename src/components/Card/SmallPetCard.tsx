@@ -26,7 +26,7 @@ const smallpetcard = ({
   }, [gender]);
 
   const linkTo = useMemo(() => {
-    return "/pet/" + id;
+    return "/pets/" + id;
   }, [id]);
 
   const { years, months } = useMemo(() => {

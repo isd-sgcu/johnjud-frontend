@@ -23,7 +23,7 @@ const MiniPetCard = ({
   }, [gender]);
 
   const linkTo = useMemo(() => {
-    return "/pet/" + id;
+    return "/pets/" + id;
   }, [id]);
 
   const years = useMemo(() => {
