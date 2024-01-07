@@ -44,10 +44,13 @@ const EditText = (props: EditTextProps) => {
   }, [enableEdit]);
 
   return (
-    <div className={`relative flex min-h-60 w-full lg:min-h-0 lg:h-full`}>
+    <div className={`relative flex min-h-60 w-full lg:h-full lg:min-h-0`}>
       <TextareaAutosize
         value={showText}
-        className={"w-full break-words rounded-3xl border-2 border-opacity-50 bg-white p-4 drop-shadow-sm " + ((enableEdit) ? "border-black" : "border-[#D9D9D9]")}
+        className={
+          "w-full break-words rounded-3xl border-2 border-opacity-50 bg-white p-4 drop-shadow-sm " +
+          (enableEdit ? "border-black" : "border-[#D9D9D9]")
+        }
         onChange={handleOnChange}
         onBlur={handleOnBlur}
         ref={ref}
@@ -56,12 +59,11 @@ const EditText = (props: EditTextProps) => {
       />
       <div ref={saveRef} tabIndex={0}>
         <Icon
-          icon={(enableEdit) ? "ph:floppy-disk" : "custom:pencil"}
-          className="absolute top-4 right-4 flex h-6 w-6 flex-none cursor-pointer text-accent-red"
+          icon={enableEdit ? "ph:floppy-disk" : "custom:pencil"}
+          className="absolute right-4 top-4 flex h-6 w-6 flex-none cursor-pointer text-accent-red"
           onClick={handleClickEdit}
         />
       </div>
-
     </div>
   );
 };

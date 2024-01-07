@@ -50,9 +50,11 @@ const EditInfoAndSubmit = (props: EditInfoAndSubmitProps) => {
         break;
       }
     }
-    if ((!stillFocus && currentFocus && currentFocus === pencilRef.current)) {
-      
-    } else if (!currentFocus || (!stillFocus && currentFocus !== pencilRef.current)) {
+    if (!stillFocus && currentFocus && currentFocus === pencilRef.current) {
+    } else if (
+      !currentFocus ||
+      (!stillFocus && currentFocus !== pencilRef.current)
+    ) {
       setShowInfo(props.value);
       setEnableEdit(false);
     }
@@ -81,26 +83,26 @@ const EditInfoAndSubmit = (props: EditInfoAndSubmitProps) => {
   return (
     <div className="flex w-full flex-col">
       {/* EditInfo */}
-      <div className="flex w-full flex-col lg:rounded-2xl border-2 border-[#D9D9D9] border-opacity-50 bg-white px-6 py-6 lg:py-8 lg:pl-[12.5%] lg:pr-0">
+      <div className="flex w-full flex-col border-2 border-[#D9D9D9] border-opacity-50 bg-white px-6 py-6 lg:rounded-2xl lg:py-8 lg:pl-[12.5%] lg:pr-0">
         {/* Header */}
         <div className="flex flex-row items-center justify-between lg:pr-[5%]">
-          <div className="flex flex-col relative">
-            <span className="text-3xl font-bold text-primary">
-              รายละเอียด
-            </span>
+          <div className="relative flex flex-col">
+            <span className="text-3xl font-bold text-primary">รายละเอียด</span>
             <div className="h-[2px] w-full bg-primary" />
           </div>
 
           <div ref={pencilRef} tabIndex={0} className="ml-2 ">
             <Icon
-              icon={((enableEdit) ? "ph:floppy-disk" : "custom:pencil")}
-              className={"flex h-6 w-6 flex-none cursor-pointer text-accent-red"}
+              icon={enableEdit ? "ph:floppy-disk" : "custom:pencil"}
+              className={
+                "flex h-6 w-6 flex-none cursor-pointer text-accent-red"
+              }
               onClick={handleOnClick}
             />
           </div>
         </div>
 
-        <div className="flex flex-col lg:grid lg:grid-cols-2 lg:divide-x-2 mt-4">
+        <div className="mt-4 flex flex-col lg:grid lg:grid-cols-2 lg:divide-x-2">
           <div className="flex flex-col space-y-3 lg:space-y-4 lg:pr-8">
             {/* Gender */}
             <div className="flex flex-row items-start">
@@ -109,8 +111,9 @@ const EditInfoAndSubmit = (props: EditInfoAndSubmitProps) => {
                 <span className="ml-1 text-primary">เพศ:</span>
               </div>
               <TextareaAutosize
-                className={`ml-3 w-full rounded-lg bg-white px-2 font-semibold ${enableEdit ? "border border-[#D9D9D9]" : ""
-                  }`}
+                className={`ml-3 w-full rounded-lg bg-white px-2 font-semibold ${
+                  enableEdit ? "border border-[#D9D9D9]" : ""
+                }`}
                 value={showInfo.gender}
                 disabled={!enableEdit}
                 onBlur={handleOnBlur}
@@ -126,8 +129,9 @@ const EditInfoAndSubmit = (props: EditInfoAndSubmitProps) => {
                 <span className="ml-1 text-primary">พันธุ์:</span>
               </div>
               <TextareaAutosize
-                className={`ml-3 w-full rounded-lg bg-white px-2 font-semibold ${enableEdit ? "border border-[#D9D9D9]" : ""
-                  }`}
+                className={`ml-3 w-full rounded-lg bg-white px-2 font-semibold ${
+                  enableEdit ? "border border-[#D9D9D9]" : ""
+                }`}
                 value={showInfo.breed}
                 disabled={!enableEdit}
                 onBlur={handleOnBlur}
@@ -139,15 +143,13 @@ const EditInfoAndSubmit = (props: EditInfoAndSubmitProps) => {
             {/* Age */}
             <div className="flex flex-row items-start">
               <div className="flex flex-row items-center">
-                <Icon
-                  icon="carbon:calendar"
-                  className="h-5 w-5 text-primary"
-                />
+                <Icon icon="carbon:calendar" className="h-5 w-5 text-primary" />
                 <span className="ml-1 text-primary">อายุ:</span>
               </div>
               <TextareaAutosize
-                className={`ml-3 w-full rounded-lg bg-white px-2 font-semibold ${enableEdit ? "border border-[#D9D9D9]" : ""
-                  }`}
+                className={`ml-3 w-full rounded-lg bg-white px-2 font-semibold ${
+                  enableEdit ? "border border-[#D9D9D9]" : ""
+                }`}
                 value={showInfo.age}
                 disabled={!enableEdit}
                 onBlur={handleOnBlur}
@@ -159,15 +161,13 @@ const EditInfoAndSubmit = (props: EditInfoAndSubmitProps) => {
             {/* Nature */}
             <div className="flex flex-row items-start">
               <div className="flex flex-row items-center">
-                <Icon
-                  icon="ph:music-notes"
-                  className="h-5 w-5 text-primary"
-                />
+                <Icon icon="ph:music-notes" className="h-5 w-5 text-primary" />
                 <span className="ml-1 text-primary">นิสัย:</span>
               </div>
               <TextareaAutosize
-                className={`ml-3 w-full rounded-lg bg-white px-2 font-semibold ${enableEdit ? "border border-[#D9D9D9]" : ""
-                  }`}
+                className={`ml-3 w-full rounded-lg bg-white px-2 font-semibold ${
+                  enableEdit ? "border border-[#D9D9D9]" : ""
+                }`}
                 value={showInfo.nature}
                 disabled={!enableEdit}
                 onBlur={handleOnBlur}
@@ -178,11 +178,11 @@ const EditInfoAndSubmit = (props: EditInfoAndSubmitProps) => {
           </div>
 
           <div className="mt-3 flex flex-col lg:justify-between">
-            <div className="flex flex-row flex-wrap items-center gap-4 lg:flex-col justify-center">
+            <div className="flex flex-row flex-wrap items-center justify-center gap-4 lg:flex-col">
               {/* Vaccine */}
               <div
                 className={
-                  "flex h-fit w-fit flex-row items-center rounded-full px-2 py-1 select-none " +
+                  "flex h-fit w-fit select-none flex-row items-center rounded-full px-2 py-1 " +
                   (showInfo["vaccine"]
                     ? "bg-[#C81425] "
                     : "bg-[#808086] bg-opacity-50 ") +
@@ -196,9 +196,7 @@ const EditInfoAndSubmit = (props: EditInfoAndSubmitProps) => {
                 <div
                   className={
                     "mr-1 " +
-                    (showInfo["vaccine"]
-                      ? ""
-                      : "rounded-full bg-[#808086] p-1")
+                    (showInfo["vaccine"] ? "" : "rounded-full bg-[#808086] p-1")
                   }
                 >
                   <Icon
@@ -220,7 +218,7 @@ const EditInfoAndSubmit = (props: EditInfoAndSubmitProps) => {
               {/* Sterile */}
               <div
                 className={
-                  "flex h-fit w-fit flex-row items-center rounded-full px-2 py-1 select-none " +
+                  "flex h-fit w-fit select-none flex-row items-center rounded-full px-2 py-1 " +
                   (showInfo["sterile"]
                     ? "bg-[#C81425] "
                     : "bg-[#808086] bg-opacity-50 ") +
@@ -234,9 +232,7 @@ const EditInfoAndSubmit = (props: EditInfoAndSubmitProps) => {
                 <div
                   className={
                     "mr-1 " +
-                    (showInfo["sterile"]
-                      ? ""
-                      : "rounded-full bg-[#808086] p-1")
+                    (showInfo["sterile"] ? "" : "rounded-full bg-[#808086] p-1")
                   }
                 >
                   <Icon
@@ -261,7 +257,7 @@ const EditInfoAndSubmit = (props: EditInfoAndSubmitProps) => {
               className="mt-6 hidden w-full cursor-pointer px-[10%] lg:flex"
               onClick={props.onSubmit}
             >
-              <div className="w-full rounded-2xl bg-[#C81425] py-2 text-center text-2xl font-semibold text-white select-none">
+              <div className="w-full select-none rounded-2xl bg-[#C81425] py-2 text-center text-2xl font-semibold text-white">
                 โพสต์เลย
               </div>
             </div>

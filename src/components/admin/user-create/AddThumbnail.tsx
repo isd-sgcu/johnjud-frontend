@@ -20,7 +20,7 @@ const AddThumbnail = (props: AddThumbnailProps) => {
   return (
     <div className="relative flex aspect-square h-fit w-full max-w-80 flex-col">
       {props.valueThumbnail === null ? (
-        <div className="flex h-full w-full rounded-3xl border-2 border-[#D9D9D9] bg-white drop-shadow-sm items-center justify-center">
+        <div className="flex h-full w-full items-center justify-center rounded-3xl border-2 border-[#D9D9D9] bg-white drop-shadow-sm">
           <input
             type="file"
             id="thumbnailPicturePlus"
@@ -29,8 +29,14 @@ const AddThumbnail = (props: AddThumbnailProps) => {
             className="hidden"
             onChange={handleOnChange}
           />
-          <label htmlFor="thumbnailPicturePlus" className="flex w-full h-full items-center justify-center">
-            <Icon icon="custom:plus" className="h-[30%] w-[30%] cursor-pointer" />
+          <label
+            htmlFor="thumbnailPicturePlus"
+            className="flex h-full w-full items-center justify-center"
+          >
+            <Icon
+              icon="custom:plus"
+              className="h-[30%] w-[30%] cursor-pointer"
+            />
           </label>
         </div>
       ) : (
@@ -43,7 +49,12 @@ const AddThumbnail = (props: AddThumbnailProps) => {
         </div>
       )}
 
-      <div className={"absolute bottom-5 right-5 " + ((props.valueThumbnail === null) ? "hidden" : "visible")}>
+      <div
+        className={
+          "absolute bottom-5 right-5 " +
+          (props.valueThumbnail === null ? "hidden" : "visible")
+        }
+      >
         <input
           type="file"
           id="thumbnailPicturePencil"
