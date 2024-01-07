@@ -3,6 +3,7 @@ import { Icon } from "@iconify/react";
 import { useMemo } from "react";
 import { Link } from "react-router-dom";
 import BlankPic144x144 from "../../assets/small-petcard/BlankPic144x144.svg";
+
 interface SmallPetCardProps {
   id: string;
   name: string;
@@ -11,6 +12,7 @@ interface SmallPetCardProps {
   birthdate: string;
   status: string;
 }
+
 const smallpetcard = ({
   id,
   name,
@@ -26,24 +28,29 @@ const smallpetcard = ({
   const linkTo = useMemo(() => {
     return "/pet/" + id;
   }, [id]);
+
   const { years, months } = useMemo(() => {
     return UtcStringToYearMonth({ utcString: birthdate });
   }, [birthdate]);
+
   return (
     <Link to={linkTo}>
-      <div className="m-0 h-64 w-44 shrink-0 rounded-2xl bg-white p-3 shadow-md">
-        <div className="flex flex-shrink-0 flex-col items-center justify-center gap-y-2.5">
-          <div className="flex w-36 rounded-2xl shadow-lg">
-            <img className="rounded-2xl" src={BlankPic144x144} alt={name} />
+      <div className="w-44 rounded-2xl bg-white p-3 shadow-md">
+        <div className="space-y-2">
+          <div className="flex justify-center rounded-2xl">
+            <img
+              className="rounded-2xl shadow-lg"
+              src={BlankPic144x144}
+              alt={name}
+            />
           </div>
-
-          <div className="flex-start m-0 flex w-full flex-col items-start justify-center gap-2 p-0">
+          <div className="space-y-1">
             <div className="text-base font-semibold text-black">
               {name} พันธุ์{species}
             </div>
-            <div className="inline-flex w-full flex-row items-end justify-between">
-              <div className="flex-start m-0 flex flex-col justify-center gap-1 p-0">
-                <div className="flex-start m-0 flex flex-row items-center justify-start gap-2 p-0">
+            <div className="flex-start flex w-full flex-row items-end justify-between">
+              <div className="space-y-1">
+                <div className="flex flex-row items-center justify-start gap-2">
                   <div>
                     <Icon
                       icon="ph:paw-print"
@@ -54,7 +61,7 @@ const smallpetcard = ({
                     ตัว{genderAns}
                   </div>
                 </div>
-                <div className="flex-start m-0 flex flex-row items-center justify-start gap-2 p-0">
+                <div className="flex flex-row items-center justify-start gap-2">
                   <div>
                     <Icon icon="ph:gift" className="h-5 w-5 text-accent-gray" />
                   </div>
