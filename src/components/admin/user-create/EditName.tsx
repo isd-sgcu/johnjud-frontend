@@ -9,18 +9,25 @@ interface EditNameProps {
 
 const EditName = (props: EditNameProps) => {
   const ref = useRef<HTMLTextAreaElement>(null);
+  const saveRef = useRef<HTMLDivElement>(null);
 
   const handleClickEdit = () => {
     setEnableEdit(true);
+    setShowName(props.value)
   };
-  const handleOnBlur = () => {
+  const handleOnBlur = (event: React.FocusEvent<HTMLTextAreaElement>) => {
     setEnableEdit(false);
+    const currentFocus = event.relatedTarget;
+    if (currentFocus && currentFocus === saveRef.current) {
+      props.setValue(showName)
+    }
   };
 
+  const [showName, setShowName] = useState(props.value);
   const [enableEdit, setEnableEdit] = useState(false);
   const handleOnChange = (event: React.FormEvent<HTMLTextAreaElement>) => {
     const element = event.target as HTMLInputElement;
-    props.setValue(element.value);
+    setShowName(element.value);
   };
 
   // focus at the end of text when enable
@@ -58,7 +65,7 @@ const EditName = (props: EditNameProps) => {
 
       <div className={"flex flex-row items-center gap-4 " + ((enableEdit) ? "visible" : "hidden")}>
         <TextareaAutosize
-          value={props.value}
+          value={showName}
           onChange={handleOnChange}
           className={`flex w-full resize-none text-wrap break-words rounded-lg p-2 text-right text-3xl font-bold text-primary focus:outline-[#D9D9D9] lg:text-left ${enableEdit ? "visible" : "hidden"
             }`}
@@ -68,7 +75,10 @@ const EditName = (props: EditNameProps) => {
           rows={1}
           placeholder="กรุณาใส่ชื่อ..."
         />
-        <Icon icon="ph:floppy-disk" className="w-6 h-6 text-accent-red cursor-pointer" />
+        <div ref={saveRef} tabIndex={0}>
+          <Icon icon="ph:floppy-disk" className="w-6 h-6 text-accent-red cursor-pointer" />
+        </div>
+        
       </div>
     </div>
   );
