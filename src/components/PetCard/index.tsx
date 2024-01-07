@@ -7,18 +7,12 @@ import { useMemo } from "react";
 import { Link } from "react-router-dom";
 import Johnjud from "../../assets/main/johnjudLogo.svg";
 
-export enum PetStatus {
-  findHome,
-  adopted,
-}
-
 type PetCardProps = {
-  role: "user" | "admin";
   id: string;
   image: string;
   type: string;
   name: string;
-  status: PetStatus;
+  status: "findHome" | "adopted";
   gender: "male" | "female";
   birthDate: string;
   habit: string;
@@ -28,7 +22,6 @@ type PetCardProps = {
 };
 
 const PetCard = ({
-  role,
   id,
   image = Johnjud,
   name,
@@ -40,6 +33,10 @@ const PetCard = ({
   isLiked,
   isVisibled,
 }: PetCardProps) => {
+  const role = useMemo(() => {
+    return "user";
+  }, []);
+
   const likedHeart = useMemo(() => {
     return isLiked ? "ph:heart-fill" : "ph:heart";
   }, [isLiked]);
@@ -61,7 +58,7 @@ const PetCard = ({
   }, [isSterile]);
 
   const adoptedButton = useMemo(() => {
-    return status === PetStatus.adopted ? "disabled" : "accent-red";
+    return status === "adopted" ? "disabled" : "accent-red";
   }, [status]);
 
   if (role === "user" && isVisibled === false) {
@@ -79,13 +76,13 @@ const PetCard = ({
             <p className="text-2xl font-bold text-black">{name}</p>
             <button onClick={() => {}}>
               <Icon
-                icon={role === "admin" ? "ph:pencil-simple" : likedHeart}
+                icon={role === "user" ? likedHeart : "ph:pencil-simple"}
                 className="relative h-8 w-8 text-accent-red"
               />
             </button>
           </div>
           <div className="flex w-72 flex-row items-end justify-between">
-            <div className=" items-center">
+            <div className=" items-center space-y-1">
               <PetDetail
                 icon={"ph:paw-print"}
                 description={`${petGender}, อายุ ${years} ปี ${months} เดือน`}
@@ -93,15 +90,15 @@ const PetCard = ({
               <PetDetail icon={"ph:music-notes"} description={habit} />
               <PetDetail icon={"ph:medal"} description={petSterile} />
             </div>
-            {role === "admin" ? (
-              <TogglePetButton visibility={isVisibled} />
-            ) : (
+            {role === "user" ? (
               <Button
                 text={"รับเลี้ยง"}
                 variant={adoptedButton}
                 rounded="full"
                 className="max-h-10 max-w-28 text-base"
               />
+            ) : (
+              <TogglePetButton visibility={isVisibled} />
             )}
           </div>
         </div>

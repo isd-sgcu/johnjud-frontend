@@ -7,9 +7,11 @@ interface PetDetailProps {
 
 const PetDetail = (props: PetDetailProps) => {
   return (
-    <div className="mb-1 flex items-center gap-2 text-base font-normal text-accent-gray">
-      <Icon icon={props.icon} className="relative h-5 w-5" />
-      <span>{props.description}</span>
+    <div className="flex flex-row items-center justify-start gap-2 text-base font-normal text-accent-gray">
+      <div>
+        <Icon icon={props.icon} className="relative h-5 w-5" />
+      </div>
+      <div>{props.description}</div>
     </div>
   );
 };

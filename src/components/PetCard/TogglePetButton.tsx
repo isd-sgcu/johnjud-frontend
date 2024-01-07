@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { tv } from "tailwind-variants";
 
 interface ToggleProps {
@@ -32,8 +32,14 @@ const toggleSwitch = tv({
 const TogglePetButton = ({ visibility, onChange }: ToggleProps) => {
   const { base, switchStyle, textStyle } = toggleSwitch();
   const [isVisible, setIsVisible] = useState(visibility);
-  const variant = isVisible ? "enabled" : "disabled";
-  const text = isVisible ? "มองเห็น" : "ปิดการมองเห็น";
+
+  const variant = useMemo(() => {
+    return isVisible ? "enabled" : "disabled";
+  }, [isVisible]);
+
+  const text = useMemo(() => {
+    return isVisible ? "มองเห็น" : "ปิดการมองเห็น";
+  }, [isVisible]);
 
   return (
     <div
