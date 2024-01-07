@@ -24,7 +24,7 @@ const AddSmallPicture = (props: AddSmallPictureProps) => {
             <img
               src={URL.createObjectURL(picture)}
               alt={picture.name}
-              className="h-full w-full rounded-3xl border-2  border-[#D9D9D9] border-opacity-50 object-cover object-center"
+              className="h-full w-full rounded-3xl border-2  border-accent-gray-variant border-opacity-50 object-cover object-center"
             />
           </div>
         );
@@ -40,7 +40,7 @@ const AddSmallPicture = (props: AddSmallPictureProps) => {
       />
       <label
         htmlFor="smallPicture"
-        className="flex aspect-square w-[60%] max-w-48 flex-shrink-0 cursor-pointer snap-start items-center justify-center rounded-3xl border-2 border-[#D9D9D9] bg-white drop-shadow-sm"
+        className="flex aspect-square w-[60%] max-w-48 flex-shrink-0 cursor-pointer snap-start items-center justify-center rounded-3xl border-2 border-accent-gray-variant bg-white drop-shadow-sm"
       >
         <Icon icon="custom:plus" className="h-[30%] w-[30%]" />
       </label>

@@ -73,7 +73,7 @@ const EditName = (props: EditNameProps) => {
         <TextareaAutosize
           value={showName}
           onChange={handleOnChange}
-          className={`flex w-full resize-none text-wrap break-words rounded-lg p-2 text-right text-3xl font-bold text-primary focus:outline-[#D9D9D9] lg:text-left ${
+          className={`flex w-full resize-none text-wrap break-words rounded-lg p-2 text-right text-3xl font-bold text-primary focus:outline-accent-gray-variant lg:text-left ${
             enableEdit ? "visible" : "hidden"
           }`}
           disabled={!enableEdit}

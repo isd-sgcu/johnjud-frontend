@@ -20,7 +20,7 @@ const AddThumbnail = (props: AddThumbnailProps) => {
   return (
     <div className="relative flex aspect-square h-fit w-full max-w-80 flex-col">
       {props.valueThumbnail === null ? (
-        <div className="flex h-full w-full items-center justify-center rounded-3xl border-2 border-[#D9D9D9] bg-white drop-shadow-sm">
+        <div className="flex h-full w-full items-center justify-center rounded-3xl border-2 border-accent-gray-variant bg-white drop-shadow-sm">
           <input
             type="file"
             id="thumbnailPicturePlus"
@@ -44,7 +44,7 @@ const AddThumbnail = (props: AddThumbnailProps) => {
           <img
             src={URL.createObjectURL(props.valueThumbnail)}
             alt="Thumbnail"
-            className="h-full w-full rounded-3xl border-2 border-[#D9D9D9] object-cover object-center drop-shadow-sm"
+            className="h-full w-full rounded-3xl border-2 border-accent-gray-variant object-cover object-center drop-shadow-sm"
           ></img>
         </div>
       )}
