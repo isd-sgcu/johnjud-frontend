@@ -44,7 +44,7 @@ const smallpetcard = ({
               alt={name}
             />
           </div>
-          <div className="space-y-1">
+          <div className="space-y-2">
             <div className="text-base font-semibold text-black">
               {name} พันธุ์{species}
             </div>
