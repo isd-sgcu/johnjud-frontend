@@ -1,4 +1,4 @@
-import MinipetCard from "../../components/card/MiniPetCard";
+import MinipetCard from "../../components/Card/MiniPetCard";
 import MainLayout from "../../layouts/MainLayout";
 
 enum genders {
