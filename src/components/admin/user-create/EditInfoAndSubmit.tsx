@@ -29,8 +29,16 @@ const EditInfoAndSubmit = (props: EditInfoAndSubmitProps) => {
   const pencilRef = useRef(null);
   const [enableEdit, setEnableEdit] = useState(false);
   const handleOnClick = () => {
+    if (enableEdit) {
+      props.setValue(showInfo);
+    } else {
+      setShowInfo(props.value);
+    }
     setEnableEdit(!enableEdit);
   };
+
+  const [showInfo, setShowInfo] = useState<info>(props.value);
+
   const handleOnBlur = (
     event: React.FocusEvent<HTMLTextAreaElement | HTMLDivElement>
   ) => {
@@ -42,9 +50,10 @@ const EditInfoAndSubmit = (props: EditInfoAndSubmitProps) => {
         break;
       }
     }
-    if ((!stillFocus && currentFocus === pencilRef.current)) {
-
+    if ((!stillFocus && currentFocus && currentFocus === pencilRef.current)) {
+      
     } else if (!currentFocus || (!stillFocus && currentFocus !== pencilRef.current)) {
+      setShowInfo(props.value);
       setEnableEdit(false);
     }
   };
@@ -54,16 +63,16 @@ const EditInfoAndSubmit = (props: EditInfoAndSubmitProps) => {
   ) => {
     const element = event.target as HTMLInputElement;
     const updateValue = { [tag]: element.value };
-    props.setValue({
-      ...props.value,
+    setShowInfo({
+      ...showInfo,
       ...updateValue,
     });
   };
   const handleOnClickButton = (tag: keyof info) => {
     if (enableEdit) {
-      const updateValue = { [tag]: !props.value[tag] };
-      props.setValue({
-        ...props.value,
+      const updateValue = { [tag]: !showInfo[tag] };
+      setShowInfo({
+        ...showInfo,
         ...updateValue,
       });
     }
@@ -102,7 +111,7 @@ const EditInfoAndSubmit = (props: EditInfoAndSubmitProps) => {
               <TextareaAutosize
                 className={`ml-3 w-full rounded-lg bg-white px-2 font-semibold ${enableEdit ? "border border-[#D9D9D9]" : ""
                   }`}
-                value={props.value.gender}
+                value={showInfo.gender}
                 disabled={!enableEdit}
                 onBlur={handleOnBlur}
                 ref={ref.gender}
@@ -119,7 +128,7 @@ const EditInfoAndSubmit = (props: EditInfoAndSubmitProps) => {
               <TextareaAutosize
                 className={`ml-3 w-full rounded-lg bg-white px-2 font-semibold ${enableEdit ? "border border-[#D9D9D9]" : ""
                   }`}
-                value={props.value.breed}
+                value={showInfo.breed}
                 disabled={!enableEdit}
                 onBlur={handleOnBlur}
                 ref={ref.breed}
@@ -139,7 +148,7 @@ const EditInfoAndSubmit = (props: EditInfoAndSubmitProps) => {
               <TextareaAutosize
                 className={`ml-3 w-full rounded-lg bg-white px-2 font-semibold ${enableEdit ? "border border-[#D9D9D9]" : ""
                   }`}
-                value={props.value.age}
+                value={showInfo.age}
                 disabled={!enableEdit}
                 onBlur={handleOnBlur}
                 ref={ref.age}
@@ -159,7 +168,7 @@ const EditInfoAndSubmit = (props: EditInfoAndSubmitProps) => {
               <TextareaAutosize
                 className={`ml-3 w-full rounded-lg bg-white px-2 font-semibold ${enableEdit ? "border border-[#D9D9D9]" : ""
                   }`}
-                value={props.value.nature}
+                value={showInfo.nature}
                 disabled={!enableEdit}
                 onBlur={handleOnBlur}
                 ref={ref.nature}
@@ -174,7 +183,7 @@ const EditInfoAndSubmit = (props: EditInfoAndSubmitProps) => {
               <div
                 className={
                   "flex h-fit w-fit flex-row items-center rounded-full px-2 py-1 select-none " +
-                  (props.value["vaccine"]
+                  (showInfo["vaccine"]
                     ? "bg-[#C81425] "
                     : "bg-[#808086] bg-opacity-50 ") +
                   (enableEdit ? "cursor-pointer" : "")
@@ -187,21 +196,21 @@ const EditInfoAndSubmit = (props: EditInfoAndSubmitProps) => {
                 <div
                   className={
                     "mr-1 " +
-                    (props.value["vaccine"]
+                    (showInfo["vaccine"]
                       ? ""
                       : "rounded-full bg-[#808086] p-1")
                   }
                 >
                   <Icon
                     icon="ph:eyedropper"
-                    className={props.value["vaccine"] ? "h-6 w-6" : "h-4 w-4"}
+                    className={showInfo["vaccine"] ? "h-6 w-6" : "h-4 w-4"}
                     color="white"
                   />
                 </div>
                 <div
                   className={
                     "font-semibold " +
-                    (props.value["vaccine"] ? "text-white" : "text-[#808086]")
+                    (showInfo["vaccine"] ? "text-white" : "text-[#808086]")
                   }
                 >
                   ฉีดวัคซีนแล้ว
@@ -212,7 +221,7 @@ const EditInfoAndSubmit = (props: EditInfoAndSubmitProps) => {
               <div
                 className={
                   "flex h-fit w-fit flex-row items-center rounded-full px-2 py-1 select-none " +
-                  (props.value["sterile"]
+                  (showInfo["sterile"]
                     ? "bg-[#C81425] "
                     : "bg-[#808086] bg-opacity-50 ") +
                   (enableEdit ? "cursor-pointer" : "")
@@ -225,21 +234,21 @@ const EditInfoAndSubmit = (props: EditInfoAndSubmitProps) => {
                 <div
                   className={
                     "mr-1 " +
-                    (props.value["sterile"]
+                    (showInfo["sterile"]
                       ? ""
                       : "rounded-full bg-[#808086] p-1")
                   }
                 >
                   <Icon
                     icon="ph:medal"
-                    className={props.value["sterile"] ? "h-6 w-6" : "h-4 w-4"}
+                    className={showInfo["sterile"] ? "h-6 w-6" : "h-4 w-4"}
                     color="white"
                   />
                 </div>
                 <div
                   className={
                     "ml-1 pr-2 font-semibold " +
-                    (props.value["sterile"] ? "text-white" : "text-[#808086]")
+                    (showInfo["sterile"] ? "text-white" : "text-[#808086]")
                   }
                 >
                   ทำหมันแล้ว
