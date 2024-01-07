@@ -1,7 +1,7 @@
-import logo from "../../assets/details/logo.png";
-import MainLayout from "../../layouts/MainLayout";
-import BigPetCard from "./BigPetCard";
-import Info from "./Info";
+import logo from "@/assets/details/logo.png";
+import MainLayout from "@/layouts/MainLayout";
+import BigPetCard from "@/components/Details/BigPetCard";
+import Info from "@/components/Details/Info";
 
 const Details = () => {
   const isAdmin = true;

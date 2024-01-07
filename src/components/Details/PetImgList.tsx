@@ -1,5 +1,5 @@
-import petImg from "../../assets/details/pet.svg";
-import plusIcon from "../../assets/details/plusIcon.svg";
+import petImg from "@/assets/details/pet.svg";
+import plusIcon from "@/assets/details/plusIcon.svg";
 
 const PetImgList = () => {
   return (

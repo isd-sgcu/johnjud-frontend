@@ -1,5 +1,5 @@
 import { Icon } from "@iconify/react/dist/iconify.js";
-import petImg from "../../assets/details/pet.svg";
+import petImg from "@/assets/details/pet.svg";
 import PetImgList from "./PetImgList";
 
 const BigPetCard = ({ isAdmin }: { isAdmin: boolean }) => {
