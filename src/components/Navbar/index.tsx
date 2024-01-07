@@ -34,16 +34,14 @@ const Navbar = () => {
   }, [pathname]);
 
   return (
-    <div className={`flex items-center justify-between px-4 py-3 transition-all  ${style.color}`}>
+    <div
+      className={`flex items-center justify-between px-4 py-3 transition-all  ${style.color}`}
+    >
       <div className="flex items-center gap-3 ">
         {style.logo && (
-          <img
-            src={style.logo}
-            alt="logo"
-            className="h-12 w-12 "
-          />
+          <img src={style.logo} alt="logo" className="h-12 w-12 " />
         )}
-        <div className="text-lg font-bold text-white -xl:text-2xl">JOHNJUD</div>
+        <div className="-xl:text-2xl text-lg font-bold text-white">JOHNJUD</div>
       </div>
       <Icon
         icon="radix-icons:hamburger-menu"
