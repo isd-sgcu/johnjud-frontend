@@ -1,6 +1,6 @@
 import { Icon } from "@iconify/react";
 import React from "react";
-import blankProfile from "../../assets/Navbar/blankProfile.svg";
+import blankProfile from "@/assets/Navbar/blankProfile.svg";
 
 interface SideBarProps {
   color: string;
