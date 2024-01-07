@@ -45,6 +45,7 @@ const PetCard = ({
 }: PetCardProps) => {
   const likedHeart = isLiked ? "ph:heart-fill" : "ph:heart";
   const petGender = gender === PetGender.female ? "ตัวเมีย" : "ตัวผู้";
+  const petBirthDate = 
   const petSterile = isSterile ? "ทำหมันแล้ว" : "ยังไม่ได้ทำหมัน";
   const adoptedButton =
     status === PetStatus.adopted ? "disabled" : "accent-red";
