@@ -29,9 +29,6 @@ dependencies:
   react-dom:
     specifier: ^18.2.0
     version: 18.2.0(react@18.2.0)
-  utc:
-    specifier: link:dayjs/plugin/utc
-    version: link:dayjs/plugin/utc
 
 devDependencies:
   '@iconify/react':
