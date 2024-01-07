@@ -8,7 +8,7 @@ const BigPetCard = ({ isAdmin }: { isAdmin: boolean }) => {
       <div className="flex items-center justify-between px-6 xl:px-12">
         <Icon
           icon="material-symbols-light:arrow-back-ios-new"
-          className="h-8 w-8 text-primary"
+          className="h-8 w-8 cursor-pointer text-primary"
         />
         <div className="flex items-center gap-2 text-primary xl:hidden">
           {isAdmin && (
