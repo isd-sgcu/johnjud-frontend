@@ -6,11 +6,17 @@ const ButtonWrapper = ({ isAdmin }: { isAdmin: boolean }) => {
       <div className="justify-between xl:flex">
         <div className="flex justify-center gap-4 xl:flex-col xl:items-start xl:gap-4">
           <div className="flex items-center justify-center gap-2 rounded-full bg-accent-red px-3 py-1">
-            <Icon icon="ph:eyedropper-bold" color="white" className="h-4 w-4" />
+            <Icon 
+              icon="ph:eyedropper-bold" 
+              className="h-4 w-4 text-white" 
+            />
             <span>ฉีดวัคซีนแล้ว</span>
           </div>
           <div className="justify-centerpy-1 flex items-center gap-2 rounded-full bg-accent-red px-3 py-1">
-            <Icon icon="ph:medal" color="white" className="h-4 w-4" />
+            <Icon 
+              icon="ph:medal" 
+              className="h-4 w-4 text-white" 
+            />
             <span>ทําหมันแล้ว</span>
           </div>
         </div>
@@ -22,7 +28,10 @@ const ButtonWrapper = ({ isAdmin }: { isAdmin: boolean }) => {
             ถูกรับเลี้ยงแล้ว
           </div>
           <button className="flex items-center gap-2 rounded-2xl bg-accent-red px-6 py-2 shadow-[0_0_2px_1px] shadow-zinc-300">
-            <Icon icon="lucide:trash-2" color="white" />
+            <Icon 
+              icon="lucide:trash-2" 
+              className="text-white"
+            />
             <span>ลบโพสต์</span>
           </button>
         </div>

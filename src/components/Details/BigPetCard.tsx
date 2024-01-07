@@ -8,15 +8,13 @@ const BigPetCard = ({ isAdmin }: { isAdmin: boolean }) => {
       <div className="flex items-center justify-between px-6 xl:px-12">
         <Icon
           icon="material-symbols-light:arrow-back-ios-new"
-          color="#08878E"
-          className="h-8 w-8"
+          className="h-8 w-8 text-primary"
         />
         <div className="flex items-center gap-2 text-primary xl:hidden">
           {isAdmin && (
             <Icon
               icon="mynaui:pencil"
-              color="#c81425"
-              className="h-6 w-6 cursor-pointer"
+              className="h-6 w-6 cursor-pointer text-accent-red"
             />
           )}
           <p className="text-4xl font-bold border-b-2 border-primary">ไรลีย์</p>
@@ -34,8 +32,7 @@ const BigPetCard = ({ isAdmin }: { isAdmin: boolean }) => {
             <div className= "bg-white rounded-full p-1 overflow-visible w-8 h-8 absolute bottom-4 right-4">
               <Icon
                 icon="mynaui:pencil"
-                color="#c81425"
-                className=" h-6 w-6 cursor-pointer"
+                className=" h-6 w-6 cursor-pointer text-accent-red"
               />
             </div>
           }
@@ -45,8 +42,7 @@ const BigPetCard = ({ isAdmin }: { isAdmin: boolean }) => {
             {isAdmin && (
               <Icon
                 icon="mynaui:pencil"
-                color="#c81425"
-                className="h-8 w-8 cursor-pointer"
+                className="h-8 w-8 cursor-pointer text-accent-red"
               />
             )}
             <p className="text-4xl font-bold border-b-2 border-primary text-primary">ไรลีย์</p>
@@ -63,8 +59,7 @@ const BigPetCard = ({ isAdmin }: { isAdmin: boolean }) => {
             {isAdmin && 
             <Icon
               icon="mynaui:pencil"
-              color="#c81425"
-              className="h-6 w-6 cursor-pointer xl:hidden"
+              className="h-6 w-6 cursor-pointer text-accent-red xl:hidden"
             />}
           </article>
         </div>

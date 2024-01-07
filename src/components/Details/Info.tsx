@@ -9,13 +9,11 @@ const Info = ({ isAdmin }: { isAdmin: boolean }) => {
           {isAdmin ? 
             <Icon 
               icon="mynaui:pencil" 
-              color="#c81425" 
-              className="h-6 w-6" 
+              className="h-6 w-6 text-accent-red" 
             /> :
             <Icon
               icon="ph:heart-straight-bold"
-              color="#c81425"
-              className="h-6 w-6"
+              className="h-6 w-6 text-accent-red"
             />
           }
       </div>
@@ -23,28 +21,40 @@ const Info = ({ isAdmin }: { isAdmin: boolean }) => {
         <div className="flex w-80 flex-col gap-4 text-primary">
           <div className="flex gap-4">
             <span className="flex items-center gap-3">
-              <Icon icon="ph:paw-print" color="#08878e" />
+              <Icon 
+                icon="ph:paw-print" 
+                className="text-primary" 
+              />
               เพศ:
             </span>
             <span className="font-semibold text-black">ผู้</span>
           </div>
           <div className="flex gap-4">
             <span className="flex items-center gap-3">
-              <Icon icon="ph:star" color="#08878e" />
+              <Icon 
+                icon="ph:star"
+                className="text-primary" 
+              />
               พันธ์ุ:
             </span>
             <span className="font-semibold text-black">เเลบราดอร์</span>
           </div>
           <div className="flex gap-4">
             <span className="flex items-center gap-3">
-              <Icon icon="carbon:calendar" color="#08878e" />
+              <Icon 
+                icon="carbon:calendar" 
+                className="text-primary" 
+              />
               อายุ:
             </span>
             <span className="font-semibold text-black">3 ปี 1 เดือน</span>
           </div>
           <div className="flex gap-4">
             <span className="flex items-center gap-3">
-              <Icon icon="ph:music-notes" color="#08878e" />
+              <Icon 
+                icon="ph:music-notes" 
+                className="text-primary" 
+              />
               นิสัย:
             </span>
             <span className="font-semibold text-black">ดุร้าย</span>
