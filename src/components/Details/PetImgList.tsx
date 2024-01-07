@@ -3,7 +3,7 @@ import plusIcon from "@/assets/details/plusIcon.svg";
 
 const PetImgList = () => {
   return (
-    <div className="mx-auto flex w-full gap-6  px-6 xl:w-[80rem] xl:px-0 overflow-y-visible overflow-x-clip">
+    <div className="mx-auto flex w-full gap-6  overflow-x-clip overflow-y-visible px-6 xl:w-[80rem] xl:px-0">
       <img
         src={petImg}
         alt="pet-img"
