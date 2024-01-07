@@ -1,13 +1,20 @@
 import logoPrimary from "@/assets/navbar/logoPrimary.svg";
 import logoSecondary from "@/assets/navbar/logoSecondary.svg";
-import { Icon } from "@iconify/react/dist/iconify.js";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useLocation } from "react-router-dom";
-import SideBarWrapper from "./SideBarWrapper";
+import DarkBackground from "./DarkBackground";
+import SideBar from "./SideBar";
+import TopBar from "./TopBar";
 
 const Navbar = () => {
   const [toggle, setToggle] = useState(false);
+  const [isShow, setIsShow] = useState(false);
   const pathname = useLocation().pathname;
+
+  useEffect(() => {
+    setIsShow(toggle);
+  }, [toggle]);
+
   const style = useMemo(() => {
     switch (pathname) {
       case "/admin":
@@ -34,26 +41,11 @@ const Navbar = () => {
   }, [pathname]);
 
   return (
-    <div
-      className={`flex items-center justify-between px-4 py-3 transition-all  ${style.color}`}
-    >
-      <div className="flex items-center gap-3 ">
-        {style.logo && (
-          <img src={style.logo} alt="logo" className="h-12 w-12 " />
-        )}
-        <div className="-xl:text-2xl text-lg font-bold text-white">JOHNJUD</div>
-      </div>
-      <Icon
-        icon="radix-icons:hamburger-menu"
-        className="h-8 w-8 cursor-pointer text-white"
-        onClick={() => setToggle(true)}
-      />
-      <SideBarWrapper
-        setToggle={setToggle}
-        color={style.color}
-        toggle={toggle}
-      />
-    </div>
+    <>
+      <DarkBackground isExist={toggle} isShow={isShow} setToggle={setToggle} />
+      <TopBar style={style} setToggle={setToggle} />
+      <SideBar color={style.color} isShow={isShow} isExist={toggle} />
+    </>
   );
 };
 
