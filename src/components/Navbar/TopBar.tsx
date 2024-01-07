@@ -1,4 +1,5 @@
 import { Icon } from "@iconify/react/dist/iconify.js";
+import { Link } from "react-router-dom";
 
 const TopBar = ({
   style,
@@ -14,12 +15,12 @@ const TopBar = ({
     <div
       className={`sticky top-0 z-[1002] flex items-center justify-between px-4  py-3 transition-all ${style.color}`}
     >
-      <div className="flex items-center gap-3 ">
+      <Link to="/home" className="flex items-center gap-3 ">
         {style.logo && (
           <img src={style.logo} alt="logo" className="h-12 w-12" />
         )}
-        <div className="-xl:text-2xl text-lg font-bold text-white">JOHNJUD</div>
-      </div>
+        <div className="text-lg font-bold text-white">JOHNJUD</div>
+      </Link>
       <Icon
         icon="radix-icons:hamburger-menu"
         className="h-8 w-8 cursor-pointer text-white"
