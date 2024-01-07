@@ -1,4 +1,4 @@
-import blankProfile from "@/assets/Navbar/blankProfile.svg";
+import blankProfile from "@/assets/navbar/blankProfile.svg";
 import { Icon } from "@iconify/react";
 import React from "react";
 import { Link } from "react-router-dom";
