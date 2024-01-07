@@ -34,9 +34,7 @@ const Navbar = () => {
   }, [pathname]);
 
   return (
-    <div
-      className={`flex items-center justify-between px-4 py-3 transition-all xl:px-8 xl:py-6 ${style.color}`}
-    >
+    <div className={`flex items-center justify-between px-4 py-3 transition-all xl:px-8 xl:py-6 ${style.color}`}>
       <div className="flex items-center gap-3 ">
         {style.logo && (
           <img
