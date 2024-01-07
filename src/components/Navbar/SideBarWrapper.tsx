@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import SideBar from "./SideBar";
 
 interface SideBarWrapperProps {
@@ -13,9 +13,11 @@ const SideBarWrapper: React.FC<SideBarWrapperProps> = ({
   toggle,
 }) => {
   const [z, setZ] = useState("-z-10");
-  const opacity = toggle ? "opacity-1" : "opacity-0";
   const transitionDuration = 700;
   const delay = 500;
+  const opacity = useMemo(() => {
+    return toggle ? "opacity-1" : "opacity-0";
+  } , [toggle]) 
 
   useEffect(() => {
     if (toggle) {
