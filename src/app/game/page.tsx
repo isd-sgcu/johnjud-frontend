@@ -74,7 +74,7 @@ const userTarotFirstpage = () => {
           >
             {slideImages.map((item, index) => (
               <div key={index}>
-                <img src={item} className="h-[530px] w-80 rounded-2xl" />
+                <img src={item} className="w-full rounded-2xl" />
               </div>
             ))}
           </Carousel>
