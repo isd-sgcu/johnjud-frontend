@@ -9,7 +9,7 @@ interface ButtonProps {
   rounded?: "none" | "2xl" | "full";
 
   className?: string;
-  onClick?: () => void;
+  onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
 }
 
 const button = tv({
