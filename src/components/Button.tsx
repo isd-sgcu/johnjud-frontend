@@ -5,11 +5,11 @@ interface ButtonProps {
   text: string;
   icon?: string;
 
-  variant: "primary" | "accent-red" | "accent-purple" | "disabled";
+  variant: "primary" | "accent-red" | "accent-purple" | "white" | "disabled";
   rounded?: "none" | "2xl" | "full";
 
   className?: string;
-  onClick?: () => void;
+  onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
 }
 
 const button = tv({
@@ -31,6 +31,10 @@ const button = tv({
       "accent-purple": {
         base: "bg-accent-purple text-white",
         iconStyle: "text-white",
+      },
+      white: {
+        base: "bg-white text-accent-gray",
+        iconStyle: "text-accent-gray",
       },
       disabled: {
         base: "bg-accent-light-gray-variant text-accent-gray",
