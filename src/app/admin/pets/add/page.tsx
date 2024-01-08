@@ -40,30 +40,30 @@ const userCreate = () => {
         </div>
       </div>
 
-      <div className="mx-6 flex flex-col gap-8 md:flex-row lg:mx-[8%]">
+      <Container className="flex flex-col gap-8 md:flex-row">
         {/* Thumpnail */}
-        <Container className="flex h-fit w-full max-w-80 justify-center px-0 md:justify-start">
+        <div className="w-full md:w-80">
           <AddThumbnail
             valueThumbnail={thumbnail}
             setThumbnail={setThumbnail}
             valueOrigin={origin}
             setOrigin={setOrigin}
           />
-        </Container>
+        </div>
 
         {/* large EditName + EditText */}
-        <Container className="flex w-full flex-col px-0 md:justify-between md:gap-4">
+        <div className="flex w-full flex-col md:justify-between md:gap-4">
           <div className="hidden w-full md:flex md:flex-col">
             <EditName value={name} setValue={setName} />
           </div>
           <EditText value={text} setValue={setText} />
-        </Container>
-      </div>
+        </div>
+      </Container>
 
       {/* Small Picture */}
-      <div className="flex w-full pl-6 lg:pl-[8%]">
+      <Container>
         <AddSmallPicture value={pictures} setValue={setPictures} />
-      </div>
+      </Container>
 
       <div className="flex flex-col lg:flex-row">
         {/* Edit info + Pose Button*/}
