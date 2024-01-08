@@ -1,5 +1,5 @@
-import LoginForm from "../../components/Form/LoginForm";
-import MainLayout from "../../layouts/MainLayout";
+import LoginForm from "@/components/Form/LoginForm";
+import MainLayout from "@/layouts/MainLayout";
 
 // Page
 const Login = () => {
@@ -9,7 +9,7 @@ const Login = () => {
         <h1 className="text-nowrap text-5xl font-bold text-primary ">
           เข้าสู่ระบบ
         </h1>
-        <p className="text-nowrap text-lg font-normal text-johnjud-gray">
+        <p className="text-johnjud-gray text-nowrap text-lg font-normal">
           เข้าสู่ระบบของคุณ
         </p>
       </div>

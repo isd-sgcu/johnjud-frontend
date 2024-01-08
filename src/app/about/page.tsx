@@ -1,5 +1,5 @@
-import johnjudLogo from "../../assets/johnjud-with-text.png";
-import MainLayout from "../../layouts/MainLayout";
+import johnjudLogo from "@/assets/johnjud-with-text.png";
+import MainLayout from "@/layouts/MainLayout";
 
 const About = () => {
   return (
@@ -7,7 +7,7 @@ const About = () => {
       <div className="relative flex flex-col items-center">
         <div className="flex flex-col">
           <div className="text-center text-xl lg:text-start">เกี่ยวกับ</div>
-          <div className="text-center text-[2.5rem] font-bold text-primary lg:text-start">
+          <div className="text-center text-4xl font-bold text-primary lg:text-start">
             ชมรมสวัสดิภาพสัตว์
           </div>
         </div>
@@ -16,7 +16,7 @@ const About = () => {
       </div>
 
       <div className="relative mt-3 flex flex-col items-center lg:col-span-2 lg:col-start-2 lg:ml-[4%] lg:mt-7">
-        <div className="w-full text-center text-[2.5rem] font-bold text-primary underline decoration-2 underline-offset-8 lg:pl-[8%] lg:text-start">
+        <div className="w-full text-center text-4xl font-bold text-primary underline decoration-2 underline-offset-8 lg:pl-[8%] lg:text-start">
           พวกเราเป็นใคร?
         </div>
         <p className="mx-[8%] mt-1 rounded-3xl bg-white px-6 py-3 text-center shadow-lg lg:py-6">
@@ -38,7 +38,7 @@ const About = () => {
           ในกรณีสัตว์ป่วยจะมีการจัดตั้งทีมเข้าไปช่วยดูแลหาทุนค่ารักษาพยาบาล
         </p>
         <div className="relative my-6 flex max-w-fit flex-col items-center lg:mb-16 lg:mt-9">
-          <div className="text-center text-4xl text-primary">
+          <div className="text-center text-2xl text-primary">
             หากมีข้อสงสัยเพิ่มเติม
           </div>
           <div className="text-center text-base lg:text-xl">

@@ -1,5 +1,5 @@
-import RegisterForm from "../../components/Form/RegisterForm";
-import MainLayout from "../../layouts/MainLayout";
+import RegisterForm from "@/components/Form/RegisterForm";
+import MainLayout from "@/layouts/MainLayout";
 
 // Page
 const Register = () => {
@@ -9,7 +9,7 @@ const Register = () => {
         <h1 className="text-nowrap text-5xl font-bold text-primary ">
           ลงทะเบียน
         </h1>
-        <p className="text-nowrap text-lg font-normal text-johnjud-gray">
+        <p className="text-johnjud-gray text-nowrap text-lg font-normal">
           ลงทะเบียนบัญชีของคุณ
         </p>
       </div>

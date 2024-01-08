@@ -1,12 +1,12 @@
-import facebookLogo from "../assets/footer/FacebookLogo.svg";
-import twitterLogo from "../assets/footer/InstagramLogo.svg";
-import johnjudLogo from "../assets/footer/JohnJudLogo.svg";
-import instagramLogo from "../assets/footer/TwitterLogo.svg";
+import facebookLogo from "@/assets/footer/FacebookLogo.svg";
+import twitterLogo from "@/assets/footer/InstagramLogo.svg";
+import johnjudLogo from "@/assets/footer/JohnJudLogo.svg";
+import instagramLogo from "@/assets/footer/TwitterLogo.svg";
 const Footer = () => {
   return (
     <div className="mt-auto w-full shrink-0 ">
       <div>
-        <div className="mx-auto flex h-full w-full justify-between bg-teal-600 px-7 py-5 lg:py-9">
+        <div className="mx-auto flex h-full w-full justify-between bg-primary px-7 py-5 lg:py-9">
           {/* Text & Logo*/}
           <div className="flex-start m-0 inline-flex w-[66%] flex-col justify-start gap-4 lg:w-[55%] lg:flex-row lg:items-center lg:gap-0">
             <div className="mr-12 inline-flex items-center justify-start gap-3">
