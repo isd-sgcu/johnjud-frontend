@@ -25,7 +25,7 @@ const userCreate = () => {
     sterile: false,
   });
 
-  const handleSubmit = () => {};
+  const handleSubmit = () => { };
 
   return (
     <>
@@ -67,7 +67,7 @@ const userCreate = () => {
 
       <div className="flex flex-col lg:flex-row">
         {/* Edit info + Pose Button*/}
-        <div className="mt-8 flex w-full flex-col lg:h-full">
+        <div className="flex w-full flex-col lg:h-full">
           <EditInfoAndSubmit
             value={info}
             setValue={setInfo}
@@ -76,9 +76,9 @@ const userCreate = () => {
         </div>
 
         {/* large Logo */}
-        <Container className="hidden w-1/3 shrink-0 justify-center object-contain lg:flex">
+        <div className="hidden w-1/3 shrink-0 justify-center object-contain lg:flex">
           <img src={johnjudLogo} className="flex h-64 w-44"></img>
-        </Container>
+        </div>
       </div>
     </>
   );

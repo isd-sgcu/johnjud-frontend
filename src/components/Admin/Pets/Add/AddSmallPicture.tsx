@@ -14,7 +14,7 @@ const AddSmallPicture = (props: AddSmallPictureProps) => {
     }
   };
   return (
-    <div className="mt-8 flex w-full snap-x flex-row gap-4 overflow-x-auto scroll-smooth pb-4 lg:mt-10">
+    <div className="flex w-full snap-x flex-row gap-4 overflow-x-auto scroll-smooth pb-2">
       {Array.from(props.value).map((picture, index) => {
         return (
           <div

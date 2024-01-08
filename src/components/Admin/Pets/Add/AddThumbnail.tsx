@@ -66,7 +66,7 @@ const AddThumbnail = (props: AddThumbnailProps) => {
         <label htmlFor="thumbnailPicturePencil">
           <Icon
             icon="custom:pencil"
-            className="h-8 w-8 cursor-pointer rounded-full bg-white p-1"
+            className="h-8 w-8 cursor-pointer rounded-full bg-white shadow-md p-1"
           />
         </label>
       </div>
