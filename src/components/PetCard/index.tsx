@@ -3,7 +3,7 @@ import PetDetail from "@/components/PetCard/PetDetail";
 import TogglePetButton from "@/components/PetCard/TogglePetButton";
 import { UtcStringToYearMonth } from "@/utils/dateConverter";
 import { Icon } from "@iconify/react";
-import { useMemo } from "react";
+import { useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 import Johnjud from "../../assets/main/johnjudLogo.svg";
 
@@ -26,6 +26,18 @@ const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
   event.stopPropagation();
 };
 
+const toggleHandle = (event: React.MouseEvent<HTMLButtonElement>) => {
+  handleClick(event);
+};
+
+const likeHandle = (event: React.MouseEvent<HTMLButtonElement>) => {
+  handleClick(event);
+};
+
+const adoptHandle = (event: React.MouseEvent<HTMLButtonElement>) => {
+  handleClick(event);
+};
+
 const PetCard = ({
   id,
   image = Johnjud,
@@ -39,12 +51,14 @@ const PetCard = ({
   isVisibled,
 }: PetCardProps) => {
   const role = useMemo(() => {
-    return "user";
+    return "admin";
   }, []);
 
+  const [liked, setLiked] = useState(isLiked);
+
   const likedHeart = useMemo(() => {
-    return isLiked ? "ph:heart-fill" : "ph:heart";
-  }, [isLiked]);
+    return liked ? "ph:heart-fill" : "ph:heart";
+  }, [liked]);
 
   const linkTo = useMemo(() => {
     return role === "admin" ? `/admin/pets/${id}/edit` : `/pets/${id}`;
@@ -72,12 +86,21 @@ const PetCard = ({
         <img src={image} alt={name} className="mb-4 w-72 rounded-2xl shadow" />
         <div className="mb-2 flex w-72 flex-row items-center justify-between">
           <p className="text-2xl font-bold text-black">{name}</p>
-          <button onClick={() => {}}>
-            <Icon
-              icon={role === "user" ? likedHeart : "ph:pencil-simple"}
-              className="relative h-8 w-8 text-accent-red"
-            />
-          </button>
+          {role === "user" ? (
+            <button
+              onClick={(event: React.MouseEvent<HTMLButtonElement>) => {
+                likeHandle && likeHandle(event);
+                setLiked(!liked);
+              }}
+            >
+              <Icon
+                icon={role === "user" ? likedHeart : "ph:pencil-simple"}
+                className="relative h-8 w-8 text-accent-red"
+              />
+            </button>
+          ) : (
+            <div></div>
+          )}
         </div>
         <div className="flex w-72 flex-row items-end justify-between">
           <div className=" items-center space-y-1">
@@ -94,10 +117,10 @@ const PetCard = ({
               variant={adoptedButton}
               rounded="full"
               className="max-h-10 max-w-28 text-base"
-              onClick={handleClick}
+              onClick={adoptHandle}
             />
           ) : (
-            <TogglePetButton visibility={isVisibled} onClick={handleClick} />
+            <TogglePetButton visibility={isVisibled} onClick={toggleHandle} />
           )}
         </div>
       </div>
