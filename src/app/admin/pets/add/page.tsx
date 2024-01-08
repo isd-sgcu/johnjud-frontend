@@ -1,6 +1,7 @@
 import Container from "@/components/Container";
 import { Icon } from "@iconify/react";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import johnjudLogo from "../../../../assets/johnjud-with-text.png";
 import AddSmallPicture from "../../../../components/Admin/Pets/Add/AddSmallPicture";
 import AddThumbnail from "../../../../components/Admin/Pets/Add/AddThumbnail";
@@ -31,10 +32,12 @@ const userCreate = () => {
     <>
       {/* Icon return & small EditName */}
       <div className="flex justify-between px-6 py-2 lg:block lg:px-12">
-        <Icon
-          icon="ion:chevron-back"
-          className="mb-1 flex h-8 w-8 flex-none self-center text-primary"
-        />
+        <Link to="/admin/pets/">
+          <Icon
+            icon="ion:chevron-back"
+            className="mb-1 flex h-8 w-8 flex-none self-center text-primary"
+          />
+        </Link>
         <div className="visible flex w-full flex-col md:hidden">
           <EditName value={name} setValue={setName} />
         </div>
@@ -42,7 +45,7 @@ const userCreate = () => {
 
       <Container className="flex flex-col gap-8 md:flex-row">
         {/* Thumpnail */}
-        <div className="w-full max-w-80 md:w-80 self-center">
+        <div className="w-full max-w-80 self-center md:w-80">
           <AddThumbnail
             valueThumbnail={thumbnail}
             setThumbnail={setThumbnail}
