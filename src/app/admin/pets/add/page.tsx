@@ -25,12 +25,12 @@ const userCreate = () => {
     sterile: false,
   });
 
-  const handleSubmit = () => { };
+  const handleSubmit = () => {};
 
   return (
     <>
       {/* Icon return & small EditName */}
-      <div className="flex lg:block justify-between px-6 py-2 lg:px-12">
+      <div className="flex justify-between px-6 py-2 lg:block lg:px-12">
         <Icon
           icon="ion:chevron-back"
           className="mb-1 flex h-8 w-8 flex-none self-center text-primary"
@@ -40,9 +40,9 @@ const userCreate = () => {
         </div>
       </div>
 
-      <div className="flex flex-col md:flex-row gap-8 lg:mx-[8%] mx-6">
+      <div className="mx-6 flex flex-col gap-8 md:flex-row lg:mx-[8%]">
         {/* Thumpnail */}
-        <Container className="flex h-fit w-full max-w-80 px-0 justify-center md:justify-start">
+        <Container className="flex h-fit w-full max-w-80 justify-center px-0 md:justify-start">
           <AddThumbnail
             valueThumbnail={thumbnail}
             setThumbnail={setThumbnail}
@@ -67,7 +67,7 @@ const userCreate = () => {
 
       <div className="flex flex-col lg:flex-row">
         {/* Edit info + Pose Button*/}
-        <div className="mt-8 w-full flex flex-col lg:h-full">
+        <div className="mt-8 flex w-full flex-col lg:h-full">
           <EditInfoAndSubmit
             value={info}
             setValue={setInfo}
@@ -76,11 +76,10 @@ const userCreate = () => {
         </div>
 
         {/* large Logo */}
-        <Container className="hidden w-1/3 justify-center object-contain lg:flex shrink-0">
+        <Container className="hidden w-1/3 shrink-0 justify-center object-contain lg:flex">
           <img src={johnjudLogo} className="flex h-64 w-44"></img>
         </Container>
       </div>
-
     </>
   );
 };
