@@ -4,7 +4,7 @@ import { tv } from "tailwind-variants";
 interface ToggleProps {
   visibility: boolean;
   className?: string;
-  onChange?: () => void;
+  onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
 }
 
 const toggleSwitch = tv({
@@ -29,7 +29,7 @@ const toggleSwitch = tv({
   },
 });
 
-const TogglePetButton = ({ visibility, onChange }: ToggleProps) => {
+const TogglePetButton = ({ visibility, onClick }: ToggleProps) => {
   const { base, switchStyle, textStyle } = toggleSwitch();
   const [isVisible, setIsVisible] = useState(visibility);
 
@@ -45,7 +45,7 @@ const TogglePetButton = ({ visibility, onChange }: ToggleProps) => {
     <div
       className={base({ variant })}
       onClick={() => {
-        onChange;
+        onClick;
         setIsVisible(!isVisible);
       }}
     >

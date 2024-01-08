@@ -21,6 +21,11 @@ type PetCardProps = {
   isVisibled: boolean;
 };
 
+const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+  event.preventDefault();
+  event.stopPropagation();
+};
+
 const PetCard = ({
   id,
   image = Johnjud,
@@ -42,7 +47,7 @@ const PetCard = ({
   }, [isLiked]);
 
   const linkTo = useMemo(() => {
-    return "/pets/" + id;
+    return role === "admin" ? `/admin/pets/${id}/edit` : `/pets/${id}`;
   }, [id]);
 
   const { years, months } = useMemo(() => {
@@ -61,50 +66,43 @@ const PetCard = ({
     return status === "adopted" ? "disabled" : "accent-red";
   }, [status]);
 
-  if (role === "user" && isVisibled === false) {
-    return;
-  } else {
-    return (
-      <Link to={linkTo}>
-        <div className="flex w-80 flex-col items-start justify-start rounded-2xl bg-white p-4 shadow">
-          <img
-            src={image}
-            alt={name}
-            className="mb-4 w-72 rounded-2xl shadow"
-          />
-          <div className="mb-2 flex w-72 flex-row items-center justify-between">
-            <p className="text-2xl font-bold text-black">{name}</p>
-            <button onClick={() => {}}>
-              <Icon
-                icon={role === "user" ? likedHeart : "ph:pencil-simple"}
-                className="relative h-8 w-8 text-accent-red"
-              />
-            </button>
-          </div>
-          <div className="flex w-72 flex-row items-end justify-between">
-            <div className=" items-center space-y-1">
-              <PetDetail
-                icon={"ph:paw-print"}
-                description={`${petGender}, อายุ ${years} ปี ${months} เดือน`}
-              />
-              <PetDetail icon={"ph:music-notes"} description={habit} />
-              <PetDetail icon={"ph:medal"} description={petSterile} />
-            </div>
-            {role === "user" ? (
-              <Button
-                text={"รับเลี้ยง"}
-                variant={adoptedButton}
-                rounded="full"
-                className="max-h-10 max-w-28 text-base"
-              />
-            ) : (
-              <TogglePetButton visibility={isVisibled} />
-            )}
-          </div>
+  return (
+    <Link to={linkTo}>
+      <div className="flex w-80 flex-col items-start justify-start rounded-2xl bg-white p-4 shadow">
+        <img src={image} alt={name} className="mb-4 w-72 rounded-2xl shadow" />
+        <div className="mb-2 flex w-72 flex-row items-center justify-between">
+          <p className="text-2xl font-bold text-black">{name}</p>
+          <button onClick={() => {}}>
+            <Icon
+              icon={role === "user" ? likedHeart : "ph:pencil-simple"}
+              className="relative h-8 w-8 text-accent-red"
+            />
+          </button>
         </div>
-      </Link>
-    );
-  }
+        <div className="flex w-72 flex-row items-end justify-between">
+          <div className=" items-center space-y-1">
+            <PetDetail
+              icon={"ph:paw-print"}
+              description={`${petGender}, อายุ ${years} ปี ${months} เดือน`}
+            />
+            <PetDetail icon={"ph:music-notes"} description={habit} />
+            <PetDetail icon={"ph:medal"} description={petSterile} />
+          </div>
+          {role === "user" ? (
+            <Button
+              text={"รับเลี้ยง"}
+              variant={adoptedButton}
+              rounded="full"
+              className="max-h-10 max-w-28 text-base"
+              onClick={handleClick}
+            />
+          ) : (
+            <TogglePetButton visibility={isVisibled} onClick={handleClick} />
+          )}
+        </div>
+      </div>
+    </Link>
+  );
 };
 
 export default PetCard;
