@@ -2,11 +2,11 @@ import Container from "@/components/Container";
 import { Icon } from "@iconify/react";
 import { useState } from "react";
 import johnjudLogo from "../../../../assets/johnjud-with-text.png";
-import AddSmallPicture from "../../../../components/admin/user-create/AddSmallPicture";
-import AddThumbnail from "../../../../components/admin/user-create/AddThumbnail";
-import EditInfoAndSubmit from "../../../../components/admin/user-create/EditInfoAndSubmit";
-import EditName from "../../../../components/admin/user-create/EditName";
-import EditText from "../../../../components/admin/user-create/EditText";
+import AddSmallPicture from "../../../../components/Admin/Pets/Add/AddSmallPicture";
+import AddThumbnail from "../../../../components/Admin/Pets/Add/AddThumbnail";
+import EditInfoAndSubmit from "../../../../components/Admin/Pets/Add/EditInfoAndSubmit";
+import EditName from "../../../../components/Admin/Pets/Add/EditName";
+import EditText from "../../../../components/Admin/Pets/Add/EditText";
 import MainLayout from "../../../../layouts/MainLayout";
 
 const userCreate = () => {
