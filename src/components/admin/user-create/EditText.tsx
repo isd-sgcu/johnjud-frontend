@@ -60,7 +60,7 @@ const EditText = (props: EditTextProps) => {
       <div ref={saveRef} tabIndex={0}>
         <Icon
           icon={enableEdit ? "ph:floppy-disk" : "custom:pencil"}
-          className="absolute right-4 bottom-4 flex h-8 w-8 p-1 bg-white shadow-md rounded-full flex-none cursor-pointer text-accent-red"
+          className="absolute bottom-4 right-4 flex h-8 w-8 flex-none cursor-pointer rounded-full bg-white p-1 text-accent-red shadow-md"
           onClick={handleClickEdit}
         />
       </div>
