@@ -42,7 +42,7 @@ const userCreate = () => {
 
       <Container className="flex flex-col gap-8 md:flex-row">
         {/* Thumpnail */}
-        <div className="w-full md:w-80">
+        <div className="w-full max-w-80 md:w-80 self-center">
           <AddThumbnail
             valueThumbnail={thumbnail}
             setThumbnail={setThumbnail}
