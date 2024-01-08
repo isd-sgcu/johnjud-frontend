@@ -18,7 +18,7 @@ const AddThumbnail = (props: AddThumbnailProps) => {
   };
 
   return (
-    <div className="relative flex aspect-square h-fit w-full max-w-80 flex-col">
+    <div className="relative flex aspect-square h-fit w-full flex-col">
       {props.valueThumbnail === null ? (
         <div className="flex h-full w-full items-center justify-center rounded-3xl border-2 border-accent-gray-variant bg-white drop-shadow-sm">
           <input
@@ -64,7 +64,7 @@ const AddThumbnail = (props: AddThumbnailProps) => {
           onChange={handleOnChange}
         />
         <label htmlFor="thumbnailPicturePencil">
-          <Icon icon="custom:pencil" className="h-6 w-6 cursor-pointer" />
+          <Icon icon="custom:pencil" className="h-8 w-8 p-1 cursor-pointer rounded-full bg-white" />
         </label>
       </div>
 

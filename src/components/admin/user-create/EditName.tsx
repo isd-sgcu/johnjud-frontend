@@ -41,17 +41,17 @@ const EditName = (props: EditNameProps) => {
   return (
     <div className="relative flex w-full flex-col">
       <div
-        className={`flex max-w-full flex-row items-center self-end text-pretty lg:self-start ${
+        className={`flex max-w-full flex-row items-center self-end text-pretty md:self-start ${
           enableEdit ? "hidden" : "visible"
         }`}
       >
         <Icon
           icon="custom:pencil"
-          className="flex h-6 w-6 flex-none cursor-pointer lg:hidden"
+          className="flex h-6 w-6 flex-none cursor-pointer md:hidden"
           onClick={handleClickEdit}
         />
         <div className="relative flex flex-col">
-          <div className="flex break-all pl-1 text-right text-3xl font-bold text-primary lg:text-left">
+          <div className="flex break-all pl-1 text-right text-3xl font-bold text-primary md:text-left">
             {props.value}
           </div>
           <div className="mt-1 h-[3px] w-full rounded-full bg-primary" />
@@ -59,7 +59,7 @@ const EditName = (props: EditNameProps) => {
 
         <Icon
           icon="custom:pencil"
-          className="hidden h-6 w-6 flex-none cursor-pointer lg:ml-3 lg:flex"
+          className="hidden h-6 w-6 flex-none cursor-pointer md:ml-3 md:flex"
           onClick={handleClickEdit}
         />
       </div>

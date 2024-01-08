@@ -25,58 +25,63 @@ const userCreate = () => {
     sterile: false,
   });
 
-  const handleSubmit = () => {};
+  const handleSubmit = () => { };
 
   return (
-    <div className="grid w-screen grid-cols-1 flex-col pb-28 lg:grid-cols-3 lg:pb-20">
+    <>
       {/* Icon return & small EditName */}
-      <div className="flex justify-between overflow-clip px-[10%] py-2 lg:col-span-3 lg:px-12">
+      <div className="flex lg:block justify-between px-6 py-2 lg:px-12">
         <Icon
           icon="ion:chevron-back"
           className="mb-1 flex h-8 w-8 flex-none self-center text-primary"
         />
-        <div className="visible flex w-full flex-col lg:hidden">
+        <div className="visible flex w-full flex-col md:hidden">
           <EditName value={name} setValue={setName} />
         </div>
       </div>
 
-      {/* Thumpnail */}
-      <Container className="flex h-fit w-full justify-center px-6 pt-8 lg:justify-start lg:pl-[25%] lg:pr-0 xl:pl-[25%]">
-        <AddThumbnail
-          valueThumbnail={thumbnail}
-          setThumbnail={setThumbnail}
-          valueOrigin={origin}
-          setOrigin={setOrigin}
-        />
-      </Container>
+      <div className="flex flex-col md:flex-row gap-8 lg:mx-[8%] mx-6">
+        {/* Thumpnail */}
+        <Container className="flex h-fit w-full max-w-80 px-0 justify-center md:justify-start">
+          <AddThumbnail
+            valueThumbnail={thumbnail}
+            setThumbnail={setThumbnail}
+            valueOrigin={origin}
+            setOrigin={setOrigin}
+          />
+        </Container>
 
-      {/* large EditName + EditText */}
-      <Container className="flex w-full flex-col px-6 pt-8 lg:col-span-2 lg:justify-between lg:pr-[12.5%] xl:pl-6 xl:pr-[12.5%]">
-        <div className="hidden w-full lg:mb-4 lg:flex lg:flex-col">
-          <EditName value={name} setValue={setName} />
-        </div>
-        <EditText value={text} setValue={setText} />
-      </Container>
+        {/* large EditName + EditText */}
+        <Container className="flex w-full flex-col px-0 md:justify-between md:gap-4">
+          <div className="hidden w-full md:flex md:flex-col">
+            <EditName value={name} setValue={setName} />
+          </div>
+          <EditText value={text} setValue={setText} />
+        </Container>
+      </div>
 
       {/* Small Picture */}
-      <div className="flex w-full pl-6 lg:col-span-3 lg:pl-[8.33%]">
+      <div className="flex w-full pl-6 lg:pl-[8%]">
         <AddSmallPicture value={pictures} setValue={setPictures} />
       </div>
 
-      {/* Edit info + Pose Button*/}
-      <div className="mt-8 flex flex-col lg:col-span-2 lg:mt-10 lg:h-full">
-        <EditInfoAndSubmit
-          value={info}
-          setValue={setInfo}
-          onSubmit={handleSubmit}
-        />
+      <div className="flex flex-col lg:flex-row">
+        {/* Edit info + Pose Button*/}
+        <div className="mt-8 w-full flex flex-col lg:h-full">
+          <EditInfoAndSubmit
+            value={info}
+            setValue={setInfo}
+            onSubmit={handleSubmit}
+          />
+        </div>
+
+        {/* large Logo */}
+        <Container className="hidden w-1/3 justify-center object-contain lg:flex shrink-0">
+          <img src={johnjudLogo} className="flex h-64 w-44"></img>
+        </Container>
       </div>
 
-      {/* large Logo */}
-      <Container className="hidden w-full justify-center object-contain lg:mt-10 lg:flex">
-        <img src={johnjudLogo} className="flex h-64 w-44"></img>
-      </Container>
-    </div>
+    </>
   );
 };
 

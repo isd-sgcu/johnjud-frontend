@@ -44,7 +44,7 @@ const EditText = (props: EditTextProps) => {
   }, [enableEdit]);
 
   return (
-    <div className={`relative flex min-h-60 w-full lg:h-full lg:min-h-0`}>
+    <div className={`relative flex min-h-60 w-full md:h-full md:min-h-0`}>
       <TextareaAutosize
         value={showText}
         className={
@@ -60,7 +60,7 @@ const EditText = (props: EditTextProps) => {
       <div ref={saveRef} tabIndex={0}>
         <Icon
           icon={enableEdit ? "ph:floppy-disk" : "custom:pencil"}
-          className="absolute right-4 top-4 flex h-6 w-6 flex-none cursor-pointer text-accent-red"
+          className="absolute right-4 bottom-4 flex h-8 w-8 p-1 bg-white shadow-md rounded-full flex-none cursor-pointer text-accent-red"
           onClick={handleClickEdit}
         />
       </div>
