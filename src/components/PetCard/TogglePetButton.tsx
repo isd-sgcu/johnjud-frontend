@@ -42,16 +42,16 @@ const TogglePetButton = ({ visibility, onClick }: ToggleProps) => {
   }, [isVisible]);
 
   return (
-    <div
+    <button
       className={base({ variant })}
-      onClick={() => {
-        onClick;
+      onClick={(event: React.MouseEvent<HTMLButtonElement>) => {
+        onClick && onClick(event);
         setIsVisible(!isVisible);
       }}
     >
       <div className={switchStyle({ variant })}></div>
       <p className={textStyle({ variant })}>{text}</p>
-    </div>
+    </button>
   );
 };
 
