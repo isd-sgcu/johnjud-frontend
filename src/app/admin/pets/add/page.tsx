@@ -25,7 +25,7 @@ const userCreate = () => {
     sterile: false,
   });
 
-  const handleSubmit = () => { };
+  const handleSubmit = () => {};
 
   return (
     <>
