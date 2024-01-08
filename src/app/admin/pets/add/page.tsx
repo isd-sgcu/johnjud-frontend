@@ -61,9 +61,9 @@ const userCreate = () => {
       </Container>
 
       {/* Small Picture */}
-      <div className="flex w-full pl-6 lg:pl-[8%]">
+      <Container>
         <AddSmallPicture value={pictures} setValue={setPictures} />
-      </div>
+      </Container>
 
       <div className="flex flex-col lg:flex-row">
         {/* Edit info + Pose Button*/}
