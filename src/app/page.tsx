@@ -39,7 +39,7 @@ const Main = () => {
                 cursor-pointer rounded-2xl py-2.5 text-2xl
                 font-semibold text-white opacity-80
                 hover:ease-in lg:px-32"
-            ></Button>
+            />
           </Link>
         </div>
         <img src={catImage} alt="Cat Image" className="mx-auto" />
