@@ -45,13 +45,25 @@ const userTarotFirstpage = () => {
             renderArrowPrev={(clickHandler: () => void) => {
               return (
                 <button
-                  className="absolute z-10 h-full bg-red-100"
+                  className="absolute left-2 top-0 z-10 h-full px-4"
                   onClick={clickHandler}
                 >
                   <Icon
-                    icon="ph:caret-circle-left-bold
-                    "
-                    className="h-6 w-6 text-black"
+                    icon="ph:arrow-circle-left-fill"
+                    className=" h-10 w-10 text-4xl text-white"
+                  />
+                </button>
+              );
+            }}
+            renderArrowNext={(clickHandler: () => void) => {
+              return (
+                <button
+                  className="absolute right-2 top-0 z-10 h-full px-4"
+                  onClick={clickHandler}
+                >
+                  <Icon
+                    icon="ph:arrow-circle-right-fill"
+                    className="h-10 w-10 text-4xl text-white"
                   />
                 </button>
               );
