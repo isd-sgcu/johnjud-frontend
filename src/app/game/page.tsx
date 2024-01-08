@@ -1,3 +1,4 @@
+import { Icon } from "@iconify/react";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 
@@ -47,7 +48,11 @@ const userTarotFirstpage = () => {
                   className="absolute z-10 h-full bg-red-100"
                   onClick={clickHandler}
                 >
-                  <div>fsdkjf</div>
+                  <Icon
+                    icon="ph:caret-circle-left-bold
+                    "
+                    className="h-6 w-6 text-black"
+                  />
                 </button>
               );
             }}
@@ -78,7 +83,7 @@ const userTarotFirstpage = () => {
           </div>
         </div>
         <button
-          className="w-full rounded-2xl bg-secondary px-6 py-2
+          className="bg-secondary w-full rounded-2xl px-6 py-2
                 text-center text-xl font-semibold text-white"
         >
           เล่นเลย
