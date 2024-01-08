@@ -1,10 +1,68 @@
-import catImage from "../../assets/user-tarot/ANS 4 แมวดำ 1.svg";
+import { Carousel } from "react-responsive-carousel";
+import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
+
+import img1 from "../../assets/user-tarot/I.png";
+import img2 from "../../assets/user-tarot/II.png";
+import img3 from "../../assets/user-tarot/III.png";
+import img4 from "../../assets/user-tarot/IV.png";
+import img9 from "../../assets/user-tarot/IX.png";
+import img5 from "../../assets/user-tarot/V.png";
+import img6 from "../../assets/user-tarot/VI.png";
+import img7 from "../../assets/user-tarot/VII.png";
+import img8 from "../../assets/user-tarot/VIII.png";
+import img10 from "../../assets/user-tarot/X.png";
+// import backcard from "../../assets/user-tarot/backcard.png"
+
+// Don't forget to include the css in your page
+
+// Using webpack or parcel with a style loader
+// import styles from 'react-responsive-carousel/lib/styles/carousel.min.css';
+
+// Using html tag:
+// <li
 
 const userTarotFirstpage = () => {
+  const slideImages = [
+    img1,
+    img2,
+    img3,
+    img4,
+    img5,
+    img6,
+    img7,
+    img8,
+    img9,
+    img10,
+  ];
+
   return (
     <div className="min-h-screen w-full bg-primary-variant">
       <div className="flex flex-col items-center p-6 lg:mx-auto lg:w-80 lg:px-0 lg:py-10">
-        <img className="h-[428px] w-80 rounded-2xl" src={catImage} />
+        {/* <img className="h-[428px] w-80 rounded-2xl" src={img1} /> */}
+        <div className="relative">
+          <Carousel
+            renderArrowPrev={(clickHandler: () => void) => {
+              return (
+                <button
+                  className="absolute z-10 h-full bg-red-100"
+                  onClick={clickHandler}
+                >
+                  <div>fsdkjf</div>
+                </button>
+              );
+            }}
+            infiniteLoop={true}
+            autoPlay={true}
+            thumbWidth={40}
+          >
+            {slideImages.map((item, index) => (
+              <div key={index}>
+                <img src={item} className="rounded-3xl" />
+              </div>
+            ))}
+          </Carousel>
+        </div>
+
         <div className="my-6 flex flex-col items-center lg:my-8">
           <div
             className="py-3 text-5xl font-bold text-primary
