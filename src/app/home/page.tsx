@@ -29,7 +29,7 @@ const MainPage = () => {
         </div>
       </Container>
       <Container className="flex items-center justify-center md:hidden">
-        <Divider />
+        <Divider variant = "primary"/>
       </Container>
       <Container className="md:hidden">
         <Heading onSearch />
@@ -50,13 +50,13 @@ const MainPage = () => {
         />
       </Container>
       <Container>
-        <Divider />
+        <Divider variant = "primary"/>
       </Container>
       <Container className="flex md:hidden">
         <Banner imageUrl="https://via.placeholder.com/468x600?text=Your+Ad+Here" />
       </Container>
       <Container className="flex items-center justify-center md:hidden">
-        <Divider />
+        <Divider variant = "primary"/>
       </Container>
       <Container>
         <BigPetCardContainer />
