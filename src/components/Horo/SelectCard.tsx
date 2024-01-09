@@ -7,14 +7,11 @@ interface SelectCardProps {
   handleClick: () => void;
 }
 
-const SelectCard: React.FC<SelectCardProps> = ({
+const SelectCard = ({
   selectedCard,
   handleClick,
   cardList,
-}) => {
-  
-
-
+}: SelectCardProps) => {
   return (
     <div className="grid grid-cols-3 gap-3">
       {cardList.map((cardImage: string, index: number) => (
