@@ -172,3 +172,14 @@ addIcon("custom:md:dog-white", {
   width: 30,
   height: 30,
 });
+
+// horo games
+addIcon("custom:md:line", {
+  body: `
+  <svg width="98" height="2" viewBox="0 0 98 2" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M1 1H97" stroke="#FFFF31" stroke-width="2" stroke-linecap="round"/>
+  </svg>
+  `,
+  width: 98,
+});
+
