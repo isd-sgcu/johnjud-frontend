@@ -5,6 +5,7 @@ import { PetIcon } from "@/components/Filter/Icon";
 import Heading from "@/components/Pets/Heading";
 import PetSearch from "@/components/Search/PetSearch";
 import MainLayout from "@/layouts/MainLayout";
+import { Icon } from "@iconify/react/dist/iconify.js";
 
 import { useCallback, useState } from "react";
 import { Link } from "react-router-dom";
@@ -18,6 +19,11 @@ const Pets = () => {
 
   return (
     <>
+      <div className="flex justify-between px-6 lg:block lg:px-12">
+        <Link to="/admin/">
+          <Icon icon="ion:chevron-back" className="h-8 w-8 text-primary" />
+        </Link>
+      </div>
       <Container>
         <Heading onSearch />
       </Container>
