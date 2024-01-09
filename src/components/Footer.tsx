@@ -6,22 +6,22 @@ const Footer = () => {
       {/* Text & Logo*/}
       <div className="flex w-56 flex-col items-start justify-start gap-4 lg:w-full lg:flex-row lg:items-center lg:gap-11">
         <div className="flex flex-row items-center justify-center space-x-3">
-          <span>
+          <div>
             <img
               className="h-11 w-11 rounded-full"
               src={johnjudLogo}
               alt="Johnjud Logo"
             />
-          </span>
-          <span className="text-base font-bold text-white">JOHNJUD</span>
+          </div>
+          <div className="text-base font-bold text-white">JOHNJUD</div>
         </div>
         {/*Text*/}
-        <div className="flex flex-col space-y-4 text-xs text-white lg:text-base">
-          <div className="w-full">
-            สโมสรนิสิตคณะสัตวแพทยศาสตร์ จุฬาลงกรณ์มหาวิทยาลัย
-            ถนน อังรีดูนังต์ แขวงปทุมวัน เขตปทุมวัน กรุงเทพ ฯ 10330
+        <div className="flex flex-col items-center justify-center space-y-4 text-xs font-normal text-white lg:w-96">
+          <div className="w-full self-stretch text-balance lg:self-auto">
+            สโมสรนิสิตคณะสัตวแพทยศาสตร์ จุฬาลงกรณ์มหาวิทยาลัย ถนนอังรีดูนังต์
+            แขวงปทุมวัน เขตปทุมวัน กรุงเทพ ฯ 10330
           </div>
-          <div className="w-full">
+          <div className="w-full self-stretch lg:self-auto lg:text-balance">
             พัฒนาโดย ฝ่ายพัฒนาระบบสารสนเทศ
             องค์การบริหารสโมสรนิสิตจุฬาลงกรณ์มหาวิทยาลัย
           </div>
