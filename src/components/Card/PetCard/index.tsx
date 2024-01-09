@@ -1,11 +1,10 @@
 import Button from "@/components/Button";
-import PetDetail from "@/components/PetCard/PetDetail";
-import TogglePetButton from "@/components/PetCard/TogglePetButton";
+import PetDetail from "@/components/Card/PetCard/PetDetail";
+import TogglePetButton from "@/components/Card/PetCard/TogglePetButton";
 import { UtcStringToYearMonth } from "@/utils/dateConverter";
 import { Icon } from "@iconify/react";
 import { useMemo, useState } from "react";
 import { Link } from "react-router-dom";
-import Johnjud from "../../assets/main/johnjudLogo.svg";
 
 type PetCardProps = {
   id: string;
@@ -40,7 +39,7 @@ const adoptHandle = (event: React.MouseEvent<HTMLButtonElement>) => {
 
 const PetCard = ({
   id,
-  image = Johnjud,
+  image,
   name,
   status,
   gender,
