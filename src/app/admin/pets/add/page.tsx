@@ -31,12 +31,9 @@ const userCreate = () => {
   return (
     <>
       {/* Icon return & small EditName */}
-      <div className="flex justify-between px-6 py-2 lg:block lg:px-12">
+      <div className="flex justify-between px-6 lg:block lg:px-12">
         <Link to="/admin/pets/">
-          <Icon
-            icon="ion:chevron-back"
-            className="mb-1 flex h-8 w-8 flex-none self-center text-primary"
-          />
+          <Icon icon="ion:chevron-back" className="h-8 w-8 text-primary" />
         </Link>
         <div className="visible flex w-full flex-col md:hidden">
           <EditName value={name} setValue={setName} />
