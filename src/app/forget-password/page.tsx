@@ -7,12 +7,15 @@ const forgetPassword = () => {
   return (
     <div className="flex flex-col p-3">
       <div>
-        <div className="text-4xl font-bold text-primary">ลืมรหัสผ่าน?</div>
+        <div className="py-2 text-4xl font-bold text-primary">ลืมรหัสผ่าน?</div>
         <div className="text-medium text-base text-accent-gray">
           กรุณากรอกอีเมลที่ท่านใช้สมัคร
         </div>
       </div>
-      <div></div>
+      <div>
+        <Icon icon="ph:user-bold" className="text-accent-gray" />
+        <input type="email" placeholder="อีเมล" />
+      </div>
       <div>
         <Button
           text={"รีเซตรหัสผ่าน"}
