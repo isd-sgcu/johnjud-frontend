@@ -10,7 +10,7 @@ interface MenuButttonProps {
 const MenuButtton = ({ link, icon, text }: MenuButttonProps) => {
   return (
     <Link to={link}>
-      <button className="flex h-48 w-48 flex-col items-center justify-center rounded-3xl bg-accent-gray-variant bg-opacity-50 shadow hover:brightness-90">
+      <button className="flex h-48 w-48 flex-col items-center justify-center rounded-3xl bg-accent-light-gray shadow hover:brightness-90">
         <div>
           <Icon icon={icon} className="h-16 w-16" />
         </div>
