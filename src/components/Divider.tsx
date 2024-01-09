@@ -1,11 +1,16 @@
 import { Icon } from "@iconify/react";
+import React from "react";
 
-const Divider = () => {
+interface DividerProps {
+  variant: "primary" | "accent-yellow";
+}
+
+const Divider: React.FC<DividerProps> = ({ variant }) => {
   return (
     <div className="flex items-center justify-center ">
       <Icon
         icon="ph:paw-print"
-        className="h-6 w-6 text-primary md:h-9 md:w-9"
+        className={`h-6 w-6 text-${variant} md:h-9 md:w-9`}
       />
     </div>
   );
