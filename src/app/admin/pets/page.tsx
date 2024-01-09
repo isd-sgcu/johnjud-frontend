@@ -19,12 +19,11 @@ const Pets = () => {
 
   return (
     <>
-      <div className="flex justify-between px-6 py-2 lg:block lg:px-12">
+      <div className="flex justify-between px-6 lg:block lg:px-12">
         <Link to="/admin/">
           <Icon icon="ion:chevron-back" className="h-8 w-8 text-primary" />
         </Link>
       </div>
-
       <Container>
         <Heading onSearch />
       </Container>
