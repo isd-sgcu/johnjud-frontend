@@ -19,12 +19,12 @@ const Footer = () => {
           <div className="text-base font-bold text-white">JOHNJUD</div>
         </div>
         {/*Text*/}
-        <div className="flex flex-col items-center justify-center space-y-4 text-xs font-normal text-white lg:w-96 lg:text-sm">
-          <div className="flex w-full self-stretch text-balance lg:self-auto lg:text-balance">
+        <div className="flex flex-col items-center justify-center space-y-4 self-stretch text-xs font-normal text-white lg:w-96 lg:text-sm">
+          <div className="flex w-full text-balance lg:self-auto">
             สโมสรนิสิตคณะสัตวแพทยศาสตร์ จุฬาลงกรณ์มหาวิทยาลัย ถนนอังรีดูนังต์
             แขวงปทุมวัน เขตปทุมวัน กรุงเทพ ฯ 10330
           </div>
-          <div className="flex w-full self-stretch lg:self-auto lg:text-balance">
+          <div className="flex w-full lg:self-auto lg:text-balance">
             พัฒนาโดย ฝ่ายพัฒนาระบบสารสนเทศ <br />
             องค์การบริหารสโมสรนิสิตจุฬาลงกรณ์มหาวิทยาลัย
           </div>

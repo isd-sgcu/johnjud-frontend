@@ -1,6 +1,7 @@
 import { useMemo } from "react";
 import { useLocation } from "react-router-dom";
-
+import logoPrimary from "../assets/footer/logoPrimary.svg";
+import logoSecondary from "../assets/footer/logoSecondary.svg";
 const usePathStyle = () => {
   const pathname = useLocation().pathname;
 
