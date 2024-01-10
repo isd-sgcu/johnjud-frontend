@@ -35,13 +35,19 @@ const Footer = () => {
       {/*Social*/}
       <div className="flex flex-col items-center justify-center space-y-6">
         <div>
-          <Icon icon="ph-facebook-logo" className="h-8 w-8 text-white" />
+          <a href="https://www.facebook.com/CUVETforAnimalWelfareClub?mibextid=LQQJ4d">
+            <Icon icon="ph-facebook-logo" className="h-8 w-8 text-white" />
+          </a>
         </div>
         <div>
-          <Icon icon="ph-instagram-logo" className="h-8 w-8 text-white" />
+          <a href="https://www.instagram.com/johnjud_care?igsh=MXY2N21zajhjOGllYQ==">
+            <Icon icon="ph-instagram-logo" className="h-8 w-8 text-white" />
+          </a>
         </div>
         <div>
-          <Icon icon="custom:md:x-logo" className="h-6 w-6 text-white" />
+          <a href="https://x.com/johnjud_cu?s=21">
+            <Icon icon="custom:md:x-logo" className="h-6 w-6 text-white" />
+          </a>
         </div>
       </div>
     </div>
