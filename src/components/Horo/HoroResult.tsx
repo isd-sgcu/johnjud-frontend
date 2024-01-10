@@ -49,7 +49,7 @@ const HoroResult: React.FC<HoroResultProps> = ({ resultImage, resultText }) => {
   }
 
   return (
-    <div className={`flex ${showResult ? "md:space-x-8 md:flex-row" : "flex-col"} items-center justify-center space-y-8`}>
+    <div className={`flex ${showResult ? "md:space-x-8 flex-col md:flex-row" : "flex-col"} items-center justify-center space-y-8`}>
       <div className={imageContainerClass}>
         <img src={resultImage} alt="ResultImage" className={imageClass} />
         {phase === 2 && (
