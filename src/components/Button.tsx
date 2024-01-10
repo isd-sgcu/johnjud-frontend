@@ -40,7 +40,7 @@ const button = tv({
       },
       "accent-yellow": {
         base: "bg-accent-yellow text-accent-purple",
-        iconStyle: "text-white",
+        iconStyle: "text-black",
       },
       white: {
         base: "bg-white text-accent-gray",
