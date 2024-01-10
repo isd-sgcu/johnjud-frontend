@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import Button from "../Button";
+import React, { useEffect, useState, useCallback } from "react";
+import Button from "@/components/Button";
 
 interface HoroResultProps {
   resultImage: string;
@@ -7,28 +7,35 @@ interface HoroResultProps {
 }
 
 const HoroResult: React.FC<HoroResultProps> = ({ resultImage, resultText }) => {
-  /*
+  /*  
+      state for image result
         - phase 0 = image
         - phase 1 = image flipped
         - phase 2 = text in the image
     */
   const [phase, setPhase] = useState(0);
+  
+  const updatePhase = (currentPhase: number) => {
+    setTimeout(() => {
+      const nextPhase = (currentPhase + 1) % 3;
+      setPhase(nextPhase);
+      console.log(nextPhase);
+      updatePhase(nextPhase); 
+    }, 2000);
+  };
+  
 
   useEffect(() => {
-    const timer1 = setTimeout(() => {
-      setPhase(1);
-      const timer2 = setTimeout(() => {
-        setPhase(2);
-      }, 1000);
-      return () => clearTimeout(timer2);
-    }, 1000);
-    return () => clearTimeout(timer1);
+    updatePhase(phase);
   }, []);
+  
+  
+  
 
   const imageContainerClass = "relative w-80 h-[533px]";
-  let imageClass = "h-[533px] w-80 rounded-[10px]";
+  let imageClass = "";
   const overlayClass =
-    "absolute inset-0 bg-black bg-opacity-50 flex justify-center items-center text-center p-4 rounded-[10px]";
+    "absolute inset-0 bg-black bg-opacity-50 flex justify-center items-center text-center p-4 rounded-[10px] flex-col space-y-4";
   const textClass = "text-white text-xl font-bold";
 
   if (phase === 1) {
@@ -43,7 +50,8 @@ const HoroResult: React.FC<HoroResultProps> = ({ resultImage, resultText }) => {
           <>
             <div className={overlayClass}></div>
             <div className={`${overlayClass} ${textClass}`}>
-              <p>{resultText}</p>
+              <h2 className="text-3xl">ผลการทำนาย</h2>
+              <p className="text-base">{resultText}</p>
             </div>
           </>
         )}
