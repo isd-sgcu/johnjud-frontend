@@ -1,7 +1,9 @@
 import usePathStyle from "@/hooks/usePathStyle";
 import { Icon } from "@iconify/react";
+
 const Footer = () => {
   const style = usePathStyle();
+
   return (
     <div
       className={`mt-auto flex w-full shrink-0 flex-row justify-between p-6 ${style.color}`}
@@ -19,7 +21,7 @@ const Footer = () => {
           <div className="text-base font-bold text-white">JOHNJUD</div>
         </div>
         {/*Text*/}
-        <div className="flex flex-col items-center justify-center space-y-4 self-stretch text-xs font-normal text-white lg:w-96 lg:text-sm">
+        <div className="flex flex-col items-center justify-center space-y-4 self-stretch text-xs font-normal text-white md:w-96 lg:text-sm">
           <div className="flex w-full text-balance lg:self-auto">
             สโมสรนิสิตคณะสัตวแพทยศาสตร์ จุฬาลงกรณ์มหาวิทยาลัย ถนนอังรีดูนังต์
             แขวงปทุมวัน เขตปทุมวัน กรุงเทพ ฯ 10330
@@ -39,7 +41,7 @@ const Footer = () => {
           <Icon icon="ph-instagram-logo" className="h-8 w-8 text-white" />
         </div>
         <div>
-          <Icon icon="custom:md:twitter-logo" className="h-6 w-6 text-white" />
+          <Icon icon="custom:md:x-logo" className="h-6 w-6 text-white" />
         </div>
       </div>
     </div>
