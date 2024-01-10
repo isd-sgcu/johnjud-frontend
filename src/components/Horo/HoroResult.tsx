@@ -3,10 +3,11 @@ import Button from "@/components/Button";
 
 interface HoroResultProps {
   resultImage: string;
+  resultName: string;
   resultText: string; 
 }
 
-const HoroResult: React.FC<HoroResultProps> = ({ resultImage, resultText }) => {
+const HoroResult: React.FC<HoroResultProps> = ({ resultImage, resultName,  resultText }) => {
   /*  
       state for image result
         - phase 0 = image
@@ -52,11 +53,11 @@ const HoroResult: React.FC<HoroResultProps> = ({ resultImage, resultText }) => {
     <div className={`flex ${showResult ? "md:space-x-8 flex-col md:flex-row" : "flex-col"} items-center justify-center space-y-8`}>
       <div className={imageContainerClass}>
         <img src={resultImage} alt="ResultImage" className={imageClass} />
-        {phase === 2 && (
+        {phase === 2 && ( 
           <>
             <div className={overlayClass}></div>
             <div className={`${overlayClass} text-white font-bold `}>
-              <h2 className="text-3xl">ไพ่แปดไม้เท้า</h2>
+              <h2 className="text-3xl">{resultName}</h2>
               <p className="text-base">{resultText}</p>
             </div>
           </>
@@ -71,7 +72,7 @@ const HoroResult: React.FC<HoroResultProps> = ({ resultImage, resultText }) => {
       />
       {showResult && (
       <div className="flex flex-col space-y-6 items-center text-center w-[290px]">
-          <h2 className="text-3xl font-bold text-black">ไพ่แปดไม้เท้า</h2>
+          <h2 className="text-3xl font-bold text-black">{resultName}</h2>
           <p className="font-light text-xl text-black">{resultText}</p>
           <div className="flex justify-center items-center space-x-3">
               <Button

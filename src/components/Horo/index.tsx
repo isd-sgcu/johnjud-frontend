@@ -5,16 +5,7 @@ import { Icon } from "@iconify/react";
 import { useState } from "react";
 import HoroBgContainer from "./HoroBgContainer";
 
-// import all 9 cards from assets/horo/9-card-for-horo
-import card1 from "@/assets/horo/9-card-for-horo/1.png";
-import card2 from "@/assets/horo/9-card-for-horo/2.png";
-import card3 from "@/assets/horo/9-card-for-horo/3.png";
-import card4 from "@/assets/horo/9-card-for-horo/4.png";
-import card5 from "@/assets/horo/9-card-for-horo/5.png";
-import card6 from "@/assets/horo/9-card-for-horo/6.png";
-import card7 from "@/assets/horo/9-card-for-horo/7.png";
-import card8 from "@/assets/horo/9-card-for-horo/8.png";
-import card9 from "@/assets/horo/9-card-for-horo/9.png";
+import HoroDatas from "@/utils/horo";
 
 // main component for Horo Games
 const index = () => {
@@ -25,17 +16,11 @@ const index = () => {
     */
 
   const [phase, setPhase] = useState<number>(0);
-  const cardList = [
-    card1,
-    card2,
-    card3,
-    card4,
-    card5,
-    card6,
-    card7,
-    card8,
-    card9,
-  ];
+  
+  let cardList = HoroDatas.map((data) => data.img);
+  let titleList = HoroDatas.map((data) => data.title);
+  let textList = HoroDatas.map((data) => data.content);
+
   // selectedCard state
   const [selectedCard, setSelectedCard] = useState<number | null>(null);
 
@@ -90,7 +75,8 @@ const index = () => {
       <>
         <HoroResult
           resultImage={cardList[selectedCard!]}
-          resultText="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+          resultName = {titleList[selectedCard!]}
+          resultText={textList[selectedCard!]}
         />
       </>
     );
