@@ -7,13 +7,7 @@ interface PetThumbnailsProps {
   petImages: Array<string>;
 }
 
-const PetThumbnails = ({
-  petImages = [
-    "https://f.ptcdn.info/251/076/000/r6phkmmxuGNF1erTdMG-o.jpg",
-    "https://f.ptcdn.info/277/076/000/r6txsu2haubx6Pgn31Mzf-o.jpg",
-    "https://f.ptcdn.info/078/076/000/r5tzwel2nq8YmxZm3w6-o.png",
-  ],
-}: PetThumbnailsProps) => {
+const PetThumbnails = ({ petImages }: PetThumbnailsProps) => {
   return (
     <div className="relative aspect-square min-w-40 rounded-[20px] sm:min-w-80">
       <div className="absolute -top-1 right-4 z-10">
