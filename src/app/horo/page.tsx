@@ -5,7 +5,7 @@ import MainLayout from "@/layouts/MainLayout";
 const HoroPage = () => {
   return (
     <>
-      <Container className="flex items-center justify-center">
+      <Container className="flex items-center justify-center p-10">
         <HoroGame />
       </Container>
     </>
