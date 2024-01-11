@@ -2,9 +2,11 @@ import Button from "@/components/Button";
 import Container from "@/components/Container";
 import GameLayout from "@/layouts/GameLayout";
 import { Icon } from "@iconify/react/dist/iconify.js";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 
 const forgetPassword = () => {
+  const [modalOpen, setModalOpen] = useState(true);
   return (
     <Container className="flex min-h-screen flex-col items-center justify-center gap-12">
       <div>
@@ -27,6 +29,7 @@ const forgetPassword = () => {
           variant={"primary"}
           rounded="2xl"
           className="mb-4 px-24 text-xl text-white"
+          onClick={() => setModalOpen(true)}
         />
         <div className="flex flex-row items-center justify-center bg-pink-300">
           <Link
@@ -40,6 +43,23 @@ const forgetPassword = () => {
           </Link>
         </div>
       </div>
+      {modalOpen && (
+        <div className="fixed flex flex-row">
+          <div>
+            <div>อีเมลรีเซ็ตถูกส่งแล้ว</div>
+            <Icon icon="ph:check-circle" />
+          </div>
+          <div>กรุณาเช็คอีเมลของท่าน</div>
+          <div>หากไม่พออีเมลกรุณาตรวจสอบ ถังขยะ</div>
+          <Link to={"/login"}>
+            <Button
+              text={"กลับไปยังหน้าล็อกอิน"}
+              variant={"primary"}
+              rounded="full"
+            />
+          </Link>
+        </div>
+      )}
     </Container>
   );
 };
