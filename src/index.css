@@ -8,3 +8,7 @@
     font-family: "Poppins", "IBM Plex Sans Thai", sans-serif;
   }
 }
+
+.carousel .slider-wrapper {
+  border-radius: 16px !important;
+}
