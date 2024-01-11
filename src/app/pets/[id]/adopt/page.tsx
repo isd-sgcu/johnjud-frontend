@@ -21,16 +21,16 @@ const AdoptionPage = ({ petName = "ไรลีย์" }: AdoptionPageProps) => 
 
   return (
     <>
-      <div className="flex justify-between px-6 py-2 lg:block lg:px-12">
+      <div className="flex justify-between px-6 lg:block lg:px-12">
         <Link to={`/pets/${param.id}`}>
-          <Icon icon={"ion:chevron-back"} className="h-8 w-8" />
+          <Icon icon={"ion:chevron-back"} className="h-8 w-8 text-primary" />
         </Link>
-        <div className="visible flex flex-row justify-between text-4xl font-bold underline  md:hidden">
+        <div className="visible flex flex-row justify-between text-4xl font-bold underline md:hidden text-primary">
           {petName}
         </div>
       </div>
 
-      <Container className="flex flex-col items-center gap-8 py-10 md:flex-row md:items-start md:justify-between">
+      <Container className="flex flex-col items-center gap-8 md:flex-row md:items-start md:justify-between">
         <PetThumbnails petImages={petImagesArray} />
         <div>
           <p className="mb-8 hidden text-4xl font-bold text-primary underline md:block">
