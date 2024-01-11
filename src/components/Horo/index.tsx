@@ -21,6 +21,7 @@ const HoroGame = () => {
   const renderPhase = () => {
     switch (phase) {
       case 0:
+        // เดี่ยวรอ component Sun มาแล้วค่อยใส่
         return (
           <div>
             <h1 className="text-white">Home Page</h1>

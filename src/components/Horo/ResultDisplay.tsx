@@ -1,11 +1,20 @@
 import Button from "@/components/Button";
 import React from "react";
 interface ResultDisplayProps {
+    resultImage: string;
     resultName: string;
     resultText: string;
 }
 
-const ResultDisplay: React.FC<ResultDisplayProps> = ({resultName, resultText}) => {
+const ResultDisplay: React.FC<ResultDisplayProps> = ({resultImage, resultName, resultText}) => {
+    // implement handleshare here
+    const handleShare = async () => {
+        console.log(resultImage);
+    }
+    // implement handleSave here 
+    const handleSave = async () => {
+        console.log(resultImage);
+    }
   return (
     <div className="flex w-72 flex-col items-center space-y-6 text-center">
     <h2 className="text-3xl font-bold text-black">{resultName}</h2>

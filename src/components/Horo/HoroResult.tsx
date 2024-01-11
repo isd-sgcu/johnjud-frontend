@@ -35,7 +35,7 @@ const HoroResult: React.FC<HoroResultProps> = ({ resultImage, resultName, result
   const overlayClass = useMemo(() => {
     return phase === 2 ? "absolute inset-0 bg-black bg-opacity-50" : "";
   }, [phase]);
-  
+
   return (
     <div className={`flex ${showResult ? "md:flex-row md:space-x-8" : "flex-col"} items-center justify-center space-y-8`}>
       <div className="relative w-80 h-[533px]">
@@ -55,7 +55,7 @@ const HoroResult: React.FC<HoroResultProps> = ({ resultImage, resultName, result
         onClick={handleClick}
       />
       {showResult && (
-        <ResultDisplay resultName={resultName} resultText={resultText} />
+        <ResultDisplay resultImage = {resultImage} resultName={resultName} resultText={resultText} />
       )}
     </div>
   );
