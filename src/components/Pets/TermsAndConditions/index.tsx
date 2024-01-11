@@ -1,4 +1,5 @@
 import Button from "@/components/Button";
+import { Link } from "react-router-dom";
 
 const TermsAndConditions = () => {
   return (
@@ -42,12 +43,14 @@ const TermsAndConditions = () => {
         </ul>
       </div>
       <div className="flex items-center justify-center">
-        <Button
-          text="รับเลี้ยงเลย"
-          variant="accent-red"
-          rounded="2xl"
-          className="px-24 font-bold"
-        ></Button>
+        <Link to="https://www.facebook.com/CUVETforAnimalWelfareClub/">
+          <Button
+            text="รับเลี้ยงเลย"
+            variant="accent-red"
+            rounded="2xl"
+            className="px-24 font-bold"
+          />
+        </Link>
       </div>
     </div>
   );
