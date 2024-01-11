@@ -7,7 +7,7 @@ interface DividerProps {
 
 const Divider: React.FC<DividerProps> = ({ variant }) => {
   const getClassName = () => {
-    return variant === 'primary' ? 'text-primary' : 'text-accent-yellow';
+    return variant === "primary" ? "text-primary" : "text-accent-yellow";
   };
 
   return (
