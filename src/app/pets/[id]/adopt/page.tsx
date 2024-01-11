@@ -25,7 +25,7 @@ const AdoptionPage = ({ petName = "ไรลีย์" }: AdoptionPageProps) => 
         <Link to={`/pets/${param.id}`}>
           <Icon icon={"ion:chevron-back"} className="h-8 w-8 text-primary" />
         </Link>
-        <div className="visible flex flex-row justify-between text-4xl font-bold underline md:hidden text-primary">
+        <div className="visible flex flex-row justify-between text-4xl font-bold text-primary underline md:hidden">
           {petName}
         </div>
       </div>
