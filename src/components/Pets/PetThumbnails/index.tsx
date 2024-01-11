@@ -62,7 +62,7 @@ const PetThumbnails = ({
             <div key={index}>
               <img
                 src={item}
-                className="z-0 h-80 w-80 rounded-2xl object-cover object-center"
+                className="z-0 aspect-square max-w-80 rounded-2xl object-cover object-center"
               />
             </div>
           ))}

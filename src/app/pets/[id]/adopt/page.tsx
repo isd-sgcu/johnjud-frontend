@@ -1,6 +1,7 @@
 import Container from "@/components/Container";
 import PetThumbnails from "@/components/Pets/PetThumbnails";
 import TermsAndConditions from "@/components/Pets/TermsAndConditions";
+import { usePageParams } from "@/hooks/usePageParams";
 import MainLayout from "@/layouts/MainLayout";
 import { Icon } from "@iconify/react/dist/iconify.js";
 import { Link } from "react-router-dom";
@@ -16,16 +17,19 @@ const AdoptionPage = ({ petName = "ไรลีย์" }: AdoptionPageProps) => 
     "https://f.ptcdn.info/078/076/000/r5tzwel2nq8YmxZm3w6-o.png",
   ];
 
+  const param = usePageParams(["id"]);
+
   return (
-    <div>
-      <div className="flex flex-row items-center justify-between text-primary">
-        <Link to="/pets">
+    <>
+      <div className="flex justify-between px-6 py-2 lg:block lg:px-12">
+        <Link to={`/pets/${param.id}`}>
           <Icon icon={"ion:chevron-back"} className="h-8 w-8" />
         </Link>
         <div className="visible flex flex-row justify-between text-4xl font-bold underline  md:hidden">
           {petName}
         </div>
       </div>
+
       <Container className="flex flex-col items-center gap-8 py-10 md:flex-row md:items-start md:justify-between">
         <PetThumbnails petImages={petImagesArray} />
         <div>
@@ -35,7 +39,7 @@ const AdoptionPage = ({ petName = "ไรลีย์" }: AdoptionPageProps) => 
           <TermsAndConditions />
         </div>
       </Container>
-    </div>
+    </>
   );
 };
 
