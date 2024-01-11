@@ -44,8 +44,8 @@ const forgetPassword = () => {
         </div>
       </div>
       {modalOpen && (
-        <div className="fixed flex flex-row">
-          <div>
+        <div className="fixed flex flex-col rounded-2xl bg-red-400 p-8">
+          <div className="flex flex-row">
             <div>อีเมลรีเซ็ตถูกส่งแล้ว</div>
             <Icon icon="ph:check-circle" />
           </div>
