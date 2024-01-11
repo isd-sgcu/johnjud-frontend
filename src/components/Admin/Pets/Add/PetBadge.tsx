@@ -2,16 +2,21 @@ import { Icon } from "@iconify/react";
 
 interface PetBadgeProps {
   value: string;
+  isEditabled?: boolean;
   setValue: React.Dispatch<React.SetStateAction<string>>;
 }
 
 const PetBadge = (props: PetBadgeProps) => {
   const handleOnClick = () => {
+    if (!props.isEditabled) return;
     props.setValue(props.value === "fromClub" ? "fromOutside" : "fromClub");
   };
   return (
     <div
-      className="relative flex w-full cursor-pointer select-none"
+      className={
+        "relative flex w-full select-none " +
+        (props.isEditabled ? "cursor-pointer" : "cursor-default")
+      }
       onClick={handleOnClick}
     >
       <Icon
