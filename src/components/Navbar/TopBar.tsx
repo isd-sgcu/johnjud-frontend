@@ -13,7 +13,7 @@ const TopBar = ({
 }) => {
   return (
     <div
-      className={`sticky top-0 z-[1002] flex items-center justify-between px-4  py-3 transition-all ${style.color}`}
+      className={`sticky top-0 z-[1002] flex items-center justify-between px-6 py-3 transition-all ${style.color}`}
     >
       <Link to="/home" className="flex items-center gap-3 ">
         {style.logo && (
