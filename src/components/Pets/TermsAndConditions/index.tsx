@@ -42,13 +42,13 @@ const TermsAndConditions = () => {
           </ul>
         </ul>
       </div>
-      <div className="flex items-center justify-center">
+      <div className="flex-col items-center justify-center md:flex">
         <Link to="https://www.facebook.com/CUVETforAnimalWelfareClub/">
           <Button
             text="รับเลี้ยงเลย"
             variant="accent-red"
             rounded="2xl"
-            className="px-24 font-bold"
+            className="w-full font-bold md:w-auto md:px-24"
           />
         </Link>
       </div>
