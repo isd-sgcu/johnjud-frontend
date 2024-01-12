@@ -11,7 +11,7 @@ interface ResultGameProps {
 
 const ResultGame = (props: ResultGameProps) => {
   return (
-    <div className="mx-auto flex w-full justify-center gap-4 px-6 py-6 md:gap-6 md:py-10">
+    <div className="mx-auto flex w-full justify-center gap-4 md:gap-6">
       <div className="flex w-full max-w-80 flex-col gap-4 md:gap-6">
         {/* Header + Image */}
         <div className="flex flex-col items-center gap-3 md:gap-4">
