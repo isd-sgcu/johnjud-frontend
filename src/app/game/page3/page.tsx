@@ -1,6 +1,6 @@
 import ResultGame from "@/components/Game/ResultGame";
-import OrangeCat from "../../../assets/game/OrangeCat.jpg";
 import MainLayout from "@/layouts/MainLayout";
+import OrangeCat from "../../../assets/game/OrangeCat.jpg";
 
 const GamePage3 = () => {
   const header = "คุณคือแม้ว";

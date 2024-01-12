@@ -7,9 +7,7 @@ type GameLayoutProps = {
 
 const GameLayout = ({ children }: GameLayoutProps) => {
   return (
-    <div
-      className="flex min-h-screen flex-col bg-auto bg-top bg-primary-variant"
-    >
+    <div className="flex min-h-screen flex-col bg-primary-variant bg-auto bg-top">
       <Navbar />
       <div>{children}</div>
       <Footer />
