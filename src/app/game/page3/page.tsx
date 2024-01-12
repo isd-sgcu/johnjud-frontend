@@ -1,6 +1,6 @@
 import ResultGame from "@/components/Game/ResultGame";
-import GameLayout from "@/layouts/GameLayout";
 import OrangeCat from "../../../assets/game/OrangeCat.jpg";
+import MainLayout from "@/layouts/MainLayout";
 
 const GamePage3 = () => {
   const header = "คุณคือแม้ว";
@@ -24,4 +24,4 @@ const GamePage3 = () => {
 
 export default GamePage3;
 
-export const Layout = GameLayout;
+export const Layout = MainLayout;
