@@ -5,7 +5,13 @@ interface ButtonProps {
   text: string;
   icon?: string;
 
-  variant: "primary" | "accent-red" | "accent-purple" | "white" | "disabled";
+  variant:
+    | "primary"
+    | "accent-red"
+    | "accent-purple"
+    | "accent-yellow"
+    | "white"
+    | "disabled";
   rounded?: "none" | "2xl" | "full";
 
   className?: string;
@@ -31,6 +37,10 @@ const button = tv({
       "accent-purple": {
         base: "bg-accent-purple text-white",
         iconStyle: "text-white",
+      },
+      "accent-yellow": {
+        base: "bg-accent-yellow text-accent-purple",
+        iconStyle: "text-black",
       },
       white: {
         base: "bg-white text-accent-gray",
