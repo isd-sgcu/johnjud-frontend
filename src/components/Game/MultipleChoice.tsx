@@ -33,7 +33,7 @@ const MultipleChoice = (props: MultipleChoiceProps) => {
               return (
                 <div
                   key={index}
-                  className="flex-grow flex w-full break-words rounded-3xl bg-accent-red px-6 py-2 text-center font-semibold text-white md:text-lg justify-center items-center"
+                  className="flex-grow flex w-full break-words rounded-3xl bg-accent-red px-6 py-2 text-center font-semibold text-white md:text-lg justify-center items-center cursor-pointer"
                 >
                   {ans}
                 </div>
