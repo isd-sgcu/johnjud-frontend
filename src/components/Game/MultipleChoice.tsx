@@ -8,9 +8,9 @@ interface MultipleChoiceProps {
 
 const MultipleChoice = (props: MultipleChoiceProps) => {
   return (
-    <div className="flex w-full min-h-screen flex-col items-center justify-end pt-[8.25rem]">
-      <div className="flex flex-grow w-full justify-center rounded-t-2xl bg-white p-6">
-        <div className="flex w-full md:max-w-[50%] flex-col items-center gap-6">
+    <div className="flex min-h-screen w-full flex-col items-center justify-end pt-[8.25rem]">
+      <div className="flex w-full flex-grow justify-center rounded-t-2xl bg-white p-6">
+        <div className="flex w-full flex-col items-center gap-6 md:max-w-[50%]">
           {/* Header */}
           <div className="relative flex w-full flex-shrink flex-row items-center gap-6">
             <div className="relative flex h-fit w-fit">
@@ -28,12 +28,12 @@ const MultipleChoice = (props: MultipleChoiceProps) => {
           </div>
 
           {/* Answers */}
-          <div className="flex w-full h-full flex-col gap-6 md:gap-12">
+          <div className="flex h-full w-full flex-col gap-6 md:gap-12">
             {props.answers.map((ans, index) => {
               return (
                 <div
                   key={index}
-                  className="flex-grow flex w-full break-words rounded-3xl bg-accent-red px-6 py-2 text-center font-semibold text-white md:text-lg justify-center items-center cursor-pointer"
+                  className="flex w-full flex-grow cursor-pointer items-center justify-center break-words rounded-3xl bg-accent-red px-6 py-2 text-center font-semibold text-white md:text-lg"
                 >
                   {ans}
                 </div>
