@@ -1,5 +1,6 @@
 // import all 9 cards from assets/horo/9-card-for-horo
 import card1 from "@/assets/horo/9-card-for-horo/1.png";
+import card10 from "@/assets/horo/9-card-for-horo/10.png";
 import card2 from "@/assets/horo/9-card-for-horo/2.png";
 import card3 from "@/assets/horo/9-card-for-horo/3.png";
 import card4 from "@/assets/horo/9-card-for-horo/4.png";
@@ -69,6 +70,12 @@ const HoroDatas: HoroData[] = [
     title: "Cups",
     content:
       "หากคุณเป็นคนโสด ช่วงนี้คุณจะมีโอกาสที่จะได้พบคนรักและพัฒนาความสัมพันธ์ ขยับจากคนรู้จักไปเป็นคนรู้ใจ สำหรับคนมีคู่ ช่วงนี้ชีวิตคู่ของคุณจะรักกันหวานชื่น เข้าใจซึ่งกันและกันเป็นอย่างดี",
+  },
+  {
+    img: card10,
+    title: "Cups",
+    content:
+      "ช่วงนี้คุณจะเจอเรื่องที่ดีมากๆจนคุณต้องใจฟูเลยทีเดียว ครอบครัวก็อยู่พร้อมหน้าพร้อมตากัน และไม่ว่าจะด้านการงาน การเงิน ความรัก ก็เป็นไปได้อย่างราบรื่น บอกได้เลยว่าเป็นช่วงชีวิตที่สุขสมบูรณ์มากจนคนอื่นต้องอิจฉาเป็นแน่   ",
   },
 ];
 
