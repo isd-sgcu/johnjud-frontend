@@ -4,18 +4,19 @@ interface PetBadgeProps {
   value: string;
   isEditabled?: boolean;
   setValue: React.Dispatch<React.SetStateAction<string>>;
-  isAdmin: boolean;
 }
 
 const PetBadge = (props: PetBadgeProps) => {
   const handleOnClick = () => {
-    if(props.isAdmin){
-      props.setValue(props.value === "fromClub" ? "fromOutside" : "fromClub");
-    }
+    if (!props.isEditabled) return;
+    props.setValue(props.value === "fromClub" ? "fromOutside" : "fromClub");
   };
   return (
     <div
-      className="absolute mr-4 -mt-1 flex w-fit cursor-pointer select-none"
+      className={
+        "relative flex w-full select-none " +
+        (props.isEditabled ? "cursor-pointer" : "cursor-default")
+      }
       onClick={handleOnClick}
     >
       <Icon

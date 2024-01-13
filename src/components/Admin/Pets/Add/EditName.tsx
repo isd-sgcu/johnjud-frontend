@@ -5,7 +5,7 @@ import TextareaAutosize from "react-autosize-textarea";
 interface EditNameProps {
   value: string;
   setValue: React.Dispatch<React.SetStateAction<string>>;
-  isAdmin : boolean;
+  isAdmin: boolean;
 }
 
 const EditName = (props: EditNameProps) => {
@@ -46,14 +46,13 @@ const EditName = (props: EditNameProps) => {
           enableEdit ? "hidden" : "visible"
         }`}
       >
-        {
-          props.isAdmin && 
-            <Icon
-              icon="custom:pencil"
-              className="flex h-6 w-6 flex-none cursor-pointer md:hidden"
-              onClick={handleClickEdit}
-            />
-        }
+        {props.isAdmin && (
+          <Icon
+            icon="custom:pencil"
+            className="flex h-6 w-6 flex-none cursor-pointer md:hidden"
+            onClick={handleClickEdit}
+          />
+        )}
         <div className="relative flex flex-col">
           <div className="flex break-all pl-1 text-right text-3xl font-bold text-primary md:text-left">
             {props.value}
@@ -61,14 +60,13 @@ const EditName = (props: EditNameProps) => {
           <div className="mt-1 h-[3px] w-full rounded-full bg-primary" />
         </div>
 
-        {
-          props.isAdmin && 
-            <Icon
-              icon="custom:pencil"
-              className="hidden h-6 w-6 flex-none cursor-pointer md:ml-3 md:flex"
-              onClick={handleClickEdit}
-            />
-        }
+        {props.isAdmin && (
+          <Icon
+            icon="custom:pencil"
+            className="hidden h-6 w-6 flex-none cursor-pointer md:ml-3 md:flex"
+            onClick={handleClickEdit}
+          />
+        )}
       </div>
 
       <div

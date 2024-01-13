@@ -2,12 +2,12 @@ import Details from "@/components/Pets/details/Details";
 import MainLayout from "@/layouts/MainLayout";
 
 const EditPet = () => {
-    return (  
-        <>
-            <Details isAdmin />
-        </>
-    );
-}
+  return (
+    <>
+      <Details isAdmin />
+    </>
+  );
+};
 
 export const Layout = MainLayout;
 export default EditPet;
