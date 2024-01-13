@@ -8,9 +8,9 @@ interface MultipleChoiceProps {
 
 const MultipleChoice = (props: MultipleChoiceProps) => {
   return (
-    <div className="flex min-h-screen w-full flex-col items-center justify-end pt-[8.25rem]">
+    <div className="flex min-h-[70vh] md:min-h-[80vh] w-full flex-col items-center justify-end pt-[8.25rem]">
       <div className="flex w-full flex-grow justify-center rounded-t-2xl bg-white p-6">
-        <div className="flex w-full flex-col items-center gap-6 md:max-w-[50%]">
+        <div className="flex w-full flex-col items-center gap-6 md:max-w-96">
           {/* Header */}
           <div className="relative flex w-full flex-shrink flex-row items-center gap-6">
             <div className="relative flex h-fit w-fit">
@@ -28,12 +28,12 @@ const MultipleChoice = (props: MultipleChoiceProps) => {
           </div>
 
           {/* Answers */}
-          <div className="flex h-full w-full flex-col gap-6 md:gap-12">
+          <div className="flex h-full w-full flex-col gap-6 justify-evenly">
             {props.answers.map((ans, index) => {
               return (
                 <div
                   key={index}
-                  className="flex w-full flex-grow cursor-pointer items-center justify-center break-words rounded-3xl bg-accent-red px-6 py-2 text-center font-semibold text-white md:text-lg"
+                  className="flex w-full cursor-pointer items-center justify-center break-words rounded-3xl bg-accent-red px-6 py-2 text-center font-semibold text-white md:text-lg"
                 >
                   {ans}
                 </div>
