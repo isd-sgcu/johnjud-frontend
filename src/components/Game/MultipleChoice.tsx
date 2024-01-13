@@ -8,7 +8,7 @@ interface MultipleChoiceProps {
 
 const MultipleChoice = (props: MultipleChoiceProps) => {
   return (
-    <div className="flex min-h-[70vh] md:min-h-[80vh] w-full flex-col items-center justify-end pt-[8.25rem]">
+    <div className="flex min-h-[70vh] w-full flex-col items-center justify-end pt-[8.25rem] md:min-h-[80vh]">
       <div className="flex w-full flex-grow justify-center rounded-t-2xl bg-white p-6">
         <div className="flex w-full flex-col items-center gap-6 md:max-w-96">
           {/* Header */}
@@ -28,7 +28,7 @@ const MultipleChoice = (props: MultipleChoiceProps) => {
           </div>
 
           {/* Answers */}
-          <div className="flex h-full w-full flex-col gap-6 justify-evenly">
+          <div className="flex h-full w-full flex-col justify-evenly gap-6">
             {props.answers.map((ans, index) => {
               return (
                 <div
