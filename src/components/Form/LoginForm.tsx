@@ -39,7 +39,7 @@ const LoginForm = () => {
             <span className="ml-2 text-black">จดจำฉัน</span>
           </label>
           <Link
-            to="/forgot-password"
+            to="/forget-password"
             className="text-base font-medium text-accent-gray underline"
           >
             ลืมรหัสผ่าน?
