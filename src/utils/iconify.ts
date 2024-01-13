@@ -172,3 +172,24 @@ addIcon("custom:md:dog-white", {
   width: 30,
   height: 30,
 });
+
+// horo games
+addIcon("custom:md:line", {
+  body: `
+  <svg width="98" height="2" viewBox="0 0 105 3" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M1 1H97" stroke="#FFFF31" stroke-width="2" stroke-linecap="round"/>
+  </svg>
+  `,
+  width: 98,
+});
+
+addIcon("custom:md:x-logo", {
+  body: `
+  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+<path d="M22.0414 2L5.16339 22H1.84631L18.6268 2H22.0414Z" fill="white"/>
+<path d="M21.481 21.25H16.5825L2.41421 2.75H7.42549L21.481 21.25Z" stroke="white" stroke-width="1.5"/>
+</svg>
+  `,
+  width: 24,
+  height: 24,
+});

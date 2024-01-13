@@ -2,6 +2,7 @@ import { Icon } from "@iconify/react";
 
 interface PetBadgeProps {
   value: string;
+  isEditabled?: boolean;
   setValue: React.Dispatch<React.SetStateAction<string>>;
   isAdmin: boolean;
 }
