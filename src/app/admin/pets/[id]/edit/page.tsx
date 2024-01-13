@@ -1,4 +1,4 @@
-import Details from "@/components/Pets/Details";
+import Details from "@/components/Pets/details/Details";
 import MainLayout from "@/layouts/MainLayout";
 
 const EditPet = () => {

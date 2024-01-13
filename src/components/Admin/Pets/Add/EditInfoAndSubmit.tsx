@@ -17,6 +17,7 @@ interface EditInfoAndSubmitProps {
   value: info;
   setValue: React.Dispatch<React.SetStateAction<info>>;
   onSubmit: () => void;
+  isAdmin: boolean;
 }
 
 const EditInfoAndSubmit = (props: EditInfoAndSubmitProps) => {
@@ -93,15 +94,25 @@ const EditInfoAndSubmit = (props: EditInfoAndSubmitProps) => {
             <div className="h-[2px] w-full bg-primary" />
           </div>
 
-          <div ref={pencilRef} tabIndex={0} className="ml-2 ">
-            <Icon
-              icon={enableEdit ? "ph:floppy-disk" : "custom:pencil"}
-              className={
-                "flex h-6 w-6 flex-none cursor-pointer text-accent-red"
-              }
-              onClick={handleOnClick}
-            />
-          </div>
+          {
+            props.isAdmin ?
+              <div ref={pencilRef} tabIndex={0} className="ml-2 ">
+                <Icon
+                  icon={enableEdit ? "ph:floppy-disk" : "custom:pencil"}
+                  className={
+                    "flex h-6 w-6 flex-none cursor-pointer text-accent-red"
+                  }
+                  onClick={handleOnClick}
+                />
+              </div>
+              :
+              <div className="ml-2">
+                <Icon
+                  icon="ph:heart-straight-bold"
+                  className="h-6 w-6 text-accent-red"
+                />
+              </div>
+          }
         </div>
 
         <div className="mt-4 flex flex-col lg:grid lg:grid-cols-2 lg:divide-x-2">
@@ -177,13 +188,23 @@ const EditInfoAndSubmit = (props: EditInfoAndSubmitProps) => {
             </div>
 
             {/* Post Buttom */}
-            <Button
-              className="mt-6 w-full text-2xl font-semibold"
-              text="โพสต์เลย"
-              onClick={props.onSubmit}
-              variant="accent-red"
-              rounded="full"
-            />
+            {props.isAdmin ?
+              <Button
+                className="mt-6 w-full text-2xl font-semibold"
+                text="โพสต์เลย"
+                onClick={props.onSubmit}
+                variant="accent-red"
+                rounded="full"
+              />
+              :
+              <Button
+                className="mt-6 w-full text-2xl font-semibold"
+                text="รับเลี้ยงเลย"
+                onClick={props.onSubmit}
+                variant="primary"
+                rounded="full"
+              />
+            }
           </div>
         </div>
       </div>

@@ -5,6 +5,7 @@ import TextareaAutosize from "react-autosize-textarea";
 interface EditTextProps {
   value: string;
   setValue: React.Dispatch<React.SetStateAction<string>>;
+  isAdmin : boolean;
 }
 
 const EditText = (props: EditTextProps) => {
@@ -57,13 +58,16 @@ const EditText = (props: EditTextProps) => {
         disabled={!enableEdit}
         placeholder="ใส่ข้อความตรงนี้..."
       />
-      <div ref={saveRef} tabIndex={0}>
-        <Icon
-          icon={enableEdit ? "ph:floppy-disk" : "custom:pencil"}
-          className="absolute bottom-4 right-4 flex h-8 w-8 flex-none cursor-pointer rounded-full bg-white p-1 text-accent-red shadow-md"
-          onClick={handleClickEdit}
-        />
-      </div>
+      {
+        props.isAdmin && 
+          <div ref={saveRef} tabIndex={0}>
+            <Icon
+              icon={enableEdit ? "ph:floppy-disk" : "custom:pencil"}
+              className="absolute bottom-4 right-4 flex h-8 w-8 flex-none cursor-pointer rounded-full bg-white p-1 text-accent-red shadow-md"
+              onClick={handleClickEdit}
+            />
+          </div>
+      }
     </div>
   );
 };
