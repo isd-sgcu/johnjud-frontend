@@ -9,9 +9,11 @@ const forgetPassword = () => {
   const [modalOpen, setModalOpen] = useState(false);
   return (
     <Container className="flex min-h-screen flex-col items-center justify-center gap-12">
-      <div>
-        <div className="py-2 text-4xl font-bold text-primary">ลืมรหัสผ่าน?</div>
-        <div className="text-medium text-base text-accent-gray">
+      <div className="flex flex-col items-center">
+        <div className="py-2 text-4xl font-bold text-primary lg:py-3 lg:text-5xl">
+          ลืมรหัสผ่าน?
+        </div>
+        <div className="text-base font-medium text-accent-gray lg:text-xl">
           กรุณากรอกอีเมลที่ท่านใช้สมัคร
         </div>
       </div>
