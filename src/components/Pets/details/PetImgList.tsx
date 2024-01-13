@@ -1,7 +1,5 @@
 import petImg from "@/assets/details/pet.svg";
 import plusIcon from "@/assets/details/plusIcon.svg";
-import AddSmallPicture from "@/components/Admin/Pets/Add/AddSmallPicture";
-import AddThumbnail from "@/components/Admin/Pets/Add/AddThumbnail";
 
 const PetImgList = () => {
   return (

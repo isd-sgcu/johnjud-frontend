@@ -3,15 +3,18 @@ import { Icon } from "@iconify/react";
 interface PetBadgeProps {
   value: string;
   setValue: React.Dispatch<React.SetStateAction<string>>;
+  isAdmin: boolean;
 }
 
 const PetBadge = (props: PetBadgeProps) => {
   const handleOnClick = () => {
-    props.setValue(props.value === "fromClub" ? "fromOutside" : "fromClub");
+    if(props.isAdmin){
+      props.setValue(props.value === "fromClub" ? "fromOutside" : "fromClub");
+    }
   };
   return (
     <div
-      className="relative flex w-full cursor-pointer select-none"
+      className="absolute mr-4 -mt-1 flex w-fit cursor-pointer select-none"
       onClick={handleOnClick}
     >
       <Icon
