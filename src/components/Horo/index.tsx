@@ -10,6 +10,7 @@ import img9 from "@/assets/horo/9-card-for-horo/9.png";
 import HoroResult from "@/components/Horo/HoroResult";
 import SelectCard from "@/components/Horo/SelectCard";
 import HoroDatas from "@/utils/horo";
+import { Icon } from "@iconify/react/dist/iconify.js";
 import { useCallback, useMemo, useState } from "react";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
@@ -54,14 +55,41 @@ const HoroGame = () => {
               </div>
               <div>
                 <Carousel
+                  renderArrowPrev={(clickHandler: () => void) => {
+                    return (
+                      <button
+                        className="absolute -left-2 top-0 z-10 h-full rounded-l-2xl px-2"
+                        onClick={clickHandler}
+                      >
+                        <Icon
+                          icon="ph:caret-left"
+                          className="h-10 w-10 text-4xl text-white"
+                        />
+                      </button>
+                    );
+                  }}
+                  renderArrowNext={(clickHandler: () => void) => {
+                    return (
+                      <button
+                        className="absolute -right-2 top-0 z-10 h-full rounded-l-2xl px-2"
+                        onClick={clickHandler}
+                      >
+                        <Icon
+                          icon="ph:caret-right"
+                          className="h-10 w-10 text-4xl text-white"
+                        />
+                      </button>
+                    );
+                  }}
                   showThumbs={false}
                   showStatus={false}
                   autoPlay={true}
-                  showIndicators={true}
+                  showIndicators={false}
+                  className="w-52"
                 >
                   {slideImages.map((item, index) => (
                     <div key={index}>
-                      <img src={item} className="w-[200px] rounded-2xl" />
+                      <img src={item} className="w-52 rounded-2xl" />
                     </div>
                   ))}
                 </Carousel>
