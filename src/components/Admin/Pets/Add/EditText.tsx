@@ -20,13 +20,6 @@ const EditText = (props: EditTextProps) => {
     }
     setEnableEdit(!enableEdit);
   };
-  const handleOnBlur = (event: React.FocusEvent<HTMLTextAreaElement>) => {
-    const currentFocus = event.relatedTarget;
-    if (!(currentFocus && currentFocus === saveRef.current)) {
-      setShowText(props.value);
-      setEnableEdit(false);
-    }
-  };
 
   const [enableEdit, setEnableEdit] = useState(false);
   const [showText, setShowText] = useState(props.value);
@@ -49,11 +42,10 @@ const EditText = (props: EditTextProps) => {
       <TextareaAutosize
         value={showText}
         className={
-          "w-full break-words rounded-3xl border-2 border-opacity-50 bg-white p-4 drop-shadow-sm " +
+          "w-full break-words rounded-3xl border-2 border-opacity-50 bg-white p-4 drop-shadow-sm" +
           (enableEdit ? "border-black" : "border-accent-gray-variant")
         }
         onChange={handleOnChange}
-        onBlur={handleOnBlur}
         ref={ref}
         disabled={!enableEdit}
         placeholder="ใส่ข้อความตรงนี้..."

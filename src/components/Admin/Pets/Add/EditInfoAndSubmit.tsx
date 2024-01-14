@@ -47,31 +47,6 @@ const EditInfoAndSubmit = (props: EditInfoAndSubmitProps) => {
 
   const [showInfo, setShowInfo] = useState<info>(props.value);
 
-  const handleOnBlur = (
-    event: React.FocusEvent<HTMLTextAreaElement | HTMLDivElement>
-  ) => {
-    const currentFocus = event.relatedTarget;
-    let stillFocus = false;
-    for (const val of Object.values(ref)) {
-      if (val && currentFocus === val.current) {
-        stillFocus = true;
-        break;
-      }
-    }
-    if (
-      !stillFocus &&
-      currentFocus &&
-      (currentFocus === pencilRef.current ||
-        (postRef.current && currentFocus === postRef.current.children[0]))
-    ) {
-    } else if (
-      !currentFocus ||
-      (!stillFocus && currentFocus !== pencilRef.current)
-    ) {
-      setShowInfo(props.value);
-      setEnableEdit(false);
-    }
-  };
   const handleOnChange = (
     event: React.FormEvent<HTMLTextAreaElement>,
     tag: string
@@ -136,7 +111,6 @@ const EditInfoAndSubmit = (props: EditInfoAndSubmitProps) => {
               text="เพศ:"
               value={showInfo.gender}
               enableEdit={enableEdit}
-              onBlur={handleOnBlur}
               onChange={(event) => handleOnChange(event, "gender")}
               inputRef={ref.gender}
               icon={"ph:paw-print"}
@@ -147,7 +121,6 @@ const EditInfoAndSubmit = (props: EditInfoAndSubmitProps) => {
               text="พันธุ์:"
               value={showInfo.breed}
               enableEdit={enableEdit}
-              onBlur={handleOnBlur}
               onChange={(event) => handleOnChange(event, "breed")}
               inputRef={ref.breed}
               icon={"ph:star"}
@@ -158,7 +131,6 @@ const EditInfoAndSubmit = (props: EditInfoAndSubmitProps) => {
               text="อายุ:"
               value={showInfo.age}
               enableEdit={enableEdit}
-              onBlur={handleOnBlur}
               onChange={(event) => handleOnChange(event, "age")}
               inputRef={ref.age}
               icon={"carbon:calendar"}
@@ -169,7 +141,6 @@ const EditInfoAndSubmit = (props: EditInfoAndSubmitProps) => {
               text="นิสัย:"
               value={showInfo.nature}
               enableEdit={enableEdit}
-              onBlur={handleOnBlur}
               onChange={(event) => handleOnChange(event, "nature")}
               inputRef={ref.nature}
               icon={"ph:music-notes"}
@@ -182,7 +153,6 @@ const EditInfoAndSubmit = (props: EditInfoAndSubmitProps) => {
               <ToggleInputInfo
                 value={showInfo["vaccine"]}
                 onClick={() => handleOnClickButton("vaccine")}
-                onBlur={handleOnBlur}
                 inputRef={ref.vaccine}
                 enableEdit={enableEdit}
                 icon={"ph:eyedropper"}
@@ -193,7 +163,6 @@ const EditInfoAndSubmit = (props: EditInfoAndSubmitProps) => {
               <ToggleInputInfo
                 value={showInfo["sterile"]}
                 onClick={() => handleOnClickButton("sterile")}
-                onBlur={handleOnBlur}
                 inputRef={ref.sterile}
                 enableEdit={enableEdit}
                 icon={"ph:medal"}
@@ -208,9 +177,8 @@ const EditInfoAndSubmit = (props: EditInfoAndSubmitProps) => {
                   className="mt-6 w-full text-2xl font-semibold"
                   text="โพสต์เลย"
                   onClick={() => {
-                    if (!enableEdit) {
-                      props.onSubmit(showInfo);
-                    }
+                    handleOnClick();
+                    props.onSubmit(showInfo);
                   }}
                   variant="accent-red"
                   rounded="full"

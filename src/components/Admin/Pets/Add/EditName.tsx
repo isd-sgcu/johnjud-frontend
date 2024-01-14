@@ -13,15 +13,8 @@ const EditName = (props: EditNameProps) => {
   const saveRef = useRef<HTMLDivElement>(null);
 
   const handleClickEdit = () => {
-    setEnableEdit(true);
-    setShowName(props.value);
-  };
-  const handleOnBlur = (event: React.FocusEvent<HTMLTextAreaElement>) => {
-    setEnableEdit(false);
-    const currentFocus = event.relatedTarget;
-    if (currentFocus && currentFocus === saveRef.current) {
-      props.setValue(showName);
-    }
+    setEnableEdit(!enableEdit);
+    props.setValue(showName);
   };
 
   const [showName, setShowName] = useState(props.value);
@@ -82,7 +75,6 @@ const EditName = (props: EditNameProps) => {
             enableEdit ? "visible" : "hidden"
           }`}
           disabled={!enableEdit}
-          onBlur={handleOnBlur}
           ref={ref}
           rows={1}
           placeholder="กรุณาใส่ชื่อ..."
@@ -91,6 +83,7 @@ const EditName = (props: EditNameProps) => {
           <Icon
             icon="ph:floppy-disk"
             className="h-6 w-6 cursor-pointer text-accent-red"
+            onClick={handleClickEdit}
           />
         </div>
       </div>
