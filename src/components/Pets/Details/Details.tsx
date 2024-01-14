@@ -2,7 +2,7 @@ import logo from "@/assets/details/logo.png";
 import EditInfoAndSubmit, {
   info,
 } from "@/components/Admin/Pets/Add/EditInfoAndSubmit";
-import BigPetCard from "@/components/Pets/details/BigPetCard";
+import BigPetCard from "@/components/Pets/Details/BigPetCard";
 import MainLayout from "@/layouts/MainLayout";
 import { useState } from "react";
 import SmallPetCardList from "./SmallPetCardList";

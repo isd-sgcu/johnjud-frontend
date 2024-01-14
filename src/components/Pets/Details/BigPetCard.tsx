@@ -18,7 +18,7 @@ const BigPetCard = ({ isAdmin }: { isAdmin: boolean }) => {
   const [image, setImage] = useState<File | null>(null);
   const [images, setImages] = useState<File[]>([]);
   const imgs = [petImg, petImg, petImg, petImg];
-  
+
   const convertImgToFile = async (imgFilePath: string) => {
     const response = await fetch(imgFilePath);
     const blob = await response.blob();
@@ -29,7 +29,7 @@ const BigPetCard = ({ isAdmin }: { isAdmin: boolean }) => {
 
   useEffect(() => {
     convertImgToFile(petImg);
-  },[])
+  }, []);
 
   return (
     <Container className="flex flex-col gap-8">

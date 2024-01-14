@@ -36,7 +36,7 @@ const userCreate = () => {
           <Icon icon="ion:chevron-back" className="h-8 w-8 text-primary" />
         </Link>
         <div className="visible flex w-full flex-col md:hidden">
-          <EditName value={name} setValue={setName} isAdmin/>
+          <EditName value={name} setValue={setName} isAdmin />
         </div>
       </div>
 
@@ -54,9 +54,9 @@ const userCreate = () => {
         {/* large EditName + EditText */}
         <div className="flex w-full flex-col md:justify-between md:gap-4">
           <div className="hidden w-full md:flex md:flex-col">
-            <EditName value={name} setValue={setName} isAdmin/>
+            <EditName value={name} setValue={setName} isAdmin />
           </div>
-          <EditText value={text} setValue={setText} isAdmin/>
+          <EditText value={text} setValue={setText} isAdmin />
         </div>
       </Container>
 
