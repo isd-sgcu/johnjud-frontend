@@ -13,7 +13,7 @@ const LoginForm = () => {
           <input
             type="email"
             placeholder="อีเมล"
-            className="w-full rounded-lg bg-accent-light-gray font-semibold text-accent-gray outline-none"
+            className="w-full bg-accent-light-gray font-semibold text-accent-gray outline-none"
           />
         </div>
         <div className="flex w-full items-center rounded-lg bg-accent-light-gray px-2.5 py-2.5 outline-none">
@@ -21,7 +21,7 @@ const LoginForm = () => {
           <input
             type="password"
             placeholder="รหัสผ่าน"
-            className="w-full rounded-lg bg-accent-light-gray font-semibold text-accent-gray outline-none"
+            className="w-full bg-accent-light-gray font-semibold text-accent-gray outline-none"
           />
         </div>
         <div className="flex w-full justify-between">
@@ -39,7 +39,7 @@ const LoginForm = () => {
             <span className="ml-2 text-black">จดจำฉัน</span>
           </label>
           <Link
-            to="/forgot-password"
+            to="/forget-password"
             className="text-base font-medium text-accent-gray underline"
           >
             ลืมรหัสผ่าน?
