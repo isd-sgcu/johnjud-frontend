@@ -17,6 +17,10 @@ const Details = ({ isAdmin }: { isAdmin: boolean }) => {
     sterile: false,
   });
 
+  const handleSubmit = (petInfo: info) => {
+    setPetInfo(petInfo);
+  };
+
   return (
     <>
       <BigPetCard isAdmin={isAdmin} />
@@ -24,7 +28,7 @@ const Details = ({ isAdmin }: { isAdmin: boolean }) => {
         <EditInfoAndSubmit
           value={petInfo}
           setValue={setPetInfo}
-          onSubmit={() => console.log(petInfo)}
+          onSubmit={handleSubmit}
           isAdmin={isAdmin}
         />
         <img src={logo} alt="logo" className="hidden h-64 w-64 xl:block" />

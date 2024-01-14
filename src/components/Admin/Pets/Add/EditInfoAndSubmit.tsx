@@ -1,4 +1,5 @@
 import Button from "@/components/Button";
+import { usePageParams } from "@/hooks/usePageParams";
 import { Icon } from "@iconify/react";
 import { useRef, useState } from "react";
 import { Link } from "react-router-dom";
@@ -17,11 +18,12 @@ export type info = {
 interface EditInfoAndSubmitProps {
   value: info;
   setValue: React.Dispatch<React.SetStateAction<info>>;
-  onSubmit: () => void;
+  onSubmit: (petinfo: info) => void;
   isAdmin: boolean;
 }
 
 const EditInfoAndSubmit = (props: EditInfoAndSubmitProps) => {
+  const id = usePageParams(["id"]);
   const ref = {
     gender: useRef(null),
     breed: useRef(null),
@@ -41,7 +43,7 @@ const EditInfoAndSubmit = (props: EditInfoAndSubmitProps) => {
     setEnableEdit(!enableEdit);
   };
 
-  const [showInfo, setShowInfo] = [props.value, props.setValue];
+  const [showInfo, setShowInfo] = useState<info>(props.value);
 
   const handleOnBlur = (
     event: React.FocusEvent<HTMLTextAreaElement | HTMLDivElement>
@@ -192,16 +194,16 @@ const EditInfoAndSubmit = (props: EditInfoAndSubmitProps) => {
               <Button
                 className="mt-6 w-full text-2xl font-semibold"
                 text="โพสต์เลย"
-                onClick={props.onSubmit}
+                onClick={() => props.onSubmit(showInfo)}
                 variant="accent-red"
                 rounded="full"
               />
             ) : (
-              <Link to="/pets/:id/adopt">
+              <Link to={`/pets/${id}/adopt`}>
                 <Button
                   className="mt-6 w-full text-2xl font-semibold"
                   text="รับเลี้ยงเลย"
-                  onClick={props.onSubmit}
+                  onClick={() => {}}
                   variant="primary"
                   rounded="full"
                 />
