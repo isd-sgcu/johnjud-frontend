@@ -13,7 +13,7 @@ interface SmallPetCardProps {
   status: string;
 }
 
-const smallpetcard = ({
+const Smallpetcard = ({
   id,
   name,
   species,
@@ -86,4 +86,4 @@ const smallpetcard = ({
     </Link>
   );
 };
-export default smallpetcard;
+export default Smallpetcard;
