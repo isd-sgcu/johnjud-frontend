@@ -1,4 +1,3 @@
-import blankProfile from "@/assets/navbar/blankProfile.svg";
 import Container from "@/components/Container";
 import GameLayout from "@/layouts/GameLayout";
 import { Icon } from "@iconify/react";
@@ -8,11 +7,6 @@ const favourite = () => {
     <Container>
       <div className="flex flex-col items-center gap-6 py-6 lg:gap-10 lg:py-10">
         <div className="flex flex-col items-center gap-2">
-          <img
-            src={blankProfile}
-            alt="blank-profile"
-            className="h-[100px] w-[100px]"
-          />
           <div className="text-xl">
             Welcome,&nbsp;
             <span className="font-bold">This is JohnJud!</span>
