@@ -1,6 +1,6 @@
 import Container from "@/components/Container";
+import Divider from "@/components/Divider";
 import GameLayout from "@/layouts/GameLayout";
-import { Icon } from "@iconify/react";
 
 const favourite = () => {
   return (
@@ -12,7 +12,7 @@ const favourite = () => {
             <span className="font-bold">This is JohnJud!</span>
           </div>
         </div>
-        <Icon icon="ph:paw-print" className="text-2xl text-primary"></Icon>
+        <Divider></Divider>
         <div>
           <div className="flex flex-row items-center justify-center gap-4">
             <div className="h-0.5 w-[100px] rounded-lg bg-primary"></div>
