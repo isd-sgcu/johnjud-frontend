@@ -17,8 +17,14 @@ const Details = ({ isAdmin }: { isAdmin: boolean }) => {
     sterile: false,
   });
 
+  const [isFav, setIsFav] = useState(false);
+
   const handleSubmit = (petInfo: info) => {
     setPetInfo(petInfo);
+  };
+
+  const handleFavPressed = () => {
+    setIsFav(!isFav);
   };
 
   return (
@@ -30,6 +36,8 @@ const Details = ({ isAdmin }: { isAdmin: boolean }) => {
           setValue={setPetInfo}
           onSubmit={handleSubmit}
           isAdmin={isAdmin}
+          isFav={isFav}
+          handleFavPressed={handleFavPressed}
         />
         <img src={logo} alt="logo" className="hidden h-64 w-64 xl:block" />
       </div>

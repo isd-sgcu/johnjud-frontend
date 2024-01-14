@@ -20,6 +20,8 @@ interface EditInfoAndSubmitProps {
   setValue: React.Dispatch<React.SetStateAction<info>>;
   onSubmit: (petinfo: info) => void;
   isAdmin: boolean;
+  isFav: boolean;
+  handleFavPressed: () => void;
 }
 
 const EditInfoAndSubmit = (props: EditInfoAndSubmitProps) => {
@@ -110,8 +112,13 @@ const EditInfoAndSubmit = (props: EditInfoAndSubmitProps) => {
           ) : (
             <div className="ml-2">
               <Icon
-                icon="ph:heart-straight-bold"
-                className="h-6 w-6 text-accent-red"
+                icon={
+                  props.isFav
+                    ? "ph:heart-straight-fill"
+                    : "ph:heart-straight-bold"
+                }
+                className="h-6 w-6 cursor-pointer text-accent-red"
+                onClick={props.handleFavPressed}
               />
             </div>
           )}
