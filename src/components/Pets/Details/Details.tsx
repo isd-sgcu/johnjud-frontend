@@ -5,6 +5,7 @@ import EditInfoAndSubmit, {
 import BigPetCard from "@/components/Pets/details/BigPetCard";
 import MainLayout from "@/layouts/MainLayout";
 import { useState } from "react";
+import SmallPetCardList from "./SmallPetCardList";
 
 const Details = ({ isAdmin }: { isAdmin: boolean }) => {
   const [petInfo, setPetInfo] = useState<info>({
@@ -28,6 +29,7 @@ const Details = ({ isAdmin }: { isAdmin: boolean }) => {
         />
         <img src={logo} alt="logo" className="hidden h-64 w-64 xl:block" />
       </div>
+      <SmallPetCardList />
     </>
   );
 };
