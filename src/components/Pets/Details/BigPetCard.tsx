@@ -45,7 +45,7 @@ const BigPetCard = ({ isAdmin }: { isAdmin: boolean }) => {
       </div>
 
       {/* thumbnail */}
-      <div className="mx-auto flex flex-col items-center justify-between w-full gap-8 md:h-80 md:flex-row md:items-start">
+      <div className="mx-auto flex w-full flex-col items-center justify-between gap-8 md:h-80 md:flex-row md:items-start">
         <div className="relative w-80">
           {!isAdmin ? (
             <PetThumbnails petImages={imgs} />

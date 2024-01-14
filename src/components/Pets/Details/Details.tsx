@@ -24,7 +24,7 @@ const Details = ({ isAdmin }: { isAdmin: boolean }) => {
         <EditInfoAndSubmit
           value={petInfo}
           setValue={setPetInfo}
-          onSubmit={() => console.log("ครับ")}
+          onSubmit={() => console.log(petInfo)}
           isAdmin={isAdmin}
         />
         <img src={logo} alt="logo" className="hidden h-64 w-64 xl:block" />

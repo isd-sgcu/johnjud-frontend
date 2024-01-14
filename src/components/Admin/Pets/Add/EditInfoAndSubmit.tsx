@@ -1,9 +1,9 @@
 import Button from "@/components/Button";
 import { Icon } from "@iconify/react";
 import { useRef, useState } from "react";
+import { Link } from "react-router-dom";
 import TextInputInfo from "./TextInputInfo";
 import ToggleInputInfo from "./ToggleInputInfo";
-import { Link } from "react-router-dom";
 
 export type info = {
   gender: string;
@@ -41,7 +41,7 @@ const EditInfoAndSubmit = (props: EditInfoAndSubmitProps) => {
     setEnableEdit(!enableEdit);
   };
 
-  const [showInfo, setShowInfo] = useState<info>(props.value);
+  const [showInfo, setShowInfo] = [props.value, props.setValue];
 
   const handleOnBlur = (
     event: React.FocusEvent<HTMLTextAreaElement | HTMLDivElement>
