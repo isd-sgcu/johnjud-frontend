@@ -28,7 +28,7 @@ const favourite = () => {
             <div className="h-0.5 w-[100px] rounded-lg bg-primary"></div>
           </div>
         </div>
-        <div>PET CARD TO BE IMPLEMENTED</div>
+        <div>-- PET CARD TO BE IMPLEMENTED --</div>
       </div>
     </Container>
   );
