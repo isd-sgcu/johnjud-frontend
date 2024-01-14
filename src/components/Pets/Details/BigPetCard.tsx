@@ -5,7 +5,7 @@ import EditName from "@/components/Admin/Pets/Add/EditName";
 import EditText from "@/components/Admin/Pets/Add/EditText";
 import Container from "@/components/Container";
 import { Icon } from "@iconify/react/dist/iconify.js";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import PetThumbnails from "../PetThumbnails";
 
@@ -17,6 +17,8 @@ const BigPetCard = ({ isAdmin }: { isAdmin: boolean }) => {
   const [petFrom, setPetFrom] = useState("fromClub");
   const [image, setImage] = useState<File | null>(null);
   const [images, setImages] = useState<File[]>([]);
+  const imgs = [petImg, petImg, petImg, petImg];
+  
   const convertImgToFile = async (imgFilePath: string) => {
     const response = await fetch(imgFilePath);
     const blob = await response.blob();
@@ -25,9 +27,9 @@ const BigPetCard = ({ isAdmin }: { isAdmin: boolean }) => {
     setImage(file);
   };
 
-  convertImgToFile(petImg);
-
-  const imgs = [petImg, petImg, petImg, petImg];
+  useEffect(() => {
+    convertImgToFile(petImg);
+  },[])
 
   return (
     <Container className="flex flex-col gap-8">
