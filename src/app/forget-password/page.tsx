@@ -5,7 +5,7 @@ import { Icon } from "@iconify/react/dist/iconify.js";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
-const forgetPassword = () => {
+const ForgetPassword = () => {
   const [modalOpen, setModalOpen] = useState(false);
   return (
     <Container className="flex min-h-screen flex-col items-center justify-center gap-12">
@@ -79,6 +79,6 @@ const forgetPassword = () => {
   );
 };
 
-export default forgetPassword;
+export default ForgetPassword;
 
 export const Layout = GameLayout;
