@@ -33,10 +33,10 @@ const ForgetPassword = () => {
           className="mb-4 px-24 text-xl text-white"
           onClick={() => setModalOpen(true)}
         />
-        <div className="flex flex-row items-center justify-center bg-pink-300">
+        <div className="flex flex-row items-center justify-center">
           <Link
             to={"/login"}
-            className="flex flex-row items-center justify-center gap-2 bg-green-300"
+            className="flex flex-row items-center justify-center gap-2"
           >
             <Icon icon="ph:arrow-left" className="text-2xl text-primary" />
             <div className="text-sm font-medium text-primary">
