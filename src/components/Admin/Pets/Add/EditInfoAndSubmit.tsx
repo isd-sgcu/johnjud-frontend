@@ -34,6 +34,7 @@ const EditInfoAndSubmit = (props: EditInfoAndSubmitProps) => {
     sterile: useRef(null),
   };
   const pencilRef = useRef(null);
+  const postRef = useRef<HTMLDivElement | null>(null);
   const [enableEdit, setEnableEdit] = useState(false);
   const handleOnClick = () => {
     if (enableEdit) {
@@ -57,7 +58,12 @@ const EditInfoAndSubmit = (props: EditInfoAndSubmitProps) => {
         break;
       }
     }
-    if (!stillFocus && currentFocus && currentFocus === pencilRef.current) {
+    if (
+      !stillFocus &&
+      currentFocus &&
+      (currentFocus === pencilRef.current ||
+        (postRef.current && currentFocus === postRef.current.children[0]))
+    ) {
     } else if (
       !currentFocus ||
       (!stillFocus && currentFocus !== pencilRef.current)
@@ -197,19 +203,23 @@ const EditInfoAndSubmit = (props: EditInfoAndSubmitProps) => {
 
             {/* Post Buttom */}
             {props.isAdmin ? (
-              <Button
-                className="mt-6 w-full text-2xl font-semibold"
-                text="โพสต์เลย"
-                onClick={() => props.onSubmit(showInfo)}
-                variant="accent-red"
-                rounded="full"
-              />
+              <div ref={postRef}>
+                <Button
+                  className="mt-6 w-full text-2xl font-semibold"
+                  text="โพสต์เลย"
+                  onClick={() => {
+                    handleOnClick();
+                    props.onSubmit(showInfo);
+                  }}
+                  variant="accent-red"
+                  rounded="full"
+                />
+              </div>
             ) : (
               <Link to={`/pets/${props.id}/adopt`}>
                 <Button
                   className="mt-6 w-full text-2xl font-semibold"
                   text="รับเลี้ยงเลย"
-                  onClick={() => {}}
                   variant="primary"
                   rounded="full"
                 />
