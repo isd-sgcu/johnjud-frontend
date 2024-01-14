@@ -208,8 +208,9 @@ const EditInfoAndSubmit = (props: EditInfoAndSubmitProps) => {
                   className="mt-6 w-full text-2xl font-semibold"
                   text="โพสต์เลย"
                   onClick={() => {
-                    handleOnClick();
-                    props.onSubmit(showInfo);
+                    if (!enableEdit) {
+                      props.onSubmit(showInfo);
+                    }
                   }}
                   variant="accent-red"
                   rounded="full"
