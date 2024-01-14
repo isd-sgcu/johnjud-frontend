@@ -1,5 +1,4 @@
 import Button from "@/components/Button";
-import { usePageParams } from "@/hooks/usePageParams";
 import { Icon } from "@iconify/react";
 import { useRef, useState } from "react";
 import { Link } from "react-router-dom";
@@ -20,12 +19,12 @@ interface EditInfoAndSubmitProps {
   setValue: React.Dispatch<React.SetStateAction<info>>;
   onSubmit: (petinfo: info) => void;
   isAdmin: boolean;
-  isFav: boolean;
-  handleFavPressed: () => void;
+  isFav?: boolean;
+  handleFavPressed?: () => void;
+  id?: string;
 }
 
 const EditInfoAndSubmit = (props: EditInfoAndSubmitProps) => {
-  const id = usePageParams(["id"]);
   const ref = {
     gender: useRef(null),
     breed: useRef(null),
@@ -206,7 +205,7 @@ const EditInfoAndSubmit = (props: EditInfoAndSubmitProps) => {
                 rounded="full"
               />
             ) : (
-              <Link to={`/pets/${id}/adopt`}>
+              <Link to={`/pets/${props.id}/adopt`}>
                 <Button
                   className="mt-6 w-full text-2xl font-semibold"
                   text="รับเลี้ยงเลย"
