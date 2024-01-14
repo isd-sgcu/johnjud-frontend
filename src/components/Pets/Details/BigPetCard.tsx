@@ -39,13 +39,13 @@ const BigPetCard = ({ isAdmin }: { isAdmin: boolean }) => {
           icon="material-symbols-light:arrow-back-ios-new"
           className="h-8 w-8 cursor-pointer"
         />
-        <div className="xl:hidden">
+        <div className="md:hidden">
           <EditName value={name} setValue={setName} isAdmin={isAdmin} />
         </div>
       </div>
 
       {/* thumbnail */}
-      <div className="mx-auto flex flex-col items-center justify-between gap-8 xl:h-80 xl:w-[80rem] xl:flex-row xl:items-start">
+      <div className="mx-auto flex flex-col items-center justify-between w-full gap-8 md:h-80 md:flex-row md:items-start">
         <div className="relative w-80">
           {!isAdmin ? (
             <PetThumbnails petImages={imgs} />
@@ -59,8 +59,8 @@ const BigPetCard = ({ isAdmin }: { isAdmin: boolean }) => {
           )}
         </div>
 
-        <div className="flex w-full flex-col items-start gap-8 xl:h-full xl:flex-1">
-          <div className="hidden xl:block">
+        <div className="flex w-full flex-col items-start gap-8 md:h-full md:flex-1">
+          <div className="hidden md:block">
             <EditName value={name} setValue={setName} isAdmin={isAdmin} />
           </div>
           <EditText value={text} setValue={setText} isAdmin={isAdmin} />

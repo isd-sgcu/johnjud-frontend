@@ -3,6 +3,7 @@ import { Icon } from "@iconify/react";
 import { useRef, useState } from "react";
 import TextInputInfo from "./TextInputInfo";
 import ToggleInputInfo from "./ToggleInputInfo";
+import { Link } from "react-router-dom";
 
 export type info = {
   gender: string;
@@ -196,13 +197,15 @@ const EditInfoAndSubmit = (props: EditInfoAndSubmitProps) => {
                 rounded="full"
               />
             ) : (
-              <Button
-                className="mt-6 w-full text-2xl font-semibold"
-                text="รับเลี้ยงเลย"
-                onClick={props.onSubmit}
-                variant="primary"
-                rounded="full"
-              />
+              <Link to="/pets/:id/adopt">
+                <Button
+                  className="mt-6 w-full text-2xl font-semibold"
+                  text="รับเลี้ยงเลย"
+                  onClick={props.onSubmit}
+                  variant="primary"
+                  rounded="full"
+                />
+              </Link>
             )}
           </div>
         </div>
