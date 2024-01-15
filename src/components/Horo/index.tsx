@@ -88,7 +88,7 @@ const HoroGame = () => {
                 ))}
               </Carousel>
             </div>
-            <div className="hidden flex-col items-center justify-center overflow-visible lg:flex ">
+            <div className="hidden flex-col items-center justify-center overflow-visible lg:flex">
               <Carousel
                 renderArrowPrev={(clickHandler: () => void) => {
                   return (
