@@ -59,7 +59,7 @@ const BigPetCard = ({ isAdmin }: { isAdmin: boolean }) => {
           )}
         </div>
 
-        <div className="flex w-full flex-col items-start gap-8 md:h-full md:flex-1">
+        <div className="flex w-full flex-col items-start gap-8 overflow-auto md:h-full md:flex-1">
           <div className="hidden md:block">
             <EditName value={name} setValue={setName} isAdmin={isAdmin} />
           </div>
