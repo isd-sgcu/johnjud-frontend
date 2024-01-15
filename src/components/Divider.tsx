@@ -9,11 +9,11 @@ const Divider: React.FC<DividerProps> = ({ variant }) => {
   const getClassName = useMemo(() => {
     switch (variant) {
       case "primary":
-        return "text-primary-500";
+        return "text-primary";
       case "accent-yellow":
         return "text-accent-yellow";
       default:
-        return "text-primary-500";
+        return "text-primary";
     }
   }, [variant]);
 
