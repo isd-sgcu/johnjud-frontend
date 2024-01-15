@@ -41,8 +41,8 @@ const HoroGame = () => {
         return (
           <Container>
             {/* className="flex h-[664px] w-80 flex-col items-center justify-center rounded-3xl bg-accent-purple" */}
-            <div className="flex h-[660px] w-80 flex-col items-center gap-6 rounded-3xl bg-accent-purple pb-14 pt-8">
-              <div className="flex flex-col items-center gap-[6px]">
+            <div className="flex h-[660px] w-full flex-col items-center gap-6 rounded-3xl bg-accent-purple pb-14 pt-8 lg:h-[620px] lg:w-[1024px] lg:gap-3 lg:pb-0">
+              <div className="flex flex-col items-center gap-[6px] lg:gap-0">
                 <div className="font-bold text-white">ยินดีต้อนรับเข้าสู่</div>
                 <div className="text-[40px] font-bold text-white">
                   ดูดวงไพ่ยิปซี
@@ -89,7 +89,7 @@ const HoroGame = () => {
                   ))}
                 </Carousel>
               </div>
-              <div className="flex flex-row items-center gap-2">
+              <div className="flex flex-row items-center gap-3">
                 <div className="h-0.5 w-[72px] rounded-lg bg-accent-yellow"></div>
                 <Divider variant={"accent-yellow"}></Divider>
                 <div className="h-0.5 w-[72px] rounded-lg bg-accent-yellow"></div>
