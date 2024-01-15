@@ -11,7 +11,7 @@ const Divider: React.FC<DividerProps> = ({ variant }) => {
       case "primary":
         return "text-primary-500";
       case "accent-yellow":
-        return "text-yellow-500";
+        return "text-accent-yellow";
       default:
         return "text-primary-500";
     }
