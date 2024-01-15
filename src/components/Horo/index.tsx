@@ -41,17 +41,12 @@ const HoroGame = () => {
         return (
           <Container>
             {/* className="flex h-[664px] w-80 flex-col items-center justify-center rounded-3xl bg-accent-purple" */}
-            <HoroBgContainer>
+            <div className="flex h-[660px] w-80 flex-col items-center gap-6 rounded-3xl bg-accent-purple pb-14 pt-8">
               <div className="flex flex-col items-center gap-[6px]">
                 <div className="font-bold text-white">ยินดีต้อนรับเข้าสู่</div>
                 <div className="text-[40px] font-bold text-white">
                   ดูดวงไพ่ยิปซี
                 </div>
-              </div>
-              <div className="flex flex-row items-center gap-2">
-                <div className="h-0.5 w-[72px] rounded-lg bg-accent-yellow"></div>
-                <Divider variant={"accent-yellow"}></Divider>
-                <div className="h-0.5 w-[72px] rounded-lg bg-accent-yellow"></div>
               </div>
               <div>
                 <Carousel
@@ -94,6 +89,11 @@ const HoroGame = () => {
                   ))}
                 </Carousel>
               </div>
+              <div className="flex flex-row items-center gap-2">
+                <div className="h-0.5 w-[72px] rounded-lg bg-accent-yellow"></div>
+                <Divider variant={"accent-yellow"}></Divider>
+                <div className="h-0.5 w-[72px] rounded-lg bg-accent-yellow"></div>
+              </div>
               <Button
                 text={"ทำนายดวงของท่าน"}
                 variant={"accent-yellow"}
@@ -101,7 +101,7 @@ const HoroGame = () => {
                 className="px-10 py-4 text-xl font-bold text-accent-purple"
                 onClick={() => setPhase(1)}
               />
-            </HoroBgContainer>
+            </div>
           </Container>
         );
       case 1:
