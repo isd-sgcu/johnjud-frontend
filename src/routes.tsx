@@ -1,6 +1,7 @@
 import React from "react";
 import type { LoaderFunction, RouteObject } from "react-router-dom";
 import { createBrowserRouter } from "react-router-dom";
+import ScrollToTop from "./utils/ScrollToTop.ts";
 
 const pages = import.meta.glob<{
   default: React.ComponentType;
@@ -34,6 +35,7 @@ const routes: RouteObject[] = [
         return {
           Component: () => (
             <Layout>
+              <ScrollToTop />
               <Component />
             </Layout>
           ),
@@ -63,6 +65,7 @@ Object.keys(pages).forEach((path) => {
             return {
               Component: () => (
                 <Layout>
+                  <ScrollToTop />
                   <Component />
                 </Layout>
               ),
@@ -85,6 +88,7 @@ routes.push({
       return {
         Component: () => (
           <Layout>
+            <ScrollToTop />
             <Component />
           </Layout>
         ),
