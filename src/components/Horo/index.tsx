@@ -1,16 +1,16 @@
+import HoroBgContainer from "@/components/Horo/HoroBgContainer";
 import HoroResult from "@/components/Horo/HoroResult";
 import SelectCard from "@/components/Horo/SelectCard";
 import HoroDatas from "@/utils/horo";
 import { useCallback, useMemo, useState } from "react";
-import HoroBgContainer from "@/components/Horo/HoroBgContainer";
 
 const HoroGame = () => {
   const [phase, setPhase] = useState(0);
   const [selectedCard, setSelectedCard] = useState<number | null>(null);
 
   const shuffledCards = useMemo(() => {
-    let shuffled = [...HoroDatas].sort(() => 0.5 - Math.random());
-    return shuffled.slice(0, 9); 
+    const shuffled = [...HoroDatas].sort(() => 0.5 - Math.random());
+    return shuffled.slice(0, 9);
   }, []);
   const cardList = useMemo(() => shuffledCards.map((data) => data.img), []);
   const titleList = useMemo(() => shuffledCards.map((data) => data.title), []);
