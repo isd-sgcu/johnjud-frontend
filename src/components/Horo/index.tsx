@@ -93,7 +93,7 @@ const HoroGame = () => {
                 renderArrowPrev={(clickHandler: () => void) => {
                   return (
                     <button
-                      className="absolute -left-5 top-0 z-10 h-full rounded-l-2xl px-2 outline-none"
+                      className="absolute -left-9 top-0 z-10 h-full rounded-l-2xl px-2 outline-none"
                       onClick={clickHandler}
                     >
                       <Icon
@@ -106,7 +106,7 @@ const HoroGame = () => {
                 renderArrowNext={(clickHandler: () => void) => {
                   return (
                     <button
-                      className="absolute -right-5 top-0 z-10 h-full rounded-r-2xl px-2 outline-none"
+                      className="absolute -right-9 top-0 z-10 h-full rounded-r-2xl px-2 outline-none"
                       onClick={clickHandler}
                     >
                       <Icon
@@ -121,7 +121,7 @@ const HoroGame = () => {
                 // autoPlay={true}
                 infiniteLoop={true}
                 showIndicators={false}
-                className="w-50 lg:w-3/4"
+                className="w-8/12"
                 centerMode={true}
                 centerSlidePercentage={33.33}
               >
