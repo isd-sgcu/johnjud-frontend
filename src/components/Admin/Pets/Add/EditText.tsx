@@ -5,6 +5,7 @@ import TextareaAutosize from "react-autosize-textarea";
 interface EditTextProps {
   value: string;
   setValue: React.Dispatch<React.SetStateAction<string>>;
+  isAdmin: boolean;
 }
 
 const EditText = (props: EditTextProps) => {
@@ -18,13 +19,6 @@ const EditText = (props: EditTextProps) => {
       setShowText(props.value);
     }
     setEnableEdit(!enableEdit);
-  };
-  const handleOnBlur = (event: React.FocusEvent<HTMLTextAreaElement>) => {
-    const currentFocus = event.relatedTarget;
-    if (!(currentFocus && currentFocus === saveRef.current)) {
-      setShowText(props.value);
-      setEnableEdit(false);
-    }
   };
 
   const [enableEdit, setEnableEdit] = useState(false);
@@ -48,22 +42,23 @@ const EditText = (props: EditTextProps) => {
       <TextareaAutosize
         value={showText}
         className={
-          "w-full break-words rounded-3xl border-2 border-opacity-50 bg-white p-4 drop-shadow-sm " +
+          "w-full break-words rounded-3xl border-2 border-opacity-50 bg-white p-4 drop-shadow-sm" +
           (enableEdit ? "border-black" : "border-accent-gray-variant")
         }
         onChange={handleOnChange}
-        onBlur={handleOnBlur}
         ref={ref}
         disabled={!enableEdit}
         placeholder="ใส่ข้อความตรงนี้..."
       />
-      <div ref={saveRef} tabIndex={0}>
-        <Icon
-          icon={enableEdit ? "ph:floppy-disk" : "custom:pencil"}
-          className="absolute bottom-4 right-4 flex h-8 w-8 flex-none cursor-pointer rounded-full bg-white p-1 text-accent-red shadow-md"
-          onClick={handleClickEdit}
-        />
-      </div>
+      {props.isAdmin && (
+        <div ref={saveRef} tabIndex={0}>
+          <Icon
+            icon={enableEdit ? "ph:floppy-disk" : "custom:pencil"}
+            className="absolute bottom-4 right-4 flex h-8 w-8 flex-none cursor-pointer rounded-full bg-white p-1 text-accent-red shadow-md"
+            onClick={handleClickEdit}
+          />
+        </div>
+      )}
     </div>
   );
 };
