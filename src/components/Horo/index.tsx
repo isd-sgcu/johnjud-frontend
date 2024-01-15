@@ -38,7 +38,7 @@ const HoroGame = () => {
     switch (phase) {
       case 0:
         return (
-          <div className="-my-10 flex h-full w-full flex-col items-center gap-6 rounded-3xl bg-accent-purple pb-14 pt-8 lg:h-[620px] lg:w-[1024px] lg:gap-3 lg:pb-0">
+          <div className="-my-10 flex h-full w-full flex-col items-center gap-6 rounded-3xl bg-accent-purple pb-14 pt-8 lg:h-[650px] lg:w-[1024px] lg:gap-3 lg:pb-0">
             {/* className="flex h-[664px] w-80 flex-col items-center justify-center rounded-3xl bg-accent-purple" */}
             <div className="flex flex-col items-center gap-[6px] lg:gap-0">
               <div className="font-bold text-white">ยินดีต้อนรับเข้าสู่</div>
@@ -46,12 +46,12 @@ const HoroGame = () => {
                 ดูดวงไพ่ยิปซี
               </div>
             </div>
-            <div className="flex flex-col items-center justify-center">
+            <div className="flex flex-col items-center justify-center lg:hidden">
               <Carousel
                 renderArrowPrev={(clickHandler: () => void) => {
                   return (
                     <button
-                      className="absolute -left-2 top-0 z-10 h-full rounded-l-2xl px-2 outline-none"
+                      className="absolute left-2 top-0 z-10 h-full rounded-l-2xl px-2 outline-none"
                       onClick={clickHandler}
                     >
                       <Icon
@@ -64,7 +64,7 @@ const HoroGame = () => {
                 renderArrowNext={(clickHandler: () => void) => {
                   return (
                     <button
-                      className="absolute -right-2 top-0 z-10 h-full rounded-r-2xl px-2 outline-none"
+                      className="absolute right-2 top-0 z-10 h-full rounded-r-2xl px-2 outline-none"
                       onClick={clickHandler}
                     >
                       <Icon
@@ -77,6 +77,48 @@ const HoroGame = () => {
                 showThumbs={false}
                 showStatus={false}
                 autoPlay={true}
+                infiniteLoop={true}
+                showIndicators={false}
+                className="w-52"
+              >
+                {slideImages.map((item, index) => (
+                  <div key={index} className="px-4">
+                    <img src={item} className="w-48 rounded-2xl" />
+                  </div>
+                ))}
+              </Carousel>
+            </div>
+            <div className="hidden flex-col items-center justify-center overflow-visible lg:flex ">
+              <Carousel
+                renderArrowPrev={(clickHandler: () => void) => {
+                  return (
+                    <button
+                      className="absolute -left-5 top-0 z-10 h-full rounded-l-2xl px-2 outline-none"
+                      onClick={clickHandler}
+                    >
+                      <Icon
+                        icon="ph:caret-left"
+                        className="h-10 w-10 text-4xl text-white"
+                      />
+                    </button>
+                  );
+                }}
+                renderArrowNext={(clickHandler: () => void) => {
+                  return (
+                    <button
+                      className="absolute -right-5 top-0 z-10 h-full rounded-r-2xl px-2 outline-none"
+                      onClick={clickHandler}
+                    >
+                      <Icon
+                        icon="ph:caret-right"
+                        className="h-10 w-10 text-4xl text-white"
+                      />
+                    </button>
+                  );
+                }}
+                showThumbs={false}
+                showStatus={false}
+                // autoPlay={true}
                 infiniteLoop={true}
                 showIndicators={false}
                 className="w-50 lg:w-3/4"
