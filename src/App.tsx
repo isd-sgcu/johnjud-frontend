@@ -1,7 +1,6 @@
 import { StrictMode, Suspense } from "react";
 import { RouterProvider } from "react-router-dom";
 import { router } from "./routes";
-import ScrollToTop from "./utils/ScrollToTop";
 
 function AppRoot() {
   return (
@@ -20,7 +19,6 @@ function AppRoot() {
 function App() {
   return (
     <StrictMode>
-      <ScrollToTop />
       <AppRoot />
     </StrictMode>
   );
