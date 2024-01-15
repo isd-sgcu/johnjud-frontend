@@ -7,7 +7,7 @@ interface SelectCardProps {
   selectedCard: number | null;
   cardList: string[];
   handleClick: () => void;
-}
+} 
 
 const SelectCard = ({
   selectedCard,
