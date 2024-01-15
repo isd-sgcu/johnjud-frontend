@@ -1,34 +1,17 @@
-import Button from "@/components/Button";
+import GamePage from "@/components/Game/GamePage";
 import GameLayout from "@/layouts/GameLayout";
-import catImage from "../../assets/user-tarot/catImage.svg";
+import { useEffect, useState } from "react";
+import Storys from "@/components/Game/Story";
+import Button from "@/components/Button";
+import StoryCard from "@/components/Game/StoryCard";
+import MultipleChoice from "@/components/Game/MultipleChoice";
 
 const userTarotFirstpage = () => {
+  const [currentComponent, setCurrentComponent] = useState(<GamePage onClick={() => setStart(true)} />);
   return (
-    <div className="flex min-h-screen w-full flex-col items-center justify-center bg-primary-variant">
-      <div className="flex flex-col items-center p-6 lg:mx-auto lg:w-80 lg:px-0 lg:py-10">
-        <img className="w-80 rounded-2xl" src={catImage} />
-        <div className="my-6 flex flex-col items-center lg:my-8">
-          <div
-            className="py-3 text-5xl font-bold text-primary
-                    lg:py-2 lg:text-4xl"
-          >
-            เกมทายนิสัย
-          </div>
-          <div
-            className="text-base font-bold text-white
-                    lg:py-1 lg:text-xl"
-          >
-            มาหาสัตว์เลี้ยงที่เหมาะกับคุณกัน!
-          </div>
-        </div>
-        <Button
-          text="เล่นเลย"
-          variant="accent-red"
-          rounded="2xl"
-          className="w-full text-xl font-semibold"
-        />
-      </div>
-    </div>
+    <>
+      {currentComponent}
+    </>
   );
 };
 
