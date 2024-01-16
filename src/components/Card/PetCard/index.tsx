@@ -50,7 +50,7 @@ const PetCard = ({
   isVisibled,
 }: PetCardProps) => {
   const role = useMemo(() => {
-    return "admin";
+    return "user";
   }, []);
 
   const [liked, setLiked] = useState(isLiked);
@@ -82,7 +82,11 @@ const PetCard = ({
   return (
     <Link to={linkTo}>
       <div className="flex w-80 flex-col items-start justify-start rounded-2xl bg-white p-4 shadow">
-        <img src={image} alt={name} className="mb-4 w-72 rounded-2xl shadow" />
+        <img
+          src={image}
+          alt={name}
+          className="mb-4 h-72 w-72 rounded-2xl object-cover object-center shadow"
+        />
         <div className="mb-2 flex w-72 flex-row items-center justify-between">
           <p className="text-2xl font-bold text-black">{name}</p>
           {role === "user" ? (
