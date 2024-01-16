@@ -50,7 +50,7 @@ const PetCard = ({
   isVisibled,
 }: PetCardProps) => {
   const role = useMemo(() => {
-    return "admin";
+    return "user";
   }, []);
 
   const [liked, setLiked] = useState(isLiked);
