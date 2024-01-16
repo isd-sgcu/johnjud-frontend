@@ -21,7 +21,6 @@ const HoroFirstPage = ({ handleStart }: HoroFirstPageProps) => {
   const slideImages = [img1, img2, img3, img4, img5, img6, img7, img8, img9];
   return (
     <div className=" flex h-full w-full flex-col items-center gap-6 rounded-3xl bg-accent-purple pb-14 pt-8 lg:h-[650px] lg:w-[1024px] lg:gap-3 lg:pb-0">
-      {/* className="flex h-[664px] w-80 flex-col items-center justify-center rounded-3xl bg-accent-purple" */}
       <div className="flex flex-col items-center gap-[6px] lg:gap-0">
         <div className="font-bold text-white">ยินดีต้อนรับเข้าสู่</div>
         <div className="text-[40px] font-bold text-white">ดูดวงไพ่ยิปซี</div>
