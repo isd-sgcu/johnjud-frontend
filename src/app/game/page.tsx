@@ -4,31 +4,52 @@ import { useEffect, useState } from "react";
 import Storys from "@/components/Game/Story";
 import StoryCard from "@/components/Game/StoryCard";
 import MultipleChoice from "@/components/Game/MultipleChoice";
+import ResultGame from "@/components/Game/ResultGame";
+import Results from "@/components/Game/Result";
 
 const userTarotFirstpage = () => {
   const [start, setStart] = useState(false);
   const [currentComponent, setCurrentComponent] = useState(<GamePage onClick={() => setStart(true)} />);
   const [storyIdx, setStoryIdx] = useState(0);
 
+  const result = Results[0];
+  const handleOnClickSave = () => { };
+  const handleOnClickShare = () => { };
+
   useEffect(() => {
     if (start) {
       async function showStoryCards() {
-        for (const story of Storys[0].storyTexts) {
+        for (const story of Storys[storyIdx].storyTexts) {
           await new Promise((resolve) => {
             setCurrentComponent(<StoryCard text={story} />);
-            setTimeout(resolve, 5000);
+            setTimeout(resolve, 3000);
           });
         }
       }
-
-      showStoryCards().then(() => {
-        window.scrollTo(0,0);
-        setCurrentComponent(<MultipleChoice
-          index={storyIdx + 1}
-          headerText={Storys[storyIdx].headerText}
-          answers={Storys[storyIdx].answers}
-        />);
-      });
+      if (storyIdx < Storys.length) {
+        showStoryCards().then(() => {
+          window.scrollTo(0, 0);
+          setCurrentComponent(
+            <MultipleChoice
+              index={storyIdx + 1}
+              headerText={Storys[storyIdx].headerText}
+              answers={Storys[storyIdx].answers}
+              onClick={() => setStoryIdx(storyIdx + 1)}
+            />
+          );
+        });
+      } else {
+        setCurrentComponent(
+          <ResultGame
+            header={result.header}
+            image={result.image}
+            infoHeader={result.infoHeader}
+            infoText={result.infoText}
+            handleOnClickSave={handleOnClickSave}
+            handleOnClickShare={handleOnClickShare}
+          />
+        )
+      }
     }
   }, [start, storyIdx]);
   return (
