@@ -3,7 +3,6 @@ import HoroResult from "@/components/Horo/HoroResult";
 import SelectCard from "@/components/Horo/SelectCard";
 import HoroDatas from "@/utils/horo";
 import { useCallback, useMemo, useState } from "react";
-import "react-responsive-carousel/lib/styles/carousel.min.css";
 import HoroFirstPage from "./HoroFirstPage";
 
 const HoroGame = () => {
@@ -25,7 +24,7 @@ const HoroGame = () => {
   }, [cardList.length]);
 
   const handleStart = useCallback(() => {
-    // set phase
+    setPhase(1);
   }, []);
 
   const renderPhase = () => {
