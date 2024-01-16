@@ -25,19 +25,18 @@ const userTarotFirstpage = () => {
             setTimeout(resolve, 3000);
           });
         }
+        setStoryIdx(storyIdx + 1);
       }
       if (storyIdx < Storys.length) {
-        showStoryCards().then(() => {
-          window.scrollTo(0, 0);
-          setCurrentComponent(
-            <MultipleChoice
+        window.scrollTo(0, 0);
+        setCurrentComponent(
+          <MultipleChoice
               index={storyIdx + 1}
               headerText={Storys[storyIdx].headerText}
               answers={Storys[storyIdx].answers}
-              onClick={() => setStoryIdx(storyIdx + 1)}
+              onClick={() => showStoryCards()}
             />
-          );
-        });
+        )
       } else {
         setCurrentComponent(
           <ResultGame
