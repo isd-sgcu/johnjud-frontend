@@ -1,6 +1,7 @@
 import Button from "@/components/Button";
 import { Icon } from "@iconify/react";
 import { useRef, useState } from "react";
+import { Link } from "react-router-dom";
 import TextInputInfo from "./TextInputInfo";
 import ToggleInputInfo from "./ToggleInputInfo";
 
@@ -16,7 +17,11 @@ export type info = {
 interface EditInfoAndSubmitProps {
   value: info;
   setValue: React.Dispatch<React.SetStateAction<info>>;
-  onSubmit: () => void;
+  onSubmit: (petinfo: info) => void;
+  isAdmin: boolean;
+  isFav?: boolean;
+  handleFavPressed?: () => void;
+  id?: string;
 }
 
 const EditInfoAndSubmit = (props: EditInfoAndSubmitProps) => {
@@ -29,6 +34,7 @@ const EditInfoAndSubmit = (props: EditInfoAndSubmitProps) => {
     sterile: useRef(null),
   };
   const pencilRef = useRef(null);
+  const postRef = useRef<HTMLDivElement | null>(null);
   const [enableEdit, setEnableEdit] = useState(false);
   const handleOnClick = () => {
     if (enableEdit) {
@@ -41,26 +47,6 @@ const EditInfoAndSubmit = (props: EditInfoAndSubmitProps) => {
 
   const [showInfo, setShowInfo] = useState<info>(props.value);
 
-  const handleOnBlur = (
-    event: React.FocusEvent<HTMLTextAreaElement | HTMLDivElement>
-  ) => {
-    const currentFocus = event.relatedTarget;
-    let stillFocus = false;
-    for (const val of Object.values(ref)) {
-      if (val && currentFocus === val.current) {
-        stillFocus = true;
-        break;
-      }
-    }
-    if (!stillFocus && currentFocus && currentFocus === pencilRef.current) {
-    } else if (
-      !currentFocus ||
-      (!stillFocus && currentFocus !== pencilRef.current)
-    ) {
-      setShowInfo(props.value);
-      setEnableEdit(false);
-    }
-  };
   const handleOnChange = (
     event: React.FormEvent<HTMLTextAreaElement>,
     tag: string
@@ -82,6 +68,13 @@ const EditInfoAndSubmit = (props: EditInfoAndSubmitProps) => {
     }
   };
 
+  const handleOnPost = () => {
+    if (enableEdit) {
+      handleOnClick();
+      props.onSubmit(showInfo);
+    }
+  };
+
   return (
     <div className="flex w-full flex-col">
       {/* EditInfo */}
@@ -93,15 +86,29 @@ const EditInfoAndSubmit = (props: EditInfoAndSubmitProps) => {
             <div className="h-[2px] w-full bg-primary" />
           </div>
 
-          <div ref={pencilRef} tabIndex={0} className="ml-2 ">
-            <Icon
-              icon={enableEdit ? "ph:floppy-disk" : "custom:pencil"}
-              className={
-                "flex h-6 w-6 flex-none cursor-pointer text-accent-red"
-              }
-              onClick={handleOnClick}
-            />
-          </div>
+          {props.isAdmin ? (
+            <div ref={pencilRef} tabIndex={0} className="ml-2 ">
+              <Icon
+                icon={enableEdit ? "ph:floppy-disk" : "custom:pencil"}
+                className={
+                  "flex h-6 w-6 flex-none cursor-pointer text-accent-red"
+                }
+                onClick={handleOnClick}
+              />
+            </div>
+          ) : (
+            <div className="ml-2">
+              <Icon
+                icon={
+                  props.isFav
+                    ? "ph:heart-straight-fill"
+                    : "ph:heart-straight-bold"
+                }
+                className="h-6 w-6 cursor-pointer text-accent-red"
+                onClick={props.handleFavPressed}
+              />
+            </div>
+          )}
         </div>
 
         <div className="mt-4 flex flex-col lg:grid lg:grid-cols-2 lg:divide-x-2">
@@ -111,7 +118,6 @@ const EditInfoAndSubmit = (props: EditInfoAndSubmitProps) => {
               text="เพศ:"
               value={showInfo.gender}
               enableEdit={enableEdit}
-              onBlur={handleOnBlur}
               onChange={(event) => handleOnChange(event, "gender")}
               inputRef={ref.gender}
               icon={"ph:paw-print"}
@@ -122,7 +128,6 @@ const EditInfoAndSubmit = (props: EditInfoAndSubmitProps) => {
               text="พันธุ์:"
               value={showInfo.breed}
               enableEdit={enableEdit}
-              onBlur={handleOnBlur}
               onChange={(event) => handleOnChange(event, "breed")}
               inputRef={ref.breed}
               icon={"ph:star"}
@@ -133,7 +138,6 @@ const EditInfoAndSubmit = (props: EditInfoAndSubmitProps) => {
               text="อายุ:"
               value={showInfo.age}
               enableEdit={enableEdit}
-              onBlur={handleOnBlur}
               onChange={(event) => handleOnChange(event, "age")}
               inputRef={ref.age}
               icon={"carbon:calendar"}
@@ -144,7 +148,6 @@ const EditInfoAndSubmit = (props: EditInfoAndSubmitProps) => {
               text="นิสัย:"
               value={showInfo.nature}
               enableEdit={enableEdit}
-              onBlur={handleOnBlur}
               onChange={(event) => handleOnChange(event, "nature")}
               inputRef={ref.nature}
               icon={"ph:music-notes"}
@@ -157,7 +160,6 @@ const EditInfoAndSubmit = (props: EditInfoAndSubmitProps) => {
               <ToggleInputInfo
                 value={showInfo["vaccine"]}
                 onClick={() => handleOnClickButton("vaccine")}
-                onBlur={handleOnBlur}
                 inputRef={ref.vaccine}
                 enableEdit={enableEdit}
                 icon={"ph:eyedropper"}
@@ -168,7 +170,6 @@ const EditInfoAndSubmit = (props: EditInfoAndSubmitProps) => {
               <ToggleInputInfo
                 value={showInfo["sterile"]}
                 onClick={() => handleOnClickButton("sterile")}
-                onBlur={handleOnBlur}
                 inputRef={ref.sterile}
                 enableEdit={enableEdit}
                 icon={"ph:medal"}
@@ -177,13 +178,26 @@ const EditInfoAndSubmit = (props: EditInfoAndSubmitProps) => {
             </div>
 
             {/* Post Buttom */}
-            <Button
-              className="mt-6 w-full text-2xl font-semibold"
-              text="โพสต์เลย"
-              onClick={props.onSubmit}
-              variant="accent-red"
-              rounded="full"
-            />
+            {props.isAdmin ? (
+              <div ref={postRef}>
+                <Button
+                  className="mt-6 w-full text-2xl font-semibold"
+                  text="โพสต์เลย"
+                  onClick={handleOnPost}
+                  variant="accent-red"
+                  rounded="full"
+                />
+              </div>
+            ) : (
+              <Link to={`/pets/${props.id}/adopt`}>
+                <Button
+                  className="mt-6 w-full text-2xl font-semibold"
+                  text="รับเลี้ยงเลย"
+                  variant="primary"
+                  rounded="full"
+                />
+              </Link>
+            )}
           </div>
         </div>
       </div>
