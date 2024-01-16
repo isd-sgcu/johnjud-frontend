@@ -4,7 +4,7 @@ interface MultipleChoiceProps {
   index: number;
   headerText: string;
   answers: string[];
-  onClick: () => void;
+  onClick: (index: number) => void;
 }
 
 const MultipleChoice = (props: MultipleChoiceProps) => {
@@ -35,7 +35,7 @@ const MultipleChoice = (props: MultipleChoiceProps) => {
                 <div
                   key={index}
                   className="flex w-full cursor-pointer items-center justify-center break-words rounded-3xl bg-accent-red px-6 py-2 text-center font-semibold text-white md:text-lg"
-                  onClick={props.onClick}
+                  onClick={() => props.onClick(index)}
                 >
                   {ans}
                 </div>
