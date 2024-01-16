@@ -11,17 +11,20 @@ interface EditNameProps {
 const EditName = (props: EditNameProps) => {
   const ref = useRef<HTMLTextAreaElement>(null);
   const saveRef = useRef<HTMLDivElement>(null);
+  const [enableEdit, setEnableEdit] = useState(false);
 
   const handleClickEdit = () => {
     setEnableEdit(!enableEdit);
-    props.setValue(showName);
+    if (!enableEdit && props.value === "กรุณาใส่ชื่อ...") {
+      props.setValue("");
+    } else if (enableEdit && props.value === "") {
+      props.setValue("กรุณาใส่ชื่อ...");
+    }
   };
 
-  const [showName, setShowName] = useState(props.value);
-  const [enableEdit, setEnableEdit] = useState(false);
   const handleOnChange = (event: React.FormEvent<HTMLTextAreaElement>) => {
     const element = event.target as HTMLInputElement;
-    setShowName(element.value);
+    props.setValue(element.value);
   };
 
   // focus at the end of text when enable
@@ -32,6 +35,7 @@ const EditName = (props: EditNameProps) => {
       ref.current.setSelectionRange(inputLength, inputLength);
     }
   }, [enableEdit]);
+
   return (
     <div className="relative flex w-full flex-col">
       <div
@@ -69,7 +73,7 @@ const EditName = (props: EditNameProps) => {
         }
       >
         <TextareaAutosize
-          value={showName}
+          value={props.value}
           onChange={handleOnChange}
           className={`flex w-full resize-none text-wrap break-words rounded-lg p-2 text-right text-3xl font-bold text-primary focus:outline-accent-gray-variant lg:text-left ${
             enableEdit ? "visible" : "hidden"
