@@ -13,29 +13,35 @@ const userTarotFirstpage = () => {
   const [storyIdx, setStoryIdx] = useState(0);
 
   const result = Results[0];
+  const [totalScore, setTotalScore] = useState(0);
+
   const handleOnClickSave = () => { };
   const handleOnClickShare = () => { };
 
+  async function showStoryCards() {
+    for (const story of Storys[storyIdx].storyTexts) {
+      await new Promise((resolve) => {
+        setCurrentComponent(<StoryCard text={story} />);
+        setTimeout(resolve, 3000);
+      });
+    }
+    setStoryIdx(storyIdx + 1);
+  }
+
   useEffect(() => {
     if (start) {
-      async function showStoryCards() {
-        for (const story of Storys[storyIdx].storyTexts) {
-          await new Promise((resolve) => {
-            setCurrentComponent(<StoryCard text={story} />);
-            setTimeout(resolve, 3000);
-          });
-        }
-        setStoryIdx(storyIdx + 1);
-      }
       if (storyIdx < Storys.length) {
         window.scrollTo(0, 0);
         setCurrentComponent(
           <MultipleChoice
-              index={storyIdx + 1}
-              headerText={Storys[storyIdx].headerText}
-              answers={Storys[storyIdx].answers}
-              onClick={() => showStoryCards()}
-            />
+            index={storyIdx + 1}
+            headerText={Storys[storyIdx].headerText}
+            answers={Storys[storyIdx].answers}
+            onClick={(index) => {
+              setTotalScore(totalScore + Storys[storyIdx].answerScores[index]);
+              showStoryCards();
+            }}
+          />
         )
       } else {
         setCurrentComponent(
@@ -51,6 +57,7 @@ const userTarotFirstpage = () => {
       }
     }
   }, [start, storyIdx]);
+
   return (
     <>
       {currentComponent}
