@@ -1,7 +1,6 @@
 type Pet = {
   id: string;
   type: string;
-  species: string;
   name: string;
   birthdate: string;
   gender: "male" | "female";
