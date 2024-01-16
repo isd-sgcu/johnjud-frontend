@@ -59,7 +59,7 @@ const HoroFirstPage = ({ handleStart }: HoroFirstPageProps) => {
           autoPlay={true}
           infiniteLoop={true}
           showIndicators={false}
-          className="w-52"
+          className="w-72"
         >
           {slideImages.map((item, index) => (
             <div key={index} className="px-4">
