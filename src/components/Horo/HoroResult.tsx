@@ -17,7 +17,7 @@ const HoroResult: React.FC<HoroResultProps> = ({
   const [showResult, setShowResult] = useState(false);
 
   useEffect(() => {
-    let intervalId: number;
+    let intervalId: NodeJS.Timeout;
     if (!showResult) {
       intervalId = setInterval(() => {
         setPhase((prevPhase) => (prevPhase + 1) % 3);
