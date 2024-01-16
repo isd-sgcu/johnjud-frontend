@@ -10,7 +10,7 @@ interface MultipleChoiceProps {
 const MultipleChoice = (props: MultipleChoiceProps) => {
   return (
     <div className="flex min-h-[70vh] w-full flex-col items-center justify-end pt-[8.25rem] md:min-h-[80vh]">
-      <div className="flex w-full flex-grow justify-center rounded-t-2xl bg-white p-6">
+      <div className="flex w-full flex-grow justify-center rounded-t-2xl bg-white p-6 animate-float-in-bottom -z-0">
         <div className="flex w-full flex-col items-center gap-6 md:max-w-96">
           {/* Header */}
           <div className="relative flex w-full flex-shrink flex-row items-center gap-6">
