@@ -68,6 +68,13 @@ const EditInfoAndSubmit = (props: EditInfoAndSubmitProps) => {
     }
   };
 
+  const handleOnPost = () => {
+    if (enableEdit) {
+      handleOnClick();
+      props.onSubmit(showInfo);
+    }
+  };
+
   return (
     <div className="flex w-full flex-col">
       {/* EditInfo */}
@@ -176,10 +183,7 @@ const EditInfoAndSubmit = (props: EditInfoAndSubmitProps) => {
                 <Button
                   className="mt-6 w-full text-2xl font-semibold"
                   text="โพสต์เลย"
-                  onClick={() => {
-                    handleOnClick();
-                    props.onSubmit(showInfo);
-                  }}
+                  onClick={handleOnPost}
                   variant="accent-red"
                   rounded="full"
                 />
