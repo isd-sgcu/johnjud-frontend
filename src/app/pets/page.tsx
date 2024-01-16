@@ -21,7 +21,7 @@ const Pets = () => {
   return (
     <>
       <Container>
-        <Heading onSearch />
+        <Heading onSearch quantity={data?.meta.total} />
       </Container>
       <Container className="flex flex-row gap-x-4">
         <PetSearch variant="red" />
