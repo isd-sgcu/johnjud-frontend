@@ -1,7 +1,7 @@
 import React from "react";
 import type { LoaderFunction, RouteObject } from "react-router-dom";
 import { createBrowserRouter } from "react-router-dom";
-import ScrollToTop from "./utils/ScrollToTop.ts";
+import ScrollToTop from "./utils/scrollToTop.ts";
 
 const pages = import.meta.glob<{
   default: React.ComponentType;
