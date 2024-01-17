@@ -1,10 +1,12 @@
 import Details from "@/components/Pets/Details/Details";
 import MainLayout from "@/layouts/MainLayout";
-
+import { usePetsQuery } from "@/hooks/queries/usePetsQuery";
 const PetInfo = () => {
+  const { data } = usePetsQuery();
+
   return (
     <>
-      <Details isAdmin={false} />
+     { data && <Details isAdmin={false} data = {data} />}
     </>
   );
 };
