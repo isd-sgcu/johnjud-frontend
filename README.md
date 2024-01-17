@@ -111,3 +111,24 @@ The commit message should start with one of the following types:
 -   style: Changes that do not affect the meaning of the code (white-space, formatting, missing semi-colons, etc)
 
 For more information, please read the [conventional commit format](https://www.conventionalcommits.org/en/v1.0.0/) documentation.
+
+
+## Implement API
+
+This project use `@tanstack/react-query` with `axios` for fetching data and We will use custom queries hooks for query.
+
+Structure
+
+- `src/api` : Store api fetching function using `axios`
+- `src/types` : Store type of fetched data
+- `src/hook/queries` : Store query function from `@tanstack/react-query`
+- `src/hook/mutation` : Store mutation function
+
+Instruction Step :
+
+1. Create type from data in `src/types` if have pagination use `Meta` from `src/types/common.ts`
+2. Create fetching function in `src/api` and passing type to axios function
+3. Create query function in `src/hook/quries` or mutation function in `src/hook/mutation`
+4. Implement Query or Mutation function in **Page** and pass data to components
+
+** **Do not query data in any Component !!**
