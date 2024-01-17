@@ -1,7 +1,7 @@
 import Button from "@/components/Button";
 import Container from "@/components/Container";
 import EmailVerification from "@/components/Modal/EmailVerification";
-import GameLayout from "@/layouts/GameLayout";
+import MainLayout from "@/layouts/MainLayout";
 import { Icon } from "@iconify/react/dist/iconify.js";
 import { useState } from "react";
 import { Link } from "react-router-dom";
@@ -53,4 +53,4 @@ const ForgetPassword = () => {
 
 export default ForgetPassword;
 
-export const Layout = GameLayout;
+export const Layout = MainLayout;

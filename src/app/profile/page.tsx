@@ -1,6 +1,6 @@
 import Container from "@/components/Container";
 import Divider from "@/components/Divider";
-import GameLayout from "@/layouts/GameLayout";
+import MainLayout from "@/layouts/MainLayout";
 
 const favourite = () => {
   return (
@@ -30,4 +30,4 @@ const favourite = () => {
 
 export default favourite;
 
-export const Layout = GameLayout;
+export const Layout = MainLayout;
