@@ -6,9 +6,10 @@ import BigPetCard from "@/components/Pets/Details/BigPetCard";
 import { usePageParams } from "@/hooks/usePageParams";
 import MainLayout from "@/layouts/MainLayout";
 import { useState } from "react";
-import SmallPetCardList from "./SmallPetCardList";
+import SmallPetCardList from "../../SmallPetCardList";
+import { PetsResponse } from "@/api/pets";
 
-const Details = ({ isAdmin }: { isAdmin: boolean }) => {
+const Details = ({ isAdmin, data }: { isAdmin: boolean, data: PetsResponse }) => {
   const param = usePageParams(["id"]);
   const [petInfo, setPetInfo] = useState<info>({
     gender: "ครับ",
@@ -45,7 +46,7 @@ const Details = ({ isAdmin }: { isAdmin: boolean }) => {
         />
         <img src={logo} alt="logo" className="hidden h-64 w-64 xl:block" />
       </div>
-      <SmallPetCardList />
+      <SmallPetCardList pets = {data.pets}/>
     </>
   );
 };
