@@ -8,16 +8,16 @@ import MiniPetCardContainer from "@/components/Main/CardList/MiniPetCardContaine
 import Filter from "@/components/Main/Filter";
 import Heading from "@/components/Pets/Heading";
 import Search from "@/components/Search/PetSearch";
+import { usePetsQuery } from "@/hooks/queries/usePetsQuery";
 import MainLayout from "@/layouts/MainLayout";
 import { useNavigate } from "react-router-dom";
-import { usePetsQuery } from "@/hooks/queries/usePetsQuery";
 
 // Page
 const MainPage = () => {
   const navigate = useNavigate();
-  
+
   const { data } = usePetsQuery();
-  
+
   return (
     <>
       <Container className="flex flex-col items-center justify-center md:flex-row md:space-x-9">
@@ -63,7 +63,7 @@ const MainPage = () => {
         <Divider variant="primary" />
       </Container>
       <Container>
-        {data && <BigPetCardContainer petsData = {data.pets}/>}
+        {data && <BigPetCardContainer petsData={data.pets} />}
       </Container>
     </>
   );
