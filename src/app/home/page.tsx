@@ -10,10 +10,14 @@ import Heading from "@/components/Pets/Heading";
 import Search from "@/components/Search/PetSearch";
 import MainLayout from "@/layouts/MainLayout";
 import { useNavigate } from "react-router-dom";
+import { usePetsQuery } from "@/hooks/queries/usePetsQuery";
 
 // Page
 const MainPage = () => {
   const navigate = useNavigate();
+  
+  const { data } = usePetsQuery();
+  
   return (
     <>
       <Container className="flex flex-col items-center justify-center md:flex-row md:space-x-9">
@@ -38,7 +42,7 @@ const MainPage = () => {
         <div className="hidden md:flex md:w-4/12">
           <Banner imageUrl="https://via.placeholder.com/440x440?text=Your+Ad+Here" />
         </div>
-        <MiniPetCardContainer />
+        {data && <MiniPetCardContainer petsData={data.pets} />}
       </Container>
       <Container className="flex items-center justify-center md:justify-end">
         <Button
@@ -59,7 +63,7 @@ const MainPage = () => {
         <Divider variant="primary" />
       </Container>
       <Container>
-        <BigPetCardContainer />
+        {data && <BigPetCardContainer petsData = {data.pets}/>}
       </Container>
     </>
   );
