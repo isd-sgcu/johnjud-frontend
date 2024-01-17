@@ -117,6 +117,8 @@ For more information, please read the [conventional commit format](https://www.c
 
 This project use `@tanstack/react-query` with `axios` for fetching data and We will use custom queries hooks for query.
 
+Please see in Discord for `.env` file
+
 Structure
 
 - `src/api` : Store api fetching function using `axios`
