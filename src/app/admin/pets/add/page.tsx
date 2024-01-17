@@ -9,8 +9,13 @@ import EditInfoAndSubmit from "../../../../components/Admin/Pets/Add/EditInfoAnd
 import EditName from "../../../../components/Admin/Pets/Add/EditName";
 import EditText from "../../../../components/Admin/Pets/Add/EditText";
 import MainLayout from "../../../../layouts/MainLayout";
+import SmallPetCardList from "@/components/SmallPetCardList";
+import { usePetsQuery } from "@/hooks/queries/usePetsQuery";
 
 const userCreate = () => {
+
+  const { data } = usePetsQuery();
+
   const [name, setName] = useState("กรุณาใส่ชื่อ...");
   const [text, setText] = useState("");
   const [thumbnail, setThumbnail] = useState<File | null>(null);
@@ -81,6 +86,7 @@ const userCreate = () => {
           <img src={johnjudLogo} className="flex h-64 w-44"></img>
         </div>
       </div>
+      {data &&<SmallPetCardList pets = {data.pets}/>} 
     </>
   );
 };
