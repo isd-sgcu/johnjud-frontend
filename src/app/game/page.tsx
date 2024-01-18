@@ -1,22 +1,24 @@
 import GamePage from "@/components/Game/GamePage";
-import GameLayout from "@/layouts/GameLayout";
-import { useEffect, useState } from "react";
-import Storys from "@/components/Game/Storys";
-import StoryCard from "@/components/Game/StoryCard";
 import MultipleChoice from "@/components/Game/MultipleChoice";
 import ResultGame from "@/components/Game/ResultGame";
 import Results from "@/components/Game/Results";
+import StoryCard from "@/components/Game/StoryCard";
+import Storys from "@/components/Game/Storys";
+import GameLayout from "@/layouts/GameLayout";
+import { useEffect, useState } from "react";
 
 const userTarotFirstpage = () => {
   const [start, setStart] = useState(false);
-  const [currentComponent, setCurrentComponent] = useState(<GamePage onClick={() => setStart(true)} />);
+  const [currentComponent, setCurrentComponent] = useState(
+    <GamePage onClick={() => setStart(true)} />
+  );
   const [storyIdx, setStoryIdx] = useState(0);
 
   const result = Results[0];
   const [totalScore, setTotalScore] = useState(0);
 
-  const handleOnClickSave = () => { };
-  const handleOnClickShare = () => { };
+  const handleOnClickSave = () => {};
+  const handleOnClickShare = () => {};
 
   async function showStoryCards() {
     for (const story of Storys[storyIdx].storyTexts) {
@@ -41,29 +43,31 @@ const userTarotFirstpage = () => {
               showStoryCards();
             }}
           />
-        )
+        );
       } else {
         setCurrentComponent(
-          <StoryCard text="ไหนดูสิ ได้คำตอบว่าอะไร" lastStory={true} onClick={() => setCurrentComponent(
-            <ResultGame
-              header={result.header}
-              image={result.image}
-              infoHeader={result.infoHeader}
-              infoText={result.infoText}
-              handleOnClickSave={handleOnClickSave}
-              handleOnClickShare={handleOnClickShare}
-            />
-          )} />
-        )
+          <StoryCard
+            text="ไหนดูสิ ได้คำตอบว่าอะไร"
+            lastStory={true}
+            onClick={() =>
+              setCurrentComponent(
+                <ResultGame
+                  header={result.header}
+                  image={result.image}
+                  infoHeader={result.infoHeader}
+                  infoText={result.infoText}
+                  handleOnClickSave={handleOnClickSave}
+                  handleOnClickShare={handleOnClickShare}
+                />
+              )
+            }
+          />
+        );
       }
     }
   }, [start, storyIdx]);
 
-  return (
-    <>
-      {currentComponent}
-    </>
-  );
+  return <>{currentComponent}</>;
 };
 
 export default userTarotFirstpage;
