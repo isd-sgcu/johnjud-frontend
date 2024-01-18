@@ -27,7 +27,7 @@ export default {
       keyframes: {
         floatInBottom : {
           "0%" : {
-            transform: "translateY(100%)",
+            transform: "translateY(30%)",
             opacity: "0"
           },
           "100%" : {

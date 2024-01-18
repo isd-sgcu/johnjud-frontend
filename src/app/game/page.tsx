@@ -31,7 +31,6 @@ const userTarotFirstpage = () => {
   useEffect(() => {
     if (start) {
       if (storyIdx < Storys.length) {
-        window.scrollTo(0, 0);
         setCurrentComponent(
           <MultipleChoice
             index={storyIdx + 1}
@@ -45,14 +44,16 @@ const userTarotFirstpage = () => {
         )
       } else {
         setCurrentComponent(
-          <ResultGame
-            header={result.header}
-            image={result.image}
-            infoHeader={result.infoHeader}
-            infoText={result.infoText}
-            handleOnClickSave={handleOnClickSave}
-            handleOnClickShare={handleOnClickShare}
-          />
+          <StoryCard text="ไหนดูสิ ได้คำตอบว่าอะไร" lastStory={true} onClick={() => setCurrentComponent(
+            <ResultGame
+              header={result.header}
+              image={result.image}
+              infoHeader={result.infoHeader}
+              infoText={result.infoText}
+              handleOnClickSave={handleOnClickSave}
+              handleOnClickShare={handleOnClickShare}
+            />
+          )} />
         )
       }
     }
