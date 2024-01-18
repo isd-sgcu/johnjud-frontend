@@ -5,6 +5,19 @@ import { Icon } from "@iconify/react/dist/iconify.js";
 
 const resetPassword = () => {
   return (
+    <Container>
+      <div>
+        <div>
+          <div>รีเซ็ตรหัสผ่าน</div>
+          <div>กรุณากรอกรหัสผ่านใหม่</div>
+        </div>
+        <div>
+          <Icon icon="ph:lock-key"></Icon>
+          <input type="password" placeholder="รหัสผ่านใหม่" />
+        </div>
+        <Button text={"เปลี่ยนรหัสผ่าน"} variant={"primary"} />
+      </div>
+    </Container>
   );
 };
 
