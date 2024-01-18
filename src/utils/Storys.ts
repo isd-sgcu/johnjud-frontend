@@ -1,20 +1,20 @@
-import img1_1 from "../assets/game/StoryIcons/1/1.png"
-import img1_2 from "../assets/game/StoryIcons/1/2.png"
-import img1_3 from "../assets/game/StoryIcons/1/3.png"
-import img2_1 from "../assets/game/StoryIcons/2/1.png"
-import img2_2 from "../assets/game/StoryIcons/2/2.png"
-import img2_3 from "../assets/game/StoryIcons/2/3.png"
-import img2_4 from "../assets/game/StoryIcons/2/4.png"
-import img3_1 from "../assets/game/StoryIcons/3/1.png"
-import img3_2 from "../assets/game/StoryIcons/3/2.png"
-import img4_1 from "../assets/game/StoryIcons/4/1.png"
-import img5_1 from "../assets/game/StoryIcons/5/1.png"
-import img5_2 from "../assets/game/StoryIcons/5/2.png"
-import img6_1 from "../assets/game/StoryIcons/6/1.png"
-import img7_1 from "../assets/game/StoryIcons/7/1.png"
+import img1_1 from "../assets/game/StoryIcons/1/1.png";
+import img1_2 from "../assets/game/StoryIcons/1/2.png";
+import img1_3 from "../assets/game/StoryIcons/1/3.png";
+import img2_1 from "../assets/game/StoryIcons/2/1.png";
+import img2_2 from "../assets/game/StoryIcons/2/2.png";
+import img2_3 from "../assets/game/StoryIcons/2/3.png";
+import img2_4 from "../assets/game/StoryIcons/2/4.png";
+import img3_1 from "../assets/game/StoryIcons/3/1.png";
+import img3_2 from "../assets/game/StoryIcons/3/2.png";
+import img4_1 from "../assets/game/StoryIcons/4/1.png";
+import img5_1 from "../assets/game/StoryIcons/5/1.png";
+import img5_2 from "../assets/game/StoryIcons/5/2.png";
+import img6_1 from "../assets/game/StoryIcons/6/1.png";
+import img7_1 from "../assets/game/StoryIcons/7/1.png";
 interface StoryProps {
-  text: string,
-  icon: string
+  text: string;
+  icon: string;
 }
 
 interface GameStoryProps {
@@ -37,15 +37,17 @@ const GameStorys: GameStoryProps[] = [
     story: [
       {
         text: "ติ๊ง แจ้งเตือนแอพพลิเคชั่น\nโรงหนังชื่อดังดังขึ้น",
-        icon: img1_1
-      },{
+        icon: img1_1,
+      },
+      {
         text: "ว้าว! หนังใหม่ที่สนใจจะฉายวันแรก\nพรุ่งนี้แล้ว สงสัยต้องไปแล้วสิ ไม่อยากโดนสปอยล์ด้วย",
-        icon: img1_2
-      },{
+        icon: img1_2,
+      },
+      {
         text: "ว่าแต่ จะหาคนไปดูด้วยดีไหมนะ",
-        icon: img1_3
-      }
-    ]
+        icon: img1_3,
+      },
+    ],
   },
   {
     question: "หากอยากไปดูหนังที่เพิ่งออกใหม่ คุณจะเลือกชวนใครไป",
@@ -59,18 +61,21 @@ const GameStorys: GameStoryProps[] = [
     story: [
       {
         text: "ส่วนวันนี้เพิ่งทำงานเสร็จ\nนอนพักผ่อน เล่นโทรศัพท์ดีกว่า",
-        icon: img2_1
-      },{
+        icon: img2_1,
+      },
+      {
         text: "ตริ้ง* เสียงโทรศัพท์ดังขึ้น",
-        icon: img2_2
-      },{
+        icon: img2_2,
+      },
+      {
         text: "เพื่อนทักแชทมาว่า\n“แก มันมีเกมทดสอบใหม่ ลองเล่นไหม”",
-        icon: img2_3
-      },{
+        icon: img2_3,
+      },
+      {
         text: "*กดลิงค์*\nเล่นเกมไปสักพัก",
-        icon: img2_4
-      }
-    ]
+        icon: img2_4,
+      },
+    ],
   },
   {
     question: "คนรอบข้างบอกคุณว่า คุณเป็นคนอย่างไร",
@@ -84,12 +89,13 @@ const GameStorys: GameStoryProps[] = [
     story: [
       {
         text: "55555 (ขำ) สนุกจังเลย ไหนลองเล่นต่อซิ",
-        icon: img3_1
-      },{
+        icon: img3_1,
+      },
+      {
         text: "ทันใดนั้น *แกร๊ก* *ครืนนนน*",
-        icon: img3_2
-      }
-    ]
+        icon: img3_2,
+      },
+    ],
   },
   {
     question: "หากคุณได้ยินเสียงอะไรแปลกๆ มาจากข้างนอก คุณจะทำอย่างไร",
@@ -103,9 +109,9 @@ const GameStorys: GameStoryProps[] = [
     story: [
       {
         text: "กลับมาเล่นเกมต่อดีกว่า",
-        icon: img4_1
-      }
-    ]
+        icon: img4_1,
+      },
+    ],
   },
   {
     question:
@@ -120,12 +126,13 @@ const GameStorys: GameStoryProps[] = [
     story: [
       {
         text: "อื้อ หือ เป็นคำถามที่เลือกตอบยาก\nเหมือนกันนะเนี่ย",
-        icon: img5_1
-      },{
+        icon: img5_1,
+      },
+      {
         text: "ไหนมาดูข้อต่อไปสิว่า\nจะโหดขนาดไหน",
-        icon: img5_2
-      }
-    ]
+        icon: img5_2,
+      },
+    ],
   },
   {
     question: "เวลาเล่นกันในแก๊งเพื่อน คุณมักจะเป็นคนประเภทไหน",
@@ -139,9 +146,9 @@ const GameStorys: GameStoryProps[] = [
     story: [
       {
         text: "เอาล่ะ เหลือข้อสุดท้ายแล้วสินะ",
-        icon: img6_1
-      }
-    ]
+        icon: img6_1,
+      },
+    ],
   },
   {
     question: "ถ้าหากว่างๆแล้วอยากเปิดเพลงฟัง คุณจะเลือกฟังเพลงแนวไหน",
@@ -155,9 +162,9 @@ const GameStorys: GameStoryProps[] = [
     story: [
       {
         text: "เล่นเสร็จสักที",
-        icon: img7_1
-      }
-    ]
+        icon: img7_1,
+      },
+    ],
   },
 ];
 
