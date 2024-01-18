@@ -86,7 +86,9 @@ const userCreate = () => {
           <img src={johnjudLogo} className="flex h-64 w-44"></img>
         </div>
       </div>
+      <div className="hidden md:block">
       {data &&<SmallPetCardList pets = {data.pets}/>} 
+      </div>
     </>
   );
 };
