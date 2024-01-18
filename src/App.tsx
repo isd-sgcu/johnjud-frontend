@@ -1,3 +1,4 @@
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { StrictMode, Suspense } from "react";
 import { RouterProvider } from "react-router-dom";
 import { router } from "./routes";
@@ -17,9 +18,13 @@ function AppRoot() {
 }
 
 function App() {
+  const queryClient = new QueryClient();
+
   return (
     <StrictMode>
-      <AppRoot />
+      <QueryClientProvider client={queryClient}>
+        <AppRoot />
+      </QueryClientProvider>
     </StrictMode>
   );
 }
