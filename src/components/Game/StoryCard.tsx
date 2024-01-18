@@ -20,7 +20,11 @@ const StoryCard = ({
         }
         onClick={onClick}
       >
-        <img src={icon} alt="story icon" className={(lastStory) ? "w-24 h-40" : "h-24 w-24"} />
+        <img
+          src={icon}
+          alt="story icon"
+          className={lastStory ? "h-40 w-24" : "h-24 w-24"}
+        />
         <div className="flex flex-col items-center">
           <div className="justify-center whitespace-pre-line break-words px-6 text-center text-xl font-bold md:text-2xl">
             {text}

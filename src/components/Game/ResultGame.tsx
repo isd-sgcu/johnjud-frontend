@@ -21,9 +21,7 @@ const ResultGame = (props: ResultGameProps) => {
         <div className="flex w-full max-w-80 flex-col gap-4 md:gap-6">
           {/* Header + Image */}
           <div className="flex flex-col items-center gap-3 md:gap-4">
-            <div className="font-bold text-primary md:text-2xl">
-              คุณคือแมว
-            </div>
+            <div className="font-bold text-primary md:text-2xl">คุณคือแมว</div>
             <div className="aspect-[4:3] w-full overflow-hidden rounded-2xl shadow-md">
               <img
                 src={props.image}

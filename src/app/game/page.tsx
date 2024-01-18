@@ -6,7 +6,7 @@ import GameLayout from "@/layouts/GameLayout";
 import Results from "@/utils/Results";
 import GameStorys from "@/utils/Storys";
 import { useEffect, useState } from "react";
-import lastStoryIcon from "../../assets/game/StoryIcons/7/2.png"
+import lastStoryIcon from "../../assets/game/StoryIcons/7/2.png";
 
 const GameFirstpage = () => {
   const [start, setStart] = useState(false);
@@ -17,8 +17,8 @@ const GameFirstpage = () => {
 
   const [totalScore, setTotalScore] = useState(0);
 
-  const handleOnClickSave = () => { };
-  const handleOnClickShare = () => { };
+  const handleOnClickSave = () => {};
+  const handleOnClickShare = () => {};
 
   async function showStoryCards() {
     for (const story of GameStorys[storyIdx].story) {
@@ -49,7 +49,9 @@ const GameFirstpage = () => {
             headerText={GameStorys[storyIdx].question}
             answers={GameStorys[storyIdx].answers}
             onClick={(index) => {
-              setTotalScore(totalScore + GameStorys[storyIdx].answerScores[index]);
+              setTotalScore(
+                totalScore + GameStorys[storyIdx].answerScores[index]
+              );
               showStoryCards();
             }}
           />
@@ -71,7 +73,7 @@ const GameFirstpage = () => {
                   handleOnClickSave={handleOnClickSave}
                   handleOnClickShare={handleOnClickShare}
                 />
-              )
+              );
             }}
           />
         );
