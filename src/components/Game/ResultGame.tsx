@@ -3,8 +3,8 @@ import Button from "../Button";
 
 interface ResultGameProps {
   image: string;
-  infoHeader: string;
-  infoText: string;
+  role: string;
+  text: string;
   handleOnClickSave: () => void;
   handleOnClickShare: () => void;
 }
@@ -35,10 +35,10 @@ const ResultGame = (props: ResultGameProps) => {
           {/* Info */}
           <div className="flex flex-col items-center gap-3 md:gap-4">
             <div className="w-full rounded-2xl bg-accent-light-gray px-6 py-2 text-center text-2xl font-bold text-primary">
-              {props.infoHeader}
+              {props.role}
             </div>
             <div className="w-full break-words text-center text-lg">
-              {props.infoText}
+              {props.text}
             </div>
           </div>
 

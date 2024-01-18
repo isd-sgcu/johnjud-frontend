@@ -15,7 +15,6 @@ const GameFirstpage = () => {
   );
   const [storyIdx, setStoryIdx] = useState(0);
 
-  const result = Results[0];
   const [totalScore, setTotalScore] = useState(0);
 
   const handleOnClickSave = () => { };
@@ -24,11 +23,21 @@ const GameFirstpage = () => {
   async function showStoryCards() {
     for (const story of GameStorys[storyIdx].story) {
       await new Promise((resolve) => {
-        setCurrentComponent(<StoryCard text={story.text} icon={story.icon}/>);
+        setCurrentComponent(<StoryCard text={story.text} icon={story.icon} />);
         setTimeout(resolve, 3000);
       });
     }
     setStoryIdx(storyIdx + 1);
+  }
+
+  function getResult() {
+    if (totalScore >= 25) return Results[6];
+    else if (totalScore >= 22) return Results[5];
+    else if (totalScore >= 19) return Results[4];
+    else if (totalScore >= 16) return Results[3];
+    else if (totalScore >= 13) return Results[2];
+    else if (totalScore >= 10) return Results[1];
+    else return Results[0];
   }
 
   useEffect(() => {
@@ -46,24 +55,24 @@ const GameFirstpage = () => {
           />
         );
       } else {
+        const result = getResult();
         setCurrentComponent(
           <StoryCard
             text="ไหนดูสิ ได้คำตอบว่าอะไร"
             icon={lastStoryIcon}
             lastStory={true}
-            onClick={() =>
-              {
-                window.scrollTo(0,0);
-                setCurrentComponent(
+            onClick={() => {
+              window.scrollTo(0, 0);
+              setCurrentComponent(
                 <ResultGame
                   image={result.image}
-                  infoHeader={result.role}
-                  infoText={result.text}
+                  role={result.role}
+                  text={result.text}
                   handleOnClickSave={handleOnClickSave}
                   handleOnClickShare={handleOnClickShare}
                 />
-              )}
-            }
+              )
+            }}
           />
         );
       }
