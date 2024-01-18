@@ -1,10 +1,10 @@
 import GamePage from "@/components/Game/GamePage";
 import MultipleChoice from "@/components/Game/MultipleChoice";
 import ResultGame from "@/components/Game/ResultGame";
-import Results from "@/utils/Results";
 import StoryCard from "@/components/Game/StoryCard";
-import Storys from "@/utils/Storys";
 import GameLayout from "@/layouts/GameLayout";
+import Results from "@/utils/Results";
+import Storys from "@/utils/Storys";
 import { useEffect, useState } from "react";
 
 const userTarotFirstpage = () => {
