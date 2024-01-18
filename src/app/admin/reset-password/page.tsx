@@ -16,7 +16,7 @@ const resetPassword = () => {
             กรุณากรอกรหัสผ่านใหม่
           </div>
         </div>
-        <div className="flex w-full flex-row items-center justify-center gap-2 rounded-lg bg-accent-light-gray px-4 py-2">
+        <div className="flex w-full flex-row items-center justify-center gap-2 rounded-lg bg-accent-light-gray py-2 pl-4">
           <Icon
             icon="ph:lock-key-bold"
             className="text-xl text-accent-gray"
