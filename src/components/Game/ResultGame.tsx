@@ -1,5 +1,5 @@
-import Button from "../Button";
 import background from "@/assets/background/background.png";
+import Button from "../Button";
 
 interface ResultGameProps {
   header: string;
@@ -12,12 +12,13 @@ interface ResultGameProps {
 
 const ResultGame = (props: ResultGameProps) => {
   return (
-    <div className="flex min-h-screen flex-col bg-auto bg-top"
+    <div
+      className="flex min-h-screen flex-col bg-auto bg-top"
       style={{
         backgroundImage: `url(${background})`,
       }}
     >
-      <div className="mx-auto flex w-full justify-center gap-4 md:gap-6 my-6 space-y-6 xl:my-10 xl:space-y-10">
+      <div className="mx-auto my-6 flex w-full justify-center gap-4 space-y-6 md:gap-6 xl:my-10 xl:space-y-10">
         <div className="flex w-full max-w-80 flex-col gap-4 md:gap-6">
           {/* Header + Image */}
           <div className="flex flex-col items-center gap-3 md:gap-4">
@@ -62,7 +63,6 @@ const ResultGame = (props: ResultGameProps) => {
         </div>
       </div>
     </div>
-
   );
 };
 
