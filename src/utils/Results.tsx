@@ -1,4 +1,4 @@
-import OrangeCat from "../../assets/game/OrangeCat.jpg";
+import OrangeCat from "../assets/game/OrangeCat.jpg";
 interface ResultProps {
   header: string;
   image: string;
