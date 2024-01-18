@@ -1,6 +1,5 @@
 import OrangeCat from "../assets/game/OrangeCat.jpg";
 interface ResultProps {
-  header: string;
   image: string;
   infoHeader: string;
   infoText: string;
@@ -8,7 +7,6 @@ interface ResultProps {
 
 const Results: ResultProps[] = [
   {
-    header: "คุณคือแม้ว",
     image: OrangeCat,
     infoHeader: "แม้วส้ม",
     infoText:

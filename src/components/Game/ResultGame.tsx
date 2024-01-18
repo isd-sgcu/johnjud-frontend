@@ -2,7 +2,6 @@ import background from "@/assets/background/background.png";
 import Button from "../Button";
 
 interface ResultGameProps {
-  header: string;
   image: string;
   infoHeader: string;
   infoText: string;
@@ -23,7 +22,7 @@ const ResultGame = (props: ResultGameProps) => {
           {/* Header + Image */}
           <div className="flex flex-col items-center gap-3 md:gap-4">
             <div className="font-bold text-primary md:text-2xl">
-              {props.header}
+              คุณคือแมว
             </div>
             <div className="aspect-[4:3] w-full overflow-hidden rounded-2xl shadow-md">
               <img
