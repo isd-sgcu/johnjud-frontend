@@ -8,7 +8,7 @@ const resetPassword = () => {
     <Container>
       <div className="mx-auto flex min-h-screen w-80 flex-col items-center justify-center gap-12">
         <div className="flex flex-col items-center">
-          <div className="py-2 text-5xl font-bold text-primary">
+          <div className="py-3 text-5xl font-bold text-primary">
             รีเซ็ตรหัสผ่าน
           </div>
           <div className="text-xl font-medium text-accent-gray">
@@ -16,11 +16,14 @@ const resetPassword = () => {
           </div>
         </div>
         <div className="flex w-full flex-row items-center justify-center gap-2 rounded-lg bg-accent-light-gray px-4 py-2">
-          <Icon icon="ph:lock-key"></Icon>
+          <Icon
+            icon="ph:lock-key-bold"
+            className="text-xl text-accent-gray"
+          ></Icon>
           <input
             type="password"
             placeholder="รหัสผ่านใหม่"
-            className="bg-accent-light-gray outline-none placeholder:font-semibold"
+            className="bg-accent-light-gray outline-none placeholder:font-semibold placeholder:text-accent-gray"
           />
         </div>
         <Button
