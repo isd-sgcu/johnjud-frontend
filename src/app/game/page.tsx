@@ -4,10 +4,11 @@ import ResultGame from "@/components/Game/ResultGame";
 import StoryCard from "@/components/Game/StoryCard";
 import GameLayout from "@/layouts/GameLayout";
 import Results from "@/utils/Results";
-import Storys from "@/utils/Storys";
+import GameStorys from "@/utils/Storys";
 import { useEffect, useState } from "react";
+import lastStoryIcon from "../../assets/game/StoryIcons/7/2.png"
 
-const userTarotFirstpage = () => {
+const GameFirstpage = () => {
   const [start, setStart] = useState(false);
   const [currentComponent, setCurrentComponent] = useState(
     <GamePage onClick={() => setStart(true)} />
@@ -21,10 +22,9 @@ const userTarotFirstpage = () => {
   const handleOnClickShare = () => { };
 
   async function showStoryCards() {
-    for (let i = 0; i < Storys[storyIdx].storyTexts.length; i++) {
-      const text = Storys[storyIdx].storyTexts[i];
+    for (const story of GameStorys[storyIdx].story) {
       await new Promise((resolve) => {
-        setCurrentComponent(<StoryCard text={text} />);
+        setCurrentComponent(<StoryCard text={story.text} icon={story.icon}/>);
         setTimeout(resolve, 3000);
       });
     }
@@ -33,14 +33,14 @@ const userTarotFirstpage = () => {
 
   useEffect(() => {
     if (start) {
-      if (storyIdx < Storys.length) {
+      if (storyIdx < GameStorys.length) {
         setCurrentComponent(
           <MultipleChoice
             index={storyIdx + 1}
-            headerText={Storys[storyIdx].headerText}
-            answers={Storys[storyIdx].answers}
+            headerText={GameStorys[storyIdx].question}
+            answers={GameStorys[storyIdx].answers}
             onClick={(index) => {
-              setTotalScore(totalScore + Storys[storyIdx].answerScores[index]);
+              setTotalScore(totalScore + GameStorys[storyIdx].answerScores[index]);
               showStoryCards();
             }}
           />
@@ -49,17 +49,20 @@ const userTarotFirstpage = () => {
         setCurrentComponent(
           <StoryCard
             text="ไหนดูสิ ได้คำตอบว่าอะไร"
+            icon={lastStoryIcon}
             lastStory={true}
             onClick={() =>
-              setCurrentComponent(
+              {
+                window.scrollTo(0,0);
+                setCurrentComponent(
                 <ResultGame
                   image={result.image}
-                  infoHeader={result.infoHeader}
-                  infoText={result.infoText}
+                  infoHeader={result.role}
+                  infoText={result.text}
                   handleOnClickSave={handleOnClickSave}
                   handleOnClickShare={handleOnClickShare}
                 />
-              )
+              )}
             }
           />
         );
@@ -70,6 +73,6 @@ const userTarotFirstpage = () => {
   return <>{currentComponent}</>;
 };
 
-export default userTarotFirstpage;
+export default GameFirstpage;
 
 export const Layout = GameLayout;
