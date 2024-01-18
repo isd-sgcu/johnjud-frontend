@@ -51,7 +51,7 @@ const LoginForm = () => {
         <div className="flex space-x-2 px-2.5 py-2">
           <span className="text-base text-accent-gray">ยังไม่มีบัญชี?</span>
           <Link
-            to="/admin/login"
+            to="/register"
             className="text-base font-semibold text-black underline"
           >
             ลงทะเบียน
