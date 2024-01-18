@@ -2,6 +2,7 @@ import Button from "@/components/Button";
 import Container from "@/components/Container";
 import MainLayout from "@/layouts/MainLayout";
 import { Icon } from "@iconify/react/dist/iconify.js";
+import { Link } from "react-router-dom";
 
 const resetPassword = () => {
   return (
@@ -26,11 +27,13 @@ const resetPassword = () => {
             className="bg-accent-light-gray outline-none placeholder:font-semibold placeholder:text-accent-gray"
           />
         </div>
-        <Button
-          text={"เปลี่ยนรหัสผ่าน"}
-          variant={"primary"}
-          className="w-full rounded-2xl text-xl font-semibold"
-        />
+        <Link to="/admin/login" className="w-full items-center">
+          <Button
+            text={"เปลี่ยนรหัสผ่าน"}
+            variant={"primary"}
+            className="w-full rounded-2xl text-xl font-semibold"
+          />
+        </Link>
       </div>
     </Container>
   );

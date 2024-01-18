@@ -22,7 +22,7 @@ const EmailVerification = () => {
             <div>กรุณาเช็คอีเมลของท่าน</div>
             <div>หากไม่พบอีเมลกรุณาตรวจสอบ ถังขยะ</div>
           </div>
-          <Link to={"/login"}>
+          <Link to="/admin/login">
             <Button
               text={"กลับไปยังหน้าล็อกอิน"}
               variant={"primary"}

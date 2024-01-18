@@ -23,7 +23,10 @@ const SideBar = ({
           alt="blank-profile"
           className="h-12 w-12 xl:h-16 xl:w-16"
         />
-        <Link to="/login" className="text-sm font-bold underline xl:text-xl">
+        <Link
+          to="/admin/login"
+          className="text-sm font-bold underline xl:text-xl"
+        >
           เข้าสู่ระบบ
         </Link>
       </div>

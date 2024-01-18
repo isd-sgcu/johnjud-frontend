@@ -36,7 +36,7 @@ const ForgetPassword = () => {
         />
         <div className="flex flex-row items-center justify-center">
           <Link
-            to={"/login"}
+            to="/admin/login"
             className="flex flex-row items-center justify-center gap-2"
           >
             <Icon icon="ph:arrow-left" className="text-2xl text-primary" />
