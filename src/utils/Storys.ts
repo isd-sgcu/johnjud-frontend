@@ -3,6 +3,7 @@ interface StoryProps {
   answers: string[];
   answerScores: number[];
   storyTexts: string[];
+  storyIcon?: string[];
 }
 
 const Storys: StoryProps[] = [

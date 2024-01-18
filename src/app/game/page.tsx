@@ -17,13 +17,14 @@ const userTarotFirstpage = () => {
   const result = Results[0];
   const [totalScore, setTotalScore] = useState(0);
 
-  const handleOnClickSave = () => {};
-  const handleOnClickShare = () => {};
+  const handleOnClickSave = () => { };
+  const handleOnClickShare = () => { };
 
   async function showStoryCards() {
-    for (const story of Storys[storyIdx].storyTexts) {
+    for (let i = 0; i < Storys[storyIdx].storyTexts.length; i++) {
+      const text = Storys[storyIdx].storyTexts[i];
       await new Promise((resolve) => {
-        setCurrentComponent(<StoryCard text={story} />);
+        setCurrentComponent(<StoryCard text={text} />);
         setTimeout(resolve, 3000);
       });
     }
@@ -52,7 +53,6 @@ const userTarotFirstpage = () => {
             onClick={() =>
               setCurrentComponent(
                 <ResultGame
-                  header={result.header}
                   image={result.image}
                   infoHeader={result.infoHeader}
                   infoText={result.infoText}
