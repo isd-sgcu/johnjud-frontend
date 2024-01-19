@@ -26,7 +26,7 @@ const MainPage = () => {
         </div>
         <div className="flex w-full flex-col items-center space-y-6 md:items-start">
           <div className="hidden md:flex">
-            <Heading onSearch />
+            <Heading onSearch quantity={data?.meta.total} />
           </div>
           <Search variant="green" />
           <Filter />
