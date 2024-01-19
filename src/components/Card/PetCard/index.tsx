@@ -51,8 +51,6 @@ const PetCard = ({
   isVisibled,
   role = "user",
 }: PetCardProps) => {
-  
-
   const [liked, setLiked] = useState(isLiked);
 
   const likedHeart = useMemo(() => {
