@@ -25,6 +25,7 @@ const BigPetCardContainer: React.FC<BigPetCardContainerProps> = ({
           isSterile={pet.is_sterile}
           isLiked={false}
           isVisibled={pet.is_visible}
+          role="user"
         />
       ))}
     </div>
