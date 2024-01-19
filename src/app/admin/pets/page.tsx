@@ -1,20 +1,19 @@
 import Button from "@/components/Button";
+import PetCard from "@/components/Card/PetCard";
 import Container from "@/components/Container";
 import Filter from "@/components/Filter";
 import { PetIcon } from "@/components/Filter/Icon";
 import Heading from "@/components/Pets/Heading";
 import PetSearch from "@/components/Search/PetSearch";
-import PetCard from "@/components/Card/PetCard";
 import MainLayout from "@/layouts/MainLayout";
-import { Icon } from "@iconify/react/dist/iconify.js";
 import { Pet } from "@/types/pets";
+import { Icon } from "@iconify/react/dist/iconify.js";
 
 import { useCallback, useState } from "react";
 import { Link } from "react-router-dom";
 
 import { usePetsQuery } from "@/hooks/queries/usePetsQuery";
 const Pets = () => {
-
   const { data } = usePetsQuery();
 
   const [isOpenFilterPanel, setIsOpenFilterPanel] = useState(false);
@@ -57,7 +56,7 @@ const Pets = () => {
         </div>
       </Container>
       <Container>
-      <div className="flex flex-wrap items-center justify-center gap-6 lg:gap-9">
+        <div className="flex flex-wrap items-center justify-center gap-6 lg:gap-9">
           {data?.pets.map((pet: Pet) => (
             <PetCard
               key={pet.id}

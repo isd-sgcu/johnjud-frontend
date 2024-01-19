@@ -1,15 +1,10 @@
 import Details from "@/components/Pets/Details/Details";
-import MainLayout from "@/layouts/MainLayout";
 import { usePetsQuery } from "@/hooks/queries/usePetsQuery";
+import MainLayout from "@/layouts/MainLayout";
 const EditPet = () => {
-  
   const { data } = usePetsQuery();
 
-  return (
-    <>
-      {data && <Details isAdmin={true} data={data} />}
-    </>
-  );
+  return <>{data && <Details isAdmin={true} data={data} />}</>;
 };
 
 export const Layout = MainLayout;
