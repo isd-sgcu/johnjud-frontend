@@ -1,14 +1,13 @@
+import PetCard from "@/components/Card/PetCard";
 import Container from "@/components/Container";
 import Divider from "@/components/Divider";
-import PetCard from "@/components/Card/PetCard";
 import { usePetsQuery } from "@/hooks/queries/usePetsQuery";
-import { Pet } from "@/types/pets";
 import MainLayout from "@/layouts/MainLayout";
+import { Pet } from "@/types/pets";
 
 const favourite = () => {
-  
-  const { data }  = usePetsQuery();
-  
+  const { data } = usePetsQuery();
+
   return (
     <>
       <Container className="flex flex-col items-center gap-6 py-6 lg:gap-10 lg:py-10">
