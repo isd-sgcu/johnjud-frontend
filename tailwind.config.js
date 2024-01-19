@@ -1,5 +1,7 @@
 /** @type {import('tailwindcss').Config} */
 
+import { transform } from 'typescript';
+
 export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
@@ -22,6 +24,21 @@ export default {
         "accent-light-gray": "#EAEAEA",
         "accent-light-gray-variant": "#C0C0C0",
       },
+      keyframes: {
+        floatInBottom : {
+          "0%" : {
+            transform: "translateY(30%)",
+            opacity: "0"
+          },
+          "100%" : {
+            transform: "translateY(0)",
+            opacity: "1"
+          }
+        }
+      },
+      animation: {
+        "float-in-bottom" : "floatInBottom 1s"
+      }
     },
   },
   plugins: [],
