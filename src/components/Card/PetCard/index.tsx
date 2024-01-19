@@ -18,7 +18,7 @@ type PetCardProps = {
   isSterile: boolean;
   isLiked: boolean;
   isVisibled: boolean;
-  role ?: "user" | "admin";
+  role: "user" | "admin";
 };
 
 const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
@@ -49,7 +49,7 @@ const PetCard = ({
   isSterile,
   isLiked,
   isVisibled,
-  role,
+  role = "user",
 }: PetCardProps) => {
   
 
