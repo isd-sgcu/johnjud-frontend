@@ -1,4 +1,6 @@
 import Container from "@/components/Container";
+import SmallPetCardList from "@/components/SmallPetCardList";
+import { usePetsQuery } from "@/hooks/queries/usePetsQuery";
 import { Icon } from "@iconify/react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
@@ -9,11 +11,8 @@ import EditInfoAndSubmit from "../../../../components/Admin/Pets/Add/EditInfoAnd
 import EditName from "../../../../components/Admin/Pets/Add/EditName";
 import EditText from "../../../../components/Admin/Pets/Add/EditText";
 import MainLayout from "../../../../layouts/MainLayout";
-import SmallPetCardList from "@/components/SmallPetCardList";
-import { usePetsQuery } from "@/hooks/queries/usePetsQuery";
 
 const userCreate = () => {
-
   const { data } = usePetsQuery();
 
   const [name, setName] = useState("กรุณาใส่ชื่อ...");
@@ -87,7 +86,7 @@ const userCreate = () => {
         </div>
       </div>
       <div className="hidden md:block">
-      {data &&<SmallPetCardList pets = {data.pets}/>} 
+        {data && <SmallPetCardList pets={data.pets} />}
       </div>
     </>
   );

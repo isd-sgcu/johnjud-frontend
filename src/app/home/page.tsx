@@ -12,7 +12,7 @@ import { usePetsQuery } from "@/hooks/queries/usePetsQuery";
 import MainLayout from "@/layouts/MainLayout";
 import { useNavigate } from "react-router-dom";
 
-// Page 
+// Page
 const MainPage = () => {
   const navigate = useNavigate();
 
@@ -36,7 +36,7 @@ const MainPage = () => {
         <Divider variant="primary" />
       </Container>
       <Container className="md:hidden">
-        <Heading onSearch quantity={data?.meta.total}/>
+        <Heading onSearch quantity={data?.meta.total} />
       </Container>
       <Container className="flex justify-center md:justify-between">
         <div className="hidden md:flex md:w-4/12">

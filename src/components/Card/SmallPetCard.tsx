@@ -45,7 +45,7 @@ const SmallPetCard = ({
             />
           </div>
           <div className="space-y-2">
-            <div className="text-base font-semibold text-black text-nowrap">
+            <div className="text-nowrap text-base font-semibold text-black">
               {name} พันธุ์{species}
             </div>
             <div className="flex-start flex w-full flex-row items-end justify-between">
