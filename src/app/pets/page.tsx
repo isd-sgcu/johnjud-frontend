@@ -50,7 +50,6 @@ const Pets = () => {
               isSterile={pet.is_sterile}
               isLiked={false}
               isVisibled={pet.is_visible}
-              role="user"
             />
           ))}
         </div>
