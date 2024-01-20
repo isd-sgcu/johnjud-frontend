@@ -2,9 +2,23 @@ import Button from "@/components/Button";
 import Container from "@/components/Container";
 import MainLayout from "@/layouts/MainLayout";
 import { Icon } from "@iconify/react/dist/iconify.js";
+import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
 
+type formValue = {
+  password: string;
+};
+
 const resetPassword = () => {
+  //   const { handleSubmit } = useForm({
+  //     shouldUseNativeValidation: true,
+  //   });
+  //   const onSubmit = async (data: any) => console.log(data);
+  const { register, handleSubmit } = useForm<formValue>();
+
+  const onSubmit = (data: formValue) => {
+    console.log("User password:", data.password);
+  };
   return (
     <Container>
       <div className="mx-auto flex min-h-screen w-80 flex-col items-center justify-center gap-12">
@@ -16,16 +30,21 @@ const resetPassword = () => {
             กรุณากรอกรหัสผ่านใหม่
           </div>
         </div>
-        <div className="flex w-full flex-row items-center justify-center gap-2 rounded-lg bg-accent-light-gray py-2 pl-4">
+        <div className="flex w-full flex-row items-center gap-2 rounded-lg bg-accent-light-gray py-2 pl-4">
           <Icon
             icon="ph:lock-key-bold"
             className="text-xl text-accent-gray"
           ></Icon>
-          <input
-            type="password"
-            placeholder="รหัสผ่านใหม่"
-            className="bg-accent-light-gray outline-none placeholder:font-semibold placeholder:text-accent-gray"
-          />
+          <form onSubmit={handleSubmit(onSubmit)}>
+            <input
+              {...register("password")}
+              type="password"
+              id="password"
+              name="password"
+              placeholder="รหัสผ่านใหม่"
+              className="bg-accent-light-gray outline-none placeholder:font-semibold placeholder:text-accent-gray"
+            />
+          </form>
         </div>
         <Link to="/admin/login" className="w-full items-center">
           <Button
