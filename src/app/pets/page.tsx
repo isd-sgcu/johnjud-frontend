@@ -17,7 +17,6 @@ const Pets = () => {
   }, []);
 
   const { data } = usePetsQuery();
-
   return (
     <>
       <Container>
