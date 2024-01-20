@@ -35,9 +35,9 @@ const SmallPetCard = ({
 
   return (
     <Link to={linkTo}>
-      <div className="w-44 rounded-2xl bg-white p-3 shadow-md">
+      <div className="w-48 rounded-2xl bg-white p-3 shadow-md">
         <div className="space-y-2">
-          <div className="flex justify-center rounded-2xl">
+          <div className="flex justify-center rounded-2xl ">
             <img
               className="rounded-2xl shadow-lg"
               src={BlankPic144x144}
@@ -45,7 +45,7 @@ const SmallPetCard = ({
             />
           </div>
           <div className="space-y-2">
-            <div className="text-base font-semibold text-black">
+            <div className="text-nowrap text-base font-semibold text-black">
               {name} พันธุ์{species}
             </div>
             <div className="flex-start flex w-full flex-row items-end justify-between">

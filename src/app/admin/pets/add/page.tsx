@@ -1,4 +1,6 @@
 import Container from "@/components/Container";
+import SmallPetCardList from "@/components/SmallPetCardList";
+import { usePetsQuery } from "@/hooks/queries/usePetsQuery";
 import { Icon } from "@iconify/react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
@@ -11,6 +13,8 @@ import EditText from "../../../../components/Admin/Pets/Add/EditText";
 import MainLayout from "../../../../layouts/MainLayout";
 
 const userCreate = () => {
+  const { data } = usePetsQuery();
+
   const [name, setName] = useState("กรุณาใส่ชื่อ...");
   const [text, setText] = useState("");
   const [thumbnail, setThumbnail] = useState<File | null>(null);
@@ -80,6 +84,9 @@ const userCreate = () => {
         <div className="hidden w-1/3 shrink-0 justify-center object-contain lg:flex">
           <img src={johnjudLogo} className="flex h-64 w-44"></img>
         </div>
+      </div>
+      <div className="hidden md:block">
+        {data && <SmallPetCardList pets={data.pets} />}
       </div>
     </>
   );

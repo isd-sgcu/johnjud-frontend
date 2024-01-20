@@ -8,12 +8,16 @@ import MiniPetCardContainer from "@/components/Main/CardList/MiniPetCardContaine
 import Filter from "@/components/Main/Filter";
 import Heading from "@/components/Pets/Heading";
 import Search from "@/components/Search/PetSearch";
+import { usePetsQuery } from "@/hooks/queries/usePetsQuery";
 import MainLayout from "@/layouts/MainLayout";
 import { useNavigate } from "react-router-dom";
 
 // Page
 const MainPage = () => {
   const navigate = useNavigate();
+
+  const { data } = usePetsQuery();
+
   return (
     <>
       <Container className="flex flex-col items-center justify-center md:flex-row md:space-x-9">
@@ -22,7 +26,7 @@ const MainPage = () => {
         </div>
         <div className="flex w-full flex-col items-center space-y-6 md:items-start">
           <div className="hidden md:flex">
-            <Heading onSearch />
+            <Heading onSearch quantity={data?.meta.total} />
           </div>
           <Search variant="green" />
           <Filter />
@@ -32,13 +36,13 @@ const MainPage = () => {
         <Divider variant="primary" />
       </Container>
       <Container className="md:hidden">
-        <Heading onSearch />
+        <Heading onSearch quantity={data?.meta.total} />
       </Container>
       <Container className="flex justify-center md:justify-between">
         <div className="hidden md:flex md:w-4/12">
           <Banner imageUrl="https://via.placeholder.com/440x440?text=Your+Ad+Here" />
         </div>
-        <MiniPetCardContainer />
+        {data && <MiniPetCardContainer petsData={data.pets} />}
       </Container>
       <Container className="flex items-center justify-center md:justify-end">
         <Button
@@ -59,7 +63,7 @@ const MainPage = () => {
         <Divider variant="primary" />
       </Container>
       <Container>
-        <BigPetCardContainer />
+        {data && <BigPetCardContainer petsData={data.pets} />}
       </Container>
     </>
   );
