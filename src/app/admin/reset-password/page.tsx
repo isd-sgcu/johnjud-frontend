@@ -30,19 +30,19 @@ const resetPassword = () => {
             กรุณากรอกรหัสผ่านใหม่
           </div>
         </div>
-        <div className="flex w-full flex-row items-center gap-2 rounded-lg bg-accent-light-gray py-2 pl-4">
+        <div className="flex w-full flex-row items-center gap-2 rounded-lg bg-accent-light-gray px-4 py-2">
           <Icon
             icon="ph:lock-key-bold"
             className="text-xl text-accent-gray"
           ></Icon>
-          <form onSubmit={handleSubmit(onSubmit)}>
+          <form onSubmit={handleSubmit(onSubmit)} className="w-full">
             <input
               {...register("password")}
               type="password"
               id="password"
               name="password"
               placeholder="รหัสผ่านใหม่"
-              className="bg-accent-light-gray outline-none placeholder:font-semibold placeholder:text-accent-gray"
+              className="w-full bg-accent-light-gray outline-none placeholder:font-semibold placeholder:text-accent-gray"
             />
           </form>
         </div>
