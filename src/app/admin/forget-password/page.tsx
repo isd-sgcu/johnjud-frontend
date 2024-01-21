@@ -18,7 +18,7 @@ const ForgetPassword = () => {
           กรุณากรอกอีเมลที่ท่านใช้สมัคร
         </div>
       </div>
-      <div className="flex w-[304px] flex-row items-center gap-2 rounded-lg bg-accent-light-gray px-4 py-2">
+      <div className="flex w-80 flex-row items-center gap-2 rounded-lg bg-accent-light-gray px-4 py-2">
         <Icon icon="ph:user-bold" className="text-xl text-accent-gray" />
         <input
           type="email"

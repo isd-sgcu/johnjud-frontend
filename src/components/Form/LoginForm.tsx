@@ -7,7 +7,7 @@ import SubmitButton from "./SubmitButton";
 const LoginForm = () => {
   return (
     <form className="flex w-full flex-col items-center justify-center space-y-20 sm:w-1/2 md:w-6/12 lg:w-4/12 xl:w-3/12">
-      <div className="flex w-full flex-col items-center justify-center space-y-4">
+      <div className="flex w-80 flex-col items-center justify-center space-y-4">
         <div className="flex w-full items-center rounded-lg bg-accent-light-gray px-2.5 py-2.5 outline-none">
           <img src={userIcon} alt="Icon" className="mx-2" />
           <input
