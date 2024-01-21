@@ -46,7 +46,7 @@ const resetPassword = () => {
             />
           </form>
         </div>
-        <Link to="/admin/login" className="w-full items-center">
+        <Link to="/admin" className="w-full items-center">
           <Button
             text={"เปลี่ยนรหัสผ่าน"}
             variant={"primary"}
