@@ -26,7 +26,7 @@ const ForgetPassword = () => {
           className="text-semibold w-full bg-accent-light-gray text-base text-accent-gray outline-none"
         />
       </div>
-      <div>
+      <div className="flex w-80 flex-col justify-center">
         <Button
           text={"รีเซตรหัสผ่าน"}
           variant={"primary"}
@@ -34,7 +34,7 @@ const ForgetPassword = () => {
           className="mb-4 px-24 text-xl text-white"
           onClick={() => setModalOpen(true)}
         />
-        <div className="flex flex-row items-center justify-center">
+        <div className="wflex flex-row items-center justify-center">
           <Link
             to="/admin"
             className="flex flex-row items-center justify-center gap-2"
