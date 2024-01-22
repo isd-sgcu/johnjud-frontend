@@ -34,7 +34,7 @@ const ForgetPassword = () => {
           className="mb-4 px-24 text-xl text-white"
           onClick={() => setModalOpen(true)}
         />
-        <div className="wflex flex-row items-center justify-center">
+        <div className="flex flex-row items-center justify-center">
           <Link
             to="/admin"
             className="flex flex-row items-center justify-center gap-2"
