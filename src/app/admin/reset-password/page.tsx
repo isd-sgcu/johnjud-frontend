@@ -30,7 +30,30 @@ const resetPassword = () => {
             กรุณากรอกรหัสผ่านใหม่
           </div>
         </div>
-        <div className="flex w-full flex-row items-center gap-2 rounded-lg bg-accent-light-gray px-4 py-2">
+        <form className="w-full">
+          <div className="flex w-full flex-row items-center gap-2 rounded-lg bg-accent-light-gray px-4 py-2">
+            <Icon
+              icon="ph:lock-key-bold"
+              className="text-xl text-accent-gray"
+            ></Icon>
+            <input
+              {...register("password")}
+              type="password"
+              id="password"
+              name="password"
+              placeholder="รหัสผ่านใหม่"
+              className="w-full bg-accent-light-gray outline-none placeholder:font-semibold placeholder:text-accent-gray"
+            />
+          </div>
+          <Link to="/admin" className="items-center">
+            <Button
+              text={"เปลี่ยนรหัสผ่าน"}
+              variant={"primary"}
+              className="mt-12 w-full rounded-2xl text-xl font-semibold"
+            />
+          </Link>
+        </form>
+        {/* <div className="flex w-full flex-row items-center gap-2 rounded-lg bg-accent-light-gray px-4 py-2">
           <Icon
             icon="ph:lock-key-bold"
             className="text-xl text-accent-gray"
@@ -52,7 +75,7 @@ const resetPassword = () => {
             variant={"primary"}
             className="w-full rounded-2xl text-xl font-semibold"
           />
-        </Link>
+        </Link> */}
       </div>
     </Container>
   );
