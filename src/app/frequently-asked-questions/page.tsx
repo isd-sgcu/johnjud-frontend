@@ -6,22 +6,22 @@ const Questions = [
   {
     question: "อยากรับแมวจากชมรมต้องทำอะไรบ้าง ",
     answer:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent lobortis lectus non lectus accumsan, efficitur dapibus tellus aliquam. Aenean imperdiet felis eu purus iaculis, vitae congue velit maximus. Suspendisse ac lorem at velit pretium maximus. Maecenas congue, lorem sed rhoncus pharetra, mi nisi pellentesque enim, vitae faucibus tellus mi mollis augue. Nam a turpis iaculis, dignissim enim ut, tincidunt elit. Sed id pretium leo, ut rhoncus est. Nulla quis magna vel ex venenatis varius in id velit. Donec porttitor justo in scelerisque ultricies.",
+      "ติดต่อเข้ามาทางช่องทางการติดต่อของชมรม ได้เลยค่ะ ไม่ว่าจะเฟสบุ๊ค ไอจี หรือทวิตเตอร์ ทางชมรมจะส่งเอกสารอุปการะให้ทางคนที่ ต้องการอุปถัมภ์น้องแมวกรอกค่ะ คําถามข้างในจะเป็นคําถามทั่วไปเกี่ยวกับที่ อยู่อาศัย สัตว์เลี้ยงที่มีหรือประสบการณ์การ เลี้ยงน้องหมา น้องแมวค่ะ อาจจะเยอะนิดนึง แต่เพื่อให้แน่ใจว่า เจ้าเหมียวแต่ละตัวที่ได้บ้านไป จะไม่ถูกทิ้งอีกค่ะ หลังจากกรอกเอกสารอุปการะมาเรียบร้อยแล้ว เมื่ออาจารย์ที่ปรึกษาชมรมและทีมงานของ ชมรมเห็นว่าไม่มีปัญหาหรือเรื่องน่ากังวล ทางชมรมจะติดต่อกลับไปและนัดวันรอ ให้เจ้าของใหม่มารับน้องกลับบ้านค่ะ",
   },
   {
     question: "เลี้ยงแมว 1 ตัวต้องเตรียมอะไรบ้าง",
     answer:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent lobortis lectus non lectus accumsan, efficitur dapibus tellus aliquam. Aenean imperdiet felis eu purus iaculis, vitae congue velit maximus. Suspendisse ac lorem at velit pretium maximus. Maecenas congue, lorem sed rhoncus pharetra, mi nisi pellentesque enim, vitae faucibus tellus mi mollis augue. Nam a turpis iaculis, dignissim enim ut, tincidunt elit. Sed id pretium leo, ut rhoncus est. Nulla quis magna vel ex venenatis varius in id velit. Donec porttitor justo in scelerisque ultricies..",
+      "ของใช้น้องแมวที่ขาดไม่ได้และต้องมีเลย คือ ชามนํ้า ชามอาหาร กระบะทราย ทรายแมว และตะกร้า หรือกระเป๋าสําหรับน้องแมวค่ะ อื่นๆ เพิ่มเติม เช่น ที่ลับเล็บ ของเล่น และอุปกรณ์แปรงขน ค่อยๆซื้อเพิ่มตาม ความชอบของเจ้าของและน้องแมวภายหลังได้ค่ะ",
   },
   {
     question: "สามารถรับน้องแมวจากชมรมกลับบ้านได้เร็วสุดแค่ไหน",
     answer:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum.",
+      "ถ้าเป็นเจ้าแมวเด็ก ทางชมรมจะแนะนําว่า รอให้น้องแมวได้รับวัคซีนอย่างน้อย 1 เข็มก่อน แล้วค่อยกลับบ้านได้ค่ะ เพื่อให้น้องมีภูมิคุ้มกันและไม่เป็นโรคง่ายเมื่อ เปลี่ยนสถานที่เลี้ยงค่ะ",
   },
   {
-    question: "พรี่บูมรักแมวมากจนต้องนอกใจหมาได้ไหม",
+    question: "เรื่องวัคซีนและทําหมัน ต้องทํายังไงบ้าง",
     answer:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum.",
+      "น้องแมวทุกตัวจากชมรมจะได้รับวัคซีนไปแล้วอย่างน้อย 1 เข็มขึ้นไปแล้วแต่ช่วงอายุค่ะ ทางชมรมจะให้สมุดวัคซีนของน้องกับทาง เจ้าของไปด้วยถ้าเจ้าของสะดวกพาน้องกลับมาฉีดวัคซีนกับทางชมรมสามารถดูวันที่จะต้องฉีดวัคซีน วันต่อไปจากในสมุดและนัดวันที่จะ นําน้องกลับมาฉีดวัคซีนกับทางชมรมได้โดยไม่ เสียค่าใช้จ่าย หรือหากต้องการพาน้องไป ฉีดวัคซีนที่คลินิกแถวบ้านก็ได้เช่นกัน และเมื่อน้องแมวมีอายุถึงประมาณ 4 เดือน หรือมีนํ้าหนัก 2 กิโลกรัมขึ้นไป หากต้องการ ทําหมันสามารถทักมาติดต่อและสอบถาม วันที่สามารถพามาทําหมันได้โดยไม่เสียค่าใช้ จ่ายเช่นกันค่ะ",
   },
 ];
 

@@ -40,7 +40,7 @@ const questionBox = ({
           (showed ? "block" : "hidden")
         }
       >
-        <p className="mx-7 mb-6 max-w-md text-start text-lg font-light text-gray-500">
+        <p className="mx-7 mb-6 max-w-md text-start text-base text-zinc-500">
           {answer}
         </p>
       </div>
