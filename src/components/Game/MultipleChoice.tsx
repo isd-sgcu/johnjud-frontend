@@ -4,12 +4,13 @@ interface MultipleChoiceProps {
   index: number;
   headerText: string;
   answers: string[];
+  onClick: (index: number) => void;
 }
 
 const MultipleChoice = (props: MultipleChoiceProps) => {
   return (
     <div className="flex min-h-[70vh] w-full flex-col items-center justify-end pt-[8.25rem] md:min-h-[80vh]">
-      <div className="flex w-full flex-grow justify-center rounded-t-2xl bg-white p-6">
+      <div className="flex w-full flex-grow animate-float-in-bottom justify-center rounded-t-2xl bg-white p-6">
         <div className="flex w-full flex-col items-center gap-6 md:max-w-96">
           {/* Header */}
           <div className="relative flex w-full flex-shrink flex-row items-center gap-6">
@@ -34,6 +35,7 @@ const MultipleChoice = (props: MultipleChoiceProps) => {
                 <div
                   key={index}
                   className="flex w-full cursor-pointer items-center justify-center break-words rounded-3xl bg-accent-red px-6 py-2 text-center font-semibold text-white md:text-lg"
+                  onClick={() => props.onClick(index)}
                 >
                   {ans}
                 </div>
