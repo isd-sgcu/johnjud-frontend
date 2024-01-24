@@ -17,14 +17,17 @@ const GameFirstpage = () => {
 
   const [totalScore, setTotalScore] = useState(0);
 
-  const handleOnClickSave = () => {};
-  const handleOnClickShare = () => {};
+  const handleOnClickSave = () => { };
+  const handleOnClickShare = () => { };
 
   async function showStoryCards() {
     for (const story of GameStorys[storyIdx].story) {
       await new Promise((resolve) => {
-        setCurrentComponent(<StoryCard text={story.text} icon={story.icon} />);
-        setTimeout(resolve, 3000);
+        const timeout = setTimeout(resolve , 3000);
+        setCurrentComponent(<StoryCard text={story.text} icon={story.icon} onClick={() => {
+          clearTimeout(timeout);
+          resolve("Success");
+        }} />);
       });
     }
     setStoryIdx(storyIdx + 1);
