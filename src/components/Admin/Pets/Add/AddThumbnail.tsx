@@ -72,7 +72,11 @@ const AddThumbnail = (props: AddThumbnailProps) => {
       </div>
 
       <div className="absolute -top-[2px] right-4">
-        <PetBadge value={props.valueOrigin} setValue={props.setOrigin} />
+        <PetBadge
+          value={props.valueOrigin}
+          setValue={props.setOrigin}
+          isEditabled
+        />
       </div>
     </div>
   );
