@@ -9,7 +9,9 @@ type formValue = {
   password: string;
 };
 
-const resetPassword = () => {
+// { isSubmit: any }
+
+const resetPassword = ({ isSubmit }) => {
   //   const { handleSubmit } = useForm({
   //     shouldUseNativeValidation: true,
   //   });
@@ -19,6 +21,7 @@ const resetPassword = () => {
   const onSubmit = (data: formValue) => {
     console.log("User password:", data.password);
   };
+  // const onSubmit: SubmitHandler<formValue> = (data) => console.log(data);
   return (
     <Container>
       <div className="mx-auto flex min-h-screen w-80 flex-col items-center justify-center gap-12">
@@ -30,7 +33,7 @@ const resetPassword = () => {
             กรุณากรอกรหัสผ่านใหม่
           </div>
         </div>
-        <form className="w-full">
+        <form className="w-full" onSubmit={handleSubmit(onSubmit)}>
           <div className="flex w-full flex-row items-center gap-2 rounded-lg bg-accent-light-gray px-4 py-2">
             <Icon
               icon="ph:lock-key-bold"
@@ -45,13 +48,35 @@ const resetPassword = () => {
               className="w-full bg-accent-light-gray outline-none placeholder:font-semibold placeholder:text-accent-gray"
             />
           </div>
-          <Link to="/admin" className="items-center">
+          <Link to="/admin" className="mt-12 flex flex-col justify-center">
+            {isSubmit ? (
+              <button
+                type="submit"
+                className="rounded-2xl bg-primary px-6 py-2 text-xl font-semibold text-white hover:brightness-90 disabled:cursor-not-allowed"
+              >
+                เปลี่ยนรหัสผ่าน
+              </button>
+            ) : (
+              <button
+                type="button"
+                className="rounded-2xl bg-primary px-6 py-2 text-xl font-semibold text-white hover:brightness-90 disabled:cursor-not-allowed"
+              >
+                เปลี่ยนรหัสผ่านNew
+              </button>
+            )}
             <Button
               text={"เปลี่ยนรหัสผ่าน"}
               variant={"primary"}
               className="mt-12 w-full rounded-2xl text-xl font-semibold"
             />
           </Link>
+          {/* {isSubmit ? (
+            <button type="submit">Submit</button>
+          ) : (
+            <button type="button" onClick={handleSubmit(onSubmit)}>
+              Click me
+            </button>
+          )} */}
         </form>
       </div>
     </Container>
