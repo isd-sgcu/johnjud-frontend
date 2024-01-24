@@ -5,29 +5,26 @@ import TextareaAutosize from "react-autosize-textarea";
 interface EditNameProps {
   value: string;
   setValue: React.Dispatch<React.SetStateAction<string>>;
+  isAdmin: boolean;
 }
 
 const EditName = (props: EditNameProps) => {
   const ref = useRef<HTMLTextAreaElement>(null);
   const saveRef = useRef<HTMLDivElement>(null);
+  const [enableEdit, setEnableEdit] = useState(false);
 
   const handleClickEdit = () => {
-    setEnableEdit(true);
-    setShowName(props.value);
-  };
-  const handleOnBlur = (event: React.FocusEvent<HTMLTextAreaElement>) => {
-    setEnableEdit(false);
-    const currentFocus = event.relatedTarget;
-    if (currentFocus && currentFocus === saveRef.current) {
-      props.setValue(showName);
+    setEnableEdit(!enableEdit);
+    if (!enableEdit && props.value === "กรุณาใส่ชื่อ...") {
+      props.setValue("");
+    } else if (enableEdit && props.value === "") {
+      props.setValue("กรุณาใส่ชื่อ...");
     }
   };
 
-  const [showName, setShowName] = useState(props.value);
-  const [enableEdit, setEnableEdit] = useState(false);
   const handleOnChange = (event: React.FormEvent<HTMLTextAreaElement>) => {
     const element = event.target as HTMLInputElement;
-    setShowName(element.value);
+    props.setValue(element.value);
   };
 
   // focus at the end of text when enable
@@ -38,6 +35,7 @@ const EditName = (props: EditNameProps) => {
       ref.current.setSelectionRange(inputLength, inputLength);
     }
   }, [enableEdit]);
+
   return (
     <div className="relative flex w-full flex-col">
       <div
@@ -45,11 +43,13 @@ const EditName = (props: EditNameProps) => {
           enableEdit ? "hidden" : "visible"
         }`}
       >
-        <Icon
-          icon="custom:pencil"
-          className="flex h-6 w-6 flex-none cursor-pointer md:hidden"
-          onClick={handleClickEdit}
-        />
+        {props.isAdmin && (
+          <Icon
+            icon="custom:pencil"
+            className="flex h-6 w-6 flex-none cursor-pointer md:hidden"
+            onClick={handleClickEdit}
+          />
+        )}
         <div className="relative flex flex-col">
           <div className="flex break-all pl-1 text-right text-3xl font-bold text-primary md:text-left">
             {props.value}
@@ -57,11 +57,13 @@ const EditName = (props: EditNameProps) => {
           <div className="mt-1 h-[3px] w-full rounded-full bg-primary" />
         </div>
 
-        <Icon
-          icon="custom:pencil"
-          className="hidden h-6 w-6 flex-none cursor-pointer md:ml-3 md:flex"
-          onClick={handleClickEdit}
-        />
+        {props.isAdmin && (
+          <Icon
+            icon="custom:pencil"
+            className="hidden h-6 w-6 flex-none cursor-pointer md:ml-3 md:flex"
+            onClick={handleClickEdit}
+          />
+        )}
       </div>
 
       <div
@@ -71,13 +73,12 @@ const EditName = (props: EditNameProps) => {
         }
       >
         <TextareaAutosize
-          value={showName}
+          value={props.value}
           onChange={handleOnChange}
           className={`flex w-full resize-none text-wrap break-words rounded-lg p-2 text-right text-3xl font-bold text-primary focus:outline-accent-gray-variant lg:text-left ${
             enableEdit ? "visible" : "hidden"
           }`}
           disabled={!enableEdit}
-          onBlur={handleOnBlur}
           ref={ref}
           rows={1}
           placeholder="กรุณาใส่ชื่อ..."
@@ -86,6 +87,7 @@ const EditName = (props: EditNameProps) => {
           <Icon
             icon="ph:floppy-disk"
             className="h-6 w-6 cursor-pointer text-accent-red"
+            onClick={handleClickEdit}
           />
         </div>
       </div>

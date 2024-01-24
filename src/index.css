@@ -12,3 +12,6 @@
 .carousel .slider-wrapper {
   border-radius: 16px !important;
 }
+.carousel.carousel-slider {
+  overflow: visible !important;
+}

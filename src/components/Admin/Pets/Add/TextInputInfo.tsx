@@ -5,9 +5,6 @@ interface TextInputInfoProps {
   text: string;
   value: string;
   enableEdit: boolean;
-  onBlur: (
-    event: React.FocusEvent<HTMLTextAreaElement | HTMLDivElement>
-  ) => void;
   onChange: (event: React.FormEvent<HTMLTextAreaElement>) => void;
   inputRef: React.MutableRefObject<null>;
   icon: string;
@@ -26,7 +23,6 @@ const TextInputInfo = (props: TextInputInfoProps) => {
         }`}
         value={props.value}
         disabled={!props.enableEdit}
-        onBlur={props.onBlur}
         ref={props.inputRef}
         onChange={props.onChange}
       />
