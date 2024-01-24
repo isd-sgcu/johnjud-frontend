@@ -6,7 +6,7 @@ const Footer = () => {
 
   return (
     <div
-      className={`mt-auto flex w-full shrink-0 flex-row justify-between p-6 ${style.color}`}
+      className={`z-10 mt-auto flex w-full shrink-0 flex-row justify-between p-6 ${style.color}`}
     >
       {/* Text & Logo*/}
       <div className="flex w-56 flex-col items-start justify-start gap-4 lg:w-full lg:flex-row lg:items-center lg:gap-11">
