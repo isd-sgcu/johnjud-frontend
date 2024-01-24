@@ -1,5 +1,7 @@
 import Button from "@/components/Button";
+import PetCanvas from "@/components/Pets/PetCanvas";
 import React from "react";
+
 interface ResultDisplayProps {
   resultImage: string;
   resultName: string;
@@ -17,6 +19,13 @@ const ResultDisplay: React.FC<ResultDisplayProps> = ({
   };
   // implement handleSave here
   const handleSave = () => {
+    const canvas = document.querySelector("canvas");
+    const a = document.createElement("a");
+    a.setAttribute("download", "result.png");
+    if (canvas) {
+      a.setAttribute("href", canvas.toDataURL("image/png"));
+    }
+    a.click();
     console.log(resultImage);
   };
   return (
@@ -39,6 +48,11 @@ const ResultDisplay: React.FC<ResultDisplayProps> = ({
           onClick={handleShare}
         />
       </div>
+      <PetCanvas
+        petImage={resultImage}
+        petName={resultName}
+        petText={resultText}
+      />
     </div>
   );
 };
