@@ -4,7 +4,7 @@ import TogglePetButton from "@/components/Card/PetCard/TogglePetButton";
 import { UtcStringToYearMonth } from "@/utils/dateConverter";
 import { Icon } from "@iconify/react";
 import { useMemo, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 type PetCardProps = {
   id: string;
@@ -49,8 +49,9 @@ const PetCard = ({
   isLiked,
   isVisibled,
 }: PetCardProps) => {
+  const pathname = useLocation().pathname;
   const role = useMemo(() => {
-    return "user";
+    return pathname.includes("/admin") ? "admin" : "user";
   }, []);
 
   const [liked, setLiked] = useState(isLiked);

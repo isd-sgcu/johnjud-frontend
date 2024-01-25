@@ -19,7 +19,6 @@ const Details = ({
   const param = usePageParams(["id"]);
   const [petInfo, setPetInfo] = useState<info>({
     gender: "ครับ",
-    breed: "ครับ",
     age: "ครับ",
     nature: "ครับ",
     vaccine: true,
