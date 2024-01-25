@@ -7,7 +7,6 @@ import ToggleInputInfo from "./ToggleInputInfo";
 
 export type info = {
   gender: string;
-  breed: string;
   age: string;
   nature: string;
   vaccine: boolean;
@@ -27,7 +26,6 @@ interface EditInfoAndSubmitProps {
 const EditInfoAndSubmit = (props: EditInfoAndSubmitProps) => {
   const ref = {
     gender: useRef(null),
-    breed: useRef(null),
     age: useRef(null),
     nature: useRef(null),
     vaccine: useRef(null),
@@ -121,16 +119,6 @@ const EditInfoAndSubmit = (props: EditInfoAndSubmitProps) => {
               onChange={(event) => handleOnChange(event, "gender")}
               inputRef={ref.gender}
               icon={"ph:paw-print"}
-            />
-
-            {/* Breed */}
-            <TextInputInfo
-              text="พันธุ์:"
-              value={showInfo.breed}
-              enableEdit={enableEdit}
-              onChange={(event) => handleOnChange(event, "breed")}
-              inputRef={ref.breed}
-              icon={"ph:star"}
             />
 
             {/* Age */}
