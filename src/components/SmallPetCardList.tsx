@@ -9,6 +9,7 @@ const SmallPetCardList = ({ pets }: { pets: Pet[] }) => {
           key={pet.id}
           id={pet.id}
           name={pet.name}
+          image={pet.images[0].url}
           species=""
           gender={pet.gender}
           birthdate={pet.birthdate}

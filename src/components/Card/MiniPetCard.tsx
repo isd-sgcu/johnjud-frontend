@@ -1,4 +1,3 @@
-import BlankPic168x112 from "@/assets/small-petcard/BlankPic168x112.svg";
 import { UtcStringToYear } from "@/utils/dateConverter";
 import { useMemo } from "react";
 import { Link } from "react-router-dom";
@@ -6,6 +5,7 @@ import { Link } from "react-router-dom";
 interface MiniPetCardProps {
   id: string;
   name: string;
+  image: string;
   species: string;
   gender: string;
   birthdate: string;
@@ -14,6 +14,7 @@ interface MiniPetCardProps {
 const MiniPetCard = ({
   id,
   name,
+  image,
   species,
   gender,
   birthdate,
@@ -34,7 +35,7 @@ const MiniPetCard = ({
     <Link to={linkTo}>
       <div className="w-40 rounded-2xl bg-white shadow-md">
         <div className="flex h-28 w-full rounded-2xl">
-          <img className="rounded-2xl" src={BlankPic168x112} alt={name} />
+          <img className="rounded-2xl" src={image} alt={name} />
         </div>
         <div className="space-y-2 px-3 py-2">
           <div>
