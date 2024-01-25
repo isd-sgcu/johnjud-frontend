@@ -1,4 +1,3 @@
-import BlankPic144x144 from "@/assets/small-petcard/BlankPic144x144.svg";
 import { UtcStringToYearMonth } from "@/utils/dateConverter";
 import { Icon } from "@iconify/react";
 import { useMemo } from "react";
@@ -7,7 +6,7 @@ import { Link } from "react-router-dom";
 interface SmallPetCardProps {
   id: string;
   name: string;
-  species: string;
+  image: string;
   gender: string;
   birthdate: string;
   status: string;
@@ -16,7 +15,7 @@ interface SmallPetCardProps {
 const SmallPetCard = ({
   id,
   name,
-  species,
+  image,
   gender,
   birthdate,
   status,
@@ -38,15 +37,11 @@ const SmallPetCard = ({
       <div className="w-48 rounded-2xl bg-white p-3 shadow-md">
         <div className="space-y-2">
           <div className="flex justify-center rounded-2xl ">
-            <img
-              className="rounded-2xl shadow-lg"
-              src={BlankPic144x144}
-              alt={name}
-            />
+            <img className="rounded-2xl shadow-lg" src={image} alt={name} />
           </div>
           <div className="space-y-2">
             <div className="text-nowrap text-base font-semibold text-black">
-              {name} พันธุ์{species}
+              {name}
             </div>
             <div className="flex-start flex w-full flex-row items-end justify-between">
               <div className="space-y-1">
