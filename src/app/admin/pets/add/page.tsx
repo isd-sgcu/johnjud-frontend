@@ -23,7 +23,6 @@ const userCreate = () => {
   const [pictures, setPictures] = useState<File[]>([]);
   const [info, setInfo] = useState({
     gender: "-",
-    breed: "-",
     age: "-",
     nature: "-",
     vaccine: false,
