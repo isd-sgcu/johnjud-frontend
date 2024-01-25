@@ -22,23 +22,28 @@ const PetCanvas = (props: PetCanvasProps) => {
 
       const image = new Image();
       image.src = props.petImage;
+
+      const scale = 0.7;
+      const Iheight = image.height * scale;
+      const Iwidth = image.width * scale;
+
       image.onload = () => {
-        const centerX = (canvas.width - 540) / 2;
-        ctx.drawImage(image, centerX, 96, 540, 960);
+        const centerX = (canvas.width - Iwidth) / 2;
+        ctx.drawImage(image, centerX, 96, Iwidth, Iheight);
       };
 
       ctx.fillStyle = "#000000";
       ctx.textBaseline = "middle";
       ctx.textAlign = "center";
-      ctx.font = "bold 72px 'Poppins'";
-      ctx.fillText(props.petName, canvas.width / 2, 1152);
+      ctx.font = "bold 80px 'Poppins'";
+      ctx.fillText(props.petName, canvas.width / 2, 96 + Iheight + 96);
       drawText(ctx, props.petText, {
         x: (canvas.width - 888) / 2,
-        y: 1270,
+        y: 96 + Iheight + 96 + 72 + 18,
         width: 888,
-        height: 1080,
-        font: "Poppins",
-        fontSize: 48,
+        height: 888,
+        font: "IBM Plex Sans Thai",
+        fontSize: 32,
         align: "center",
         vAlign: "top",
       });

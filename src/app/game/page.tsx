@@ -2,6 +2,7 @@ import GamePage from "@/components/Game/GamePage";
 import MultipleChoice from "@/components/Game/MultipleChoice";
 import ResultGame from "@/components/Game/ResultGame";
 import StoryCard from "@/components/Game/StoryCard";
+import PetCanvas from "@/components/Pets/PetCanvas";
 import GameLayout from "@/layouts/GameLayout";
 import Results from "@/utils/Results";
 import GameStorys from "@/utils/Storys";
@@ -17,7 +18,15 @@ const GameFirstpage = () => {
 
   const [totalScore, setTotalScore] = useState(0);
 
-  const handleOnClickSave = () => {};
+  const handleOnClickSave = () => {
+    const canvas = document.querySelector("canvas");
+    const a = document.createElement("a");
+    a.setAttribute("download", "result.png");
+    if (canvas) {
+      a.setAttribute("href", canvas.toDataURL("image/png"));
+    }
+    a.click();
+  };
   const handleOnClickShare = () => {};
 
   async function showStoryCards() {
@@ -66,13 +75,20 @@ const GameFirstpage = () => {
             onClick={() => {
               window.scrollTo(0, 0);
               setCurrentComponent(
-                <ResultGame
-                  image={result.image}
-                  role={result.role}
-                  text={result.text}
-                  handleOnClickSave={handleOnClickSave}
-                  handleOnClickShare={handleOnClickShare}
-                />
+                <>
+                  <ResultGame
+                    image={result.image}
+                    role={result.role}
+                    text={result.text}
+                    handleOnClickSave={handleOnClickSave}
+                    handleOnClickShare={handleOnClickShare}
+                  />
+                  <PetCanvas
+                    petImage={result.image}
+                    petName={result.role}
+                    petText={result.text}
+                  />
+                </>
               );
             }}
           />

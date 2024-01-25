@@ -14,14 +14,28 @@ const ResultDisplay: React.FC<ResultDisplayProps> = ({
   resultText,
 }) => {
   // implement handleshare here
-  const handleShare = () => {
+  const handleShare = async () => {
+    const canvasElement = document.querySelector("canvas");
+    const data = canvasElement?.toDataURL();
+    const blob = await (await fetch(data!)).blob();
+    const filesArray = [
+      new File([blob], `petHoro-${resultName}.png`, {
+        type: blob.type,
+        lastModified: new Date().getTime(),
+      }),
+    ];
+    const shareData = {
+      files: filesArray,
+    };
+    navigator.share(shareData);
+
     console.log(resultImage);
   };
   // implement handleSave here
   const handleSave = () => {
     const canvas = document.querySelector("canvas");
     const a = document.createElement("a");
-    a.setAttribute("download", "result.png");
+    a.setAttribute("download", `petHoro-${resultName}.png`);
     if (canvas) {
       a.setAttribute("href", canvas.toDataURL("image/png"));
     }
