@@ -9,7 +9,6 @@ const Admin = () => {
         Welcome back, <span className="font-bold">admin</span>
       </h2>
       <div className="flex flex-row items-center justify-center gap-16">
-        <MenuButtton link="/admin/users" icon="ph:users" text="Users Manager" />
         <MenuButtton
           link="/admin/pets"
           icon="ph:paw-print"
