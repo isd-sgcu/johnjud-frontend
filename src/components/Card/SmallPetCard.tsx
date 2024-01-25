@@ -7,7 +7,6 @@ interface SmallPetCardProps {
   id: string;
   name: string;
   image: string;
-  species: string;
   gender: string;
   birthdate: string;
   status: string;
@@ -17,7 +16,6 @@ const SmallPetCard = ({
   id,
   name,
   image,
-  species,
   gender,
   birthdate,
   status,
@@ -43,7 +41,7 @@ const SmallPetCard = ({
           </div>
           <div className="space-y-2">
             <div className="text-nowrap text-base font-semibold text-black">
-              {name} พันธุ์{species}
+              {name}
             </div>
             <div className="flex-start flex w-full flex-row items-end justify-between">
               <div className="space-y-1">

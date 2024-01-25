@@ -6,7 +6,7 @@ interface MiniPetCardProps {
   id: string;
   name: string;
   image: string;
-  species: string;
+  habit: string;
   gender: string;
   birthdate: string;
 }
@@ -15,7 +15,7 @@ const MiniPetCard = ({
   id,
   name,
   image,
-  species,
+  habit,
   gender,
   birthdate,
 }: MiniPetCardProps) => {
@@ -42,9 +42,9 @@ const MiniPetCard = ({
             <div className="text-base font-semibold text-black">{name}</div>
             <div className="space-x-1">
               <span className="text-sm font-normal text-accent-gray">
-                พันธ์ุ:
+                งานอดิเรก:
               </span>
-              <span className="text-sm font-normal text-black">{species}</span>
+              <span className="text-sm font-normal text-black">{habit}</span>
             </div>
           </div>
           <div className="space-x-1.5">

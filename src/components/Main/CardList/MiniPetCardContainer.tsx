@@ -16,7 +16,7 @@ const MiniPetCardContainer: React.FC<MiniPetCardContainerProps> = ({
           id={pet.id}
           name={pet.name}
           image={pet.images[0].url}
-          species={pet.type}
+          habit={pet.habit}
           gender={pet.gender}
           birthdate={pet.birthdate}
         />

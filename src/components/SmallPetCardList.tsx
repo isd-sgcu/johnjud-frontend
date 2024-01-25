@@ -10,7 +10,6 @@ const SmallPetCardList = ({ pets }: { pets: Pet[] }) => {
           id={pet.id}
           name={pet.name}
           image={pet.images[0].url}
-          species=""
           gender={pet.gender}
           birthdate={pet.birthdate}
           status={pet.status}
