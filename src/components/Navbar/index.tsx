@@ -16,7 +16,12 @@ const Navbar = () => {
     <>
       <DarkBackground isExist={toggle} isShow={isShow} setToggle={setToggle} />
       <TopBar style={style} setToggle={setToggle} />
-      <SideBar color={style.color} isShow={isShow} isExist={toggle} />
+      <SideBar
+        color={style.color}
+        isShow={isShow}
+        isExist={toggle}
+        setToggle={setToggle}
+      />
     </>
   );
 };
