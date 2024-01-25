@@ -35,7 +35,7 @@ const MiniPetCard = ({
     <Link to={linkTo}>
       <div className="w-40 rounded-2xl bg-white shadow-md">
         <div className="flex h-28 w-full rounded-2xl">
-          <img className="rounded-2xl" src={image} alt={name} />
+          <img className="w-full rounded-2xl" src={image} alt={name} />
         </div>
         <div className="space-y-2 px-3 py-2">
           <div>
