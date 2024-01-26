@@ -1,19 +1,26 @@
-import axios from 'axios';
+import axios from "axios";
 
 interface SignInResponse {
-    access_token: string;
-    expires_in: number;
-    refresh_token: string;
+  access_token: string;
+  expires_in: number;
+  refresh_token: string;
 }
 
-const signIn = async (email: string, password: string): Promise<SignInResponse> => {
-    const response = await axios.post<SignInResponse>(
-        `${import.meta.env.VITE_API_URL}/auth/signin`,
-        { email, password }
-    );
-    
-    return response.data;
+interface SignInCredentials {
+    email: string;
+    password: string;
 }
+const signIn = async (
+  email: string,
+  password: string
+): Promise<SignInResponse> => {
+  const response = await axios.post<SignInResponse>(
+    `${import.meta.env.VITE_API_URL}/auth/signin`,
+    { email, password }
+  );
 
-export { signIn }
-export type { SignInResponse }
+  return response.data;
+};
+
+export { signIn };
+export type { SignInResponse, SignInCredentials };
