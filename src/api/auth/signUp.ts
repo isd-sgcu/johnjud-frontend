@@ -7,6 +7,12 @@ interface SignUpResponse {
   lastname: string;
 }
 
+interface SignUpCredentials {
+  email: string;
+  password: string;
+  firstname: string;
+  lastname: string;
+}
 const signUp = async (
   email: string,
   firstname: string,
@@ -22,4 +28,4 @@ const signUp = async (
 };
 
 export { signUp };
-export type { SignUpResponse };
+export type { SignUpResponse, SignUpCredentials };

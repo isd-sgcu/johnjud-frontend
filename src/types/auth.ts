@@ -14,6 +14,7 @@ type AuthAction = {
   setLoading: (loading: boolean) => void;
   setError: (error: Error) => void;
   setSessionTime: (sessionTime: number) => void;
+  clearStore: () => void;
 };
 
 export type Auth = AuthState & AuthAction;
