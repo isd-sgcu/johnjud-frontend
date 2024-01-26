@@ -1,16 +1,16 @@
-import axios from 'axios';
+import axios from "axios";
 
 interface SignOutResponse {
-    is_success: boolean;
+  is_success: boolean;
 }
 
 const signOut = async (): Promise<SignOutResponse> => {
-    const response = await axios.post<SignOutResponse>(
-        `${import.meta.env.VITE_API_URL}/auth/signout`
-    );
-    
-    return response.data;
-}
+  const response = await axios.post<SignOutResponse>(
+    `${import.meta.env.VITE_API_URL}/auth/signout`
+  );
 
-export {signOut}
-export type {SignOutResponse}
+  return response.data;
+};
+
+export { signOut };
+export type { SignOutResponse };
