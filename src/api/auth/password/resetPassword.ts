@@ -4,6 +4,11 @@ interface resetPasswordResponse {
   is_success: boolean;
 }
 
+interface resetPasswordCredentials {
+  password: string;
+  token: string;
+}
+
 const resetPassword = async (
   password: string,
   token: string
@@ -17,4 +22,4 @@ const resetPassword = async (
 };
 
 export { resetPassword };
-export type { resetPasswordResponse };
+export type { resetPasswordResponse, resetPasswordCredentials };

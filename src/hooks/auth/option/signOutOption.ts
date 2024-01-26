@@ -15,4 +15,8 @@ export const signOutMutationOption: UseMutationOptions<SignOutResponse, Error, v
         const { setError } = useAuthStore();
         setError(error instanceof Error ? error : new Error("Log out failed!!!"));
     },
+    onSettled: () => {
+        const { setLoading } = useAuthStore();
+        setLoading(false);
+    },
 };
