@@ -22,4 +22,4 @@ const resetPassword = async (
 };
 
 export { resetPassword };
-export type { resetPasswordResponse, resetPasswordCredentials };
+export type { resetPasswordCredentials, resetPasswordResponse };

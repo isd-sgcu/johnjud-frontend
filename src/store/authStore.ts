@@ -2,7 +2,6 @@ import { Auth } from "@/types/auth";
 import { create } from "zustand";
 
 const useAuthStore = create<Auth>((set) => ({
-  
   // state
   accessToken: "",
   refreshToken: "",

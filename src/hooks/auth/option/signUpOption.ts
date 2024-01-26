@@ -1,12 +1,14 @@
-import type { UseMutationOptions } from '@tanstack/react-query';
-import type { SignUpCredentials, SignUpResponse } from '@/api/auth/signUp';
-import { useAuthStore } from '@/store/authStore';
+import type { SignUpCredentials, SignUpResponse } from "@/api/auth/signUp";
+import { useAuthStore } from "@/store/authStore";
+import type { UseMutationOptions } from "@tanstack/react-query";
 
-export const signUpMutationOption: UseMutationOptions<SignUpResponse, Error, SignUpCredentials> = {
+export const signUpMutationOption: UseMutationOptions<
+  SignUpResponse,
+  Error,
+  SignUpCredentials
+> = {
   onSuccess: (response: SignUpResponse) => {
-
-    console.log('Sign up successful:', response);
-    
+    console.log("Sign up successful:", response);
   },
   onError: (error: Error) => {
     const { setError } = useAuthStore();
