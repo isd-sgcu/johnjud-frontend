@@ -1,13 +1,17 @@
 import axios from "axios";
 
-interface forgetPasswordResponse {
+interface ForgetPasswordResponse {
   is_success: boolean;
+}
+
+interface ForgetPasswordCredentials {
+    email: string;
 }
 
 const forgetPassword = async (
   email: string
-): Promise<forgetPasswordResponse> => {
-  const response = await axios.post<forgetPasswordResponse>(
+): Promise<ForgetPasswordResponse> => {
+  const response = await axios.post<ForgetPasswordResponse>(
     `${import.meta.env.VITE_API_URL}/auth/password/forgotPassword`,
     { email }
   );
@@ -16,4 +20,4 @@ const forgetPassword = async (
 };
 
 export { forgetPassword };
-export type { forgetPasswordResponse };
+export type { ForgetPasswordResponse, ForgetPasswordCredentials };

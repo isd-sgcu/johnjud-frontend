@@ -1,11 +1,17 @@
 import type { SignInCredentials, SignInResponse } from "@/api/auth/signIn";
 import type { SignUpResponse, SignUpCredentials } from "@/api/auth/signUp";
+import type { ForgetPasswordCredentials, ForgetPasswordResponse } from "@/api/auth/password/forgotPassword";
+import type { resetPasswordCredentials, resetPasswordResponse } from "@/api/auth/password/resetPassword";
+import { forgetPassword as forgetPasswordApi } from "@/api/auth/password/forgotPassword";
 import { signIn as signInApi } from "@/api/auth/signIn";
 import { signUp as signUpApi } from "@/api/auth/signUp";
+import { resetPassword as resetPasswordApi } from "@/api/auth/password/resetPassword";
 import { SignOutResponse, signOut as signOutApi } from "@/api/auth/signOut";
 import { signInMutationOption } from "@/hooks/auth/option/signInOption";
 import { signUpMutationOption } from "@/hooks/auth/option/signUpOption";
 import { signOutMutationOption } from "@/hooks/auth/option/signOutOption";
+import { forgetPasswordMutationOption } from "@/hooks/auth/option/forgetPasswordOption";
+import { resetPasswordMutationOption } from "@/hooks/auth/option/resetPasswordOption";
 import { useMutation } from "@tanstack/react-query";
 
 const useAuth = () => {
@@ -27,7 +33,17 @@ const useAuth = () => {
     ...signOutMutationOption,
   });
 
-  return { signIn, signUp, signOut };
+  const forgetPassword = useMutation<ForgetPasswordResponse, Error, ForgetPasswordCredentials>({
+    mutationFn: ({ email }: ForgetPasswordCredentials) => forgetPasswordApi(email),
+    ...forgetPasswordMutationOption,
+  });
+
+  const resetPassword = useMutation<resetPasswordResponse, Error, resetPasswordCredentials>({
+    mutationFn: ({ token, password }: resetPasswordCredentials) => resetPasswordApi(token, password),
+    ...resetPasswordMutationOption,
+  });
+
+  return { signIn, signUp, signOut, forgetPassword, resetPassword };
 };
 
 export { useAuth };
