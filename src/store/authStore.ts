@@ -2,6 +2,7 @@ import { Auth } from "@/types/auth";
 import { create } from "zustand";
 
 const useAuthStore = create<Auth>((set) => ({
+  
   // state
   accessToken: "",
   refreshToken: "",
@@ -10,7 +11,7 @@ const useAuthStore = create<Auth>((set) => ({
   error: undefined,
   sessionTime: 0,
 
-  // action
+  // action ( mostly setters )
   setAccessToken: (accessToken: string) => set({ accessToken }),
   setRefreshToken: (refreshToken: string) => set({ refreshToken }),
   setIsLoggedIn: (isLoggedIn: boolean) => set({ isLoggedIn }),
