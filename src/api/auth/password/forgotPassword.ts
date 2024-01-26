@@ -5,7 +5,7 @@ interface ForgetPasswordResponse {
 }
 
 interface ForgetPasswordCredentials {
-    email: string;
+  email: string;
 }
 
 const forgetPassword = async (
@@ -20,4 +20,4 @@ const forgetPassword = async (
 };
 
 export { forgetPassword };
-export type { ForgetPasswordResponse, ForgetPasswordCredentials };
+export type { ForgetPasswordCredentials, ForgetPasswordResponse };

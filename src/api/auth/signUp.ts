@@ -28,4 +28,4 @@ const signUp = async (
 };
 
 export { signUp };
-export type { SignUpResponse, SignUpCredentials };
+export type { SignUpCredentials, SignUpResponse };
