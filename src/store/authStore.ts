@@ -1,25 +1,33 @@
-import { AuthState } from "@/types/auth";
-import setState from "zustand"
-import create from "zustand";
+import { Auth } from "@/types/auth";
+import { create } from "zustand";
 
-const useAuthStore = create<AuthState>((set: setState<AuthState>) => ({
+const useAuthStore = create<Auth>((set) => ({
+  // state
+  accessToken: "",
+  refreshToken: "",
   isLoggedIn: false,
-  user: null,
-  accessToken: null,
-  refreshToken: null,
-  isLoading: false,
-  error: null,
-  sessionTime: null,
+  loading: false,
+  error: undefined,
+  sessionTime: 0,
 
-  setIsLoggedIn: (loggedIn: boolean) => set({ isLoggedIn: loggedIn }),
-  setAccessToken: (token: string) => set({ accessToken: token }),
-  clearAccessToken: () => set({ accessToken: null }),
-  setRefreshToken: (token: string) => set({ refreshToken: token }),
-  clearRefreshToken: () => set({ refreshToken: null }),
-  setLoading: (loading: boolean) => set({ isLoading: loading }),
-  setError: (error: Error) => set({ error }),
-  setSessionTime: (time: number) => set({ sessionTime: time }),
+  // action
+  setAccessToken: (accessToken: string) => set({ accessToken }),
+  setRefreshToken: (refreshToken: string) => set({ refreshToken }),
+  setIsLoggedIn: (isLoggedIn: boolean) => set({ isLoggedIn }),
+  setLoading: (loading: boolean) => set({ loading }),
+  setError: (error: Error | undefined) => set({ error }),
+  setSessionTime: (sessionTime: number) => set({ sessionTime }),
+
+  // for logout
+  clearStore: () =>
+    set({
+      accessToken: "",
+      refreshToken: "",
+      isLoggedIn: false,
+      loading: false,
+      error: undefined,
+      sessionTime: 0,
+    }),
 }));
 
-
-export default useAuthStore;
+export { useAuthStore };

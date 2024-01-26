@@ -1,22 +1,19 @@
-interface AuthState {
-  // State properties
+type AuthState = {
+  accessToken: string;
+  refreshToken: string;
   isLoggedIn: boolean;
-  accessToken: string | null;
-  refreshToken: string | null;
-  isLoading: boolean;
-  error: Error | null;
-  sessionTime: number | null;
+  loading: boolean;
+  error?: Error;
+  sessionTime: number;
+};
 
-  // Action methods to update the state
-  setIsLoggedIn: (loggedIn: boolean) => void;
-  setAccessToken: (token: string) => void;
-  clearAccessToken: () => void;
-  setRefreshToken: (token: string) => void;
-  clearRefreshToken: () => void;
+type AuthAction = {
+  setAccessToken: (accessToken: string) => void;
+  setRefreshToken: (refreshToken: string) => void;
+  setIsLoggedIn: (isLoggedIn: boolean) => void;
   setLoading: (loading: boolean) => void;
   setError: (error: Error) => void;
-  setSessionTime: (time: number) => void;
-  signIn: (email: string, password: string) => Promise<void>;
-}
+  setSessionTime: (sessionTime: number) => void;
+};
 
-export type { AuthState };
+export type Auth = AuthState & AuthAction;

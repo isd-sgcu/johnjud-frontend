@@ -7,9 +7,10 @@ interface SignInResponse {
 }
 
 interface SignInCredentials {
-    email: string;
-    password: string;
+  email: string;
+  password: string;
 }
+
 const signIn = async (
   email: string,
   password: string
@@ -23,4 +24,4 @@ const signIn = async (
 };
 
 export { signIn };
-export type { SignInResponse, SignInCredentials };
+export type { SignInCredentials, SignInResponse };
