@@ -6,7 +6,7 @@ interface SignInResponse {
     refresh_token: string;
 }
 
-const signIn = async (email: string, password: string) => {
+const signIn = async (email: string, password: string): Promise<SignInResponse> => {
     const response = await axios.post<SignInResponse>(
         `${import.meta.env.VITE_API_URL}/auth/signin`,
         { email, password }
