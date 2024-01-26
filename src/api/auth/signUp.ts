@@ -7,7 +7,7 @@ interface SignUpResponse {
     lastname : string;
 }
 
-const signUp = async (email: string, firstname: string, lastname: string, password: string) => {
+const signUp = async (email: string, firstname: string, lastname: string, password: string): Promise<SignUpResponse> => {
     const response = await axios.post<SignUpResponse>(
         `${import.meta.env.VITE_API_URL}/auth/signup`,
         { email, firstname, lastname, password }

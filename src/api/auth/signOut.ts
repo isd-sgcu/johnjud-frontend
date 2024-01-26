@@ -4,7 +4,7 @@ interface SignOutResponse {
     is_success: boolean;
 }
 
-const signOut = async () => {
+const signOut = async (): Promise<SignOutResponse> => {
     const response = await axios.post<SignOutResponse>(
         `${import.meta.env.VITE_API_URL}/auth/signout`
     );
