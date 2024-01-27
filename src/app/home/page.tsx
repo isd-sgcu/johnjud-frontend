@@ -12,6 +12,8 @@ import { usePetsQuery } from "@/hooks/queries/usePetsQuery";
 import MainLayout from "@/layouts/MainLayout";
 import { useNavigate } from "react-router-dom";
 
+import adsImage1 from "@/assets/ads/1.jpg";
+
 // Page
 const MainPage = () => {
   const navigate = useNavigate();
@@ -40,7 +42,7 @@ const MainPage = () => {
       </Container>
       <Container className="flex justify-center md:justify-between">
         <div className="hidden md:flex md:w-4/12">
-          <Banner imageUrl="https://via.placeholder.com/440x440?text=Your+Ad+Here" />
+          <Banner imageUrl={adsImage1} />
         </div>
         {data && <MiniPetCardContainer petsData={data.pets} />}
       </Container>
@@ -57,7 +59,7 @@ const MainPage = () => {
         <Divider variant="primary" />
       </Container>
       <Container className="flex md:hidden">
-        <Banner imageUrl="https://via.placeholder.com/468x600?text=Your+Ad+Here" />
+        <Banner imageUrl={adsImage1} />
       </Container>
       <Container className="flex items-center justify-center md:hidden">
         <Divider variant="primary" />

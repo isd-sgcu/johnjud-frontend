@@ -5,4 +5,10 @@ type Meta = {
   total: number;
 };
 
-export type { Meta };
+type Image = {
+  id: string;
+  object_key: string;
+  url: string;
+};
+
+export type { Image, Meta };
