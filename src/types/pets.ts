@@ -1,3 +1,5 @@
+import { Image } from "./common";
+
 type Pet = {
   id: string;
   type: string;
@@ -13,6 +15,7 @@ type Pet = {
   is_vaccinated: boolean;
   is_visible: boolean;
   is_club_pet: boolean;
+  images: Image[];
 };
 
 export type { Pet };

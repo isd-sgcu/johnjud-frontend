@@ -15,7 +15,7 @@ const BigPetCardContainer: React.FC<BigPetCardContainerProps> = ({
         <PetCard
           key={pet.id}
           id={pet.id}
-          image="https://f.ptcdn.info/251/076/000/r6phkmmxuGNF1erTdMG-o.jpg"
+          image={pet.images[0].url}
           type={pet.type}
           name={pet.name}
           status={pet.status}
