@@ -1,12 +1,26 @@
 import checkIcon from "@/assets/formIcon/check.svg";
 import lockIcon from "@/assets/formIcon/lock.svg";
 import userIcon from "@/assets/formIcon/user.svg";
+import React from "react";
 import { Link } from "react-router-dom";
 import SubmitButton from "./SubmitButton";
 
-const LoginForm = () => {
+interface LoginFormProps {
+  setEmail: (email: string) => void;
+  setPassword: (password: string) => void;
+  handleSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
+}
+
+const LoginForm: React.FC<LoginFormProps> = ({
+  setEmail,
+  setPassword,
+  handleSubmit,
+}) => {
   return (
-    <form className="flex w-full flex-col items-center justify-center space-y-20 sm:w-1/2 md:w-6/12 lg:w-4/12 xl:w-3/12">
+    <form
+      className="flex w-full flex-col items-center justify-center space-y-20 sm:w-1/2 md:w-6/12 lg:w-4/12 xl:w-3/12"
+      onSubmit={handleSubmit}
+    >
       <div className="flex w-full flex-col items-center justify-center space-y-4">
         <div className="flex w-full items-center rounded-lg bg-accent-light-gray px-2.5 py-2.5 outline-none">
           <img src={userIcon} alt="Icon" className="mx-2" />
@@ -14,6 +28,7 @@ const LoginForm = () => {
             type="email"
             placeholder="อีเมล"
             className="w-full bg-accent-light-gray font-semibold text-accent-gray outline-none"
+            onChange={(e) => setEmail(e.target.value)}
           />
         </div>
         <div className="flex w-full items-center rounded-lg bg-accent-light-gray px-2.5 py-2.5 outline-none">
@@ -22,6 +37,7 @@ const LoginForm = () => {
             type="password"
             placeholder="รหัสผ่าน"
             className="w-full bg-accent-light-gray font-semibold text-accent-gray outline-none"
+            onChange={(e) => setPassword(e.target.value)}
           />
         </div>
         <div className="flex w-full justify-between">
