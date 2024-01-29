@@ -66,7 +66,6 @@ const GameFirstpage = () => {
             onClick={() => {
               window.scrollTo(0, 0);
               setCurrentComponent(
-                <>
                   <ResultGame
                     image={result.image}
                     role={result.role}
@@ -74,13 +73,13 @@ const GameFirstpage = () => {
                     handleOnClickSave={() => handleDownloadCanvas(result.role)}
                     handleOnClickShare={() => handleShareCanvas(result.role)}
                   />
-                  <PetCanvas
-                    petImage={result.image}
-                    petName={result.role}
-                    petText={result.text}
-                    border="game"
-                  />
-                </>
+                //   <PetCanvas
+                //     petImage={result.image}
+                //     petName={result.role}
+                //     petText={result.text}
+                //     border="game"
+                //   />
+                // </>
               );
             }}
           />
