@@ -2,7 +2,7 @@ import GamePage from "@/components/Game/GamePage";
 import MultipleChoice from "@/components/Game/MultipleChoice";
 import ResultGame from "@/components/Game/ResultGame";
 import StoryCard from "@/components/Game/StoryCard";
-import PetCanvas from "@/components/Pets/PetCanvas";
+// import PetCanvas from "@/components/Pets/PetCanvas";
 import GameLayout from "@/layouts/GameLayout";
 import Results from "@/utils/Results";
 import GameStorys from "@/utils/Storys";
