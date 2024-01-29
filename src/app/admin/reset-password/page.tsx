@@ -13,8 +13,7 @@ const resetPassword = () => {
   const { register, handleSubmit } = useForm<formValue>();
 
   const onSubmit = (data: formValue) => {
-    console.log("User password:", data.password);
-    console.log("HI");
+    console.log("Password:", data.password);
   };
 
   return (
