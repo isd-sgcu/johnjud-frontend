@@ -2,7 +2,7 @@ import GamePage from "@/components/Game/GamePage";
 import MultipleChoice from "@/components/Game/MultipleChoice";
 import ResultGame from "@/components/Game/ResultGame";
 import StoryCard from "@/components/Game/StoryCard";
-// import PetCanvas from "@/components/Pets/PetCanvas";
+import PetCanvas from "@/components/Pets/PetCanvas";
 import GameLayout from "@/layouts/GameLayout";
 import Results from "@/utils/Results";
 import GameStorys from "@/utils/Storys";
@@ -66,6 +66,7 @@ const GameFirstpage = () => {
             onClick={() => {
               window.scrollTo(0, 0);
               setCurrentComponent(
+                <>
                   <ResultGame
                     image={result.image}
                     role={result.role}
@@ -73,13 +74,13 @@ const GameFirstpage = () => {
                     handleOnClickSave={() => handleDownloadCanvas(result.role)}
                     handleOnClickShare={() => handleShareCanvas(result.role)}
                   />
-                //   <PetCanvas
-                //     petImage={result.image}
-                //     petName={result.role}
-                //     petText={result.text}
-                //     border="game"
-                //   />
-                // </>
+                  <PetCanvas
+                    petImage={result.image}
+                    petName={result.role}
+                    petText={result.text}
+                    border="game"
+                  />
+                </>
               );
             }}
           />
