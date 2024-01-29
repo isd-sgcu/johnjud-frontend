@@ -6,6 +6,8 @@ import PetCanvas from "@/components/Pets/PetCanvas";
 import GameLayout from "@/layouts/GameLayout";
 import Results from "@/utils/Results";
 import GameStorys from "@/utils/Storys";
+import { handleDownloadCanvas } from "@/utils/handleDownloadCanvas";
+import { handleShareCanvas } from "@/utils/handleShareCanvas";
 import { useEffect, useState } from "react";
 import lastStoryIcon from "../../assets/game/StoryIcons/7/2.png";
 
@@ -17,17 +19,6 @@ const GameFirstpage = () => {
   const [storyIdx, setStoryIdx] = useState(0);
 
   const [totalScore, setTotalScore] = useState(0);
-
-  const handleOnClickSave = () => {
-    const canvas = document.querySelector("canvas");
-    const a = document.createElement("a");
-    a.setAttribute("download", "result.png");
-    if (canvas) {
-      a.setAttribute("href", canvas.toDataURL("image/png"));
-    }
-    a.click();
-  };
-  const handleOnClickShare = () => {};
 
   async function showStoryCards() {
     for (const story of GameStorys[storyIdx].story) {
@@ -80,13 +71,14 @@ const GameFirstpage = () => {
                     image={result.image}
                     role={result.role}
                     text={result.text}
-                    handleOnClickSave={handleOnClickSave}
-                    handleOnClickShare={handleOnClickShare}
+                    handleOnClickSave={() => handleDownloadCanvas(result.role)}
+                    handleOnClickShare={() => handleShareCanvas(result.role)}
                   />
                   <PetCanvas
                     petImage={result.image}
                     petName={result.role}
                     petText={result.text}
+                    border="game"
                   />
                 </>
               );

@@ -1,5 +1,7 @@
 import Button from "@/components/Button";
 import PetCanvas from "@/components/Pets/PetCanvas";
+import { handleDownloadCanvas } from "@/utils/handleDownloadCanvas";
+import { handleShareCanvas } from "@/utils/handleShareCanvas";
 import React from "react";
 
 interface ResultDisplayProps {
@@ -14,33 +16,12 @@ const ResultDisplay: React.FC<ResultDisplayProps> = ({
   resultText,
 }) => {
   // implement handleshare here
-  const handleShare = async () => {
-    const canvasElement = document.querySelector("canvas");
-    const data = canvasElement?.toDataURL();
-    const blob = await (await fetch(data!)).blob();
-    const filesArray = [
-      new File([blob], `petHoro-${resultName}.png`, {
-        type: blob.type,
-        lastModified: new Date().getTime(),
-      }),
-    ];
-    const shareData = {
-      files: filesArray,
-    };
-    navigator.share(shareData);
-
-    console.log(resultImage);
+  const handleShare = () => {
+    handleShareCanvas(resultName);
   };
   // implement handleSave here
   const handleSave = () => {
-    const canvas = document.querySelector("canvas");
-    const a = document.createElement("a");
-    a.setAttribute("download", `petHoro-${resultName}.png`);
-    if (canvas) {
-      a.setAttribute("href", canvas.toDataURL("image/png"));
-    }
-    a.click();
-    console.log(resultImage);
+    handleDownloadCanvas(resultName);
   };
   return (
     <div className="flex w-72 flex-col items-center space-y-6 text-center">
@@ -66,6 +47,7 @@ const ResultDisplay: React.FC<ResultDisplayProps> = ({
         petImage={resultImage}
         petName={resultName}
         petText={resultText}
+        border="horo"
       />
     </div>
   );
