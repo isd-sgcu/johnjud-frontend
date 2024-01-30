@@ -1,6 +1,5 @@
 import Button from "@/components/Button";
 import { Icon } from "@iconify/react";
-import { useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import TextInputInfo from "./TextInputInfo";
 import ToggleInputInfo from "./ToggleInputInfo";
@@ -24,17 +23,9 @@ interface EditInfoAndSubmitProps {
 }
 
 const EditInfoAndSubmit = (props: EditInfoAndSubmitProps) => {
-  const ref = {
-    gender: useRef(null),
-    age: useRef(null),
-    nature: useRef(null),
-    vaccine: useRef(null),
-    sterile: useRef(null),
-  };
-  const pencilRef = useRef(null);
-  const postRef = useRef<HTMLDivElement | null>(null);
+  const [showInfo, setShowInfo] = useState<info>(props.value);
   const [enableEdit, setEnableEdit] = useState(false);
-  const handleOnClick = () => {
+  const handleOnClickEdit = () => {
     if (enableEdit) {
       props.setValue(showInfo);
     } else {
@@ -42,8 +33,6 @@ const EditInfoAndSubmit = (props: EditInfoAndSubmitProps) => {
     }
     setEnableEdit(!enableEdit);
   };
-
-  const [showInfo, setShowInfo] = useState<info>(props.value);
 
   const handleOnChange = (
     event: React.FormEvent<HTMLTextAreaElement>,
@@ -85,13 +74,13 @@ const EditInfoAndSubmit = (props: EditInfoAndSubmitProps) => {
           </div>
 
           {props.isAdmin ? (
-            <div ref={pencilRef} tabIndex={0} className="ml-2 ">
+            <div className="ml-2 ">
               <Icon
                 icon={enableEdit ? "ph:floppy-disk" : "custom:pencil"}
                 className={
                   "flex h-6 w-6 flex-none cursor-pointer text-accent-red"
                 }
-                onClick={handleOnClick}
+                onClick={handleOnClickEdit}
               />
             </div>
           ) : (
@@ -117,7 +106,6 @@ const EditInfoAndSubmit = (props: EditInfoAndSubmitProps) => {
               value={showInfo.gender}
               enableEdit={enableEdit}
               onChange={(event) => handleOnChange(event, "gender")}
-              inputRef={ref.gender}
               icon={"ph:paw-print"}
             />
 
@@ -127,7 +115,6 @@ const EditInfoAndSubmit = (props: EditInfoAndSubmitProps) => {
               value={showInfo.age}
               enableEdit={enableEdit}
               onChange={(event) => handleOnChange(event, "age")}
-              inputRef={ref.age}
               icon={"carbon:calendar"}
             />
 
@@ -137,7 +124,6 @@ const EditInfoAndSubmit = (props: EditInfoAndSubmitProps) => {
               value={showInfo.nature}
               enableEdit={enableEdit}
               onChange={(event) => handleOnChange(event, "nature")}
-              inputRef={ref.nature}
               icon={"ph:music-notes"}
             />
           </div>
@@ -148,7 +134,6 @@ const EditInfoAndSubmit = (props: EditInfoAndSubmitProps) => {
               <ToggleInputInfo
                 value={showInfo["vaccine"]}
                 onClick={() => handleOnClickButton("vaccine")}
-                inputRef={ref.vaccine}
                 enableEdit={enableEdit}
                 icon={"ph:eyedropper"}
                 text={"ฉีดวัคซีนแล้ว"}
@@ -158,7 +143,6 @@ const EditInfoAndSubmit = (props: EditInfoAndSubmitProps) => {
               <ToggleInputInfo
                 value={showInfo["sterile"]}
                 onClick={() => handleOnClickButton("sterile")}
-                inputRef={ref.sterile}
                 enableEdit={enableEdit}
                 icon={"ph:medal"}
                 text={"ทำหมันแล้ว"}
@@ -167,7 +151,7 @@ const EditInfoAndSubmit = (props: EditInfoAndSubmitProps) => {
 
             {/* Post Buttom */}
             {props.isAdmin ? (
-              <div ref={postRef}>
+              <div className="flex flex-col w-full items-center mt-6 gap-2">
                 <Button
                   className="mt-6 w-full text-2xl font-semibold"
                   text="โพสต์เลย"
