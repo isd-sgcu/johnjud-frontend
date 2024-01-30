@@ -3,7 +3,7 @@ const handleDownloadCanvas = (resultName: string) => {
   const a = document.createElement("a");
   a.setAttribute("download", `petHoro-${resultName}.jpg`);
   if (canvas) {
-    a.setAttribute("href", canvas.toDataURL("image/jpg"));
+    a.setAttribute("href", canvas.toDataURL("image/jpeg"));
   }
   a.click();
 };
