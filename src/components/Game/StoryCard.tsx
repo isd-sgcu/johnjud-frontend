@@ -5,18 +5,20 @@ interface StoryCardProps {
   onClick?: () => void;
 }
 
+const baseFunc = () => {};
+
 const StoryCard = ({
   text,
   icon,
   lastStory = false,
-  onClick = () => {},
+  onClick = baseFunc,
 }: StoryCardProps) => {
   return (
     <div className="flex min-h-screen w-full flex-col items-center justify-center px-6 py-6 md:py-10">
       <div
         className={
           "flex h-full max-h-[32rem] w-full max-w-3xl flex-grow animate-float-in-bottom flex-col items-center justify-center gap-6 rounded-2xl bg-white " +
-          (lastStory ? "cursor-pointer" : "cursor-default")
+          (onClick !== baseFunc ? "cursor-pointer" : "cursor-default")
         }
         onClick={onClick}
       >
