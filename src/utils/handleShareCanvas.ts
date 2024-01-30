@@ -1,6 +1,6 @@
 const handleShareCanvas = async (resultName: string) => {
   const canvasElement = document.querySelector("canvas");
-  const data = canvasElement?.toDataURL();
+  const data = canvasElement?.toDataURL("image/jpeg");
   const blob = await (await fetch(data!)).blob();
   const filesArray = [
     new File([blob], `petHoro-${resultName}.jpg`, {
