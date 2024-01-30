@@ -2,15 +2,16 @@ import Container from "@/components/Container";
 import SmallPetCardList from "@/components/SmallPetCardList";
 import { usePetsQuery } from "@/hooks/queries/usePetsQuery";
 import { Icon } from "@iconify/react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import johnjudLogo from "../../../../assets/johnjud-with-text.png";
 import AddSmallPicture from "../../../../components/Admin/Pets/Add/AddSmallPicture";
 import AddThumbnail from "../../../../components/Admin/Pets/Add/AddThumbnail";
-import EditInfoAndSubmit from "../../../../components/Admin/Pets/Add/EditInfoAndSubmit";
+import EditInfoAndSubmit, { info } from "../../../../components/Admin/Pets/Add/EditInfoAndSubmit";
 import EditName from "../../../../components/Admin/Pets/Add/EditName";
 import EditText from "../../../../components/Admin/Pets/Add/EditText";
 import MainLayout from "../../../../layouts/MainLayout";
+import useCreatePet, { CreatePet } from "@/hooks/mutation/useCreatePet";
 
 const userCreate = () => {
   const { data } = usePetsQuery();
@@ -21,8 +22,10 @@ const userCreate = () => {
   const [origin, setOrigin] = useState("fromClub");
   // origin : fromClub / fromOutside
   const [pictures, setPictures] = useState<File[]>([]);
-  const [info, setInfo] = useState({
+  const [info, setInfo] = useState<info>({
     gender: "-",
+    type: "-",
+    color: "-",
     age: "-",
     nature: "-",
     vaccine: false,

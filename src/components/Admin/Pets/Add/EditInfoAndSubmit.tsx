@@ -1,11 +1,17 @@
 import Button from "@/components/Button";
 import { Icon } from "@iconify/react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import TextInputInfo from "./TextInputInfo";
 import ToggleInputInfo from "./ToggleInputInfo";
+import DropdownInputInfo, { OptionType } from "./DropdownInputInfo";
+import { SingleValue } from "react-select";
+import { colorOption, genderOption, typeOption } from "@/utils/PetInfoOption";
 
 export type info = {
-  gender: string;
+  type: "dog" | "cat" | "-";
+  gender: "male" | "female" | "-";
+  color: string,
   age: string;
   nature: string;
   vaccine: boolean;
@@ -15,7 +21,8 @@ export type info = {
 interface EditInfoAndSubmitProps {
   value: info;
   setValue: React.Dispatch<React.SetStateAction<info>>;
-  onSubmit: (petinfo: info) => void;
+  onSubmit: () => void;
+  enableSubmit?: boolean
   isAdmin: boolean;
   isFav?: boolean;
   handleFavPressed?: () => void;
@@ -34,7 +41,16 @@ const EditInfoAndSubmit = (props: EditInfoAndSubmitProps) => {
     setEnableEdit(!enableEdit);
   };
 
-  const handleOnChange = (
+  const handleOnChangeDropDown = (selectedOption: SingleValue<OptionType>, tag: keyof info) => {
+    if (enableEdit) {
+      const updateValue = { [tag]: (selectedOption ? selectedOption.value : "") };
+      setShowInfo({
+        ...showInfo,
+        ...updateValue
+      })
+    }
+  }
+  const handleOnChangeTextArea = (
     event: React.FormEvent<HTMLTextAreaElement>,
     tag: string
   ) => {
@@ -52,13 +68,6 @@ const EditInfoAndSubmit = (props: EditInfoAndSubmitProps) => {
         ...showInfo,
         ...updateValue,
       });
-    }
-  };
-
-  const handleOnPost = () => {
-    if (enableEdit) {
-      handleOnClick();
-      props.onSubmit(showInfo);
     }
   };
 
@@ -101,12 +110,34 @@ const EditInfoAndSubmit = (props: EditInfoAndSubmitProps) => {
         <div className="mt-4 flex flex-col lg:grid lg:grid-cols-2 lg:divide-x-2">
           <div className="flex flex-col space-y-3 lg:space-y-4 lg:pr-8">
             {/* Gender */}
-            <TextInputInfo
-              text="เพศ:"
+            <DropdownInputInfo
+              text={"เพศ:"}
+              icon={"ph:gender-intersex"}
               value={showInfo.gender}
+              setValue={(newOption) => handleOnChangeDropDown(newOption, "gender")}
+              option={genderOption}
               enableEdit={enableEdit}
-              onChange={(event) => handleOnChange(event, "gender")}
+            />
+
+            {/* Type */}
+            <DropdownInputInfo
+              text={"ชนิด:"}
               icon={"ph:paw-print"}
+              value={showInfo.type}
+              setValue={(newOption) => handleOnChangeDropDown(newOption, "type")}
+              option={typeOption}
+              enableEdit={enableEdit}
+            />
+
+            {/* Type */}
+            <DropdownInputInfo
+              text={"สี:"}
+              icon={"ph:palette"}
+              value={showInfo.color}
+              setValue={(newOption) => handleOnChangeDropDown(newOption, "color")}
+              option={colorOption}
+              enableEdit={enableEdit}
+              createable
             />
 
             {/* Age */}
@@ -114,7 +145,7 @@ const EditInfoAndSubmit = (props: EditInfoAndSubmitProps) => {
               text="อายุ:"
               value={showInfo.age}
               enableEdit={enableEdit}
-              onChange={(event) => handleOnChange(event, "age")}
+              onChange={(event) => handleOnChangeTextArea(event, "age")}
               icon={"carbon:calendar"}
             />
 
@@ -123,7 +154,7 @@ const EditInfoAndSubmit = (props: EditInfoAndSubmitProps) => {
               text="นิสัย:"
               value={showInfo.nature}
               enableEdit={enableEdit}
-              onChange={(event) => handleOnChange(event, "nature")}
+              onChange={(event) => handleOnChangeTextArea(event, "nature")}
               icon={"ph:music-notes"}
             />
           </div>
@@ -152,11 +183,12 @@ const EditInfoAndSubmit = (props: EditInfoAndSubmitProps) => {
             {/* Post Buttom */}
             {props.isAdmin ? (
               <div className="flex flex-col w-full items-center mt-6 gap-2">
+                <p className={`text-sm text-accent-red font-light ${props.enableSubmit ? "hidden" : "visible"}`}>โปรดกรอกข้อมูลที่จำเป็นทั้งหมดก่อนโพสต์</p>
                 <Button
-                  className="mt-6 w-full text-2xl font-semibold"
+                  className="w-full text-2xl font-semibold"
                   text="โพสต์เลย"
-                  onClick={handleOnPost}
-                  variant="accent-red"
+                  onClick={props.onSubmit}
+                  variant={props.enableSubmit ? "accent-red" : "disabled"}
                   rounded="full"
                 />
               </div>
