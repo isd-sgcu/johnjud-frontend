@@ -32,7 +32,15 @@ const userCreate = () => {
     sterile: false,
   });
 
-  const handleSubmit = () => {};
+  const [enableSubmit, setEnableSubmit] = useState(false);
+  useEffect(() => {
+    if (info.gender === "-" || info.type === "-" || info.color === "-" || info.age === "-" || name === "กรุณาใส่ชื่อ...") {
+      setEnableSubmit(false);
+    } else {
+      setEnableSubmit(true)
+    }
+  }, [info.gender , info.type , info.color, info.age, name]);
+
 
   return (
     <>
@@ -78,6 +86,7 @@ const userCreate = () => {
             value={info}
             setValue={setInfo}
             onSubmit={handleSubmit}
+            enableSubmit={enableSubmit}
             isAdmin
           />
         </div>
