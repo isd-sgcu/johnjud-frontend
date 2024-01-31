@@ -1,10 +1,10 @@
 import axios from "axios";
 
-interface resetPasswordResponse {
+interface ResetPasswordResponse {
   is_success: boolean;
 }
 
-interface resetPasswordCredentials {
+interface ResetPasswordCredentials {
   password: string;
   token: string;
 }
@@ -12,8 +12,8 @@ interface resetPasswordCredentials {
 const resetPassword = async (
   password: string,
   token: string
-): Promise<resetPasswordResponse> => {
-  const response = await axios.post<resetPasswordResponse>(
+): Promise<ResetPasswordResponse> => {
+  const response = await axios.post<ResetPasswordResponse>(
     `${import.meta.env.VITE_API_URL}/auth/password/resetPassword`,
     { password, token }
   );
@@ -22,4 +22,4 @@ const resetPassword = async (
 };
 
 export { resetPassword };
-export type { resetPasswordCredentials, resetPasswordResponse };
+export type { ResetPasswordCredentials, ResetPasswordResponse };
