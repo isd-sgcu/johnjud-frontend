@@ -1,13 +1,13 @@
 import LoginForm from "@/components/Form/LoginForm";
-import { useAuth } from "@/hooks/auth/useAuth";
 import MainLayout from "@/layouts/MainLayout";
 import { useState } from "react";
+import useSignIn from "@/hooks/auth/useSignIn";
 
 // Page
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const { signIn } = useAuth();
+  const signIn = useSignIn();
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
