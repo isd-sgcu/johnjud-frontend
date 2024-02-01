@@ -2,7 +2,7 @@ import { signIn, SignInCredentials, SignInResponse } from "@/api/auth/signIn";
 import useAuthStore from "@/store/authStore";
 import { useMutation, UseMutationOptions } from "@tanstack/react-query";
 import { useNavigate } from "react-router-dom";
-
+import { calculateExpiryTime } from "@/utils/calculateExpiryTime";
 const useSignIn = () => {
   const { setAuth } = useAuthStore();
   const navigate = useNavigate();
@@ -14,8 +14,8 @@ const useSignIn = () => {
     mutationFn: (credentials: SignInCredentials) =>
       signIn(credentials.email, credentials.password),
     onSuccess: (data: SignInResponse) => {
-      console.log(data);
-      setAuth(data.access_token, data.refresh_token);
+      const expriedAt = calculateExpiryTime(data.expires_in);
+      setAuth(data.access_token, data.refresh_token, expriedAt);
       navigate("/admin/pets");
     },
     onError: (error: Error) => {
