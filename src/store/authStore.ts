@@ -1,7 +1,7 @@
+import { AuthState } from "@/types/auth";
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
-
-const useAuthStore = create(
+const useAuthStore = create<AuthState>()(
   persist(
     (set) => ({
       accessToken: null,
