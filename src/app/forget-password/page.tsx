@@ -3,11 +3,22 @@ import Container from "@/components/Container";
 import EmailVerification from "@/components/Modal/EmailVerification";
 import GameLayout from "@/layouts/GameLayout";
 import { Icon } from "@iconify/react/dist/iconify.js";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-
+import { useNavigate } from "react-router-dom";
+import useAuthStore from "@/store/authStore";
 const ForgetPassword = () => {
+  
   const [modalOpen, setModalOpen] = useState(false);
+  const navigate = useNavigate();
+  const { isLoggedIn } = useAuthStore();
+
+  useEffect(() => {
+    if (isLoggedIn) {
+      navigate("/home");
+    }
+  }, [isLoggedIn, navigate]);
+  
   return (
     <Container className="flex min-h-screen flex-col items-center justify-center gap-12">
       <div className="flex flex-col items-center">
