@@ -14,6 +14,7 @@ const useSignIn = () => {
     mutationFn: (credentials: SignInCredentials) =>
       signIn(credentials.email, credentials.password),
     onSuccess: (data: SignInResponse) => {
+      console.log(data);
       setAuth(data.access_token, data.refresh_token);
       navigate("/admin/pets");
     },
