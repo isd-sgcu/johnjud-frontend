@@ -1,5 +1,5 @@
 import axios from "axios";
-
+import useAuthStore from "@/store/authStore";
 interface RefreshTokenResponse {
   access_token: string;
   expires_in: number;
@@ -13,11 +13,21 @@ interface RefreshTokenCredentials {
 const refreshToken = async (
   refresh_token: string
 ): Promise<RefreshTokenResponse> => {
+  
+  const { accessToken } = useAuthStore();
+  console.log("hello world");
   const response = await axios.post<RefreshTokenResponse>(
     `${import.meta.env.VITE_API_URL}/auth/refreshToken`,
-    { refresh_token }
+    {
+      refresh_token,
+    },
+    {
+      headers: {
+        Authorization: `Bearer ${accessToken}`,
+      },
+    }
   );
-
+  
   return response.data;
 };
 
