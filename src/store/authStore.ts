@@ -7,15 +7,14 @@ const useAuthStore = create(
       accessToken: null,
       refreshToken: null,
       isLoggedIn: false,
-      setAuth: (accessToken : string, refreshToken : string) => {
+      setAuth: (accessToken: string, refreshToken: string) => {
         set({ accessToken, refreshToken, isLoggedIn: true });
-        console.log('setAuth', accessToken, refreshToken);
       },
       clearAuth: () =>
         set({ accessToken: null, refreshToken: null, isLoggedIn: false }),
     }),
     {
-      name: 'auth',
+      name: "auth",
     }
   )
 );
