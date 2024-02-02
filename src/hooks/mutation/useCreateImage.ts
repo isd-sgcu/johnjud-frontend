@@ -1,12 +1,10 @@
-import axios from "axios";
+import postImage, { postImageRequest, postImageResponse } from "@/api/images";
+import { useMutation } from "@tanstack/react-query";
 
-interface CreateImageProps {
-    data : string, // base64
-    petId? : string
-}
+const useCreateImage = (data: postImageRequest) => {
+  return useMutation<postImageResponse>({
+    mutationFn: () => postImage(data),
+  });
+};
 
-const useCreateImage = (data : CreateImageProps) => {
-    return ( 
-        axios.post(`${import.meta.env.VITE_API_URL}/images` , data)
-     );
-}
+export { useCreateImage };
