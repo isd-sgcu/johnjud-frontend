@@ -1,9 +1,9 @@
-import postImage, { postImageRequest, postImageResponse } from "@/api/images";
+import { postImage, postImageRequest } from "@/api/images";
 import { useMutation } from "@tanstack/react-query";
 
-const useCreateImage = (data: postImageRequest) => {
-  return useMutation<postImageResponse>({
-    mutationFn: () => postImage(data),
+const useCreateImage = () => {
+  return useMutation({
+    mutationFn: (data: postImageRequest) => postImage(data),
   });
 };
 
