@@ -11,7 +11,9 @@ import EditInfoAndSubmit, { info } from "../../../../components/Admin/Pets/Add/E
 import EditName from "../../../../components/Admin/Pets/Add/EditName";
 import EditText from "../../../../components/Admin/Pets/Add/EditText";
 import MainLayout from "../../../../layouts/MainLayout";
-import useCreatePet, { CreatePet } from "@/hooks/mutation/useCreatePet";
+import { useCreateImage } from "@/hooks/mutation/useCreateImage";
+import { petCreateRequest } from "@/api/createPets";
+import { useCreatePet } from "@/hooks/mutation/useCreatePet";
 
 const userCreate = () => {
   const { data } = usePetsQuery();
@@ -39,7 +41,7 @@ const userCreate = () => {
     } else {
       setEnableSubmit(true)
     }
-  }, [info.gender , info.type , info.color, info.age, name]);
+  }, [info.gender, info.type, info.color, info.age, name]);
 
   async function getBase64(file: File): Promise<string> {
     return await (new Promise((resolve, reject) => {
@@ -52,16 +54,30 @@ const userCreate = () => {
     }))
   }
 
+  const postImageMutation = useCreateImage();
+  const postPetMutation = useCreatePet();
+
   const handleSubmit = async () => {
-    // TODO: post this at /image and store id
-    const allImage: string[] = await Promise.all((thumbnail ? (
-      [thumbnail , ...pictures]
+    const allImageBase64: string[] = await Promise.all((thumbnail ? (
+      [thumbnail, ...pictures]
     ) : (
       pictures
     )).map(getBase64))
 
-    if (info.gender === "-") return;
-    const petData: CreatePet = {
+    // TODO: post image at /image and store id (currently break hook rules)
+    // assume this is correct
+    const allImage: string[] = (await Promise.all(
+      allImageBase64.map(async (image) => {
+        const imageResponse = await postImageMutation.mutateAsync({
+          file : image
+        })
+        return imageResponse.id
+      })
+    )).filter(id => id !== undefined).map(id => id ?? "") // map for ts type checking
+
+
+    if (info.gender === "-") return; // already detect "-" at other info
+    const petData: petCreateRequest = {
       type: info.type,
       name: name,
       birthdate: info.age,
@@ -79,7 +95,7 @@ const userCreate = () => {
     }
 
     console.log(petData);
-    // useCreatePet
+    postPetMutation.mutate(petData)
   };
 
   return (

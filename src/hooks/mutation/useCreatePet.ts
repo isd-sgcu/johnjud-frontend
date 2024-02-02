@@ -1,12 +1,10 @@
 import { petCreateRequest, postPetCreate } from "@/api/createPets";
-import { postImageResponse } from "@/api/images";
 import { useMutation } from "@tanstack/react-query";
 
+const useCreatePet = () => {
+  return useMutation({
+    mutationFn: (data: petCreateRequest) => postPetCreate(data),
+  });
+};
 
-const useCreatePet = (data : petCreateRequest) => {
-    return useMutation<postImageResponse>({
-        mutationFn: () => postPetCreate(data)
-    })
-}
-
-export default useCreatePet;
+export { useCreatePet };
