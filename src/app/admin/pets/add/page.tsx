@@ -41,6 +41,46 @@ const userCreate = () => {
     }
   }, [info.gender , info.type , info.color, info.age, name]);
 
+  async function getBase64(file: File): Promise<string> {
+    return await (new Promise((resolve, reject) => {
+      const reader = new FileReader()
+      reader.readAsDataURL(file)
+      reader.onload = () => {
+        resolve(reader.result as string)
+      }
+      reader.onerror = reject;
+    }))
+  }
+
+  const handleSubmit = async () => {
+    // TODO: post this at /image and store id
+    const allImage: string[] = await Promise.all((thumbnail ? (
+      [thumbnail , ...pictures]
+    ) : (
+      pictures
+    )).map(getBase64))
+
+    if (info.gender === "-") return;
+    const petData: CreatePet = {
+      type: info.type,
+      name: name,
+      birthdate: info.age,
+      gender: info.gender,
+      color: info.color,
+      pattern: "",
+      habit: info.nature,
+      caption: text,
+      status: "findHome",
+      is_sterile: info.sterile,
+      is_vaccinated: info.vaccine,
+      is_visible: true,
+      is_club_pet: (origin === "fromClub"),
+      images: allImage
+    }
+
+    console.log(petData);
+    // useCreatePet
+  };
 
   return (
     <>

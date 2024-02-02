@@ -1,8 +1,8 @@
 import { Pet } from "@/types/pets";
 import axios from "axios";
 
-type CreatePet = Omit<Pet, 'id'> & {
-    images: String[]
+type CreatePet = Omit<Pet, 'id' | 'images'> & {
+    images: string[] // image id
 }
 
 interface CreatePetBody {
