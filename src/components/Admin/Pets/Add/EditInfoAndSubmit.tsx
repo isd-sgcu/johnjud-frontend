@@ -34,9 +34,15 @@ const EditInfoAndSubmit = (props: EditInfoAndSubmitProps) => {
   const [enableEdit, setEnableEdit] = useState(false);
   const handleOnClickEdit = () => {
     if (enableEdit) {
-      props.setValue(showInfo);
+      let addNoneInfo = showInfo;
+      if (addNoneInfo.age === "") addNoneInfo["age"] = "-";
+      if (addNoneInfo.nature === "") addNoneInfo["nature"] = "-";
+      props.setValue(addNoneInfo);
     } else {
-      setShowInfo(props.value);
+      let removeEmptyInfo = props.value;
+      if (removeEmptyInfo.age === "-") removeEmptyInfo["age"] = "";
+      if (removeEmptyInfo.nature === "-") removeEmptyInfo["nature"] = "";
+      setShowInfo(removeEmptyInfo);
     }
     setEnableEdit(!enableEdit);
   };
@@ -142,11 +148,12 @@ const EditInfoAndSubmit = (props: EditInfoAndSubmitProps) => {
 
             {/* Age */}
             <TextInputInfo
-              text="อายุ:"
+              text="วันเกิด:"
               value={showInfo.age}
               enableEdit={enableEdit}
               onChange={(event) => handleOnChangeTextArea(event, "age")}
               icon={"carbon:calendar"}
+              usePlaceholder
             />
 
             {/* Nature */}
