@@ -15,7 +15,7 @@ const TextInputInfo = (props: TextInputInfoProps) => {
     <div className="flex flex-row items-start gap-2">
       <div className="flex flex-row items-center">
         <Icon icon={props.icon} className="h-5 w-5 text-primary" />
-        <span className="ml-1 text-primary text-nowrap">{props.text}</span>
+        <span className="ml-1 text-nowrap text-primary">{props.text}</span>
       </div>
       <TextareaAutosize
         className={`w-full rounded-lg bg-white px-2 font-semibold ${

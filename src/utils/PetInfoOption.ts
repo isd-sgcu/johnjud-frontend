@@ -30,4 +30,4 @@ const colorOption: OptionType[] = color.map((col) => {
   };
 });
 
-export { genderOption, typeOption, colorOption };
+export { colorOption, genderOption, typeOption };
