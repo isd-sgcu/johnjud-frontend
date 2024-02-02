@@ -1,5 +1,8 @@
+import { petCreateRequest } from "@/api/createPets";
 import Container from "@/components/Container";
 import SmallPetCardList from "@/components/SmallPetCardList";
+import { useCreateImage } from "@/hooks/mutation/useCreateImage";
+import { useCreatePet } from "@/hooks/mutation/useCreatePet";
 import { usePetsQuery } from "@/hooks/queries/usePetsQuery";
 import { Icon } from "@iconify/react";
 import { useEffect, useState } from "react";
@@ -7,13 +10,12 @@ import { Link } from "react-router-dom";
 import johnjudLogo from "../../../../assets/johnjud-with-text.png";
 import AddSmallPicture from "../../../../components/Admin/Pets/Add/AddSmallPicture";
 import AddThumbnail from "../../../../components/Admin/Pets/Add/AddThumbnail";
-import EditInfoAndSubmit, { info } from "../../../../components/Admin/Pets/Add/EditInfoAndSubmit";
+import EditInfoAndSubmit, {
+  info,
+} from "../../../../components/Admin/Pets/Add/EditInfoAndSubmit";
 import EditName from "../../../../components/Admin/Pets/Add/EditName";
 import EditText from "../../../../components/Admin/Pets/Add/EditText";
 import MainLayout from "../../../../layouts/MainLayout";
-import { useCreateImage } from "@/hooks/mutation/useCreateImage";
-import { petCreateRequest } from "@/api/createPets";
-import { useCreatePet } from "@/hooks/mutation/useCreatePet";
 
 const userCreate = () => {
   const { data } = usePetsQuery();
@@ -36,45 +38,52 @@ const userCreate = () => {
 
   const [enableSubmit, setEnableSubmit] = useState(false);
   useEffect(() => {
-    if (info.gender === "-" || info.type === "-" || info.color === "-" || info.age === "-" || name === "กรุณาใส่ชื่อ...") {
+    if (
+      info.gender === "-" ||
+      info.type === "-" ||
+      info.color === "-" ||
+      info.age === "-" ||
+      name === "กรุณาใส่ชื่อ..."
+    ) {
       setEnableSubmit(false);
     } else {
-      setEnableSubmit(true)
+      setEnableSubmit(true);
     }
   }, [info.gender, info.type, info.color, info.age, name]);
 
   async function getBase64(file: File): Promise<string> {
-    return await (new Promise((resolve, reject) => {
-      const reader = new FileReader()
-      reader.readAsDataURL(file)
+    return await new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
       reader.onload = () => {
-        resolve(reader.result as string)
-      }
+        resolve(reader.result as string);
+      };
       reader.onerror = reject;
-    }))
+    });
   }
 
   const postImageMutation = useCreateImage();
   const postPetMutation = useCreatePet();
 
   const handleSubmit = async () => {
-    const allImageBase64: string[] = await Promise.all((thumbnail ? (
-      [thumbnail, ...pictures]
-    ) : (
-      pictures
-    )).map(getBase64))
+    const allImageBase64: string[] = await Promise.all(
+      (thumbnail ? [thumbnail, ...pictures] : pictures).map(getBase64)
+    );
 
     // TODO: post image at /image and store id (currently break hook rules)
     // assume this is correct
-    const allImage: string[] = (await Promise.all(
-      allImageBase64.map(async (image) => {
-        const imageResponse = await postImageMutation.mutateAsync({
-          file : image
+    const allImage: string[] = (
+      await Promise.all(
+        allImageBase64.map(async (image) => {
+          const imageResponse = await postImageMutation.mutateAsync({
+            file: image,
+          });
+          return imageResponse.id;
         })
-        return imageResponse.id
-      })
-    )).filter(id => id !== undefined).map(id => id ?? "") // map for ts type checking
-
+      )
+    )
+      .filter((id) => id !== undefined)
+      .map((id) => id ?? ""); // map for ts type checking
 
     if (info.gender === "-") return; // already detect "-" at other info
     const petData: petCreateRequest = {
@@ -90,12 +99,12 @@ const userCreate = () => {
       is_sterile: info.sterile,
       is_vaccinated: info.vaccine,
       is_visible: true,
-      is_club_pet: (origin === "fromClub"),
-      images: allImage
-    }
+      is_club_pet: origin === "fromClub",
+      images: allImage,
+    };
 
     console.log(petData);
-    postPetMutation.mutate(petData)
+    postPetMutation.mutate(petData);
   };
 
   return (

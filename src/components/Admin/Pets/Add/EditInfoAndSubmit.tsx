@@ -1,17 +1,17 @@
 import Button from "@/components/Button";
+import { colorOption, genderOption, typeOption } from "@/utils/PetInfoOption";
 import { Icon } from "@iconify/react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { SingleValue } from "react-select";
+import DropdownInputInfo, { OptionType } from "./DropdownInputInfo";
 import TextInputInfo from "./TextInputInfo";
 import ToggleInputInfo from "./ToggleInputInfo";
-import DropdownInputInfo, { OptionType } from "./DropdownInputInfo";
-import { SingleValue } from "react-select";
-import { colorOption, genderOption, typeOption } from "@/utils/PetInfoOption";
 
 export type info = {
   type: "dog" | "cat" | "-";
   gender: "male" | "female" | "-";
-  color: string,
+  color: string;
   age: string;
   nature: string;
   vaccine: boolean;
@@ -22,7 +22,7 @@ interface EditInfoAndSubmitProps {
   value: info;
   setValue: React.Dispatch<React.SetStateAction<info>>;
   onSubmit: () => void;
-  enableSubmit?: boolean
+  enableSubmit?: boolean;
   isAdmin: boolean;
   isFav?: boolean;
   handleFavPressed?: () => void;
@@ -34,12 +34,12 @@ const EditInfoAndSubmit = (props: EditInfoAndSubmitProps) => {
   const [enableEdit, setEnableEdit] = useState(false);
   const handleOnClickEdit = () => {
     if (enableEdit) {
-      let addNoneInfo = showInfo;
+      const addNoneInfo = showInfo;
       if (addNoneInfo.age === "") addNoneInfo["age"] = "-";
       if (addNoneInfo.nature === "") addNoneInfo["nature"] = "-";
       props.setValue(addNoneInfo);
     } else {
-      let removeEmptyInfo = props.value;
+      const removeEmptyInfo = props.value;
       if (removeEmptyInfo.age === "-") removeEmptyInfo["age"] = "";
       if (removeEmptyInfo.nature === "-") removeEmptyInfo["nature"] = "";
       setShowInfo(removeEmptyInfo);
@@ -47,15 +47,18 @@ const EditInfoAndSubmit = (props: EditInfoAndSubmitProps) => {
     setEnableEdit(!enableEdit);
   };
 
-  const handleOnChangeDropDown = (selectedOption: SingleValue<OptionType>, tag: keyof info) => {
+  const handleOnChangeDropDown = (
+    selectedOption: SingleValue<OptionType>,
+    tag: keyof info
+  ) => {
     if (enableEdit) {
-      const updateValue = { [tag]: (selectedOption ? selectedOption.value : "") };
+      const updateValue = { [tag]: selectedOption ? selectedOption.value : "" };
       setShowInfo({
         ...showInfo,
-        ...updateValue
-      })
+        ...updateValue,
+      });
     }
-  }
+  };
   const handleOnChangeTextArea = (
     event: React.FormEvent<HTMLTextAreaElement>,
     tag: string
@@ -120,7 +123,9 @@ const EditInfoAndSubmit = (props: EditInfoAndSubmitProps) => {
               text={"เพศ:"}
               icon={"ph:gender-intersex"}
               value={showInfo.gender}
-              setValue={(newOption) => handleOnChangeDropDown(newOption, "gender")}
+              setValue={(newOption) =>
+                handleOnChangeDropDown(newOption, "gender")
+              }
               option={genderOption}
               enableEdit={enableEdit}
             />
@@ -130,7 +135,9 @@ const EditInfoAndSubmit = (props: EditInfoAndSubmitProps) => {
               text={"ชนิด:"}
               icon={"ph:paw-print"}
               value={showInfo.type}
-              setValue={(newOption) => handleOnChangeDropDown(newOption, "type")}
+              setValue={(newOption) =>
+                handleOnChangeDropDown(newOption, "type")
+              }
               option={typeOption}
               enableEdit={enableEdit}
             />
@@ -140,7 +147,9 @@ const EditInfoAndSubmit = (props: EditInfoAndSubmitProps) => {
               text={"สี:"}
               icon={"ph:palette"}
               value={showInfo.color}
-              setValue={(newOption) => handleOnChangeDropDown(newOption, "color")}
+              setValue={(newOption) =>
+                handleOnChangeDropDown(newOption, "color")
+              }
               option={colorOption}
               enableEdit={enableEdit}
               createable
@@ -189,8 +198,14 @@ const EditInfoAndSubmit = (props: EditInfoAndSubmitProps) => {
 
             {/* Post Buttom */}
             {props.isAdmin ? (
-              <div className="flex flex-col w-full items-center mt-6 gap-2">
-                <p className={`text-sm text-accent-red font-light ${props.enableSubmit ? "hidden" : "visible"}`}>โปรดกรอกข้อมูลที่จำเป็นทั้งหมดก่อนโพสต์</p>
+              <div className="mt-6 flex w-full flex-col items-center gap-2">
+                <p
+                  className={`text-sm font-light text-accent-red ${
+                    props.enableSubmit ? "hidden" : "visible"
+                  }`}
+                >
+                  โปรดกรอกข้อมูลที่จำเป็นทั้งหมดก่อนโพสต์
+                </p>
                 <Button
                   className="w-full text-2xl font-semibold"
                   text="โพสต์เลย"
