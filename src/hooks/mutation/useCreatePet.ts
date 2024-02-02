@@ -1,19 +1,12 @@
-import { Pet } from "@/types/pets";
-import axios from "axios";
+import { petCreateRequest, postPetCreate } from "@/api/createPets";
+import { postImageResponse } from "@/api/images";
+import { useMutation } from "@tanstack/react-query";
 
-type CreatePet = Omit<Pet, 'id' | 'images'> & {
-    images: string[] // image id
-}
 
-interface CreatePetBody {
-    data : CreatePet
-}
-
-const useCreatePet = ({data} : CreatePetBody) => {
-    return ( 
-        axios.post(`${import.meta.env.VITE_API_URL}/pets/create` , data)
-    );
+const useCreatePet = (data : petCreateRequest) => {
+    return useMutation<postImageResponse>({
+        mutationFn: () => postPetCreate(data)
+    })
 }
 
 export default useCreatePet;
-export type { CreatePet }
