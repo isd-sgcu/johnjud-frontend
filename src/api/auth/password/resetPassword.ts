@@ -14,7 +14,7 @@ const resetPassword = async (
   token: string
 ): Promise<ResetPasswordResponse> => {
   const response = await axios.post<ResetPasswordResponse>(
-    `${import.meta.env.VITE_API_URL}/auth/password/resetPassword`,
+    `${import.meta.env.VITE_API_URL}/auth/password/reset-password`,
     { password, token }
   );
 
