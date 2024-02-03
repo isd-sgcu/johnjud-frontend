@@ -4,17 +4,20 @@ import AddThumbnail from "@/components/Admin/Pets/Add/AddThumbnail";
 import EditName from "@/components/Admin/Pets/Add/EditName";
 import EditText from "@/components/Admin/Pets/Add/EditText";
 import Container from "@/components/Container";
+import { Pet } from "@/types/pets";
 import { Icon } from "@iconify/react/dist/iconify.js";
 import { useEffect, useState } from "react";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import PetThumbnails from "../PetThumbnails";
 
-const BigPetCard = ({ isAdmin }: { isAdmin: boolean }) => {
-  const [name, setName] = useState("ไรลีย์");
-  const [text, setText] = useState(
-    "ทาวน์เทปวโรกาส ลิมูซีนเพลซบาร์บี้อุเทนเพลย์บอย ฟลุก เซอร์ไพรส์ รูบิคบึมเฝอมายาคติ ทรู ภคันทลาพาธ วาไรตี้ ท็อปบูตสงบสุขวอลนัต โนติส เบลอ แรงใจ เป่ายิงฉุบโยโย่ ภควัทคีตา อิเหนาช็อปนินจารูบิคคาสิโน คีตกวีบอกซ์โพลารอยด์ดิกชันนารี แกสโซฮอล์ผู้นำ จิ๊กโก๋ธัมโมคอร์รัปชั่น เหี่ยวย่นออทิสติก เวเฟอร์เดโมเจ๊วีนโอวัลติน"
-  );
-  const [petFrom, setPetFrom] = useState("fromClub");
+interface BigPetCardProps {
+  isAdmin: boolean;
+  pet: Pet;
+  setPet: React.Dispatch<React.SetStateAction<Pet>>;
+  changeSpecificField: (tag: string, data: string | boolean) => void;
+}
+
+const BigPetCard = (props: BigPetCardProps) => {
   const [image, setImage] = useState<File | null>(null);
   const [images, setImages] = useState<File[]>([]);
   const imgs = [petImg, petImg, petImg, petImg];
@@ -40,19 +43,23 @@ const BigPetCard = ({ isAdmin }: { isAdmin: boolean }) => {
           className="h-8 w-8 cursor-pointer"
         />
         <div className="md:hidden">
-          <EditName value={name} setValue={setName} isAdmin={isAdmin} />
+          <EditName
+            value={props.pet.name}
+            changeSpecificField={props.changeSpecificField}
+            isAdmin={props.isAdmin}
+          />
         </div>
       </div>
 
       {/* thumbnail */}
       <div className="mx-auto flex w-full flex-col items-center justify-between gap-8 md:h-80 md:flex-row md:items-start">
         <div className="relative w-80">
-          {!isAdmin ? (
+          {!props.isAdmin ? (
             <PetThumbnails petImages={imgs} />
           ) : (
             <AddThumbnail
-              valueOrigin={petFrom}
-              setOrigin={setPetFrom}
+              valueOrigin={props.pet.is_club_pet}
+              changeSpecificField={props.changeSpecificField}
               valueThumbnail={image}
               setThumbnail={setImage}
             />
@@ -61,12 +68,20 @@ const BigPetCard = ({ isAdmin }: { isAdmin: boolean }) => {
 
         <div className="flex w-full flex-col items-start gap-8 overflow-auto md:h-full md:flex-1">
           <div className="hidden md:block">
-            <EditName value={name} setValue={setName} isAdmin={isAdmin} />
+            <EditName
+              value={props.pet.name}
+              changeSpecificField={props.changeSpecificField}
+              isAdmin={props.isAdmin}
+            />
           </div>
-          <EditText value={text} setValue={setText} isAdmin={isAdmin} />
+          <EditText
+            value={props.pet.caption}
+            setValue={(data) => props.changeSpecificField("caption", data)}
+            isAdmin={props.isAdmin}
+          />
         </div>
       </div>
-      {isAdmin && <AddSmallPicture value={images} setValue={setImages} />}
+      {props.isAdmin && <AddSmallPicture value={images} setValue={setImages} />}
     </Container>
   );
 };

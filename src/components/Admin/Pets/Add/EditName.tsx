@@ -4,7 +4,7 @@ import TextareaAutosize from "react-autosize-textarea";
 
 interface EditNameProps {
   value: string;
-  setValue: React.Dispatch<React.SetStateAction<string>>;
+  changeSpecificField: (tag: string, data: string | boolean) => void;
   isAdmin: boolean;
 }
 
@@ -16,15 +16,15 @@ const EditName = (props: EditNameProps) => {
   const handleClickEdit = () => {
     setEnableEdit(!enableEdit);
     if (!enableEdit && props.value === "กรุณาใส่ชื่อ...") {
-      props.setValue("");
+      props.changeSpecificField("name", "");
     } else if (enableEdit && props.value === "") {
-      props.setValue("กรุณาใส่ชื่อ...");
+      props.changeSpecificField("name", "กรุณาใส่ชื่อ...");
     }
   };
 
   const handleOnChange = (event: React.FormEvent<HTMLTextAreaElement>) => {
     const element = event.target as HTMLInputElement;
-    props.setValue(element.value);
+    props.changeSpecificField("name", element.value);
   };
 
   // focus at the end of text when enable

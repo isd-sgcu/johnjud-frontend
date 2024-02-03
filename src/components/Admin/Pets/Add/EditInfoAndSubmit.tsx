@@ -1,7 +1,10 @@
 import Button from "@/components/Button";
+import { Pet } from "@/types/pets";
 import { Icon } from "@iconify/react";
-import { useRef, useState } from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
+import DateInputInfo from "./DateInputInfo";
+import OptionInputInfo from "./OptionInputInfo";
 import TextInputInfo from "./TextInputInfo";
 import ToggleInputInfo from "./ToggleInputInfo";
 
@@ -14,36 +17,22 @@ export type info = {
 };
 
 interface EditInfoAndSubmitProps {
-  value: info;
-  setValue: React.Dispatch<React.SetStateAction<info>>;
-  onSubmit: (petinfo: info) => void;
+  value: Pet;
+  setValue: React.Dispatch<React.SetStateAction<Pet>>;
+  onSubmit: (pet: Pet) => void;
   isAdmin: boolean;
   isFav?: boolean;
+  changeSpecificField: (tag: string, data: string | boolean) => void;
   handleFavPressed?: () => void;
   id?: string;
 }
 
 const EditInfoAndSubmit = (props: EditInfoAndSubmitProps) => {
-  const ref = {
-    gender: useRef(null),
-    age: useRef(null),
-    nature: useRef(null),
-    vaccine: useRef(null),
-    sterile: useRef(null),
-  };
-  const pencilRef = useRef(null);
-  const postRef = useRef<HTMLDivElement | null>(null);
   const [enableEdit, setEnableEdit] = useState(false);
+
   const handleOnClick = () => {
-    if (enableEdit) {
-      props.setValue(showInfo);
-    } else {
-      setShowInfo(props.value);
-    }
     setEnableEdit(!enableEdit);
   };
-
-  const [showInfo, setShowInfo] = useState<info>(props.value);
 
   const handleOnChange = (
     event: React.FormEvent<HTMLTextAreaElement>,
@@ -51,16 +40,17 @@ const EditInfoAndSubmit = (props: EditInfoAndSubmitProps) => {
   ) => {
     const element = event.target as HTMLInputElement;
     const updateValue = { [tag]: element.value };
-    setShowInfo({
-      ...showInfo,
+    props.setValue({
+      ...props.value,
       ...updateValue,
     });
   };
-  const handleOnClickButton = (tag: keyof info) => {
+
+  const handleOnClickButton = (tag: keyof Pet) => {
     if (enableEdit) {
-      const updateValue = { [tag]: !showInfo[tag] };
-      setShowInfo({
-        ...showInfo,
+      const updateValue = { [tag]: !props.value[tag] };
+      props.setValue({
+        ...props.value,
         ...updateValue,
       });
     }
@@ -69,7 +59,7 @@ const EditInfoAndSubmit = (props: EditInfoAndSubmitProps) => {
   const handleOnPost = () => {
     if (enableEdit) {
       handleOnClick();
-      props.onSubmit(showInfo);
+      props.onSubmit(props.value);
     }
   };
 
@@ -85,7 +75,7 @@ const EditInfoAndSubmit = (props: EditInfoAndSubmitProps) => {
           </div>
 
           {props.isAdmin ? (
-            <div ref={pencilRef} tabIndex={0} className="ml-2 ">
+            <div tabIndex={0} className="ml-2 ">
               <Icon
                 icon={enableEdit ? "ph:floppy-disk" : "custom:pencil"}
                 className={
@@ -112,32 +102,29 @@ const EditInfoAndSubmit = (props: EditInfoAndSubmitProps) => {
         <div className="mt-4 flex flex-col lg:grid lg:grid-cols-2 lg:divide-x-2">
           <div className="flex flex-col space-y-3 lg:space-y-4 lg:pr-8">
             {/* Gender */}
-            <TextInputInfo
+            <OptionInputInfo
               text="เพศ:"
-              value={showInfo.gender}
+              value={props.value.gender === "male" ? "ผู้" : "เมีย"}
               enableEdit={enableEdit}
-              onChange={(event) => handleOnChange(event, "gender")}
-              inputRef={ref.gender}
+              changeSpecificField={props.changeSpecificField}
               icon={"ph:paw-print"}
             />
 
             {/* Age */}
-            <TextInputInfo
+            <DateInputInfo
               text="อายุ:"
-              value={showInfo.age}
+              date={props.value.birthdate}
               enableEdit={enableEdit}
-              onChange={(event) => handleOnChange(event, "age")}
-              inputRef={ref.age}
+              changeSpecificField={props.changeSpecificField}
               icon={"carbon:calendar"}
             />
 
             {/* Nature */}
             <TextInputInfo
               text="นิสัย:"
-              value={showInfo.nature}
+              value={props.value.habit}
               enableEdit={enableEdit}
-              onChange={(event) => handleOnChange(event, "nature")}
-              inputRef={ref.nature}
+              onChange={(event) => handleOnChange(event, "habit")}
               icon={"ph:music-notes"}
             />
           </div>
@@ -146,9 +133,8 @@ const EditInfoAndSubmit = (props: EditInfoAndSubmitProps) => {
             <div className="flex flex-row flex-wrap justify-center gap-4 lg:flex-col">
               {/* Vaccine */}
               <ToggleInputInfo
-                value={showInfo["vaccine"]}
-                onClick={() => handleOnClickButton("vaccine")}
-                inputRef={ref.vaccine}
+                value={props.value["is_vaccinated"]}
+                onClick={() => handleOnClickButton("is_vaccinated")}
                 enableEdit={enableEdit}
                 icon={"ph:eyedropper"}
                 text={"ฉีดวัคซีนแล้ว"}
@@ -156,9 +142,8 @@ const EditInfoAndSubmit = (props: EditInfoAndSubmitProps) => {
 
               {/* Sterile */}
               <ToggleInputInfo
-                value={showInfo["sterile"]}
-                onClick={() => handleOnClickButton("sterile")}
-                inputRef={ref.sterile}
+                value={props.value["is_sterile"]}
+                onClick={() => handleOnClickButton("is_sterile")}
                 enableEdit={enableEdit}
                 icon={"ph:medal"}
                 text={"ทำหมันแล้ว"}
@@ -167,7 +152,7 @@ const EditInfoAndSubmit = (props: EditInfoAndSubmitProps) => {
 
             {/* Post Buttom */}
             {props.isAdmin ? (
-              <div ref={postRef}>
+              <div>
                 <Button
                   className="mt-6 w-full text-2xl font-semibold"
                   text="โพสต์เลย"

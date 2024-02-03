@@ -37,6 +37,10 @@ const EditText = (props: EditTextProps) => {
     }
   }, [enableEdit]);
 
+  useEffect(() => {
+    setShowText(props.value);
+  }, [props.value]);
+
   return (
     <div className={`relative flex min-h-60 w-full md:h-full md:min-h-0`}>
       <TextareaAutosize

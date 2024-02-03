@@ -4,8 +4,8 @@ import PetBadge from "./PetBadge";
 interface AddThumbnailProps {
   valueThumbnail: File | null;
   setThumbnail: React.Dispatch<React.SetStateAction<File | null>>;
-  valueOrigin: string;
-  setOrigin: React.Dispatch<React.SetStateAction<string>>;
+  valueOrigin: boolean;
+  changeSpecificField: (tag: string, data: string | boolean) => void;
 }
 
 const AddThumbnail = (props: AddThumbnailProps) => {
@@ -74,7 +74,7 @@ const AddThumbnail = (props: AddThumbnailProps) => {
       <div className="absolute -top-[2px] right-4">
         <PetBadge
           value={props.valueOrigin}
-          setValue={props.setOrigin}
+          setValue={(data) => props.changeSpecificField("is_club_pet", data)}
           isEditabled
         />
       </div>
