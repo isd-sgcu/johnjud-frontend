@@ -1,4 +1,4 @@
-import { petCreateRequest } from "@/api/createPets";
+import { petCreateRequest } from "@/api/pets";
 import Container from "@/components/Container";
 import SmallPetCardList from "@/components/SmallPetCardList";
 import { useCreateImage } from "@/hooks/mutation/useCreateImage";
