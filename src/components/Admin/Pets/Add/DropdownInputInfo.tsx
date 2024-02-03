@@ -1,6 +1,6 @@
 import { Icon } from "@iconify/react/dist/iconify.js";
 import { useState } from "react";
-import Select, { SingleValue } from "react-select";
+import Select from "react-select";
 import CreatableSelect from "react-select/creatable";
 
 type OptionType = {
@@ -12,7 +12,7 @@ interface DropdownInputInfoProps {
   text: string;
   icon: string;
   value: string;
-  setValue: (newOption: SingleValue<OptionType>) => void;
+  setValue: (newOption: OptionType | null) => void;
   option: OptionType[];
   enableEdit: boolean;
   createable?: boolean;
@@ -22,7 +22,7 @@ const DropdownInputInfo = (props: DropdownInputInfoProps) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [currentOption, setCurrentOption] = useState<OptionType | null>(null);
 
-  const handleOnChangeOption = (newVal: SingleValue<OptionType>) => {
+  const handleOnChangeOption = (newVal: OptionType | null) => {
     setCurrentOption(newVal);
     props.setValue(newVal);
   };

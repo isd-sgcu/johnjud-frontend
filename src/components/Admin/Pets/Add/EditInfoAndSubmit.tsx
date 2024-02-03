@@ -3,7 +3,6 @@ import { colorOption, genderOption, typeOption } from "@/utils/PetInfoOption";
 import { Icon } from "@iconify/react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { SingleValue } from "react-select";
 import DropdownInputInfo, { OptionType } from "./DropdownInputInfo";
 import TextInputInfo from "./TextInputInfo";
 import ToggleInputInfo from "./ToggleInputInfo";
@@ -48,7 +47,7 @@ const EditInfoAndSubmit = (props: EditInfoAndSubmitProps) => {
   };
 
   const handleOnChangeDropDown = (
-    selectedOption: SingleValue<OptionType>,
+    selectedOption: OptionType | null,
     tag: keyof info
   ) => {
     if (enableEdit) {
