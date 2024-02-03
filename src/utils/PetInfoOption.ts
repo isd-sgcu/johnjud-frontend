@@ -2,11 +2,11 @@ import { OptionType } from "@/components/Admin/Pets/Add/DropdownInputInfo";
 
 const genderOption: OptionType[] = [
   {
-    label: "ชาย",
+    label: "ตัวผู้",
     value: "male",
   },
   {
-    label: "หญิง",
+    label: "ตัวเมีย",
     value: "female",
   },
 ];
