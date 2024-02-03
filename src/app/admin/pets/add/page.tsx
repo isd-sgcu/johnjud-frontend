@@ -51,30 +51,29 @@ const userCreate = () => {
     }
   }, [info.gender, info.type, info.color, info.age, name]);
 
-  async function getBase64(file: File): Promise<string> {
-    return await new Promise((resolve, reject) => {
-      const reader = new FileReader();
-      reader.readAsDataURL(file);
-      reader.onload = () => {
-        resolve(reader.result as string);
-      };
-      reader.onerror = reject;
-    });
-  }
+  // async function getBase64(file: File): Promise<string> {
+  //   return await new Promise((resolve, reject) => {
+  //     const reader = new FileReader();
+  //     reader.readAsDataURL(file);
+  //     reader.onload = () => {
+  //       resolve(reader.result as string);
+  //     };
+  //     reader.onerror = reject;
+  //   });
+  // }
 
   const postImageMutation = useCreateImage();
   const postPetMutation = useCreatePet();
 
   const handleSubmit = async () => {
-    const allImageBase64: string[] = await Promise.all(
-      (thumbnail ? [thumbnail, ...pictures] : pictures).map(getBase64)
+    const allImageFile: File[] = await Promise.all(
+      (thumbnail ? [thumbnail, ...pictures] : pictures)
     );
 
-    // TODO: post image at /image and store id (currently break hook rules)
-    // assume this is correct
+    // post image and get id : assume this is correct
     const allImage: string[] = (
       await Promise.all(
-        allImageBase64.map(async (image) => {
+        allImageFile.map(async (image) => {
           const imageResponse = await postImageMutation.mutateAsync({
             file: image,
           });
@@ -85,7 +84,8 @@ const userCreate = () => {
       .filter((id) => id !== undefined)
       .map((id) => id ?? ""); // map for ts type checking
 
-    if (info.gender === "-") return; // already detect "-" at other info
+    if (info.gender === "-") return; // already detect "-" by disable post button
+       
     const petData: petCreateRequest = {
       type: info.type,
       name: name,
@@ -103,7 +103,6 @@ const userCreate = () => {
       images: allImage,
     };
 
-    console.log(petData);
     postPetMutation.mutate(petData);
   };
 

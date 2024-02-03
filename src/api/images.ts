@@ -2,7 +2,7 @@ import { Image } from "@/types/common";
 import axios from "axios";
 
 type postImageRequest = {
-  file: string; // base64
+  file: File;
   pet_id?: string;
 };
 
