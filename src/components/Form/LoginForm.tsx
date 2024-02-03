@@ -1,43 +1,45 @@
+import type { SignInCredentials } from "@/api/auth/signIn";
 import checkIcon from "@/assets/formIcon/check.svg";
 import lockIcon from "@/assets/formIcon/lock.svg";
 import userIcon from "@/assets/formIcon/user.svg";
 import React from "react";
+import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
 import SubmitButton from "./SubmitButton";
 
 interface LoginFormProps {
-  setEmail: (email: string) => void;
-  setPassword: (password: string) => void;
-  handleSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
+  mutation: (data: SignInCredentials) => void;
 }
 
-const LoginForm: React.FC<LoginFormProps> = ({
-  setEmail,
-  setPassword,
-  handleSubmit,
-}) => {
+const LoginForm: React.FC<LoginFormProps> = ({ mutation }) => {
+  const { register, handleSubmit } = useForm<SignInCredentials>();
+
+  const onSubmit = (data: SignInCredentials) => {
+    mutation(data);
+  };
+
   return (
     <form
       className="flex w-full flex-col items-center justify-center space-y-20 sm:w-1/2 md:w-6/12 lg:w-4/12 xl:w-3/12"
-      onSubmit={handleSubmit}
+      onSubmit={handleSubmit(onSubmit)}
     >
       <div className="flex w-full flex-col items-center justify-center space-y-4">
         <div className="flex w-full items-center rounded-lg bg-accent-light-gray px-2.5 py-2.5 outline-none">
           <img src={userIcon} alt="Icon" className="mx-2" />
           <input
+            {...register("email", { required: true })}
             type="email"
             placeholder="อีเมล"
             className="w-full bg-accent-light-gray font-semibold text-accent-gray outline-none"
-            onChange={(e) => setEmail(e.target.value)}
           />
         </div>
         <div className="flex w-full items-center rounded-lg bg-accent-light-gray px-2.5 py-2.5 outline-none">
           <img src={lockIcon} alt="Icon" className="mx-2" />
           <input
+            {...register("password", { required: true })}
             type="password"
             placeholder="รหัสผ่าน"
             className="w-full bg-accent-light-gray font-semibold text-accent-gray outline-none"
-            onChange={(e) => setPassword(e.target.value)}
           />
         </div>
         <div className="flex w-full justify-between">
