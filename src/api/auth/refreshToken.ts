@@ -1,5 +1,6 @@
 import axios from "axios";
 import useAuthStore from "@/store/authStore";
+
 interface RefreshTokenResponse {
   access_token: string;
   expires_in: number;
@@ -7,15 +8,15 @@ interface RefreshTokenResponse {
 }
 
 interface RefreshTokenCredentials {
-  refresh_token: string;
+    refresh_token: string;
 }
 
 const refreshToken = async (
-  refresh_token: string
+  refresh_token: string,
 ): Promise<RefreshTokenResponse> => {
   
-  const { accessToken } = useAuthStore();
-  console.log("hello world");
+  const { accessToken } = useAuthStore.getState();
+
   const response = await axios.post<RefreshTokenResponse>(
     `${import.meta.env.VITE_API_URL}/auth/refreshToken`,
     {
