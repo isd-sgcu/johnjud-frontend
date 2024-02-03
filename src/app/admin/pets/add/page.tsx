@@ -67,7 +67,7 @@ const userCreate = () => {
 
   const handleSubmit = async () => {
     const allImageFile: File[] = await Promise.all(
-      (thumbnail ? [thumbnail, ...pictures] : pictures)
+      thumbnail ? [thumbnail, ...pictures] : pictures
     );
 
     // post image and get id : assume this is correct
@@ -85,7 +85,7 @@ const userCreate = () => {
       .map((id) => id ?? ""); // map for ts type checking
 
     if (info.gender === "-") return; // already detect "-" by disable post button
-       
+
     const petData: petCreateRequest = {
       type: info.type,
       name: name,
