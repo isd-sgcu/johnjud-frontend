@@ -17,14 +17,14 @@ const ForgetPassword = () => {
 
   const { register, handleSubmit } = useForm<formValue>();
 
-  const forgetPassword = useForgetPassword();
+  const { mutate } = useForgetPassword();
 
   const { isLoggedIn } = useAuthStore();
 
   const navigate = useNavigate();
 
   const onSubmit = (data: formValue) => {
-    forgetPassword.mutate(data);
+    mutate(data);
   };
 
   useEffect(() => {
