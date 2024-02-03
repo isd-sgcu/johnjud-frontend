@@ -3,11 +3,11 @@ import Container from "@/components/Container";
 import EmailVerification from "@/components/Modal/EmailVerification";
 import useForgetPassword from "@/hooks/auth/useForgetPassword";
 import MainLayout from "@/layouts/MainLayout";
+import useAuthStore from "@/store/authStore";
 import { Icon } from "@iconify/react/dist/iconify.js";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
-
+import { Link, useNavigate } from "react-router-dom";
 type formValue = {
   email: string;
 };
@@ -17,8 +17,21 @@ const ForgetPassword = () => {
 
   const { register, handleSubmit } = useForm<formValue>();
 
-  const { mutate } = useForgetPassword();
-  const onSubmit = (data: formValue) => {};
+  const forgetPassword = useForgetPassword();
+
+  const { isLoggedIn } = useAuthStore();
+
+  const navigate = useNavigate();
+
+  const onSubmit = (data: formValue) => {
+    forgetPassword.mutate(data);
+  };
+
+  useEffect(() => {
+    if (isLoggedIn) {
+      navigate("/home");
+    }
+  }, [isLoggedIn, navigate]);
 
   return (
     <Container>
@@ -55,7 +68,7 @@ const ForgetPassword = () => {
           />
           <div className="flex flex-row items-center justify-center">
             <Link
-              to="/admin"
+              to="/login"
               className="flex flex-row items-center justify-center gap-2"
             >
               <Icon icon="ph:arrow-left" className="text-2xl text-primary" />
