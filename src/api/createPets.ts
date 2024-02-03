@@ -7,12 +7,19 @@ type petCreateRequest = Omit<Pet, "id" | "images"> & {
 
 interface petCreateResponse extends Pet {}
 
+const token: string = "";
+
 const postPetCreate = async (
   data: petCreateRequest
 ): Promise<petCreateResponse> => {
   const response = await axios.post<petCreateResponse>(
     `${import.meta.env.VITE_API_URL}/pets/create`,
-    data
+    data,
+    {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    }
   );
   return response.data;
 };

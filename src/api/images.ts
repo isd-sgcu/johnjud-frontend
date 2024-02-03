@@ -8,12 +8,19 @@ type postImageRequest = {
 
 interface postImageResponse extends Image {}
 
+const token: string = "";
+
 const postImage = async (
   data: postImageRequest
 ): Promise<postImageResponse> => {
   const response = await axios.post<postImageResponse>(
     `${import.meta.env.VITE_API_URL}/images`,
-    data
+    data,
+    {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    }
   );
   return response.data;
 };
