@@ -1,5 +1,5 @@
-import axios from "axios";
 import useAuthStore from "@/store/authStore";
+import axios from "axios";
 
 interface RefreshTokenResponse {
   access_token: string;
@@ -8,13 +8,12 @@ interface RefreshTokenResponse {
 }
 
 interface RefreshTokenCredentials {
-    refresh_token: string;
+  refresh_token: string;
 }
 
 const refreshToken = async (
-  refresh_token: string,
+  refresh_token: string
 ): Promise<RefreshTokenResponse> => {
-  
   const { accessToken } = useAuthStore.getState();
 
   const response = await axios.post<RefreshTokenResponse>(
@@ -28,7 +27,7 @@ const refreshToken = async (
       },
     }
   );
-  
+
   return response.data;
 };
 
