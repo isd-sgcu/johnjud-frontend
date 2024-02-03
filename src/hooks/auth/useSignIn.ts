@@ -1,8 +1,8 @@
 import { signIn, SignInCredentials, SignInResponse } from "@/api/auth/signIn";
 import useAuthStore from "@/store/authStore";
+import { calculateExpiryTime } from "@/utils/calculateExpiryTime";
 import { useMutation, UseMutationOptions } from "@tanstack/react-query";
 import { useNavigate } from "react-router-dom";
-import { calculateExpiryTime } from "@/utils/calculateExpiryTime";
 const useSignIn = () => {
   const { setAuth } = useAuthStore();
   const navigate = useNavigate();

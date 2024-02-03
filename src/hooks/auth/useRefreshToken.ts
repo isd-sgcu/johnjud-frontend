@@ -8,8 +8,6 @@ import { calculateExpiryTime } from "@/utils/calculateExpiryTime";
 import { useMutation, UseMutationOptions } from "@tanstack/react-query";
 
 const useRefreshToken = () => {
-
-  
   const mutationOptions: UseMutationOptions<
     RefreshTokenResponse,
     Error,
@@ -20,7 +18,9 @@ const useRefreshToken = () => {
     onSuccess: (data: RefreshTokenResponse) => {
       console.log(data);
       const expriedAt = calculateExpiryTime(data.expires_in);
-      useAuthStore.getState().setAuth(data.access_token, data.refresh_token, expriedAt);
+      useAuthStore
+        .getState()
+        .setAuth(data.access_token, data.refresh_token, expriedAt);
     },
     onError: (error: Error) => {
       console.log(error);

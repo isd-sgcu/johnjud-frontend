@@ -1,9 +1,9 @@
+import { AuthState } from "@/types/auth";
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
-import { AuthState } from "@/types/auth";
 const useAuthStore = create<AuthState>()(
   persist(
-    (set,get) => ({
+    (set, get) => ({
       accessToken: null,
       refreshToken: null,
       isLoggedIn: false,
@@ -12,13 +12,13 @@ const useAuthStore = create<AuthState>()(
         set({ accessToken, refreshToken, expriedAt, isLoggedIn: true });
       },
       clearAuth: () => {
-        set({ accessToken: null, refreshToken: null, isLoggedIn: false })
+        set({ accessToken: null, refreshToken: null, isLoggedIn: false });
       },
       validateSession: () => {
         // compare the current date with the expiry date
         const { expriedAt } = get();
         if (expriedAt && new Date() < expriedAt) {
-            return true;
+          return true;
         }
         return false;
       },
