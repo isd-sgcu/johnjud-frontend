@@ -25,7 +25,7 @@ const DateInputInfo = (props: DateInputInfoProps) => {
         <div className="flex flex-grow">
           <input
             type="date"
-            className="w-full rounded-lg border border-accent-gray-variant px-2 py-1"
+            className="w-full rounded-lg border border-accent-gray-variant px-2 py-1 font-semibold"
             onChange={handleOnChange}
             value={props.value}
           />
