@@ -62,7 +62,6 @@ const DropdownInputInfo = (props: DropdownInputInfoProps) => {
                 }`,
               dropdownIndicator: () => `${isMenuOpen ? "rotate-180" : ""}`,
             }}
-            // TODO set onChange
             onChange={handleOnChangeOption}
             components={{ IndicatorSeparator: () => null }}
             placeholder="ตัวเลือก..."
@@ -96,7 +95,6 @@ const DropdownInputInfo = (props: DropdownInputInfoProps) => {
                 }`,
               dropdownIndicator: () => `${isMenuOpen ? "rotate-180" : ""}`,
             }}
-            // TODO set onChange
             onChange={handleOnChangeOption}
             components={{ IndicatorSeparator: () => null }}
             placeholder="ตัวเลือก..."
