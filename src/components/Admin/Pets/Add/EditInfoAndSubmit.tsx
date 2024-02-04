@@ -4,6 +4,7 @@ import { Icon } from "@iconify/react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import DropdownInputInfo, { OptionType } from "./DropdownInputInfo";
+import DateInputInfo from "./DateInputInfo";
 import TextInputInfo from "./TextInputInfo";
 import ToggleInputInfo from "./ToggleInputInfo";
 
@@ -46,6 +47,15 @@ const EditInfoAndSubmit = (props: EditInfoAndSubmitProps) => {
     setEnableEdit(!enableEdit);
   };
 
+  const handleOnChangeDate = (newDate: string, tag: keyof info) => {
+    if (enableEdit) {
+      const updateValue = { [tag]: newDate }
+      setShowInfo({
+        ...showInfo,
+        ...updateValue,
+      })
+    }
+  }
   const handleOnChangeDropDown = (
     selectedOption: OptionType | null,
     tag: keyof info
@@ -155,13 +165,12 @@ const EditInfoAndSubmit = (props: EditInfoAndSubmitProps) => {
             />
 
             {/* Age */}
-            <TextInputInfo
+            <DateInputInfo
               text="วันเกิด:"
               value={showInfo.age}
+              onChange={(newDate) => handleOnChangeDate(newDate, "age")}
               enableEdit={enableEdit}
-              onChange={(event) => handleOnChangeTextArea(event, "age")}
               icon={"carbon:calendar"}
-              usePlaceholder
             />
 
             {/* Nature */}
@@ -199,9 +208,8 @@ const EditInfoAndSubmit = (props: EditInfoAndSubmitProps) => {
             {props.isAdmin ? (
               <div className="mt-6 flex w-full flex-col items-center gap-2">
                 <p
-                  className={`text-sm font-light text-accent-red ${
-                    props.enableSubmit ? "hidden" : "visible"
-                  }`}
+                  className={`text-sm font-light text-accent-red ${props.enableSubmit ? "hidden" : "visible"
+                    }`}
                 >
                   โปรดกรอกข้อมูลที่จำเป็นทั้งหมดก่อนโพสต์
                 </p>
