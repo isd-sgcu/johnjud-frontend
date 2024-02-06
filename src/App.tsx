@@ -1,7 +1,10 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { StrictMode, Suspense } from "react";
 import { RouterProvider } from "react-router-dom";
+import PetList from "./components/Card/PetList.tsx";
 import { router } from "./routes";
+
+const queryClient = new QueryClient();
 
 function AppRoot() {
   return (
@@ -23,6 +26,7 @@ function App() {
   return (
     <StrictMode>
       <QueryClientProvider client={queryClient}>
+        <PetList />
         <AppRoot />
       </QueryClientProvider>
     </StrictMode>

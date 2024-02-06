@@ -7,8 +7,9 @@ import { useDeletePet } from "@/hooks/mutation/useDeletePet";
 import { useUpdateVisibility } from "@/hooks/mutation/useUpdateVisibility";
 import { UtcStringToYearMonth } from "@/utils/dateConverter";
 import { Icon } from "@iconify/react";
-import { useCallback, useMemo, useState } from "react";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { useMemo, useState } from "react";
+import { Link, useLocation } from "react-router-dom";
+import useStore from "@/store/favStore";
 
 type PetCardProps = {
   id: string;
@@ -24,7 +25,24 @@ type PetCardProps = {
   isVisibled: boolean;
 };
 
-const PetCard = ({
+const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+  event.preventDefault();
+  event.stopPropagation();
+};
+
+const toggleHandle = (event: React.MouseEvent<HTMLButtonElement>) => {
+  handleClick(event);
+};
+
+const likeHandle = (event: React.MouseEvent<HTMLButtonElement>) => {
+  handleClick(event);
+};
+
+const adoptHandle = (event: React.MouseEvent<HTMLButtonElement>) => {
+  handleClick(event);
+};
+
+const PetCard: React.FC<PetCardProps> = ({
   id,
   image,
   name,
@@ -81,104 +99,58 @@ const PetCard = ({
   const adoptedButton = useMemo(() => {
     return status === "adopted" ? "disabled" : "accent-red";
   }, [status]);
-
-  const handleLikePet = (event: React.MouseEvent<HTMLButtonElement>) => {
-    event.preventDefault();
-    setLiked((prev) => !prev);
-    console.log("liked : " + id);
-  };
-
-  const handleAdopt = (event: React.MouseEvent<HTMLButtonElement>) => {
-    event.preventDefault();
-    navigate(`/pets/${id}/adopt`);
-  };
-
+  const addToFavorites = useStore((state) => state.addToFavorites);
+  const removeFromFavorites = useStore((state) => state.removeFromFavorites);
   return (
-    <>
-      <Link to={linkTo}>
-        <div className="flex w-80 flex-col items-start justify-start rounded-2xl bg-white p-4 shadow">
-          <img
-            src={image ? image : dog}
-            alt={name}
-            className="mb-4 h-72 w-72 rounded-2xl object-cover object-center shadow"
-          />
-          <div className="mb-2 flex w-72 flex-row items-center justify-between">
-            <p className="w-3/4 overflow-hidden text-2xl font-bold text-black">
-              {name}
-            </p>
-            {role === "admin" ? (
-              <button
-                onClick={(e: React.MouseEvent<HTMLButtonElement>) => {
-                  e.preventDefault();
-                  setOpenDeleteModal(true);
-                }}
-                className="hover:brightness-90"
-              >
-                <Icon
-                  icon={"ph:trash"}
-                  className="relative h-8 w-8 text-accent-red"
-                />
-              </button>
-            ) : (
-              <button onClick={handleLikePet} className="hover:brightness-90">
-                <Icon
-                  icon={liked ? "ph:heart-fill" : "ph:heart"}
-                  className="relative h-8 w-8 text-accent-red"
-                />
-              </button>
-            )}
-          </div>
-          <div className="flex w-full flex-row items-end justify-between gap-2">
-            <div className="w-3/5 space-y-1">
-              <PetDetail
-                icon={"ph:paw-print"}
-                description={`${petGender}, ${age}`}
+    <Link to={linkTo}>
+      <div className="flex w-80 flex-col items-start justify-start rounded-2xl bg-white p-4 shadow">
+        <img
+          src={image}
+          alt={name}
+          className="mb-4 h-72 w-72 rounded-2xl object-cover object-center shadow"
+        />
+        <div className="mb-2 flex w-72 flex-row items-center justify-between">
+          <p className="text-2xl font-bold text-black">{name}</p>
+          {role === "user" ? (
+            <button
+              onClick={(event: React.MouseEvent<HTMLButtonElement>) => {(isLiked ? removeFromFavorites(id) : addToFavorites(id))
+                {
+                  isLiked ? "Remove from Favorites" : "Add to Favorites";
+                }
+              }}
+            >
+              <Icon
+                icon={role === "user" ? likedHeart : "ph:pencil-simple"}
+                className="relative h-8 w-8 text-accent-red"
               />
-              <PetDetail icon={"ph:music-notes"} description={habit} />
-              <PetDetail icon={"ph:medal"} description={petSterile} />
-            </div>
-            {role === "user" ? (
-              <Button
-                text={"รับเลี้ยง"}
-                variant={adoptedButton}
-                rounded="full"
-                className="max-h-10 max-w-28 flex-shrink-0 text-base"
-                onClick={handleAdopt}
-              />
-            ) : (
-              <TogglePetButton
-                visibility={visibility}
-                onClick={toggleVisibility}
-              />
-            )}
-          </div>
+            </button>
+          ) : (
+            <div></div>
+          )}
         </div>
-      </Link>
-
-      <Modal
-        title={"ยืนยันการลบสัตว์หรือไม่"}
-        open={openDeleteModal}
-        setOpen={setOpenDeleteModal}
-        button={
-          <>
-            <Button
-              text="ยกเลิก"
-              variant="accent-red"
-              rounded="full"
-              onClick={() => setOpenDeleteModal(false)}
+        <div className="flex w-72 flex-row items-end justify-between">
+          <div className=" items-center space-y-1">
+            <PetDetail
+              icon={"ph:paw-print"}
+              description={`${petGender}, อายุ ${years} ปี ${months} เดือน`}
             />
+            <PetDetail icon={"ph:music-notes"} description={habit} />
+            <PetDetail icon={"ph:medal"} description={petSterile} />
+          </div>
+          {role === "user" ? (
             <Button
-              text="ตกลง"
-              variant="primary"
+              text={"รับเลี้ยง"}
+              variant={adoptedButton}
               rounded="full"
-              onClick={() => deletePet(id)}
+              className="max-h-10 max-w-28 text-base"
+              onClick={adoptHandle}
             />
-          </>
-        }
-      >
-        <p className="text-accent-gray">ยินยันการลบ {name} หรือไม่</p>
-      </Modal>
-    </>
+          ) : (
+            <TogglePetButton visibility={isVisibled} onClick={toggleHandle} />
+          )}
+        </div>
+      </div>
+    </Link>
   );
 };
 
