@@ -1,11 +1,11 @@
 import Button from "@/components/Button";
 import PetDetail from "@/components/Card/PetCard/PetDetail";
 import TogglePetButton from "@/components/Card/PetCard/TogglePetButton";
+import useStore from "@/store/favStore";
 import { UtcStringToYearMonth } from "@/utils/dateConverter";
 import { Icon } from "@iconify/react";
 import { useMemo, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import useStore from "@/store/favStore";
 
 type PetCardProps = {
   id: string;
@@ -80,8 +80,17 @@ const PetCard: React.FC<PetCardProps> = ({
   const adoptedButton = useMemo(() => {
     return status === "adopted" ? "disabled" : "accent-red";
   }, [status]);
+
   const addToFavorites = useStore((state) => state.addToFavorites);
   const removeFromFavorites = useStore((state) => state.removeFromFavorites);
+  const handleFavoriteClick = () => {
+    if (isLiked) {
+      removeFromFavorites(id);
+    } else {
+      addToFavorites(id);
+    }
+  };
+
   return (
     <Link to={linkTo}>
       <div className="flex w-80 flex-col items-start justify-start rounded-2xl bg-white p-4 shadow">
@@ -92,21 +101,16 @@ const PetCard: React.FC<PetCardProps> = ({
         />
         <div className="mb-2 flex w-72 flex-row items-center justify-between">
           <p className="text-2xl font-bold text-black">{name}</p>
-          {role === "user" ? (
-            <button
-              onClick={(event: React.MouseEvent<HTMLButtonElement>) => {(isLiked ? removeFromFavorites(id) : addToFavorites(id))
-                {
-                  isLiked ? "Remove from Favorites" : "Add to Favorites";
-                }
-              }}
-            >
-              <Icon
-                icon={role === "user" ? likedHeart : "ph:pencil-simple"}
-                className="relative h-8 w-8 text-accent-red"
-              />
+          {role === "user" && (
+            <button onClick={handleFavoriteClick}>
+              {isLiked ? "Remove from Favorites" : "Add to Favorites"}
             </button>
-          ) : (
-            <div></div>
+          )}
+          {role === "user" && (
+            <Icon
+              icon={role === "user" ? likedHeart : "ph:pencil-simple"}
+              className="relative h-8 w-8 text-accent-red"
+            />
           )}
         </div>
         <div className="flex w-72 flex-row items-end justify-between">
