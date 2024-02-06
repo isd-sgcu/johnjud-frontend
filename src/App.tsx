@@ -4,7 +4,6 @@ import { RouterProvider } from "react-router-dom";
 import PetList from "./components/Card/PetList.tsx";
 import { router } from "./routes";
 
-const queryClient = new QueryClient();
 
 function AppRoot() {
   return (
