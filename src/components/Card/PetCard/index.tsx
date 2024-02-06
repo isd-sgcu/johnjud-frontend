@@ -5,6 +5,7 @@ import { UtcStringToYearMonth } from "@/utils/dateConverter";
 import { Icon } from "@iconify/react";
 import { useMemo, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
+import useStore from "@/store/favStore";
 
 type PetCardProps = {
   id: string;
@@ -37,7 +38,7 @@ const adoptHandle = (event: React.MouseEvent<HTMLButtonElement>) => {
   handleClick(event);
 };
 
-const PetCard = ({
+const PetCard: React.FC<PetCardProps> = ({
   id,
   image,
   name,
@@ -79,7 +80,8 @@ const PetCard = ({
   const adoptedButton = useMemo(() => {
     return status === "adopted" ? "disabled" : "accent-red";
   }, [status]);
-
+  const addToFavorites = useStore((state) => state.addToFavorites);
+  const removeFromFavorites = useStore((state) => state.removeFromFavorites);
   return (
     <Link to={linkTo}>
       <div className="flex w-80 flex-col items-start justify-start rounded-2xl bg-white p-4 shadow">
@@ -92,9 +94,10 @@ const PetCard = ({
           <p className="text-2xl font-bold text-black">{name}</p>
           {role === "user" ? (
             <button
-              onClick={(event: React.MouseEvent<HTMLButtonElement>) => {
-                likeHandle && likeHandle(event);
-                setLiked(!liked);
+              onClick={(event: React.MouseEvent<HTMLButtonElement>) => {(isLiked ? removeFromFavorites(id) : addToFavorites(id))
+                {
+                  isLiked ? "Remove from Favorites" : "Add to Favorites";
+                }
               }}
             >
               <Icon

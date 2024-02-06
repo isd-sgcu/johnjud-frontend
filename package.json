@@ -24,7 +24,9 @@
     "react": "^18.2.0",
     "react-carousel": "^4.3.0",
     "react-dom": "^18.2.0",
-    "react-responsive-carousel": "^3.2.23"
+    "react-query": "^3.39.3",
+    "react-responsive-carousel": "^3.2.23",
+    "zustand": "^4.5.0"
   },
   "devDependencies": {
     "@iconify/react": "^4.1.1",
