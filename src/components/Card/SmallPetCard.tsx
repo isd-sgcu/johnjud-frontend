@@ -1,3 +1,4 @@
+import dog from "@/assets/dog.webp";
 import { UtcStringToYearMonth } from "@/utils/dateConverter";
 import { Icon } from "@iconify/react";
 import { useMemo } from "react";
@@ -37,7 +38,11 @@ const SmallPetCard = ({
       <div className="w-48 rounded-2xl bg-white p-3 shadow-md">
         <div className="space-y-2">
           <div className="flex justify-center rounded-2xl ">
-            <img className="rounded-2xl shadow-lg" src={image} alt={name} />
+            <img
+              className="rounded-2xl shadow-lg"
+              src={image ? dog : image}
+              alt={name}
+            />
           </div>
           <div className="space-y-2">
             <div className="text-nowrap text-base font-semibold text-black">
