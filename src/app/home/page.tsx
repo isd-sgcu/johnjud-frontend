@@ -28,7 +28,7 @@ const MainPage = () => {
         </div>
         <div className="flex w-full flex-col items-center space-y-6 md:items-start">
           <div className="hidden md:flex">
-            <Heading onSearch quantity={data?.meta.total} />
+            <Heading onSearch quantity={data?.metadata.total} />
           </div>
           <Search variant="green" />
           <Filter />
@@ -38,13 +38,13 @@ const MainPage = () => {
         <Divider variant="primary" />
       </Container>
       <Container className="md:hidden">
-        <Heading onSearch quantity={data?.meta.total} />
+        <Heading onSearch quantity={data?.metadata.total} />
       </Container>
       <Container className="flex justify-center md:justify-between">
         <div className="hidden md:flex md:w-4/12">
           <Banner imageUrl={adsImage1} />
         </div>
-        {data && <MiniPetCardContainer petsData={data.pets} />}
+        {data && <MiniPetCardContainer petsData={data.pets.slice(0, 8)} />}
       </Container>
       <Container className="flex items-center justify-center md:justify-end">
         <Button
