@@ -29,7 +29,7 @@ const ForgetPassword = () => {
 
   useEffect(() => {
     if (isLoggedIn) {
-      navigate("/home");
+      navigate("/admin/pets");
     }
   }, [isLoggedIn, navigate]);
 
@@ -68,7 +68,7 @@ const ForgetPassword = () => {
           />
           <div className="flex flex-row items-center justify-center">
             <Link
-              to="/login"
+              to="/admin"
               className="flex flex-row items-center justify-center gap-2"
             >
               <Icon icon="ph:arrow-left" className="text-2xl text-primary" />

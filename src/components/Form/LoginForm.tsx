@@ -57,7 +57,7 @@ const LoginForm: React.FC<LoginFormProps> = ({ mutation }) => {
             <span className="ml-2 text-black">จดจำฉัน</span>
           </label>
           <Link
-            to="/forget-password"
+            to="/admin/forget-password"
             className="text-base font-medium text-accent-gray underline"
           >
             ลืมรหัสผ่าน?
@@ -66,15 +66,6 @@ const LoginForm: React.FC<LoginFormProps> = ({ mutation }) => {
       </div>
       <div className="flex flex-col items-center justify-center">
         <SubmitButton text="เข้าสู่ระบบ" />
-        <div className="flex space-x-2 px-2.5 py-2">
-          <span className="text-base text-accent-gray">ยังไม่มีบัญชี?</span>
-          <Link
-            to="/register"
-            className="text-base font-semibold text-black underline"
-          >
-            ลงทะเบียน
-          </Link>
-        </div>
       </div>
     </form>
   );
