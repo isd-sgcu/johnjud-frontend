@@ -1,3 +1,4 @@
+import dog from "@/assets/dog.webp";
 import Button from "@/components/Button";
 import PetDetail from "@/components/Card/PetCard/PetDetail";
 import TogglePetButton from "@/components/Card/PetCard/TogglePetButton";
@@ -84,7 +85,7 @@ const PetCard = ({
     <Link to={linkTo}>
       <div className="flex w-80 flex-col items-start justify-start rounded-2xl bg-white p-4 shadow">
         <img
-          src={image}
+          src={image ? dog : image}
           alt={name}
           className="mb-4 h-72 w-72 rounded-2xl object-cover object-center shadow"
         />
