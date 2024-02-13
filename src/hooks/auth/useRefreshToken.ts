@@ -16,7 +16,6 @@ const useRefreshToken = () => {
     mutationFn: (credentials: RefreshTokenCredentials) =>
       refreshToken(credentials.refresh_token),
     onSuccess: (data: RefreshTokenResponse) => {
-      console.log(data);
       const expriedAt = calculateExpiryTime(data.expires_in);
       useAuthStore
         .getState()

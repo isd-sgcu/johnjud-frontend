@@ -13,7 +13,7 @@ const Login = () => {
 
   useEffect(() => {
     if (isLoggedIn) {
-      navigate("/home");
+      navigate("/admin/pets");
     }
   }, [isLoggedIn, navigate]);
 

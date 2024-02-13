@@ -3,6 +3,7 @@ import Container from "@/components/Container";
 import useResetPassword from "@/hooks/auth/useResetPassword";
 import MainLayout from "@/layouts/MainLayout";
 import { Icon } from "@iconify/react/dist/iconify.js";
+import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
 
@@ -14,7 +15,14 @@ const resetPassword = () => {
   const { register, handleSubmit } = useForm<formValue>();
   const { mutate } = useResetPassword();
 
-  const resetPasswordToken = window.location.pathname.split("/").pop();
+  const [resetPasswordToken, setResetPasswordToken] = useState<string | null>(
+    null
+  );
+
+  useEffect(() => {
+    const token = window.location.pathname.split("/").pop() || null;
+    setResetPasswordToken(token);
+  }, []);
 
   const onSubmit = (data: formValue) => {
     if (resetPasswordToken) {
