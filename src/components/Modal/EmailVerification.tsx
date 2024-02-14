@@ -10,15 +10,15 @@ const EmailVerification = () => {
       <div className="fixed bottom-48 left-[50%] z-[3000] -translate-x-1/2 rounded-2xl bg-white p-8">
         <div className="flex flex-col items-center gap-4 ">
           <div className="flex flex-row gap-1">
-            <div className="text-primary text-xl font-semibold leading-[21px]">
+            <div className="text-xl font-semibold leading-[21px] text-primary">
               อีเมลรีเซ็ตถูกส่งแล้ว
             </div>
             <Icon
               icon="ph:check-circle-bold"
-              className="text-primary text-2xl"
+              className="text-2xl text-primary"
             />
           </div>
-          <div className="text-accent-gray flex flex-col gap-1 text-center text-sm font-normal tracking-tight">
+          <div className="flex flex-col gap-1 text-center text-sm font-normal tracking-tight text-accent-gray">
             <div>กรุณาเช็คอีเมลของท่าน</div>
             <div>หากไม่พบอีเมลกรุณาตรวจสอบ ถังขยะ</div>
           </div>
