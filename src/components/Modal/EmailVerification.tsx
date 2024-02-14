@@ -10,21 +10,21 @@ const EmailVerification = () => {
       <div className="fixed bottom-48 left-[50%] z-[3000] -translate-x-1/2 rounded-2xl bg-white p-8">
         <div className="flex flex-col items-center gap-4 ">
           <div className="flex flex-row gap-1">
-            <div className="text-xl font-semibold leading-[21px] text-primary">
+            <div className="text-primary text-xl font-semibold leading-[21px]">
               อีเมลรีเซ็ตถูกส่งแล้ว
             </div>
             <Icon
               icon="ph:check-circle-bold"
-              className="text-2xl text-primary"
+              className="text-primary text-2xl"
             />
           </div>
-          <div className="flex flex-col gap-1 text-center text-sm font-normal tracking-tight text-accent-gray">
+          <div className="text-accent-gray flex flex-col gap-1 text-center text-sm font-normal tracking-tight">
             <div>กรุณาเช็คอีเมลของท่าน</div>
             <div>หากไม่พบอีเมลกรุณาตรวจสอบ ถังขยะ</div>
           </div>
-          <Link to={"/admin/reset-password"}>
+          <Link to={"/admin"}>
             <Button
-              text={"ไปที่หน้ารีเซ็ทรหัสผ่าน"}
+              text={"ไปที่หน้าล๊อคอิน"}
               variant={"primary"}
               rounded="full"
               className="w-[209px] py-2 text-sm"
