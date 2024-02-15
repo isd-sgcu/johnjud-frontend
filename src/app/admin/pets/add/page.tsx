@@ -1,8 +1,8 @@
-import { petCreateRequest } from "@/api/pets";
+import { postPetRequest } from "@/api/pets";
 import Container from "@/components/Container";
 import SmallPetCardList from "@/components/SmallPetCardList";
-import { useCreateImage } from "@/hooks/mutation/useCreateImage";
-import { useCreatePet } from "@/hooks/mutation/useCreatePet";
+import { useCreateImage } from "@/hooks/mutation/usePostImage";
+import { useCreatePet } from "@/hooks/mutation/usePostPet";
 import { usePetsQuery } from "@/hooks/queries/usePetsQuery";
 import { Icon } from "@iconify/react";
 import { useEffect, useState } from "react";
@@ -51,17 +51,6 @@ const userCreate = () => {
     }
   }, [info.gender, info.type, info.color, info.age, name]);
 
-  // async function getBase64(file: File): Promise<string> {
-  //   return await new Promise((resolve, reject) => {
-  //     const reader = new FileReader();
-  //     reader.readAsDataURL(file);
-  //     reader.onload = () => {
-  //       resolve(reader.result as string);
-  //     };
-  //     reader.onerror = reject;
-  //   });
-  // }
-
   const postImageMutation = useCreateImage();
   const postPetMutation = useCreatePet();
 
@@ -77,6 +66,7 @@ const userCreate = () => {
           const imageResponse = await postImageMutation.mutateAsync({
             file: image,
           });
+          console.log(imageResponse);
           return imageResponse.id;
         })
       )
@@ -86,23 +76,24 @@ const userCreate = () => {
 
     if (info.gender === "-") return; // already detect "-" by disable post button
 
-    const petData: petCreateRequest = {
+    const petData: postPetRequest = {
       type: info.type,
       name: name,
       birthdate: info.age,
       gender: info.gender,
       color: info.color,
-      pattern: "",
+      pattern: "a", // remove later
       habit: info.nature,
       caption: text,
       status: "findHome",
       is_sterile: info.sterile,
       is_vaccinated: info.vaccine,
       is_visible: true,
-      is_club_pet: origin === "fromClub",
+      origin: `${origin === "fromClub" ? "club" : "entrust"}`,
       images: allImage,
     };
 
+    console.log(petData);
     postPetMutation.mutate(petData);
   };
 
