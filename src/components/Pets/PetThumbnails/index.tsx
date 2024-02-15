@@ -1,13 +1,14 @@
 import PetBadge from "@/components/Admin/Pets/Add/PetBadge";
+import { Image } from "@/types/common";
 import { Icon } from "@iconify/react";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 
 interface PetThumbnailsProps {
-  petImages: Array<string>;
+  petImages: Image[];
 }
 
-const PetThumbnails = ({ petImages }: PetThumbnailsProps) => {
+const PetThumbnails = (props : PetThumbnailsProps) => {
   return (
     <div className="relative aspect-square min-w-40 rounded-[20px] sm:min-w-80">
       <div className="absolute -top-1 right-4 z-10">
@@ -52,10 +53,10 @@ const PetThumbnails = ({ petImages }: PetThumbnailsProps) => {
           showStatus={false}
           showIndicators={false}
         >
-          {petImages.map((item, index) => (
-            <div key={index}>
+          {props.petImages.map(image => (
+            <div key={image.id}>
               <img
-                src={item}
+                src={image.url}
                 className="z-0 aspect-square max-w-80 rounded-2xl object-cover object-center"
               />
             </div>

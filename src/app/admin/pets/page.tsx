@@ -30,7 +30,7 @@ const Pets = () => {
         </Link>
       </div>
       <Container>
-        <Heading onSearch quantity={data?.metadata.total} />
+        <Heading onSearch quantity={data?.metadata?.total} />{/* dont forget to delete ? after metadata, if Boom read this it's mean that Tee forgot LOL*/}
       </Container>
       <Container className="flex flex-col items-center space-y-6">
         <div className="flex w-full flex-row gap-x-4">
