@@ -12,7 +12,6 @@ interface DateInputInfoProps {
 const DateInputInfo = (props: DateInputInfoProps) => {
   const handleOnChange = (event: ChangeEvent<HTMLInputElement>) => {
     const date = event.target.value;
-    console.log(date);
     props.onChange(date);
   };
   return (
