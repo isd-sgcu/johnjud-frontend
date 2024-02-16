@@ -6,10 +6,10 @@ import { Link } from "react-router-dom";
 
 const Main = () => {
   return (
-    <div className="flex min-h-screen w-full shrink-0 flex-col justify-between bg-primary pt-7 xl:pt-16">
+    <div className="relative flex min-h-[70svh] w-full shrink-0 flex-col justify-between bg-primary pt-7 xl:pt-16">
       <div className="xl:flex xl:flex-row-reverse xl:justify-center xl:gap-5">
         <img
-          className="mx-auto h-52 w-52 xl:mx-0"
+          className="mx-auto h-48 w-48 xl:mx-0"
           src={johnjudLogo}
           alt="Johnjud Logo"
         />
@@ -28,6 +28,7 @@ const Main = () => {
           </p>
         </div>
       </div>
+      <img src={catImage} alt="Cat Image" className="mx-auto" />
 
       <div className="relative flex items-center justify-center">
         <div className="absolute bottom-16 left-1/2 w-full -translate-x-1/2 transform px-6 lg:bottom-8 lg:w-auto">
@@ -42,7 +43,6 @@ const Main = () => {
             />
           </Link>
         </div>
-        <img src={catImage} alt="Cat Image" className="mx-auto" />
       </div>
     </div>
   );

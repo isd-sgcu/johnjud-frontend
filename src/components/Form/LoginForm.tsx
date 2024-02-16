@@ -5,7 +5,7 @@ import userIcon from "@/assets/formIcon/user.svg";
 import React from "react";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
-import SubmitButton from "./SubmitButton";
+import Button from "../Button";
 
 interface LoginFormProps {
   mutation: (data: SignInCredentials) => void;
@@ -29,6 +29,7 @@ const LoginForm: React.FC<LoginFormProps> = ({ mutation }) => {
           <input
             {...register("email", { required: true })}
             type="email"
+            required
             placeholder="อีเมล"
             className="w-full bg-accent-light-gray font-semibold text-accent-gray outline-none"
           />
@@ -38,6 +39,7 @@ const LoginForm: React.FC<LoginFormProps> = ({ mutation }) => {
           <input
             {...register("password", { required: true })}
             type="password"
+            required
             placeholder="รหัสผ่าน"
             className="w-full bg-accent-light-gray font-semibold text-accent-gray outline-none"
           />
@@ -64,8 +66,14 @@ const LoginForm: React.FC<LoginFormProps> = ({ mutation }) => {
           </Link>
         </div>
       </div>
-      <div className="flex flex-col items-center justify-center">
-        <SubmitButton text="เข้าสู่ระบบ" />
+      <div className="flex w-full flex-col items-center justify-center">
+        <Button
+          type="submit"
+          text="เข้าสู่ระบบ"
+          variant="primary"
+          rounded="2xl"
+          className="w-full px-0 text-xl font-semibold md:w-auto md:px-28"
+        />
       </div>
     </form>
   );

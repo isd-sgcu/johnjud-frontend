@@ -3,7 +3,6 @@ import Button from "@/components/Button";
 import Container from "@/components/Container";
 import Divider from "@/components/Divider";
 import Banner from "@/components/Main/Banner";
-import BigPetCardContainer from "@/components/Main/CardList/BigPetCardContainer";
 import MiniPetCardContainer from "@/components/Main/CardList/MiniPetCardContainer";
 import Filter from "@/components/Main/Filter";
 import Heading from "@/components/Pets/Heading";
@@ -13,6 +12,7 @@ import MainLayout from "@/layouts/MainLayout";
 import { useNavigate } from "react-router-dom";
 
 import adsImage1 from "@/assets/ads/1.jpg";
+import BigPetCardContainer from "@/components/Main/CardList/BigPetCardContainer";
 
 // Page
 const MainPage = () => {
