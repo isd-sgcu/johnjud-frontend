@@ -14,7 +14,6 @@ const AddThumbnail = (props: AddThumbnailProps) => {
     if (selectedImg && selectedImg.length !== 0) {
       props.setThumbnail(selectedImg[0]);
     }
-    console.log(props.valueThumbnail);
   };
 
   return (
