@@ -72,7 +72,7 @@ const LoginForm: React.FC<LoginFormProps> = ({ mutation }) => {
           text="เข้าสู่ระบบ"
           variant="primary"
           rounded="2xl"
-          className="w-full px-0 text-2xl font-semibold md:w-auto md:px-28"
+          className="w-full px-0 text-xl font-semibold md:w-auto md:px-28"
         />
       </div>
     </form>

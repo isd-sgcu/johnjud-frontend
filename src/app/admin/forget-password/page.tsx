@@ -62,12 +62,13 @@ const ForgetPassword = () => {
         </div>
         <div className="flex w-80 flex-col justify-center">
           <Button
-            text={"รีเซตรหัสผ่าน"}
-            variant={"primary"}
+            text="รีเซตรหัสผ่าน"
+            variant="primary"
             rounded="2xl"
             type="submit"
-            className="mb-4 px-24 text-xl text-white"
+            className="mb-4 px-24 text-xl font-semibold text-white"
           />
+
           <div className="flex flex-row items-center justify-center">
             <Link
               to="/admin"
