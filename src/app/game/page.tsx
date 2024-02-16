@@ -3,7 +3,7 @@ import MultipleChoice from "@/components/Game/MultipleChoice";
 import ResultGame from "@/components/Game/ResultGame";
 import StoryCard from "@/components/Game/StoryCard";
 import GameLayout from "@/layouts/GameLayout";
-import Results from "@/utils/Results";
+import Results from "@/utils/gameResult";
 import GameStorys from "@/utils/Storys";
 import { download } from "@/utils/download";
 import { shareWeb } from "@/utils/shareWeb";
