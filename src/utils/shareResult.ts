@@ -1,4 +1,4 @@
-const share = async (img: string, resultName: string) => {
+const shareResult = async (img: string, resultName: string) => {
   if (!navigator.canShare) {
     return;
   }
@@ -7,7 +7,6 @@ const share = async (img: string, resultName: string) => {
     text: "Come and check your result at JohnJud!",
     url: img,
   };
-  console.log("Clicked!");
   try {
     await navigator.share(shareData);
   } catch (error) {
@@ -15,4 +14,4 @@ const share = async (img: string, resultName: string) => {
   }
 };
 
-export { share };
+export { shareResult };
