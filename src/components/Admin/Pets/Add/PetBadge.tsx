@@ -37,7 +37,9 @@ const PetBadge = (props: PetBadgeProps) => {
           icon={props.value === "fromClub" ? "custom:chess" : "ph:paw-print"}
           className="h-6 w-6"
         />
-        <div className="">{props.value === "fromClub" ? "สัตว์เลี้ยง" : "สัตว์ฝาก"}</div>
+        <div className="">
+          {props.value === "fromClub" ? "สัตว์เลี้ยง" : "สัตว์ฝาก"}
+        </div>
         <div className="flex flex-row items-center">
           {props.value === "fromClub" ? "ชมรม" : "หาบ้าน"}
           <Icon
