@@ -35,8 +35,9 @@ const DropdownInputInfo = (props: DropdownInputInfoProps) => {
       </div>
 
       <div
-        className={`w-full font-semibold ${props.enableEdit ? "visible" : "hidden"
-          }`}
+        className={`w-full font-semibold ${
+          props.enableEdit ? "visible" : "hidden"
+        }`}
       >
         {props.createable ? (
           <CreatableSelect
@@ -44,18 +45,20 @@ const DropdownInputInfo = (props: DropdownInputInfoProps) => {
             unstyled
             classNames={{
               control: (state) =>
-                `border rounded-lg px-2 ${state.isFocused
-                  ? "border-2 border-black"
-                  : "border-accent-gray-variant"
+                `border rounded-lg px-2 ${
+                  state.isFocused
+                    ? "border-2 border-black"
+                    : "border-accent-gray-variant"
                 }`,
               menu: () =>
                 "mt-1 py-1 border border-accent-gray-variant rounded-lg bg-white overflow-hidden",
               option: (state) =>
-                `px-2 py-2 ${state.isSelected
-                  ? "bg-primary text-white"
-                  : state.isFocused
-                    ? "bg-primary-variant-2"
-                    : "bg-white"
+                `px-2 py-2 ${
+                  state.isSelected
+                    ? "bg-primary text-white"
+                    : state.isFocused
+                      ? "bg-primary-variant-2"
+                      : "bg-white"
                 }`,
               dropdownIndicator: () => `${isMenuOpen ? "rotate-180" : ""}`,
             }}
@@ -75,18 +78,20 @@ const DropdownInputInfo = (props: DropdownInputInfoProps) => {
             unstyled
             classNames={{
               control: (state) =>
-                `border rounded-lg px-2 ${state.isFocused
-                  ? "border-2 border-black"
-                  : "border-accent-gray-variant"
+                `border rounded-lg px-2 ${
+                  state.isFocused
+                    ? "border-2 border-black"
+                    : "border-accent-gray-variant"
                 }`,
               menu: () =>
                 "mt-1 py-1 border border-accent-gray-variant rounded-lg bg-white overflow-hidden",
               option: (state) =>
-                `px-2 py-2 ${state.isSelected
-                  ? "bg-primary text-white"
-                  : state.isFocused
-                    ? "bg-primary-variant-2"
-                    : "bg-white"
+                `px-2 py-2 ${
+                  state.isSelected
+                    ? "bg-primary text-white"
+                    : state.isFocused
+                      ? "bg-primary-variant-2"
+                      : "bg-white"
                 }`,
               dropdownIndicator: () => `${isMenuOpen ? "rotate-180" : ""}`,
             }}
@@ -101,8 +106,9 @@ const DropdownInputInfo = (props: DropdownInputInfoProps) => {
       </div>
 
       <p
-        className={`ml-2 font-semibold ${props.enableEdit ? "hidden" : "visible"
-          }`}
+        className={`ml-2 font-semibold ${
+          props.enableEdit ? "hidden" : "visible"
+        }`}
       >
         {currentOption ? currentOption.label : "-"}
       </p>
