@@ -3,8 +3,10 @@ import MultipleChoice from "@/components/Game/MultipleChoice";
 import ResultGame from "@/components/Game/ResultGame";
 import StoryCard from "@/components/Game/StoryCard";
 import GameLayout from "@/layouts/GameLayout";
-import Results from "@/utils/Results";
 import GameStorys from "@/utils/Storys";
+import { download } from "@/utils/download";
+import Results from "@/utils/gameResult";
+import { shareWeb } from "@/utils/shareWeb";
 import { useEffect, useState } from "react";
 import lastStoryIcon from "../../assets/game/StoryIcons/7/2.png";
 
@@ -16,9 +18,6 @@ const GameFirstpage = () => {
   const [storyIdx, setStoryIdx] = useState(0);
 
   const [totalScore, setTotalScore] = useState(0);
-
-  const handleOnClickSave = () => {};
-  const handleOnClickShare = () => {};
 
   async function showStoryCards() {
     for (const story of GameStorys[storyIdx].story) {
@@ -75,13 +74,17 @@ const GameFirstpage = () => {
             onClick={() => {
               window.scrollTo(0, 0);
               setCurrentComponent(
-                <ResultGame
-                  image={result.image}
-                  role={result.role}
-                  text={result.text}
-                  handleOnClickSave={handleOnClickSave}
-                  handleOnClickShare={handleOnClickShare}
-                />
+                <>
+                  <ResultGame
+                    image={result.image}
+                    role={result.role}
+                    text={result.text}
+                    handleOnClickSave={() =>
+                      download(result.dsImage, result.role)
+                    }
+                    handleOnClickShare={() => shareWeb()}
+                  />
+                </>
               );
             }}
           />

@@ -1,23 +1,27 @@
 import Button from "@/components/Button";
+import { download } from "@/utils/download";
+import { shareWeb } from "@/utils/shareWeb";
 import React from "react";
+
 interface ResultDisplayProps {
   resultImage: string;
+  resultDownloadandShare: string;
   resultName: string;
   resultText: string;
 }
 
 const ResultDisplay: React.FC<ResultDisplayProps> = ({
-  resultImage,
+  resultDownloadandShare,
   resultName,
   resultText,
 }) => {
   // implement handleshare here
   const handleShare = () => {
-    console.log(resultImage);
+    shareWeb();
   };
   // implement handleSave here
   const handleSave = () => {
-    console.log(resultImage);
+    download(resultDownloadandShare, resultName);
   };
   return (
     <div className="flex w-72 flex-col items-center space-y-6 text-center">
