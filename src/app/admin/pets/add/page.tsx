@@ -17,7 +17,7 @@ import EditName from "../../../../components/Admin/Pets/Add/EditName";
 import EditText from "../../../../components/Admin/Pets/Add/EditText";
 import MainLayout from "../../../../layouts/MainLayout";
 
-const userCreate = () => {
+const adminCreate = () => {
   const { data } = usePetsQuery();
 
   const [name, setName] = useState("กรุณาใส่ชื่อ...");
@@ -158,6 +158,6 @@ const userCreate = () => {
   );
 };
 
-export default userCreate;
+export default adminCreate;
 
 export const Layout = MainLayout;
