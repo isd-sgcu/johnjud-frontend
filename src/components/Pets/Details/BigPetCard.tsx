@@ -37,7 +37,7 @@ const BigPetCard = ({ isAdmin }: { isAdmin: boolean }) => {
       <div className="flex items-center justify-between text-primary">
         <button type="button" onClick={() => window.history.back()}>
           <Icon
-            icon="material-symbols-light:arrow-back-ios-new"
+            icon="ion:chevron-back"
             className="h-8 w-8 cursor-pointer"
           />
         </button>
