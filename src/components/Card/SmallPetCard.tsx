@@ -39,7 +39,7 @@ const SmallPetCard = ({
         <div className="space-y-2">
           <div className="flex justify-center rounded-2xl ">
             <img
-              className="rounded-2xl shadow-lg"
+              className="rounded-2xl shadow-lg w-full aspect-[4/3] object-center object-cover"
               src={image ? image : dog}
               alt={name}
             />
@@ -71,9 +71,8 @@ const SmallPetCard = ({
                 </div>
               </div>
               <div
-                className={`h-6 w-6 rounded-full ${
-                  status === "adopted" ? "bg-accent-gray" : "bg-primary"
-                }`}
+                className={`h-6 w-6 rounded-full ${status === "adopted" ? "bg-accent-gray" : "bg-primary"
+                  }`}
               >
                 <div className="px-1 py-1">
                   <Icon icon="ph:check-bold" className="h-4 w-4 text-white" />
