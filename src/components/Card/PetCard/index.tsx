@@ -9,7 +9,7 @@ import { Link, useLocation } from "react-router-dom";
 
 type PetCardProps = {
   id: string;
-  image: string;
+  image: string | undefined;
   type: string;
   name: string;
   status: "findHome" | "adopted";
@@ -85,7 +85,7 @@ const PetCard = ({
     <Link to={linkTo}>
       <div className="flex w-80 flex-col items-start justify-start rounded-2xl bg-white p-4 shadow">
         <img
-          src={image ? dog : image}
+          src={image ? image : dog}
           alt={name}
           className="mb-4 h-72 w-72 rounded-2xl object-cover object-center shadow"
         />

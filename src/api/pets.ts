@@ -14,7 +14,10 @@ const getPets = async () => {
   return response.data;
 };
 
-type postPetRequest = Omit<Pet, "id" | "images" | "is_club_pet"> & {
+type postPetRequest = Omit<
+  Pet,
+  "id" | "images" | "is_club_pet" | "address" | "adopt_by" | "contact"
+> & {
   origin: string;
   images: string[]; // image id
 };
