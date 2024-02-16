@@ -66,13 +66,13 @@ const LoginForm: React.FC<LoginFormProps> = ({ mutation }) => {
           </Link>
         </div>
       </div>
-      <div className="flex flex-col items-center justify-center">
+      <div className="flex w-full flex-col items-center justify-center">
         <Button
           type="submit"
           text="เข้าสู่ระบบ"
           variant="primary"
           rounded="2xl"
-          className="px-28 text-2xl font-semibold"
+          className="w-full px-0 text-2xl font-semibold md:w-auto md:px-28"
         />
       </div>
     </form>
