@@ -35,15 +35,8 @@ const EditInfoAndSubmit = (props: EditInfoAndSubmitProps) => {
   const postRef = useRef<HTMLDivElement | null>(null);
   const [enableEdit, setEnableEdit] = useState(false);
   const handleOnClick = () => {
-    if (enableEdit) {
-      props.setValue(showInfo);
-    } else {
-      setShowInfo(props.value);
-    }
     setEnableEdit(!enableEdit);
   };
-
-  const [showInfo, setShowInfo] = useState<info>(props.value);
 
   const handleOnChange = (
     event: React.FormEvent<HTMLTextAreaElement>,
@@ -51,16 +44,16 @@ const EditInfoAndSubmit = (props: EditInfoAndSubmitProps) => {
   ) => {
     const element = event.target as HTMLInputElement;
     const updateValue = { [tag]: element.value };
-    setShowInfo({
-      ...showInfo,
+    props.setValue({
+      ...props.value,
       ...updateValue,
     });
   };
   const handleOnClickButton = (tag: keyof info) => {
     if (enableEdit) {
-      const updateValue = { [tag]: !showInfo[tag] };
-      setShowInfo({
-        ...showInfo,
+      const updateValue = { [tag]: !props.value[tag] };
+      props.setValue({
+        ...props.value,
         ...updateValue,
       });
     }
@@ -69,7 +62,7 @@ const EditInfoAndSubmit = (props: EditInfoAndSubmitProps) => {
   const handleOnPost = () => {
     if (enableEdit) {
       handleOnClick();
-      props.onSubmit(showInfo);
+      props.onSubmit(props.value);
     }
   };
 
@@ -114,7 +107,7 @@ const EditInfoAndSubmit = (props: EditInfoAndSubmitProps) => {
             {/* Gender */}
             <TextInputInfo
               text="เพศ:"
-              value={showInfo.gender}
+              value={props.value.gender}
               enableEdit={enableEdit}
               onChange={(event) => handleOnChange(event, "gender")}
               inputRef={ref.gender}
@@ -124,7 +117,7 @@ const EditInfoAndSubmit = (props: EditInfoAndSubmitProps) => {
             {/* Age */}
             <TextInputInfo
               text="อายุ:"
-              value={showInfo.age}
+              value={props.value.age}
               enableEdit={enableEdit}
               onChange={(event) => handleOnChange(event, "age")}
               inputRef={ref.age}
@@ -134,7 +127,7 @@ const EditInfoAndSubmit = (props: EditInfoAndSubmitProps) => {
             {/* Nature */}
             <TextInputInfo
               text="นิสัย:"
-              value={showInfo.nature}
+              value={props.value.nature}
               enableEdit={enableEdit}
               onChange={(event) => handleOnChange(event, "nature")}
               inputRef={ref.nature}
@@ -146,7 +139,7 @@ const EditInfoAndSubmit = (props: EditInfoAndSubmitProps) => {
             <div className="flex flex-row flex-wrap justify-center gap-4 lg:flex-col">
               {/* Vaccine */}
               <ToggleInputInfo
-                value={showInfo["vaccine"]}
+                value={props.value["vaccine"]}
                 onClick={() => handleOnClickButton("vaccine")}
                 inputRef={ref.vaccine}
                 enableEdit={enableEdit}
@@ -156,7 +149,7 @@ const EditInfoAndSubmit = (props: EditInfoAndSubmitProps) => {
 
               {/* Sterile */}
               <ToggleInputInfo
-                value={showInfo["sterile"]}
+                value={props.value["sterile"]}
                 onClick={() => handleOnClickButton("sterile")}
                 inputRef={ref.sterile}
                 enableEdit={enableEdit}
