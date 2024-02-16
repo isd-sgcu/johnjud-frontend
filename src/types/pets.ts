@@ -17,9 +17,9 @@ type Pet = {
       url: string;
     },
   ];
-  is_sterile: true;
-  is_vaccinated: true;
-  is_visible: true;
+  is_sterile: boolean;
+  is_vaccinated: boolean;
+  is_visible: boolean;
   origin: string;
   status: "findHome" | "adopted";
   type: string;
