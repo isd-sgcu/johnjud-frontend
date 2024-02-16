@@ -33,13 +33,28 @@ const Details = (props : DetailsProps) => {
   const [petInfo, setPetInfo] = useState<info>({
     type: "-",
     gender: "-",
-    color: "",
-    age: "",
-    nature: "",
+    color: "-",
+    age: "-",
+    nature: "-",
     vaccine: false,
     sterile: false, 
   });
-  const pet = useMemo(getPet,[props.data]);  
+  const pet = useMemo(getPet,[props.data]);
+  const [enableSubmit, setEnableSubmit] = useState(false);
+  useEffect(() => {
+    if (
+      petInfo.gender === "-" ||
+      petInfo.type === "-" ||
+      petInfo.color === "-" ||
+      petInfo.age === "-" ||
+      name === "กรุณาใส่ชื่อ..."
+    ) {
+      setEnableSubmit(false);
+    } else {
+      setEnableSubmit(true);
+    }
+  }, [petInfo.gender, petInfo.type, petInfo.color, petInfo.age, name]);  
+  console.log(pet);
 
   useEffect(() => {
     convertImgUrltoFile();
@@ -48,7 +63,7 @@ const Details = (props : DetailsProps) => {
     setOrigin(pet.is_club_pet ? "fromClub" : "fromOutside");
     setPetInfo({
       type: pet.type as "dog" | "cat" | "-",
-      gender: "-",
+      gender: pet.gender,
       color: pet.color,
       age: pet.birthdate,
       nature: pet.habit,
@@ -149,6 +164,7 @@ const Details = (props : DetailsProps) => {
           isFav={isFav}
           handleFavPressed={handleFavPressed}
           id={id}
+          enableSubmit={enableSubmit}
         />
         <img src={logo} alt="logo" className="hidden h-64 w-64 xl:block" />
       </div>
