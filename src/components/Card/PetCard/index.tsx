@@ -121,7 +121,7 @@ const PetCard = ({
               text={"รับเลี้ยง"}
               variant={adoptedButton}
               rounded="full"
-              className="max-h-10 max-w-28 text-base"
+              className="max-h-10 max-w-28 text-base flex-shrink-0"
               onClick={adoptHandle}
             />
           ) : (
