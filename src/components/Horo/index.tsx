@@ -14,6 +14,10 @@ const HoroGame = () => {
     return shuffled.slice(0, 9);
   }, []);
   const cardList = useMemo(() => shuffledCards.map((data) => data.img), []);
+  const downloadAndShareList = useMemo(
+    () => shuffledCards.map((data) => data.downloadShare),
+    []
+  );
   const titleList = useMemo(() => shuffledCards.map((data) => data.title), []);
   const textList = useMemo(() => shuffledCards.map((data) => data.content), []);
 
@@ -46,6 +50,7 @@ const HoroGame = () => {
           selectedCard !== null && (
             <HoroResult
               resultImage={cardList[selectedCard]}
+              resultDownloadandShare={downloadAndShareList[selectedCard]}
               resultName={titleList[selectedCard]}
               resultText={textList[selectedCard]}
             />

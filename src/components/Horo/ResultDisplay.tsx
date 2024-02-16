@@ -1,27 +1,28 @@
 import Button from "@/components/Button";
-import PetCanvas from "@/components/Pets/PetCanvas";
-import { handleDownloadCanvas } from "@/utils/handleDownloadCanvas";
-import { handleShareCanvas } from "@/utils/handleShareCanvas";
+import { download } from "@/utils/download";
+import { share } from "@/utils/share";
 import React from "react";
 
 interface ResultDisplayProps {
   resultImage: string;
+  resultDownloadandShare: string;
   resultName: string;
   resultText: string;
 }
 
 const ResultDisplay: React.FC<ResultDisplayProps> = ({
   resultImage,
+  resultDownloadandShare,
   resultName,
   resultText,
 }) => {
   // implement handleshare here
   const handleShare = () => {
-    handleShareCanvas(resultName);
+    share(resultImage, resultName);
   };
   // implement handleSave here
   const handleSave = () => {
-    handleDownloadCanvas(resultName);
+    download(resultDownloadandShare, resultName);
   };
   return (
     <div className="flex w-72 flex-col items-center space-y-6 text-center">
@@ -43,12 +44,6 @@ const ResultDisplay: React.FC<ResultDisplayProps> = ({
           onClick={handleShare}
         />
       </div>
-      <PetCanvas
-        petImage={resultImage}
-        petName={resultName}
-        petText={resultText}
-        border="horo"
-      />
     </div>
   );
 };

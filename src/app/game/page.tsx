@@ -2,12 +2,11 @@ import GamePage from "@/components/Game/GamePage";
 import MultipleChoice from "@/components/Game/MultipleChoice";
 import ResultGame from "@/components/Game/ResultGame";
 import StoryCard from "@/components/Game/StoryCard";
-import PetCanvas from "@/components/Pets/PetCanvas";
 import GameLayout from "@/layouts/GameLayout";
 import Results from "@/utils/Results";
 import GameStorys from "@/utils/Storys";
-import { handleDownloadCanvas } from "@/utils/handleDownloadCanvas";
-import { handleShareCanvas } from "@/utils/handleShareCanvas";
+import { download } from "@/utils/download";
+import { share } from "@/utils/share";
 import { useEffect, useState } from "react";
 import lastStoryIcon from "../../assets/game/StoryIcons/7/2.png";
 
@@ -80,14 +79,12 @@ const GameFirstpage = () => {
                     image={result.image}
                     role={result.role}
                     text={result.text}
-                    handleOnClickSave={() => handleDownloadCanvas(result.role)}
-                    handleOnClickShare={() => handleShareCanvas(result.role)}
-                  />
-                  <PetCanvas
-                    petImage={result.image}
-                    petName={result.role}
-                    petText={result.text}
-                    border="game"
+                    handleOnClickSave={() =>
+                      download(result.dsImage, result.role)
+                    }
+                    handleOnClickShare={() =>
+                      share(result.dsImage, result.role)
+                    }
                   />
                 </>
               );

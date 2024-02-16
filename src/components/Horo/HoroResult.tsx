@@ -4,12 +4,14 @@ import React, { useEffect, useMemo, useState } from "react";
 
 interface HoroResultProps {
   resultImage: string;
+  resultDownloadandShare: string;
   resultName: string;
   resultText: string;
 }
 
 const HoroResult: React.FC<HoroResultProps> = ({
   resultImage,
+  resultDownloadandShare,
   resultName,
   resultText,
 }) => {
@@ -69,6 +71,7 @@ const HoroResult: React.FC<HoroResultProps> = ({
       {showResult && (
         <ResultDisplay
           resultImage={resultImage}
+          resultDownloadandShare={resultDownloadandShare}
           resultName={resultName}
           resultText={resultText}
         />
