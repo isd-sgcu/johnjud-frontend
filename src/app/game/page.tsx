@@ -6,7 +6,7 @@ import GameLayout from "@/layouts/GameLayout";
 import Results from "@/utils/Results";
 import GameStorys from "@/utils/Storys";
 import { download } from "@/utils/download";
-import { share } from "@/utils/share";
+import { shareWeb } from "@/utils/shareWeb";
 import { useEffect, useState } from "react";
 import lastStoryIcon from "../../assets/game/StoryIcons/7/2.png";
 
@@ -82,9 +82,7 @@ const GameFirstpage = () => {
                     handleOnClickSave={() =>
                       download(result.dsImage, result.role)
                     }
-                    handleOnClickShare={() =>
-                      share(result.dsImage, result.role)
-                    }
+                    handleOnClickShare={() => shareWeb()}
                   />
                 </>
               );

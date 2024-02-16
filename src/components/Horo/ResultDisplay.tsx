@@ -1,6 +1,6 @@
 import Button from "@/components/Button";
 import { download } from "@/utils/download";
-import { share } from "@/utils/share";
+import { shareWeb } from "@/utils/shareWeb";
 import React from "react";
 
 interface ResultDisplayProps {
@@ -11,14 +11,13 @@ interface ResultDisplayProps {
 }
 
 const ResultDisplay: React.FC<ResultDisplayProps> = ({
-  resultImage,
   resultDownloadandShare,
   resultName,
   resultText,
 }) => {
   // implement handleshare here
   const handleShare = () => {
-    share(resultImage, resultName);
+    shareWeb();
   };
   // implement handleSave here
   const handleSave = () => {
