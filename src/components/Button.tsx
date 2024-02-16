@@ -4,7 +4,7 @@ import { tv } from "tailwind-variants";
 interface ButtonProps {
   text: string;
   icon?: string;
-
+  type?: "button" | "submit";
   variant:
     | "primary"
     | "accent-red"
@@ -70,6 +70,7 @@ const Button = ({
   icon,
   variant,
   rounded = "none",
+  type = "button",
   className,
   onClick,
 }: ButtonProps) => {
@@ -77,7 +78,7 @@ const Button = ({
 
   return (
     <button
-      type="button"
+      type={type}
       onClick={onClick}
       className={base({ class: className })}
       disabled={variant == "disabled"}
