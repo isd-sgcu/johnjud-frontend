@@ -1,7 +1,7 @@
 import HoroBgContainer from "@/components/Horo/HoroBgContainer";
 import HoroResult from "@/components/Horo/HoroResult";
 import SelectCard from "@/components/Horo/SelectCard";
-import HoroDatas from "@/utils/horo";
+import HoroDatas from "@/utils/horoResult";
 import { useCallback, useMemo, useState } from "react";
 import HoroFirstPage from "./HoroFirstPage";
 

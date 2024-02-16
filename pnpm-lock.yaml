@@ -17,9 +17,6 @@ dependencies:
   axios:
     specifier: ^1.6.5
     version: 1.6.5
-  canvas-txt:
-    specifier: ^4.1.1
-    version: 4.1.1
   dayjs:
     specifier: ^1.11.10
     version: 1.11.10
@@ -1386,10 +1383,6 @@ packages:
 
   /caniuse-lite@1.0.30001570:
     resolution: {integrity: sha512-+3e0ASu4sw1SWaoCtvPeyXp+5PsjigkSt8OXZbF9StH5pQWbxEjLAZE3n8Aup5udop1uRiKA7a4utUk/uoSpUw==}
-
-  /canvas-txt@4.1.1:
-    resolution: {integrity: sha512-kD47Nh9PC7HiZ+MHZn9/DKNbnMGT+xuLZHLOgbcWZo84jo7gRDTFCBqpehZBT+OFSSpYw2GKHl5hPvDa1q4y8A==}
-    dev: false
 
   /chalk@2.4.2:
     resolution: {integrity: sha512-Mti+f9lpJNcwF4tWV8/OrTTtF1gZi+f8FqlyAdouralcFWFQWF2+NgCHShjkCb+IFBLq9buZwE1xckQU4peSuQ==}
