@@ -5,7 +5,7 @@ import EditInfoAndSubmit, {
 } from "@/components/Admin/Pets/Add/EditInfoAndSubmit";
 import { usePageParams } from "@/hooks/usePageParams";
 import MainLayout from "@/layouts/MainLayout";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import SmallPetCardList from "../../SmallPetCardList";
 import Container from "@/components/Container";
 import { Icon } from "@iconify/react/dist/iconify.js";
@@ -15,6 +15,7 @@ import PetThumbnails from "../PetThumbnails";
 import AddThumbnail from "@/components/Admin/Pets/Add/AddThumbnail";
 import EditText from "@/components/Admin/Pets/Add/EditText";
 import AddSmallPicture from "@/components/Admin/Pets/Add/AddSmallPicture";
+import {useConvertImgUrltoFile} from "@/hooks/useConvertImgUrltoFile";
 
 interface DetailsProps {
   isAdmin: boolean;
@@ -24,26 +25,59 @@ interface DetailsProps {
 const Details = (props : DetailsProps) => {
   const {id} = usePageParams(["id"]);
   const [isFav, setIsFav] = useState(false);
-  const pet = useMemo(() => (
-    props.data.pets.find((pet) => pet.id === id) as Pet
-  ), [props.data]);
-  console.log(pet);
-  const [name, setName] = useState(pet.name);
-  const [text, setText] = useState(pet.caption);
-  const [images, setImages] = useState(pet.images);
+  const [name, setName] = useState("");
+  const [text, setText] = useState("");
+  const [origin, setOrigin] = useState("fromClub");
+  const [thumbnail, setThumbnail] = useState<File | null>(null);
+  const [images, setImages] = useState<(File | null)[]>([]);
   const [petInfo, setPetInfo] = useState<info>({
-    gender: "ครับ",
-    age: "ครับ",
-    nature: "ครับ",
-    vaccine: true,
+    gender: "",
+    age: "",
+    nature: "",
+    vaccine: false,
     sterile: false,
   });
+  const pet = useMemo(getPet,[props.data]);  
 
-  const handleSubmit = (showInfo: info) => {
+  useEffect(() => {
+    convertImgUrltoFile();
+    setName(pet.name);
+    setText(pet.caption);
+    setOrigin(pet.is_club_pet ? "fromClub" : "fromOutside");
+    setPetInfo({
+      gender : pet.gender,
+      age : pet.birthdate,
+      nature : pet.habit,
+      vaccine : pet.is_vaccinated,
+      sterile : pet.is_sterile
+    })
+  },[props.data])
+
+  function getPet(){
+    return props.data.pets.find((pet) => pet.id === id) as Pet;
+  }
+
+  function convertImgUrltoFile(){
+    pet.images.forEach(async (image, index) => {
+      const response = await useConvertImgUrltoFile(image);
+      if(index === 0) {
+        setThumbnail(response);
+      }
+      else {
+        setImages(images => {
+          const newImages = [...images];
+          newImages[index] = response;
+          return newImages;
+        });
+      }
+    });
+  }
+
+  function handleSubmit(showInfo: info){
     setPetInfo(showInfo);
   };
 
-  const handleFavPressed = () => {
+  function handleFavPressed(){
     setIsFav(!isFav);
   };
 
@@ -68,25 +102,37 @@ const Details = (props : DetailsProps) => {
         <div className="mx-auto flex w-full flex-col items-center justify-between gap-8 md:h-80 md:flex-row md:items-start">
           <div className="relative w-80">
             {!props.isAdmin ? (
-              <PetThumbnails petImages={images} />
+              <PetThumbnails petImages={pet.images} />
             ) : (
               <AddThumbnail
-                valueOrigin={petFrom}
-                setOrigin={setPetFrom}
-                valueThumbnail={image}
-                setThumbnail={setImage}
+                valueOrigin={origin}
+                setOrigin={setOrigin}
+                valueThumbnail={thumbnail}
+                setThumbnail={setThumbnail}
               />
             )}
           </div>
 
           <div className="flex w-full flex-col items-start gap-8 overflow-auto md:h-full md:flex-1">
             <div className="hidden md:block">
-              <EditName value={name} setValue={setName} isAdmin={props.isAdmin} />
+              <EditName 
+                value={name} 
+                setValue={setName} 
+                isAdmin={props.isAdmin} 
+              />
             </div>
-            <EditText value={text} setValue={setText} isAdmin={props.isAdmin} />
+            <EditText 
+              value={text} 
+              setValue={setText} 
+              isAdmin={props.isAdmin} 
+            />
           </div>
         </div>
-        {props.isAdmin && <AddSmallPicture value={images} setValue={setImages} />}
+        {props.isAdmin && 
+          <AddSmallPicture 
+            value={images} 
+            setValue={setImages} 
+          />}
       </Container>
       
       {/* edit info */}
