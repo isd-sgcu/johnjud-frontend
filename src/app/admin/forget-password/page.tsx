@@ -55,6 +55,7 @@ const ForgetPassword = () => {
             type="email"
             id="email"
             name="email"
+            required
             placeholder="อีเมล"
             className="text-semibold w-full bg-accent-light-gray text-base text-accent-gray outline-none"
           />
