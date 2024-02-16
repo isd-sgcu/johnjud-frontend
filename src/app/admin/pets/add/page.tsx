@@ -16,6 +16,7 @@ import EditInfoAndSubmit, {
 import EditName from "../../../../components/Admin/Pets/Add/EditName";
 import EditText from "../../../../components/Admin/Pets/Add/EditText";
 import MainLayout from "../../../../layouts/MainLayout";
+import useAuthStore from "@/store/authStore";
 
 const adminCreate = () => {
   const { data } = usePetsQuery();
@@ -51,8 +52,11 @@ const adminCreate = () => {
     }
   }, [info.gender, info.type, info.color, info.age, name]);
 
-  const postImageMutation = useCreateImage();
-  const postPetMutation = useCreatePet();
+  const authStore = useAuthStore();
+  const token = authStore.accessToken;
+
+  const postImageMutation = useCreateImage(token);
+  const postPetMutation = useCreatePet(token);
 
   const handleSubmit = async () => {
     const allImageFile: File[] = await Promise.all(

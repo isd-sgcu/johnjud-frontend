@@ -1,9 +1,9 @@
 import { postPet, postPetRequest } from "@/api/pets";
 import { useMutation } from "@tanstack/react-query";
 
-const useCreatePet = () => {
+const useCreatePet = (token: string | null) => {
   return useMutation({
-    mutationFn: (data: postPetRequest) => postPet(data),
+    mutationFn: (data: postPetRequest) => postPet(data, token),
   });
 };
 
