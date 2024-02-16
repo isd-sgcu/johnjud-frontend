@@ -68,7 +68,7 @@ const EditName = (props: EditNameProps) => {
 
       <div
         className={
-          "flex flex-row items-center gap-4 " +
+          "flex flex-row items-center gap-4 md:flex-row-reverse " +
           (enableEdit ? "visible" : "hidden")
         }
       >
