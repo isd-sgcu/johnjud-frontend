@@ -31,11 +31,13 @@ const Details = (props : DetailsProps) => {
   const [thumbnail, setThumbnail] = useState<File | null>(null);
   const [images, setImages] = useState<(File | null)[]>([]);
   const [petInfo, setPetInfo] = useState<info>({
-    gender: "",
+    type: "-",
+    gender: "-",
+    color: "",
     age: "",
     nature: "",
     vaccine: false,
-    sterile: false,
+    sterile: false, 
   });
   const pet = useMemo(getPet,[props.data]);  
 
@@ -45,11 +47,13 @@ const Details = (props : DetailsProps) => {
     setText(pet.caption);
     setOrigin(pet.is_club_pet ? "fromClub" : "fromOutside");
     setPetInfo({
-      gender : pet.gender,
-      age : pet.birthdate,
-      nature : pet.habit,
-      vaccine : pet.is_vaccinated,
-      sterile : pet.is_sterile
+      type: pet.type as "dog" | "cat" | "-",
+      gender: "-",
+      color: pet.color,
+      age: pet.birthdate,
+      nature: pet.habit,
+      vaccine: pet.is_vaccinated,
+      sterile: pet.is_sterile,
     })
   },[props.data])
 
@@ -73,8 +77,8 @@ const Details = (props : DetailsProps) => {
     });
   }
 
-  function handleSubmit(showInfo: info){
-    setPetInfo(showInfo);
+  function handleSubmit(){
+    
   };
 
   function handleFavPressed(){

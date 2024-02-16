@@ -6,7 +6,6 @@ interface TextInputInfoProps {
   value: string;
   enableEdit: boolean;
   onChange: (event: React.FormEvent<HTMLTextAreaElement>) => void;
-  inputRef: React.MutableRefObject<null>;
   icon: string;
 }
 
@@ -23,7 +22,6 @@ const TextInputInfo = (props: TextInputInfoProps) => {
         }`}
         value={props.value}
         disabled={!props.enableEdit}
-        ref={props.inputRef}
         onChange={props.onChange}
       />
     </div>
