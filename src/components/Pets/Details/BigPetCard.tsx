@@ -36,10 +36,7 @@ const BigPetCard = ({ isAdmin }: { isAdmin: boolean }) => {
       {/* header */}
       <div className="flex items-center justify-between text-primary">
         <button type="button" onClick={() => window.history.back()}>
-          <Icon
-            icon="ion:chevron-back"
-            className="h-8 w-8 cursor-pointer"
-          />
+          <Icon icon="ion:chevron-back" className="h-8 w-8 cursor-pointer" />
         </button>
         <div className="md:hidden">
           <EditName value={name} setValue={setName} isAdmin={isAdmin} />
