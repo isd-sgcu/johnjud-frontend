@@ -1,6 +1,6 @@
 import Button from "@/components/Button";
 import Container from "@/components/Container";
-import EmailVerification from "@/components/Modal/EmailVerification";
+import Modal from "@/components/Modal";
 import useForgetPassword from "@/hooks/auth/useForgetPassword";
 import MainLayout from "@/layouts/MainLayout";
 import useAuthStore from "@/store/authStore";
@@ -80,7 +80,26 @@ const ForgetPassword = () => {
             </Link>
           </div>
         </div>
-        {modalOpen && <EmailVerification />}
+        <Modal
+          title="อีเมลรีเซ็ตถูกส่งแล้ว"
+          icon="ph:check-circle-bold"
+          open={modalOpen}
+          setOpen={setModalOpen}
+          button={
+            <Link to="/admin">
+              <Button
+                text="กลับไปหน้าเข้าสู่ระบบ"
+                variant="primary"
+                rounded="full"
+              />
+            </Link>
+          }
+        >
+          <p className="text-accent-gray">
+            กรุณาเช็คอีเมลของท่าน <br />
+            หากไม่พบอีเมลกรุณาตรวจสอบถังขยะ
+          </p>
+        </Modal>
       </form>
     </Container>
   );
