@@ -12,7 +12,7 @@ const Banner: React.FC<BannerProps> = ({ imageUrl, altText = "Banner" }) => {
         <img
           src={imageUrl}
           alt={altText}
-          className="h-full w-full rounded-2xl object-fill"
+          className="h-full w-full rounded-2xl object-cover object-center"
         />
       )}
     </div>

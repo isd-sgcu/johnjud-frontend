@@ -4,7 +4,7 @@ import axios from "axios";
 
 interface PetsResponse {
   pets: Pet[];
-  meta: Meta;
+  metadata: Meta;
 }
 
 const getPets = async () => {
