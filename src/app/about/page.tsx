@@ -44,7 +44,6 @@ const About = () => {
           <div className="text-center text-base lg:text-xl">
             ช่องทางการติดต่อเพิ่มเติม
           </div>
-          <div className="mt-3 h-52 w-full bg-[#D9D9D9]"></div>
           <div className="mt-6 flex flex-row space-x-6 rounded-full bg-primary px-5 py-3">
             {/* FB logo */}
             <div className="flex h-14 w-14 items-center justify-center rounded-3xl bg-[#0866FF]">
