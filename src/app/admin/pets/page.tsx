@@ -61,7 +61,7 @@ const Pets = () => {
             <PetCard
               key={pet.id}
               id={pet.id}
-              image={pet.images[0].url}
+              image={pet.images ? pet.images[0].url : undefined}
               type={pet.type}
               name={pet.name}
               status={pet.status}

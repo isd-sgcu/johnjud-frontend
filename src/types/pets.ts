@@ -1,21 +1,28 @@
-import { Image } from "./common";
-
 type Pet = {
   id: string;
-  type: string;
   name: string;
-  birthdate: string;
-  gender: "male" | "female";
-  color: string;
   pattern: string;
-  habit: string;
+  birthdate: string;
+  address: string;
+  adopt_by: string;
   caption: string;
+  color: string;
+  contact: string;
+  gender: "male" | "female";
+  habit: string;
+  images: [
+    {
+      id: string;
+      object_key: string;
+      url: string;
+    },
+  ];
+  is_sterile: true;
+  is_vaccinated: true;
+  is_visible: true;
+  origin: string;
   status: "findHome" | "adopted";
-  is_sterile: boolean;
-  is_vaccinated: boolean;
-  is_visible: boolean;
-  is_club_pet: boolean;
-  images: Image[];
+  type: string;
 };
 
 export type { Pet };
