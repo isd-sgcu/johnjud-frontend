@@ -10,22 +10,16 @@ const usePathStyle = () => {
     if (pathname.includes("/admin")) {
       return {
         color: "bg-accent-red",
-        download: "primary",
-        share: "accent-red",
         logo: logoPrimary,
       };
     } else if (pathname.includes("/horo")) {
       return {
         color: "bg-accent-purple",
-        download: "accent-purple",
-        share: "accent-yellow",
         logo: logoSecondary,
       };
     } else {
       return {
         color: "bg-primary",
-        download: "primary",
-        share: "accent-red",
         logo: logoPrimary,
       };
     }
