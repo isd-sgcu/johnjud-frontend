@@ -22,9 +22,9 @@ const EmailVerification = () => {
             <div>กรุณาเช็คอีเมลของท่าน</div>
             <div>หากไม่พบอีเมลกรุณาตรวจสอบ ถังขยะ</div>
           </div>
-          <Link to={"/login"}>
+          <Link to={"/admin"}>
             <Button
-              text={"กลับไปยังหน้าล็อกอิน"}
+              text={"ไปที่หน้าล๊อคอิน"}
               variant={"primary"}
               rounded="full"
               className="w-[209px] py-2 text-sm"
