@@ -3,7 +3,6 @@ import { Icon } from "@iconify/react/dist/iconify.js";
 interface ToggleInputInfoProps {
   value: boolean;
   onClick: () => void;
-  inputRef: React.MutableRefObject<null>;
   enableEdit: boolean;
   icon: string;
   text: string;
@@ -17,7 +16,6 @@ const ToggleInputInfo = (props: ToggleInputInfoProps) => {
         (props.enableEdit ? "cursor-pointer" : "")
       }
       onClick={props.onClick}
-      ref={props.inputRef}
       tabIndex={1}
     >
       <div

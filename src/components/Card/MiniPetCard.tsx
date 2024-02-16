@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 interface MiniPetCardProps {
   id: string;
   name: string;
-  image: string;
+  image: string | undefined;
   habit: string;
   gender: string;
   birthdate: string;
@@ -38,7 +38,7 @@ const MiniPetCard = ({
         <div className="flex h-28 w-full rounded-2xl">
           <img
             className="w-full rounded-2xl"
-            src={image ? dog : image}
+            src={image ? image : dog}
             alt={name}
           />
         </div>
