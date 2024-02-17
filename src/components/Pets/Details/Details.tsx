@@ -1,4 +1,4 @@
-import { PetsResponse } from "@/api/pets";
+import { PetsResponse, PutPetRequest, updatePet } from "@/api/pets";
 import logo from "@/assets/details/logo.png";
 import EditInfoAndSubmit, {
   info,
@@ -30,6 +30,8 @@ const Details = (props : DetailsProps) => {
   const [origin, setOrigin] = useState("fromClub");
   const [thumbnail, setThumbnail] = useState<File | null>(null);
   const [images, setImages] = useState<(File | null)[]>([]);
+  const pet = useMemo(getPet,[props.data, id]);
+  const [enableSubmit, setEnableSubmit] = useState(false);
   const [petInfo, setPetInfo] = useState<info>({
     type: "-",
     gender: "-",
@@ -39,8 +41,7 @@ const Details = (props : DetailsProps) => {
     vaccine: false,
     sterile: false, 
   });
-  const pet = useMemo(getPet,[props.data]);
-  const [enableSubmit, setEnableSubmit] = useState(false);
+
   useEffect(() => {
     if (
       petInfo.gender === "-" ||
@@ -54,7 +55,6 @@ const Details = (props : DetailsProps) => {
       setEnableSubmit(true);
     }
   }, [petInfo.gender, petInfo.type, petInfo.color, petInfo.age, name]);  
-  console.log(pet);
 
   useEffect(() => {
     convertImgUrltoFile();
@@ -70,13 +70,15 @@ const Details = (props : DetailsProps) => {
       vaccine: pet.is_vaccinated,
       sterile: pet.is_sterile,
     })
-  },[props.data])
+  },[props.data, id])
 
   function getPet(){
     return props.data.pets.find((pet) => pet.id === id) as Pet;
   }
 
   function convertImgUrltoFile(){
+    if(pet.images === null) return;
+
     pet.images.forEach(async (image, index) => {
       const response = await useConvertImgUrltoFile(image);
       if(index === 0) {
@@ -92,12 +94,26 @@ const Details = (props : DetailsProps) => {
     });
   }
 
-  function handleSubmit(){
-    
-  };
-
   function handleFavPressed(){
     setIsFav(!isFav);
+  };
+  
+  async function handleSubmit(){
+    const data: PutPetRequest = {
+      type: petInfo.type,
+      name: name,
+      birthdate: petInfo.age,
+      gender: petInfo.gender as "male" | "female",
+      color: petInfo.color,
+      habit: petInfo.nature,
+      caption: text,
+      is_sterile: petInfo.sterile,
+      is_vaccinated: petInfo.vaccine,
+      origin: origin,
+    }
+    console.log(data);
+    const res = updatePet(data, id);
+    console.log(res);
   };
 
   return (

@@ -35,12 +35,12 @@ const EditInfoAndSubmit = (props: EditInfoAndSubmitProps) => {
   
   const handleOnClickEdit = () => {
     if (enableEdit) {
-      const addNoneInfo = showInfo;
+      const addNoneInfo = {...showInfo};
       if (addNoneInfo.age === "") addNoneInfo["age"] = "-";
       if (addNoneInfo.nature === "") addNoneInfo["nature"] = "-";
       props.setValue(addNoneInfo);
     } else {
-      const removeEmptyInfo = props.value;
+      const removeEmptyInfo = {...props.value};
       if (removeEmptyInfo.age === "-") removeEmptyInfo["age"] = "";
       if (removeEmptyInfo.nature === "-") removeEmptyInfo["nature"] = "";
       setShowInfo(removeEmptyInfo);
