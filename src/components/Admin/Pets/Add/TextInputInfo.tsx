@@ -17,7 +17,7 @@ const TextInputInfo = (props: TextInputInfoProps) => {
         <span className="ml-1 text-nowrap text-primary">{props.text}</span>
       </div>
       <TextareaAutosize
-        className={`w-full rounded-lg bg-white px-2 py-1 font-semibold ${
+        className={`w-full rounded-lg bg-white px-2 ${props.enableEdit ? "py-1" : ""} font-semibold ${
           props.enableEdit ? "border border-accent-gray-variant" : ""
         }`}
         value={props.value}

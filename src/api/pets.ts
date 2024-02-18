@@ -23,9 +23,10 @@ type postPetRequest = Omit<
 };
 interface postPetResponse extends Pet {}
 
-const token: string =
-  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJodHRwczovL2pvaG5qdWQuaXNkLnNnY3UuaW4udGgiLCJleHAiOjE3MDgwMDk3NDQsImlhdCI6MTcwODAwNjE0NCwidXNlcl9pZCI6ImM0YTI1OTFlLTZjNWEtNDliNS05NDhkLTU0MDJkMjcxNGZlMiIsImF1dGhfc2Vzc2lvbl9pZCI6IjY4NDE2M2FkLWJkYWUtNDlhMS1hNTkyLWRkMjU4NjU0MThkMyJ9.u39pVKLTzl6FKQNDNDhghknxkaf9x3pP_3zD2oE_Fes";
-const postPet = async (data: postPetRequest): Promise<postPetResponse> => {
+const postPet = async (
+  data: postPetRequest,
+  token: string | null
+): Promise<postPetResponse> => {
   const response = await axios.post<postPetResponse>(
     `${import.meta.env.VITE_API_URL}/pets`,
     data,
