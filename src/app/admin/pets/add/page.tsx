@@ -2,7 +2,6 @@ import { postPetRequest } from "@/api/pets";
 import Container from "@/components/Container";
 import SmallPetCardList from "@/components/SmallPetCardList";
 import { useCreateImage } from "@/hooks/mutation/usePostImage";
-import { useCreatePet } from "@/hooks/mutation/usePostPet";
 import { usePetsQuery } from "@/hooks/queries/usePetsQuery";
 import { Icon } from "@iconify/react";
 import { useEffect, useState } from "react";
@@ -15,8 +14,9 @@ import EditInfoAndSubmit, {
 } from "../../../../components/Admin/Pets/Add/EditInfoAndSubmit";
 import EditName from "../../../../components/Admin/Pets/Add/EditName";
 import EditText from "../../../../components/Admin/Pets/Add/EditText";
-import MainLayout from "../../../../layouts/MainLayout";
 
+import { useCreatePet } from "@/hooks/mutation/usePostPet";
+import MainLayout from "../../../../layouts/MainLayout";
 const adminCreate = () => {
   const { data } = usePetsQuery();
 
@@ -93,7 +93,6 @@ const adminCreate = () => {
       images: allImage,
     };
 
-    console.log(petData);
     postPetMutation.mutate(petData);
   };
 
