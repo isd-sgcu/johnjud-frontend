@@ -40,20 +40,22 @@ const MainPage = () => {
       <Container className="md:hidden">
         <Heading onSearch quantity={data?.metadata.total} />
       </Container>
-      <Container className="flex justify-center md:justify-between">
-        <div className="hidden md:flex md:w-4/12">
-          <Banner imageUrl={adsImage1} />
+      <Container className="space-y-8">
+        <div className="flex flex-col items-center justify-center gap-8 lg:flex-row lg:justify-between">
+          <div className="hidden w-[55vw] md:block">
+            <Banner imageUrl={adsImage1} />
+          </div>
+          {data && <MiniPetCardContainer petsData={data.pets.slice(0, 8)} />}
         </div>
-        {data && <MiniPetCardContainer petsData={data.pets.slice(0, 8)} />}
-      </Container>
-      <Container className="flex items-center justify-center md:justify-end">
-        <Button
-          text="ดูสัตว์เลี้ยงทั้งหมด"
-          variant="primary"
-          rounded="full"
-          className="w-full font-bold md:w-auto"
-          onClick={() => navigate("/pets")} // Navigation path
-        />
+        <div className="flex items-center justify-center lg:justify-end">
+          <Button
+            text="ดูสัตว์เลี้ยงทั้งหมด"
+            variant="primary"
+            rounded="full"
+            className="w-full font-bold md:w-auto"
+            onClick={() => navigate("/pets")} // Navigation path
+          />
+        </div>
       </Container>
       <Container>
         <Divider variant="primary" />
