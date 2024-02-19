@@ -7,12 +7,12 @@ interface BannerProps {
 
 const Banner: React.FC<BannerProps> = ({ imageUrl, altText = "Banner" }) => {
   return (
-    <div className="flex items-center justify-center rounded-2xl bg-accent-light-gray md:w-full">
+    <div className="flex items-center justify-center rounded-2xl bg-accent-light-gray">
       {imageUrl && (
         <img
           src={imageUrl}
           alt={altText}
-          className="h-full w-full rounded-2xl object-cover object-center"
+          className="aspect-square h-full w-full rounded-2xl object-cover object-center"
         />
       )}
     </div>

@@ -8,9 +8,8 @@ interface MiniPetCardContainerProps {
 const MiniPetCardContainer: React.FC<MiniPetCardContainerProps> = ({
   petsData,
 }) => {
-  console.log(petsData);
   return (
-    <div className="grid grid-cols-2 gap-2 md:grid-cols-4 md:gap-6">
+    <div className="flex flex-wrap justify-center gap-2 md:gap-6 lg:justify-end">
       {petsData?.map((pet: Pet) => (
         <MiniPetCard
           key={pet.id}

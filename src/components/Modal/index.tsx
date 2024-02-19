@@ -20,7 +20,7 @@ export default function Modal(props: ModalProps) {
       <Dialog
         as="div"
         static
-        className="fixed inset-0 z-10 overflow-y-auto"
+        className="fixed inset-0 z-[2000] overflow-y-auto"
         open={open}
         onClose={setOpen}
       >
@@ -61,7 +61,7 @@ export default function Modal(props: ModalProps) {
                 {icon && <Icon icon={icon} className="text-2xl text-primary" />}
               </div>
               <div className="text-center">{children}</div>
-              <div className="flex flex-col items-center justify-center gap-2">
+              <div className="flex flex-row items-center justify-center gap-2">
                 {button}
               </div>
             </div>
