@@ -36,4 +36,3 @@ export default Login;
 
 // Layout
 export const Layout = MainLayout;
-MainLayout;
