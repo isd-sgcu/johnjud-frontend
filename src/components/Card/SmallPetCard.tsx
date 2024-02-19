@@ -39,7 +39,7 @@ const SmallPetCard = ({
         <div className="space-y-2">
           <div className="flex justify-center rounded-2xl ">
             <img
-              className="rounded-2xl shadow-lg"
+              className="aspect-[4/3] w-full rounded-2xl object-cover object-center shadow-lg"
               src={image ? image : dog}
               alt={name}
             />

@@ -44,8 +44,6 @@ const AddSmallPicture = (props: AddSmallPictureProps) => {
       >
         <Icon icon="custom:plus" className="h-[30%] w-[30%]" />
       </label>
-
-      <div className="flex w-[60%] max-w-48 flex-shrink-0" />
     </div>
   );
 };

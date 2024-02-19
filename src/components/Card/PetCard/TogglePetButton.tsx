@@ -9,7 +9,7 @@ interface ToggleProps {
 
 const toggleSwitch = tv({
   slots: {
-    base: "flex w-24 cursor-pointer items-center rounded-[20px] p-2",
+    base: "flex w-24 cursor-pointer items-center rounded-[20px] p-2 flex-shrink-0",
     switchStyle:
       "min-h-9 min-w-9 transform rounded-full bg-white transition duration-500",
     textStyle:
