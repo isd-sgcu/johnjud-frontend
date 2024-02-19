@@ -42,7 +42,7 @@ const MainPage = () => {
       </Container>
       <Container className="space-y-8">
         <div className="flex flex-col items-center justify-center gap-8 lg:flex-row lg:justify-between">
-          <div className="hidden w-[55vw] md:block">
+          <div className="hidden max-w-[30vw] md:block">
             <Banner imageUrl={adsImage1} />
           </div>
           {data && <MiniPetCardContainer petsData={data.pets.slice(0, 8)} />}
