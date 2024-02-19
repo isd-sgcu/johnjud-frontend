@@ -26,7 +26,6 @@ const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
   event.stopPropagation();
 };
 
-
 const likeHandle = (event: React.MouseEvent<HTMLButtonElement>) => {
   handleClick(event);
 };
@@ -50,7 +49,7 @@ const PetCard = ({
   const [visibility, setVisibility] = useState(isVisibled);
   const toggleVisibility = () => {
     setVisibility((prev) => !prev);
-  }
+  };
 
   const pathname = useLocation().pathname;
   const role = useMemo(() => {
@@ -128,7 +127,10 @@ const PetCard = ({
               onClick={adoptHandle}
             />
           ) : (
-            <TogglePetButton visibility={visibility} onClick={toggleVisibility} />
+            <TogglePetButton
+              visibility={visibility}
+              onClick={toggleVisibility}
+            />
           )}
         </div>
       </div>

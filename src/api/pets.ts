@@ -37,13 +37,16 @@ const postPet = async (data: postPetRequest): Promise<Pet> => {
   return response.data;
 };
 
-const updateVisibility = async (id: string, visibility: boolean): Promise<Pet> => {
+const updateVisibility = async (
+  id: string,
+  visibility: boolean
+): Promise<Pet> => {
   const { accessToken } = useAuthStore.getState();
 
   const response = await axios.put<Pet>(
     `${import.meta.env.VITE_API_URL}/pets/${id}`,
     {
-      is_visible: visibility
+      is_visible: visibility,
     },
     {
       headers: {
@@ -53,7 +56,7 @@ const updateVisibility = async (id: string, visibility: boolean): Promise<Pet> =
   );
 
   return response.data;
-}
+};
 
 export { getPets, postPet, updateVisibility };
 export type { PetsResponse, postPetRequest };
