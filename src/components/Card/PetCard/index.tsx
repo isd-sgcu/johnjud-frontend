@@ -2,6 +2,7 @@ import dog from "@/assets/dog.webp";
 import Button from "@/components/Button";
 import PetDetail from "@/components/Card/PetCard/PetDetail";
 import TogglePetButton from "@/components/Card/PetCard/TogglePetButton";
+import { useUpdateVisibility } from "@/hooks/mutation/useUpdateVisibility";
 import { UtcStringToYearMonth } from "@/utils/dateConverter";
 import { Icon } from "@iconify/react";
 import { useMemo, useState } from "react";
@@ -26,10 +27,6 @@ const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
   event.stopPropagation();
 };
 
-const toggleHandle = (event: React.MouseEvent<HTMLButtonElement>) => {
-  handleClick(event);
-};
-
 const likeHandle = (event: React.MouseEvent<HTMLButtonElement>) => {
   handleClick(event);
 };
@@ -50,6 +47,16 @@ const PetCard = ({
   isLiked,
   isVisibled,
 }: PetCardProps) => {
+  const [visibility, setVisibility] = useState(isVisibled);
+  const { mutate } = useUpdateVisibility();
+  const toggleVisibility = () => {
+    mutate({
+      id: id,
+      visibility: !visibility,
+    });
+    setVisibility((prev) => !prev);
+  };
+
   const pathname = useLocation().pathname;
   const role = useMemo(() => {
     return pathname.includes("/admin") ? "admin" : "user";
@@ -126,7 +133,10 @@ const PetCard = ({
               onClick={adoptHandle}
             />
           ) : (
-            <TogglePetButton visibility={isVisibled} onClick={toggleHandle} />
+            <TogglePetButton
+              visibility={visibility}
+              onClick={toggleVisibility}
+            />
           )}
         </div>
       </div>
