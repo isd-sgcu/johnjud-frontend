@@ -86,7 +86,7 @@ const SideBar = ({
               className="flex cursor-pointer items-center gap-1.5 xl:gap-4"
             >
               <Icon icon="ph:lock-key" color="white" className="h-6 w-6" />
-              <span>Admin {isLoggedIn && "Login"}</span>
+              <span>Admin {!isLoggedIn && "Login"}</span>
             </Link>
           </div>
         </div>
