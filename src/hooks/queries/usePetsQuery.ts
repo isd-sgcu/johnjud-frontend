@@ -1,12 +1,13 @@
-import { PetsResponse, getPets } from "@/api/pets";
+import { PetsResponse, getPets, GetPetsFilter } from "@/api/pets";
 import { useQuery } from "@tanstack/react-query";
 
-const usePetsQuery = () => {
+
+const usePetsQuery = (filters?: GetPetsFilter) => {
   return useQuery<PetsResponse>({
-    queryKey: ["pets"],
-    queryFn: () => getPets(),
+    queryKey: ["pets", filters],
+    queryFn: () => getPets(filters || {}),
     enabled: true,
   });
 };
 
-export { usePetsQuery };
+export { usePetsQuery }; 
