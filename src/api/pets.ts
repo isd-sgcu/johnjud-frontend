@@ -19,15 +19,13 @@ type postPetRequest = Omit<
   Pet,
   "id" | "images" | "is_club_pet" | "address" | "adopt_by" | "contact"
 > & {
-  origin: string;
   images: string[]; // image id
 };
-interface postPetResponse extends Pet {}
 
-const postPet = async (data: postPetRequest): Promise<postPetResponse> => {
+const postPet = async (data: postPetRequest): Promise<Pet> => {
   const { accessToken } = useAuthStore.getState();
 
-  const response = await axios.post<postPetResponse>(
+  const response = await axios.post<Pet>(
     `${import.meta.env.VITE_API_URL}/pets`,
     data,
     {
@@ -39,5 +37,26 @@ const postPet = async (data: postPetRequest): Promise<postPetResponse> => {
   return response.data;
 };
 
-export { getPets, postPet };
-export type { PetsResponse, postPetRequest, postPetResponse };
+const updateVisibility = async (
+  id: string,
+  visibility: boolean
+): Promise<Pet> => {
+  const { accessToken } = useAuthStore.getState();
+
+  const response = await axios.put<Pet>(
+    `${import.meta.env.VITE_API_URL}/pets/${id}`,
+    {
+      is_visible: visibility,
+    },
+    {
+      headers: {
+        Authorization: `Bearer ${accessToken}`,
+      },
+    }
+  );
+
+  return response.data;
+};
+
+export { getPets, postPet, updateVisibility };
+export type { PetsResponse, postPetRequest };
