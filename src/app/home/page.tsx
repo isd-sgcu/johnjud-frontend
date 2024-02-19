@@ -3,7 +3,6 @@ import Button from "@/components/Button";
 import Container from "@/components/Container";
 import Divider from "@/components/Divider";
 import Banner from "@/components/Main/Banner";
-import MiniPetCardContainer from "@/components/Main/CardList/MiniPetCardContainer";
 import Filter from "@/components/Main/Filter";
 import Heading from "@/components/Pets/Heading";
 import Search from "@/components/Search/PetSearch";
@@ -12,13 +11,14 @@ import MainLayout from "@/layouts/MainLayout";
 import { useNavigate } from "react-router-dom";
 
 import adsImage1 from "@/assets/ads/1.jpg";
-import BigPetCardContainer from "@/components/Main/CardList/BigPetCardContainer";
+import PetList from "@/components/Main/CardList/PetList";
+import PetSuggestionList from "@/components/Main/CardList/PetSuggestionList";
 
 // Page
 const MainPage = () => {
   const navigate = useNavigate();
 
-  const { data } = usePetsQuery();
+  const { data, isLoading } = usePetsQuery();
 
   return (
     <>
@@ -42,10 +42,15 @@ const MainPage = () => {
       </Container>
       <Container className="space-y-8">
         <div className="flex flex-col items-center justify-center gap-8 lg:flex-row lg:justify-between">
-          <div className="hidden max-w-[30vw] md:block">
-            <Banner imageUrl={adsImage1} />
+          <div>
+            <div className="hidden w-[30vw] md:block">
+              <Banner imageUrl={adsImage1} />
+            </div>
           </div>
-          {data && <MiniPetCardContainer petsData={data.pets.slice(0, 8)} />}
+          <PetSuggestionList
+            isLoading={isLoading}
+            data={data?.pets.slice(0, 8)}
+          />
         </div>
         <div className="flex items-center justify-center lg:justify-end">
           <Button
@@ -67,7 +72,7 @@ const MainPage = () => {
         <Divider variant="primary" />
       </Container>
       <Container>
-        {data && <BigPetCardContainer petsData={data.pets} />}
+        <PetList isLoading={isLoading} data={data?.pets} />
       </Container>
     </>
   );

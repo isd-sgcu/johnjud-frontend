@@ -32,7 +32,7 @@ const AdminLayout = ({ children }: MainLayoutProps) => {
         style={{
           backgroundImage: `url(${background})`,
         }}
-        className="flex min-h-screen flex-col bg-auto bg-top"
+        className="flex min-h-screen flex-col overflow-y-scroll bg-auto bg-top"
       >
         <Navbar />
         <div className="my-6 space-y-6 xl:my-10 xl:space-y-10">
