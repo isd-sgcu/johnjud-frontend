@@ -5,8 +5,8 @@ import TogglePetButton from "@/components/Card/PetCard/TogglePetButton";
 import { useUpdateVisibility } from "@/hooks/mutation/useUpdateVisibility";
 import { UtcStringToYearMonth } from "@/utils/dateConverter";
 import { Icon } from "@iconify/react";
-import { useMemo, useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { useCallback, useMemo, useState } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
 type PetCardProps = {
   id: string;
@@ -22,19 +22,6 @@ type PetCardProps = {
   isVisibled: boolean;
 };
 
-const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
-  event.preventDefault();
-  event.stopPropagation();
-};
-
-const likeHandle = (event: React.MouseEvent<HTMLButtonElement>) => {
-  handleClick(event);
-};
-
-const adoptHandle = (event: React.MouseEvent<HTMLButtonElement>) => {
-  handleClick(event);
-};
-
 const PetCard = ({
   id,
   image,
@@ -47,26 +34,24 @@ const PetCard = ({
   isLiked,
   isVisibled,
 }: PetCardProps) => {
+  const navigate = useNavigate();
+  const pathname = useLocation().pathname;
+
   const [visibility, setVisibility] = useState(isVisibled);
+  const [liked, setLiked] = useState(isLiked);
+
   const { mutate } = useUpdateVisibility();
-  const toggleVisibility = () => {
+  const toggleVisibility = useCallback(() => {
     mutate({
       id: id,
       visibility: !visibility,
     });
     setVisibility((prev) => !prev);
-  };
+  }, [visibility, id, mutate]);
 
-  const pathname = useLocation().pathname;
   const role = useMemo(() => {
     return pathname.includes("/admin") ? "admin" : "user";
   }, []);
-
-  const [liked, setLiked] = useState(isLiked);
-
-  const likedHeart = useMemo(() => {
-    return liked ? "ph:heart-fill" : "ph:heart";
-  }, [liked]);
 
   const linkTo = useMemo(() => {
     return role === "admin" ? `/admin/pets/${id}/edit` : `/pets/${id}`;
@@ -89,6 +74,22 @@ const PetCard = ({
     return status === "adopted" ? "disabled" : "accent-red";
   }, [status]);
 
+  const handleLikePet = (event: React.MouseEvent<HTMLButtonElement>) => {
+    event.preventDefault();
+    setLiked((prev) => !prev);
+    console.log("liked : " + id);
+  };
+
+  const handleAdopt = (event: React.MouseEvent<HTMLButtonElement>) => {
+    event.preventDefault();
+    navigate(`/pets/${id}/adopt`);
+  };
+
+  const handleDeletePet = (event: React.MouseEvent<HTMLButtonElement>) => {
+    event.preventDefault();
+    console.log("deleted : " + id);
+  };
+
   return (
     <Link to={linkTo}>
       <div className="flex w-80 flex-col items-start justify-start rounded-2xl bg-white p-4 shadow">
@@ -101,15 +102,17 @@ const PetCard = ({
           <p className="w-3/4 overflow-hidden text-2xl font-bold text-black">
             {name}
           </p>
-          {role === "user" && (
-            <button
-              onClick={(event: React.MouseEvent<HTMLButtonElement>) => {
-                likeHandle && likeHandle(event);
-                setLiked(!liked);
-              }}
-            >
+          {role === "admin" ? (
+            <button onClick={handleDeletePet} className="hover:brightness-90">
               <Icon
-                icon={role === "user" ? likedHeart : "ph:pencil-simple"}
+                icon={"ph:trash"}
+                className="relative h-8 w-8 text-accent-red"
+              />
+            </button>
+          ) : (
+            <button onClick={handleLikePet} className="hover:brightness-90">
+              <Icon
+                icon={liked ? "ph:heart-fill" : "ph:heart"}
                 className="relative h-8 w-8 text-accent-red"
               />
             </button>
@@ -130,7 +133,7 @@ const PetCard = ({
               variant={adoptedButton}
               rounded="full"
               className="max-h-10 max-w-28 flex-shrink-0 text-base"
-              onClick={adoptHandle}
+              onClick={handleAdopt}
             />
           ) : (
             <TogglePetButton
