@@ -4,16 +4,15 @@ import AddThumbnail from "@/components/Admin/Pets/Add/AddThumbnail";
 import EditName from "@/components/Admin/Pets/Add/EditName";
 import EditText from "@/components/Admin/Pets/Add/EditText";
 import Container from "@/components/Container";
+import { Pet } from "@/types/pets";
 import { Icon } from "@iconify/react/dist/iconify.js";
 import { useEffect, useState } from "react";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import PetThumbnails from "../PetThumbnails";
 
-const BigPetCard = ({ isAdmin }: { isAdmin: boolean }) => {
-  const [name, setName] = useState("ไรลีย์");
-  const [text, setText] = useState(
-    "ทาวน์เทปวโรกาส ลิมูซีนเพลซบาร์บี้อุเทนเพลย์บอย ฟลุก เซอร์ไพรส์ รูบิคบึมเฝอมายาคติ ทรู ภคันทลาพาธ วาไรตี้ ท็อปบูตสงบสุขวอลนัต โนติส เบลอ แรงใจ เป่ายิงฉุบโยโย่ ภควัทคีตา อิเหนาช็อปนินจารูบิคคาสิโน คีตกวีบอกซ์โพลารอยด์ดิกชันนารี แกสโซฮอล์ผู้นำ จิ๊กโก๋ธัมโมคอร์รัปชั่น เหี่ยวย่นออทิสติก เวเฟอร์เดโมเจ๊วีนโอวัลติน"
-  );
+const BigPetCard = ({ isAdmin, data }: { isAdmin: boolean; data: Pet }) => {
+  const [name, setName] = useState(data.name);
+  const [text, setText] = useState(data.caption);
   const [petFrom, setPetFrom] = useState("fromClub");
   const [image, setImage] = useState<File | null>(null);
   const [images, setImages] = useState<File[]>([]);

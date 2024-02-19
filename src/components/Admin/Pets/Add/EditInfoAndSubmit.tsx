@@ -9,8 +9,8 @@ import TextInputInfo from "./TextInputInfo";
 import ToggleInputInfo from "./ToggleInputInfo";
 
 export type info = {
-  type: "dog" | "cat" | "-";
-  gender: "male" | "female" | "-";
+  type: string;
+  gender: string;
   color: string;
   age: string;
   nature: string;
