@@ -1,3 +1,4 @@
+import useAuthStore from "@/store/authStore";
 import { Meta } from "@/types/common";
 import { Pet } from "@/types/pets";
 import axios from "axios";
@@ -23,16 +24,15 @@ type postPetRequest = Omit<
 };
 interface postPetResponse extends Pet {}
 
-const postPet = async (
-  data: postPetRequest,
-  token: string | null
-): Promise<postPetResponse> => {
+const postPet = async (data: postPetRequest): Promise<postPetResponse> => {
+  const { accessToken } = useAuthStore.getState();
+
   const response = await axios.post<postPetResponse>(
     `${import.meta.env.VITE_API_URL}/pets`,
     data,
     {
       headers: {
-        Authorization: `Bearer ${token}`,
+        Authorization: `Bearer ${accessToken}`,
       },
     }
   );

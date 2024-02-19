@@ -2,9 +2,7 @@ import { postPetRequest } from "@/api/pets";
 import Container from "@/components/Container";
 import SmallPetCardList from "@/components/SmallPetCardList";
 import { useCreateImage } from "@/hooks/mutation/usePostImage";
-import { useCreatePet } from "@/hooks/mutation/usePostPet";
 import { usePetsQuery } from "@/hooks/queries/usePetsQuery";
-import useAuthStore from "@/store/authStore";
 import { Icon } from "@iconify/react";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
@@ -16,8 +14,9 @@ import EditInfoAndSubmit, {
 } from "../../../../components/Admin/Pets/Add/EditInfoAndSubmit";
 import EditName from "../../../../components/Admin/Pets/Add/EditName";
 import EditText from "../../../../components/Admin/Pets/Add/EditText";
-import MainLayout from "../../../../layouts/MainLayout";
 
+import { useCreatePet } from "@/hooks/mutation/usePostPet";
+import MainLayout from "../../../../layouts/MainLayout";
 const adminCreate = () => {
   const { data } = usePetsQuery();
 
@@ -52,11 +51,8 @@ const adminCreate = () => {
     }
   }, [info.gender, info.type, info.color, info.age, name]);
 
-  const authStore = useAuthStore();
-  const token = authStore.accessToken;
-
-  const postImageMutation = useCreateImage(token);
-  const postPetMutation = useCreatePet(token);
+  const postImageMutation = useCreateImage();
+  const postPetMutation = useCreatePet();
 
   const handleSubmit = async () => {
     const allImageFile: File[] = await Promise.all(
@@ -97,7 +93,6 @@ const adminCreate = () => {
       images: allImage,
     };
 
-    console.log(petData);
     postPetMutation.mutate(petData);
   };
 
