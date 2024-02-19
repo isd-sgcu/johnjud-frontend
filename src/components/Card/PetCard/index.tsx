@@ -1,7 +1,9 @@
+
 import dog from "@/assets/dog.webp";
 import Button from "@/components/Button";
 import PetDetail from "@/components/Card/PetCard/PetDetail";
 import TogglePetButton from "@/components/Card/PetCard/TogglePetButton";
+import { useUpdateVisibility } from "@/hooks/mutation/useUpdateVisibility";
 import { UtcStringToYearMonth } from "@/utils/dateConverter";
 import { Icon } from "@iconify/react";
 import { useMemo, useState } from "react";
@@ -47,7 +49,12 @@ const PetCard = ({
   isVisibled,
 }: PetCardProps) => {
   const [visibility, setVisibility] = useState(isVisibled);
+  const { mutate } = useUpdateVisibility();
   const toggleVisibility = () => {
+    mutate({
+      id: id,
+      visibility: !visibility
+    })
     setVisibility((prev) => !prev);
   };
 
@@ -128,9 +135,9 @@ const PetCard = ({
             />
           ) : (
             <TogglePetButton
-              visibility={visibility}
-              onClick={toggleVisibility}
-            />
+            visibility={visibility}
+            onClick={toggleVisibility}
+          />
           )}
         </div>
       </div>
