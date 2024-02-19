@@ -80,7 +80,7 @@ const adminCreate = () => {
       type: info.type,
       name: name,
       birthdate: info.age,
-      gender: info.gender,
+      gender: info.gender as "male" | "female",
       color: info.color,
       pattern: "a", // remove later
       habit: info.nature,
