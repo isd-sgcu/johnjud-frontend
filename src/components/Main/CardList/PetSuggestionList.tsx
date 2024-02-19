@@ -1,13 +1,20 @@
 import MiniPetCard from "@/components/Card/MiniPetCard";
+import PetSuggestionListFallback from "@/components/Fallback/Main/PetSuggestionListFallback";
 import { Pet } from "@/types/pets";
 import React from "react";
-interface MiniPetCardContainerProps {
-  petsData: Pet[];
+interface PetSuggestionListProps {
+  isLoading: boolean;
+  petsData: Pet[] | undefined;
 }
 
-const MiniPetCardContainer: React.FC<MiniPetCardContainerProps> = ({
+const PetSuggestionList: React.FC<PetSuggestionListProps> = ({
+  isLoading,
   petsData,
 }) => {
+  if (isLoading && !petsData) {
+    return <PetSuggestionListFallback />;
+  }
+
   return (
     <div className="flex flex-wrap justify-center gap-2 md:gap-6 lg:justify-end">
       {petsData?.map((pet: Pet) => (
@@ -25,4 +32,4 @@ const MiniPetCardContainer: React.FC<MiniPetCardContainerProps> = ({
   );
 };
 
-export default MiniPetCardContainer;
+export default PetSuggestionList;
