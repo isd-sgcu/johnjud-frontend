@@ -45,6 +45,7 @@ const TogglePetButton = ({ visibility, onClick }: ToggleProps) => {
     <button
       className={base({ variant })}
       onClick={(event: React.MouseEvent<HTMLButtonElement>) => {
+        event.preventDefault();
         onClick && onClick(event);
         setIsVisible(!isVisible);
       }}
