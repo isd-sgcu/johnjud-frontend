@@ -1,4 +1,3 @@
-
 import dog from "@/assets/dog.webp";
 import Button from "@/components/Button";
 import PetDetail from "@/components/Card/PetCard/PetDetail";
@@ -53,8 +52,8 @@ const PetCard = ({
   const toggleVisibility = () => {
     mutate({
       id: id,
-      visibility: !visibility
-    })
+      visibility: !visibility,
+    });
     setVisibility((prev) => !prev);
   };
 
@@ -135,9 +134,9 @@ const PetCard = ({
             />
           ) : (
             <TogglePetButton
-            visibility={visibility}
-            onClick={toggleVisibility}
-          />
+              visibility={visibility}
+              onClick={toggleVisibility}
+            />
           )}
         </div>
       </div>
