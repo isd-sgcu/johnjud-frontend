@@ -11,7 +11,7 @@ import MainLayout from "@/layouts/MainLayout";
 import { useNavigate } from "react-router-dom";
 
 import adsImage1 from "@/assets/ads/1.jpg";
-import BigPetCardContainer from "@/components/Main/CardList/BigPetCardContainer";
+import PetList from "@/components/Main/CardList/PetList";
 import PetSuggestionList from "@/components/Main/CardList/PetSuggestionList";
 
 // Page
@@ -49,7 +49,7 @@ const MainPage = () => {
           </div>
           <PetSuggestionList
             isLoading={isLoading}
-            petsData={data?.pets.slice(0, 8)}
+            data={data?.pets.slice(0, 8)}
           />
         </div>
         <div className="flex items-center justify-center lg:justify-end">
@@ -72,7 +72,7 @@ const MainPage = () => {
         <Divider variant="primary" />
       </Container>
       <Container>
-        {data && <BigPetCardContainer petsData={data.pets} />}
+        <PetList isLoading={isLoading} data={data?.pets} />
       </Container>
     </>
   );

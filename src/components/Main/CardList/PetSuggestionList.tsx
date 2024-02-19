@@ -4,20 +4,20 @@ import { Pet } from "@/types/pets";
 import React from "react";
 interface PetSuggestionListProps {
   isLoading: boolean;
-  petsData: Pet[] | undefined;
+  data: Pet[] | undefined;
 }
 
 const PetSuggestionList: React.FC<PetSuggestionListProps> = ({
   isLoading,
-  petsData,
+  data,
 }) => {
-  if (isLoading && !petsData) {
+  if (isLoading && !data) {
     return <PetSuggestionListFallback />;
   }
 
   return (
     <div className="flex flex-wrap justify-center gap-2 md:gap-6 lg:justify-end">
-      {petsData?.map((pet: Pet) => (
+      {data?.map((pet: Pet) => (
         <MiniPetCard
           key={pet.id}
           id={pet.id}
