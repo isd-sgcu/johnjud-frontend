@@ -1,6 +1,6 @@
 import LoginForm from "@/components/Form/LoginForm";
 import useSignIn from "@/hooks/auth/useSignIn";
-import MainLayout from "@/layouts/MainLayout";
+import AdminLayout from "@/layouts/AdminLayout";
 import useAuthStore from "@/store/authStore";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
@@ -35,5 +35,4 @@ const Login = () => {
 export default Login;
 
 // Layout
-export const Layout = MainLayout;
-MainLayout;
+export const Layout = AdminLayout;
