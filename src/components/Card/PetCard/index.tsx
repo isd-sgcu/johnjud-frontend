@@ -2,6 +2,7 @@ import dog from "@/assets/dog.webp";
 import Button from "@/components/Button";
 import PetDetail from "@/components/Card/PetCard/PetDetail";
 import TogglePetButton from "@/components/Card/PetCard/TogglePetButton";
+import Modal from "@/components/Modal";
 import { useDeletePet } from "@/hooks/mutation/useDeletePet";
 import { useUpdateVisibility } from "@/hooks/mutation/useUpdateVisibility";
 import { UtcStringToYearMonth } from "@/utils/dateConverter";
@@ -39,6 +40,7 @@ const PetCard = ({
   const pathname = useLocation().pathname;
   const { mutate: deletePet } = useDeletePet();
 
+  const [openDeleteModal, setOpenDeleteModal] = useState(false);
   const [visibility, setVisibility] = useState(isVisibled);
   const [liked, setLiked] = useState(isLiked);
 
@@ -87,65 +89,92 @@ const PetCard = ({
     navigate(`/pets/${id}/adopt`);
   };
 
-  const handleDeletePet = (event: React.MouseEvent<HTMLButtonElement>) => {
-    event.preventDefault();
-    deletePet(id);
-  };
-
   return (
-    <Link to={linkTo}>
-      <div className="flex w-80 flex-col items-start justify-start rounded-2xl bg-white p-4 shadow">
-        <img
-          src={image ? image : dog}
-          alt={name}
-          className="mb-4 h-72 w-72 rounded-2xl object-cover object-center shadow"
-        />
-        <div className="mb-2 flex w-72 flex-row items-center justify-between">
-          <p className="w-3/4 overflow-hidden text-2xl font-bold text-black">
-            {name}
-          </p>
-          {role === "admin" ? (
-            <button onClick={handleDeletePet} className="hover:brightness-90">
-              <Icon
-                icon={"ph:trash"}
-                className="relative h-8 w-8 text-accent-red"
-              />
-            </button>
-          ) : (
-            <button onClick={handleLikePet} className="hover:brightness-90">
-              <Icon
-                icon={liked ? "ph:heart-fill" : "ph:heart"}
-                className="relative h-8 w-8 text-accent-red"
-              />
-            </button>
-          )}
-        </div>
-        <div className="flex w-full flex-row items-end justify-between gap-2">
-          <div className="w-3/5 space-y-1">
-            <PetDetail
-              icon={"ph:paw-print"}
-              description={`${petGender}, ${age}`}
-            />
-            <PetDetail icon={"ph:music-notes"} description={habit} />
-            <PetDetail icon={"ph:medal"} description={petSterile} />
+    <>
+      <Link to={linkTo}>
+        <div className="flex w-80 flex-col items-start justify-start rounded-2xl bg-white p-4 shadow">
+          <img
+            src={image ? image : dog}
+            alt={name}
+            className="mb-4 h-72 w-72 rounded-2xl object-cover object-center shadow"
+          />
+          <div className="mb-2 flex w-72 flex-row items-center justify-between">
+            <p className="w-3/4 overflow-hidden text-2xl font-bold text-black">
+              {name}
+            </p>
+            {role === "admin" ? (
+              <button
+                onClick={(e: React.MouseEvent<HTMLButtonElement>) => {
+                  e.preventDefault();
+                  setOpenDeleteModal(true);
+                }}
+                className="hover:brightness-90"
+              >
+                <Icon
+                  icon={"ph:trash"}
+                  className="relative h-8 w-8 text-accent-red"
+                />
+              </button>
+            ) : (
+              <button onClick={handleLikePet} className="hover:brightness-90">
+                <Icon
+                  icon={liked ? "ph:heart-fill" : "ph:heart"}
+                  className="relative h-8 w-8 text-accent-red"
+                />
+              </button>
+            )}
           </div>
-          {role === "user" ? (
-            <Button
-              text={"รับเลี้ยง"}
-              variant={adoptedButton}
-              rounded="full"
-              className="max-h-10 max-w-28 flex-shrink-0 text-base"
-              onClick={handleAdopt}
-            />
-          ) : (
-            <TogglePetButton
-              visibility={visibility}
-              onClick={toggleVisibility}
-            />
-          )}
+          <div className="flex w-full flex-row items-end justify-between gap-2">
+            <div className="w-3/5 space-y-1">
+              <PetDetail
+                icon={"ph:paw-print"}
+                description={`${petGender}, ${age}`}
+              />
+              <PetDetail icon={"ph:music-notes"} description={habit} />
+              <PetDetail icon={"ph:medal"} description={petSterile} />
+            </div>
+            {role === "user" ? (
+              <Button
+                text={"รับเลี้ยง"}
+                variant={adoptedButton}
+                rounded="full"
+                className="max-h-10 max-w-28 flex-shrink-0 text-base"
+                onClick={handleAdopt}
+              />
+            ) : (
+              <TogglePetButton
+                visibility={visibility}
+                onClick={toggleVisibility}
+              />
+            )}
+          </div>
         </div>
-      </div>
-    </Link>
+      </Link>
+
+      <Modal
+        title={"ยืนยันการลบสัตว์หรือไม่"}
+        open={openDeleteModal}
+        setOpen={setOpenDeleteModal}
+        button={
+          <>
+            <Button
+              text="ยกเลิก"
+              variant="accent-red"
+              rounded="full"
+              onClick={() => setOpenDeleteModal(false)}
+            />
+            <Button
+              text="ตกลง"
+              variant="primary"
+              rounded="full"
+              onClick={() => deletePet(id)}
+            />
+          </>
+        }
+      >
+        <p className="text-accent-gray">ยินยันการลบ {name} หรือไม่</p>
+      </Modal>
+    </>
   );
 };
 
