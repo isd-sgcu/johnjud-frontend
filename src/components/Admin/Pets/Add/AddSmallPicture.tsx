@@ -6,19 +6,31 @@ interface AddSmallPictureProps {
 }
 
 const AddSmallPicture = (props: AddSmallPictureProps) => {
+  const { value, setValue } = props;
   const handleOnChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const selectedFiles = event.target.files;
     if (selectedFiles && selectedFiles.length !== 0) {
       const newFiles: File[] = Array.from(selectedFiles);
-      props.setValue([...props.value, ...Array.from(newFiles)]);
+      setValue((prev) => {
+        return [...prev, ...Array.from(newFiles)];
+      });
     }
   };
+
+  const handleDeleteImage = (index: number) => {
+    setValue((prev) => {
+      const newFiles = [...prev];
+      newFiles.splice(index, 1);
+      return newFiles;
+    });
+  };
+
   return (
     <div className="flex w-full snap-x flex-row gap-4 overflow-x-auto scroll-smooth pb-2">
-      {Array.from(props.value).map((picture, index) => {
+      {Array.from(value).map((picture, index) => {
         return (
           <div
-            className="flex aspect-square w-[60%] max-w-48 flex-shrink-0 snap-start items-center justify-center bg-white"
+            className="relative flex aspect-square w-[60%] max-w-48 flex-shrink-0 snap-start items-center justify-center bg-white"
             key={index}
           >
             <img
@@ -26,6 +38,14 @@ const AddSmallPicture = (props: AddSmallPictureProps) => {
               alt={picture.name}
               className="h-full w-full rounded-3xl border-2  border-accent-gray-variant border-opacity-50 object-cover object-center"
             />
+            <div className="absolute right-0 top-0 p-2">
+              <button
+                onClick={() => handleDeleteImage(index)}
+                className="flex h-8 w-8 cursor-pointer flex-col items-center justify-center rounded-full bg-white p-1 shadow-md hover:brightness-90"
+              >
+                <Icon icon="ph:trash" className="h-5 w-5 text-accent-red" />
+              </button>
+            </div>
           </div>
         );
       })}
