@@ -31,7 +31,6 @@ const toggleSwitch = tv({
 
 const TogglePetButton = ({ visibility, onClick }: ToggleProps) => {
   const { base, switchStyle, textStyle } = toggleSwitch();
-  // const [isVisible, setIsVisible] = useState(visibility);
 
   const variant = useMemo(() => {
     return visibility ? "enabled" : "disabled";
