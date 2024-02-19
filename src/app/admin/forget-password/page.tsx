@@ -2,7 +2,7 @@ import Button from "@/components/Button";
 import Container from "@/components/Container";
 import Modal from "@/components/Modal";
 import useForgetPassword from "@/hooks/auth/useForgetPassword";
-import AdminLayout from "@/layouts/AdminLayout";
+import MainLayout from "@/layouts/MainLayout";
 import useAuthStore from "@/store/authStore";
 import { Icon } from "@iconify/react/dist/iconify.js";
 import { useEffect, useState } from "react";
@@ -108,4 +108,4 @@ const ForgetPassword = () => {
 
 export default ForgetPassword;
 
-export const Layout = AdminLayout;
+export const Layout = MainLayout;

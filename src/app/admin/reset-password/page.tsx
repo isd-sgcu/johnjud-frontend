@@ -1,7 +1,7 @@
 import Button from "@/components/Button";
 import Container from "@/components/Container";
 import useResetPassword from "@/hooks/auth/useResetPassword";
-import AdminLayout from "@/layouts/AdminLayout";
+import MainLayout from "@/layouts/MainLayout";
 import { Icon } from "@iconify/react/dist/iconify.js";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
@@ -76,4 +76,4 @@ const resetPassword = () => {
 
 export default resetPassword;
 
-export const Layout = AdminLayout;
+export const Layout = MainLayout;
