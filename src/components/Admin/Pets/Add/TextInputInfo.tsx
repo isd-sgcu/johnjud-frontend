@@ -11,13 +11,13 @@ interface TextInputInfoProps {
 
 const TextInputInfo = (props: TextInputInfoProps) => {
   return (
-    <div className="flex flex-row items-start gap-2">
+    <div className="grid grid-cols-4 gap-2">
       <div className="flex flex-row items-center">
         <Icon icon={props.icon} className="h-5 w-5 text-primary" />
         <span className="ml-1 text-nowrap text-primary">{props.text}</span>
       </div>
       <TextareaAutosize
-        className={`w-full rounded-lg bg-white px-2 ${props.enableEdit ? "py-1" : ""} font-semibold ${
+        className={`col-span-3 w-full rounded-lg bg-white px-2 ${props.enableEdit ? "py-1" : ""} font-semibold ${
           props.enableEdit ? "border border-accent-gray-variant" : ""
         }`}
         value={props.value}

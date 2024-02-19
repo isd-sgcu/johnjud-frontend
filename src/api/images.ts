@@ -1,3 +1,4 @@
+import useAuthStore from "@/store/authStore";
 import { Image } from "@/types/common";
 import axios from "axios";
 
@@ -9,9 +10,10 @@ type postImageRequest = {
 interface postImageResponse extends Image {}
 
 const postImage = async (
-  data: postImageRequest,
-  token: string | null
+  data: postImageRequest
 ): Promise<postImageResponse> => {
+  const { accessToken } = useAuthStore.getState();
+
   const formData = new FormData();
   formData.append("file", data.file);
   if (data.pet_id) formData.append("pet_id", data.pet_id);
@@ -22,7 +24,7 @@ const postImage = async (
     {
       headers: {
         "Context-Type": "multipart/form-data",
-        Authorization: `Bearer ${token}`,
+        Authorization: `Bearer ${accessToken}`,
       },
     }
   );

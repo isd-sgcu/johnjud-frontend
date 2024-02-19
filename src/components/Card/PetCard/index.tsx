@@ -65,8 +65,9 @@ const PetCard = ({
     return role === "admin" ? `/admin/pets/${id}/edit` : `/pets/${id}`;
   }, [id]);
 
-  const { years, months } = useMemo(() => {
-    return UtcStringToYearMonth({ utcString: birthDate });
+  const age = useMemo(() => {
+    const { years, months } = UtcStringToYearMonth({ utcString: birthDate });
+    return years + " ปี " + months + " เดือน";
   }, [birthDate]);
 
   const petGender = useMemo(() => {
@@ -90,8 +91,10 @@ const PetCard = ({
           className="mb-4 h-72 w-72 rounded-2xl object-cover object-center shadow"
         />
         <div className="mb-2 flex w-72 flex-row items-center justify-between">
-          <p className="text-2xl font-bold text-black">{name}</p>
-          {role === "user" ? (
+          <p className="w-3/4 overflow-hidden text-2xl font-bold text-black">
+            {name}
+          </p>
+          {role === "user" && (
             <button
               onClick={(event: React.MouseEvent<HTMLButtonElement>) => {
                 likeHandle && likeHandle(event);
@@ -103,15 +106,13 @@ const PetCard = ({
                 className="relative h-8 w-8 text-accent-red"
               />
             </button>
-          ) : (
-            <div></div>
           )}
         </div>
-        <div className="flex w-72 flex-row items-end justify-between">
-          <div className=" items-center space-y-1">
+        <div className="flex w-full flex-row items-end justify-between gap-2">
+          <div className="w-3/5 space-y-1">
             <PetDetail
               icon={"ph:paw-print"}
-              description={`${petGender}, อายุ ${years} ปี ${months} เดือน`}
+              description={`${petGender}, ${age}`}
             />
             <PetDetail icon={"ph:music-notes"} description={habit} />
             <PetDetail icon={"ph:medal"} description={petSterile} />
