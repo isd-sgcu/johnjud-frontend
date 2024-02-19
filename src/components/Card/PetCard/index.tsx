@@ -2,6 +2,7 @@ import dog from "@/assets/dog.webp";
 import Button from "@/components/Button";
 import PetDetail from "@/components/Card/PetCard/PetDetail";
 import TogglePetButton from "@/components/Card/PetCard/TogglePetButton";
+import { useDeletePet } from "@/hooks/mutation/useDeletePet";
 import { useUpdateVisibility } from "@/hooks/mutation/useUpdateVisibility";
 import { UtcStringToYearMonth } from "@/utils/dateConverter";
 import { Icon } from "@iconify/react";
@@ -36,6 +37,7 @@ const PetCard = ({
 }: PetCardProps) => {
   const navigate = useNavigate();
   const pathname = useLocation().pathname;
+  const { mutate: deletePet } = useDeletePet();
 
   const [visibility, setVisibility] = useState(isVisibled);
   const [liked, setLiked] = useState(isLiked);
@@ -87,7 +89,7 @@ const PetCard = ({
 
   const handleDeletePet = (event: React.MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
-    console.log("deleted : " + id);
+    deletePet(id);
   };
 
   return (
