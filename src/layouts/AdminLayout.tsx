@@ -24,7 +24,7 @@ const AdminLayout = ({ children }: MainLayoutProps) => {
     if (isLoggedIn && refreshToken) {
       mutate({ refresh_token: refreshToken });
     }
-  }, []);
+  }, [isLoggedIn]);
 
   return (
     <>
