@@ -1,4 +1,5 @@
 import { Icon } from "@iconify/react/dist/iconify.js";
+import dayjs from "dayjs";
 import { ChangeEvent } from "react";
 
 interface DateInputInfoProps {
@@ -16,6 +17,8 @@ const DateInputInfo = (props: DateInputInfoProps) => {
     const date = event.target.value;
     props.onChange(date);
   };
+
+  const birthdate = dayjs(props.value).format("DD/MM/YYYY");
 
   return (
     <div className="grid grid-cols-4 gap-2">
@@ -35,7 +38,7 @@ const DateInputInfo = (props: DateInputInfoProps) => {
             />
           </div>
         ) : (
-          <div className="ml-2 font-semibold">{props.value}</div>
+          <div className="ml-2 font-semibold">{birthdate}</div>
         )}
       </div>
     </div>

@@ -1,28 +1,19 @@
-import { PetsResponse } from "@/api/pets";
-import logo from "@/assets/details/logo.webp";
+import logo from "@/assets/details/logo.png";
 import EditInfoAndSubmit, {
   info,
 } from "@/components/Admin/Pets/Add/EditInfoAndSubmit";
 import BigPetCard from "@/components/Pets/Details/BigPetCard";
-import { usePageParams } from "@/hooks/usePageParams";
 import MainLayout from "@/layouts/MainLayout";
+import { Pet } from "@/types/pets";
 import { useState } from "react";
-import SmallPetCardList from "../../SmallPetCardList";
 
-const Details = ({
-  isAdmin,
-  data,
-}: {
-  isAdmin: boolean;
-  data: PetsResponse;
-}) => {
-  const param = usePageParams(["id"]);
+const Details = ({ isAdmin, data }: { isAdmin: boolean; data: Pet }) => {
   const [petInfo, setPetInfo] = useState<info>({
-    gender: "-",
-    type: "-",
-    color: "-",
-    age: "ครับ",
-    nature: "ครับ",
+    gender: data.gender,
+    type: data.type,
+    color: data.color,
+    age: data.birthdate,
+    nature: data.habit,
     vaccine: true,
     sterile: false,
   });
@@ -39,7 +30,7 @@ const Details = ({
 
   return (
     <>
-      <BigPetCard isAdmin={isAdmin} />
+      <BigPetCard isAdmin={isAdmin} data={data} />
       <div className="my-8 flex gap-20 xl:justify-between xl:pr-24">
         <EditInfoAndSubmit
           value={petInfo}
@@ -48,11 +39,10 @@ const Details = ({
           isAdmin={isAdmin}
           isFav={isFav}
           handleFavPressed={handleFavPressed}
-          id={param.id}
+          id={data.id}
         />
         <img src={logo} alt="logo" className="hidden h-64 w-64 xl:block" />
       </div>
-      <SmallPetCardList pets={data.pets} />
     </>
   );
 };
