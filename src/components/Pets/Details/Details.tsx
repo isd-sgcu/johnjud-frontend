@@ -18,6 +18,8 @@ import { Icon } from "@iconify/react/dist/iconify.js";
 import { useEffect, useMemo, useState } from "react";
 import SmallPetCardList from "../../SmallPetCardList";
 import PetThumbnails from "../PetThumbnails";
+import axios from "axios";
+import { useDeleteImage } from "@/hooks/mutation/useDeleteImage";
 
 interface DetailsProps {
   isAdmin: boolean;
@@ -25,7 +27,11 @@ interface DetailsProps {
 }
 
 const Details = (props: DetailsProps) => {
-  const mutaion = useUpdatePet();
+  const postImageMutation = useCreateImage();
+  const updatePetMutaion = useUpdatePet();
+  const deleteImageMutation = useDeleteImage();
+
+  if (updatePetMutaion.data !== undefined) console.log(updatePetMutaion.data);
 
   const { id } = usePageParams(["id"]);
   const [isFav, setIsFav] = useState(false);
@@ -102,6 +108,12 @@ const Details = (props: DetailsProps) => {
   }
 
   async function handleSubmit() {
+    //clear old images
+    /* pet.images?.forEach((image) => {
+      deleteImageMutation.mutate(image.id)
+    }); */
+
+    //create new images
     const allImageFile: File[] = await Promise.all(
       thumbnail ? [thumbnail, ...images] : images
     );
@@ -136,14 +148,11 @@ const Details = (props: DetailsProps) => {
       images: allImage,
     };
     console.log(data);
-    mutaion.mutate({
+    updatePetMutaion.mutate({
       body: data,
       id: id,
     });
   }
-
-  if (mutaion.data !== undefined) console.log(mutaion.data);
-  const postImageMutation = useCreateImage();
 
   return (
     <>
