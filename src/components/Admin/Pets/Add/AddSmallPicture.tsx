@@ -2,7 +2,7 @@ import { Icon } from "@iconify/react";
 
 interface AddSmallPictureProps {
   value: File[];
-  setValue: React.Dispatch<React.SetStateAction<(File | null)[]>>;
+  setValue: React.Dispatch<React.SetStateAction<File[]>>;
 }
 
 const AddSmallPicture = (props: AddSmallPictureProps) => {

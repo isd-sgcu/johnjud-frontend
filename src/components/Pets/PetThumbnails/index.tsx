@@ -53,14 +53,15 @@ const PetThumbnails = (props: PetThumbnailsProps) => {
           showStatus={false}
           showIndicators={false}
         >
-          {props.petImages.map((image) => (
-            <div key={image.id}>
-              <img
-                src={image.url}
-                className="z-0 aspect-square max-w-80 rounded-2xl object-cover object-center"
-              />
-            </div>
-          ))}
+          {props.petImages &&
+            props.petImages.map((image) => (
+              <div key={image.id}>
+                <img
+                  src={image.url}
+                  className="z-0 aspect-square max-w-80 rounded-2xl object-cover object-center"
+                />
+              </div>
+            ))}
         </Carousel>
       </div>
     </div>

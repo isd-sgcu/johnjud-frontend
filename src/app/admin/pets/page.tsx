@@ -11,11 +11,10 @@ import { Icon } from "@iconify/react/dist/iconify.js";
 import { useCallback, useState } from "react";
 import { Link } from "react-router-dom";
 
-import PetsPageFallback from "@/components/Fallback/PetsPageFallback";
 import { usePetsQuery } from "@/hooks/queries/usePetsQuery";
 import AdminLayout from "@/layouts/AdminLayout";
 const Pets = () => {
-  const { data, isLoading } = usePetsQuery();
+  const { data } = usePetsQuery();
 
   const [isOpenFilterPanel, setIsOpenFilterPanel] = useState(false);
 

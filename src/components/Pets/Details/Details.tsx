@@ -1,5 +1,5 @@
 import { PetsResponse, PutPetRequest } from "@/api/pets";
-import logo from "@/assets/details/logo.png";
+import logo from "@/assets/details/logo.webp";
 import AddSmallPicture from "@/components/Admin/Pets/Add/AddSmallPicture";
 import AddThumbnail from "@/components/Admin/Pets/Add/AddThumbnail";
 import EditInfoAndSubmit, {
@@ -8,6 +8,7 @@ import EditInfoAndSubmit, {
 import EditName from "@/components/Admin/Pets/Add/EditName";
 import EditText from "@/components/Admin/Pets/Add/EditText";
 import Container from "@/components/Container";
+import { useCreateImage } from "@/hooks/mutation/usePostImage";
 import { useUpdatePet } from "@/hooks/mutation/useUpdatePet";
 import { useConvertImgUrltoFile } from "@/hooks/useConvertImgUrltoFile";
 import { usePageParams } from "@/hooks/usePageParams";
@@ -32,7 +33,7 @@ const Details = (props: DetailsProps) => {
   const [text, setText] = useState("");
   const [origin, setOrigin] = useState("fromClub");
   const [thumbnail, setThumbnail] = useState<File | null>(null);
-  const [images, setImages] = useState<(File | null)[]>([]);
+  const [images, setImages] = useState<File[]>([]);
   const pet = useMemo(getPet, [props.data, id]);
   const [enableSubmit, setEnableSubmit] = useState(false);
   const [petInfo, setPetInfo] = useState<info>({
@@ -63,7 +64,7 @@ const Details = (props: DetailsProps) => {
     convertImgUrltoFile();
     setName(pet.name);
     setText(pet.caption);
-    setOrigin(pet.is_club_pet ? "fromClub" : "fromOutside");
+    setOrigin(pet.origin);
     setPetInfo({
       type: pet.type as "dog" | "cat" | "-",
       gender: pet.gender,
@@ -89,7 +90,7 @@ const Details = (props: DetailsProps) => {
       } else {
         setImages((images) => {
           const newImages = [...images];
-          newImages[index] = response;
+          newImages[index - 1] = response as File;
           return newImages;
         });
       }
@@ -101,6 +102,25 @@ const Details = (props: DetailsProps) => {
   }
 
   async function handleSubmit() {
+    const allImageFile: File[] = await Promise.all(
+      thumbnail ? [thumbnail, ...images] : images
+    );
+
+    // post image and get id : assume this is correct
+    const allImage: string[] = (
+      await Promise.all(
+        allImageFile.map(async (image) => {
+          const imageResponse = await postImageMutation.mutateAsync({
+            file: image,
+          });
+          console.log(imageResponse);
+          return imageResponse.id;
+        })
+      )
+    )
+      .filter((id) => id !== undefined)
+      .map((id) => id ?? ""); // map for ts type checking
+
     const data: PutPetRequest = {
       type: petInfo.type,
       name: name,
@@ -113,6 +133,7 @@ const Details = (props: DetailsProps) => {
       is_vaccinated: petInfo.vaccine,
       is_visible: pet.is_visible,
       origin: origin,
+      images: allImage,
     };
     console.log(data);
     mutaion.mutate({
@@ -122,6 +143,7 @@ const Details = (props: DetailsProps) => {
   }
 
   if (mutaion.data !== undefined) console.log(mutaion.data);
+  const postImageMutation = useCreateImage();
 
   return (
     <>

@@ -1,5 +1,5 @@
 import { Icon } from "@iconify/react/dist/iconify.js";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Select from "react-select";
 import CreatableSelect from "react-select/creatable";
 
@@ -26,6 +26,16 @@ const DropdownInputInfo = (props: DropdownInputInfoProps) => {
     setCurrentOption(newVal);
     props.setValue(newVal);
   };
+
+  useEffect(
+    () =>
+      setCurrentOption(
+        props.option.find(
+          (option) => option.value === props.value
+        ) as OptionType
+      ),
+    [props.value]
+  );
 
   return (
     <div className="grid grid-cols-4 gap-2">

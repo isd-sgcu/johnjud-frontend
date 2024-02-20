@@ -77,19 +77,23 @@ const deletePet = async (id: string) => {
   return response.data;
 };
 
-
 //ver.1 omit images
 type PutPetRequest = Omit<
-Pet,
-"id" | "images" | "is_club_pet" | "pattern" | "status"
+  Pet,
+  | "id"
+  | "images"
+  | "is_club_pet"
+  | "pattern"
+  | "status"
+  | "address"
+  | "adopt_by"
+  | "contact"
 > & {
   origin: string;
+  images: string[];
 };
 
-const updatePet = async (
-  data: PutPetRequest,
-  id: string
-): Promise<Pet> => {
+const updatePet = async (data: PutPetRequest, id: string): Promise<Pet> => {
   const { accessToken } = useAuthStore.getState();
 
   const response = await axios.put(
@@ -103,7 +107,6 @@ const updatePet = async (
   );
   return response.data;
 };
-    
-    
-export { deletePet, getPets, postPet, updateVisibility, updatePet };
-export type { PetsResponse, postPetRequest, PutPetRequest };
+
+export { deletePet, getPets, postPet, updatePet, updateVisibility };
+export type { PetsResponse, PutPetRequest, postPetRequest };
