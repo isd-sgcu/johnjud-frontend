@@ -19,7 +19,7 @@ import { useCreatePet } from "@/hooks/mutation/usePostPet";
 import AdminLayout from "@/layouts/AdminLayout";
 import dayjs from "dayjs";
 const adminCreate = () => {
-  const { data } = usePetsQuery();
+  const { data, isLoading } = usePetsQuery();
 
   const [name, setName] = useState("กรุณาใส่ชื่อ...");
   const [text, setText] = useState("");
@@ -81,7 +81,7 @@ const adminCreate = () => {
       type: info.type,
       name: name,
       birthdate: dayjs(info.age).toISOString(),
-      gender: info.gender,
+      gender: info.gender as "male" | "female",
       color: info.color,
       pattern: "a", // remove later
       habit: info.nature,
@@ -152,7 +152,7 @@ const adminCreate = () => {
         </div>
       </div>
       <div className="hidden md:block">
-        {data && <SmallPetCardList pets={data.pets} />}
+        <SmallPetCardList isLoading={isLoading} pets={data?.pets} />
       </div>
     </>
   );
