@@ -10,7 +10,7 @@ interface FilterProps {
 
 const filter = tv({
   slots: {
-    base: "absolute right-0 mt-4 space-y-4 rounded-2xl bg-white p-4 shadow",
+    base: "absolute right-0 mt-4 space-y-4 rounded-2xl bg-white p-4 shadow z-40",
     headingContainer: "space-y-1",
     heading: "text-accent-red font-semibold",
     headingLine: "bg-accent-red h-0.5 w-60 rounded-full",
