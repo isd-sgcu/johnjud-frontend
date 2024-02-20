@@ -9,7 +9,7 @@ interface PetBadgeProps {
 const PetBadge = (props: PetBadgeProps) => {
   const handleOnClick = () => {
     if (!props.isEditabled) return;
-    props.setValue(props.value === "fromClub" ? "fromOutside" : "fromClub");
+    props.setValue(props.value === "entrust" ? "club" : "entrust");
   };
   return (
     <div
@@ -21,7 +21,7 @@ const PetBadge = (props: PetBadgeProps) => {
     >
       <Icon
         icon={
-          props.value === "fromClub"
+          props.value === "club"
             ? "custom:primary:banner"
             : "custom:yellow:banner"
         }
@@ -30,23 +30,23 @@ const PetBadge = (props: PetBadgeProps) => {
       <div
         className={
           "absolute top-[0.4rem] flex w-full flex-col items-center text-sm " +
-          (props.value === "fromClub" ? "text-white" : "text-black")
+          (props.value === "club" ? "text-white" : "text-black")
         }
       >
         <Icon
-          icon={props.value === "fromClub" ? "custom:chess" : "ph:paw-print"}
+          icon={props.value === "club" ? "custom:chess" : "ph:paw-print"}
           className="h-6 w-6"
         />
         <div className="">
-          {props.value === "fromClub" ? "สัตว์เลี้ยง" : "สัตว์ฝาก"}
+          {props.value === "club" ? "สัตว์เลี้ยง" : "สัตว์ฝาก"}
         </div>
         <div className="flex flex-row items-center">
-          {props.value === "fromClub" ? "ชมรม" : "หาบ้าน"}
+          {props.value === "club" ? "ชมรม" : "หาบ้าน"}
           <Icon
             icon="fluent:arrow-swap-20-regular"
             className="h-5 w-5"
             hFlip={true}
-            color={props.value === "fromClub" ? "white" : "black"}
+            color={props.value === "club" ? "white" : "black"}
           />
         </div>
       </div>

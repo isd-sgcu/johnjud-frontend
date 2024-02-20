@@ -1,5 +1,6 @@
 import { Icon } from "@iconify/react/dist/iconify.js";
-import { ChangeEvent } from "react";
+import dayjs from "dayjs";
+import { ChangeEvent, useMemo } from "react";
 
 interface DateInputInfoProps {
   text: string;
@@ -16,6 +17,11 @@ const DateInputInfo = (props: DateInputInfoProps) => {
     const date = event.target.value;
     props.onChange(date);
   };
+
+  const birthdate = useMemo(() => {
+    if (props.value != "-") return dayjs(props.value).format("MMMM DD, YYYY");
+    return "-";
+  }, [props.value]);
 
   return (
     <div className="grid grid-cols-4 gap-2">
@@ -35,7 +41,9 @@ const DateInputInfo = (props: DateInputInfoProps) => {
             />
           </div>
         ) : (
-          <div className="ml-2 font-semibold">{props.value}</div>
+          <div className="ml-2 font-semibold">
+            {birthdate ? birthdate : "-"}
+          </div>
         )}
       </div>
     </div>

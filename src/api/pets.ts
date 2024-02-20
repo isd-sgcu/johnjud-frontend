@@ -14,6 +14,13 @@ interface DeletePetResponse {
   success: boolean;
 }
 
+const getPet = async (id: string): Promise<Pet> => {
+  const response = await axios.get<Pet>(
+    `${import.meta.env.VITE_API_URL}/pets/${id}`
+  );
+  return response.data;
+};
+
 const getPets = async (filters?: filterState) => {
   const params = convertFiltertoParams(filters);
   const response = await axios.get<PetsResponse>(
@@ -80,5 +87,5 @@ const deletePet = async (id: string) => {
   return response.data;
 };
 
-export { deletePet, getPets, postPet, updateVisibility };
+export { deletePet, getPet, getPets, postPet, updateVisibility };
 export type { PetsResponse, postPetRequest };

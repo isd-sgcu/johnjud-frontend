@@ -89,6 +89,13 @@ const EditInfoAndSubmit = (props: EditInfoAndSubmitProps) => {
     }
   };
 
+  const genderType =
+    showInfo.gender != "-"
+      ? showInfo.gender === "female"
+        ? "ตัวเมีย"
+        : "ตัวผู้"
+      : "-";
+
   return (
     <div className="flex w-full flex-col">
       {/* EditInfo */}
@@ -131,7 +138,7 @@ const EditInfoAndSubmit = (props: EditInfoAndSubmitProps) => {
             <DropdownInputInfo
               text={"เพศ:"}
               icon={"ph:gender-intersex"}
-              value={showInfo.gender}
+              value={genderType}
               setValue={(newOption) =>
                 handleOnChangeDropDown(newOption, "gender")
               }

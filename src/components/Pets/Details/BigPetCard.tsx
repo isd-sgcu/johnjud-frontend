@@ -1,34 +1,44 @@
-import petImg from "@/assets/details/pet.svg";
+import dog from "@/assets/dog.webp";
 import AddSmallPicture from "@/components/Admin/Pets/Add/AddSmallPicture";
 import AddThumbnail from "@/components/Admin/Pets/Add/AddThumbnail";
 import EditName from "@/components/Admin/Pets/Add/EditName";
 import EditText from "@/components/Admin/Pets/Add/EditText";
 import Container from "@/components/Container";
+import { Pet } from "@/types/pets";
 import { Icon } from "@iconify/react/dist/iconify.js";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import PetThumbnails from "../PetThumbnails";
 
-const BigPetCard = ({ isAdmin }: { isAdmin: boolean }) => {
-  const [name, setName] = useState("ไรลีย์");
-  const [text, setText] = useState(
-    "ทาวน์เทปวโรกาส ลิมูซีนเพลซบาร์บี้อุเทนเพลย์บอย ฟลุก เซอร์ไพรส์ รูบิคบึมเฝอมายาคติ ทรู ภคันทลาพาธ วาไรตี้ ท็อปบูตสงบสุขวอลนัต โนติส เบลอ แรงใจ เป่ายิงฉุบโยโย่ ภควัทคีตา อิเหนาช็อปนินจารูบิคคาสิโน คีตกวีบอกซ์โพลารอยด์ดิกชันนารี แกสโซฮอล์ผู้นำ จิ๊กโก๋ธัมโมคอร์รัปชั่น เหี่ยวย่นออทิสติก เวเฟอร์เดโมเจ๊วีนโอวัลติน"
-  );
-  const [petFrom, setPetFrom] = useState("fromClub");
+const BigPetCard = ({ isAdmin, data }: { isAdmin: boolean; data: Pet }) => {
+  const [name, setName] = useState(data.name);
+  const [text, setText] = useState(data.caption);
+  const [petFrom, setPetFrom] = useState(data.origin);
   const [image, setImage] = useState<File | null>(null);
   const [images, setImages] = useState<File[]>([]);
-  const imgs = [petImg, petImg, petImg, petImg];
 
   const convertImgToFile = async (imgFilePath: string) => {
     const response = await fetch(imgFilePath);
     const blob = await response.blob();
     const file = new File([blob], "image.jpg", { type: blob.type });
-    setImages(() => [file, file, file]);
-    setImage(file);
+    return file;
   };
 
+  const imgs = useMemo(() => {
+    if (!data.images) return [dog];
+    return data.images?.map((img) => img.url);
+  }, [data.images]);
+
   useEffect(() => {
-    convertImgToFile(petImg);
+    if (!data.images || !isAdmin) return;
+
+    // Set 1st image to thumbnail
+    convertImgToFile(data.images[0].url).then((file) => setImage(file));
+
+    // Set the rest of the images to images
+    const imgFiles = data.images.map((img) => img.url).slice(1);
+    const imgPromises = imgFiles.map((img) => convertImgToFile(img));
+    Promise.all(imgPromises).then((files) => setImages(files));
   }, []);
 
   return (
@@ -47,7 +57,7 @@ const BigPetCard = ({ isAdmin }: { isAdmin: boolean }) => {
       <div className="mx-auto flex w-full flex-col items-center justify-between gap-8 md:h-80 md:flex-row md:items-start">
         <div className="relative w-80">
           {!isAdmin ? (
-            <PetThumbnails petImages={imgs} />
+            <PetThumbnails petImages={imgs} origin={data.origin} />
           ) : (
             <AddThumbnail
               valueOrigin={petFrom}
