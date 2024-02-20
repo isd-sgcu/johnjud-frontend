@@ -1,5 +1,5 @@
-import create from 'zustand';
-import { persist } from 'zustand/middleware';
+import create from "zustand";
+import { persist } from "zustand/middleware";
 
 // Define the store state
 interface StoreState {
@@ -21,7 +21,7 @@ const useStore = create<StoreState>(
         })),
     }),
     {
-      name: 'favoritesStore', // Name for the localStorage key
+      name: "favoritesStore", // Name for the localStorage key
       getStorage: () => localStorage, // Use localStorage for persistence
     }
   )
