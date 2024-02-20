@@ -41,7 +41,7 @@ const ForgetPassword = () => {
         onSubmit={handleSubmit(onSubmit)}
       >
         <div className="flex flex-col items-center">
-          <div className="py-2 text-4xl font-bold text-primary lg:py-3 lg:text-5xl">
+          <div className="py-2 text-4xl font-bold text-accent-red lg:py-3 lg:text-5xl">
             ลืมรหัสผ่าน?
           </div>
           <div className="text-base font-medium text-accent-gray lg:text-xl">
@@ -63,7 +63,7 @@ const ForgetPassword = () => {
         <div className="flex w-80 flex-col justify-center">
           <Button
             text="รีเซตรหัสผ่าน"
-            variant="primary"
+            variant="accent-red"
             rounded="2xl"
             type="submit"
             className="mb-4 px-24 text-xl font-semibold text-white"
@@ -74,8 +74,8 @@ const ForgetPassword = () => {
               to="/admin"
               className="flex flex-row items-center justify-center gap-2"
             >
-              <Icon icon="ph:arrow-left" className="text-2xl text-primary" />
-              <div className="text-sm font-medium text-primary">
+              <Icon icon="ph:arrow-left" className="text-2xl text-accent-red" />
+              <div className="text-sm font-medium text-accent-red">
                 กลับไปหน้าล็อกอิน
               </div>
             </Link>
