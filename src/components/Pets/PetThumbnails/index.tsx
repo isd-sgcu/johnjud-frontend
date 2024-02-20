@@ -5,14 +5,15 @@ import "react-responsive-carousel/lib/styles/carousel.min.css";
 
 interface PetThumbnailsProps {
   petImages: Array<string>;
+  origin: string;
 }
 
-const PetThumbnails = ({ petImages }: PetThumbnailsProps) => {
+const PetThumbnails = ({ petImages, origin }: PetThumbnailsProps) => {
   return (
     <div className="relative aspect-square min-w-40 rounded-[20px] sm:min-w-80">
       <div className="absolute -top-1 right-4 z-10">
         {/* Recieved where they're from */}
-        <PetBadge value={"fromHome"} setValue={() => {}} isEditabled={false} />
+        <PetBadge value={origin} setValue={() => {}} isEditabled={false} />
       </div>
       <div className="z-80 relative max-h-80 max-w-80 rounded-2xl">
         <Carousel

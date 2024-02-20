@@ -1,4 +1,3 @@
-import petImg from "@/assets/details/pet.svg";
 import AddSmallPicture from "@/components/Admin/Pets/Add/AddSmallPicture";
 import AddThumbnail from "@/components/Admin/Pets/Add/AddThumbnail";
 import EditName from "@/components/Admin/Pets/Add/EditName";
@@ -13,21 +12,21 @@ import PetThumbnails from "../PetThumbnails";
 const BigPetCard = ({ isAdmin, data }: { isAdmin: boolean; data: Pet }) => {
   const [name, setName] = useState(data.name);
   const [text, setText] = useState(data.caption);
-  const [petFrom, setPetFrom] = useState("fromClub");
+  const [petFrom, setPetFrom] = useState(data.origin);
   const [image, setImage] = useState<File | null>(null);
   const [images, setImages] = useState<File[]>([]);
-  const imgs = [petImg, petImg, petImg, petImg];
+  const imgs = data.images.map((img) => img.url);
 
   const convertImgToFile = async (imgFilePath: string) => {
     const response = await fetch(imgFilePath);
     const blob = await response.blob();
     const file = new File([blob], "image.jpg", { type: blob.type });
-    setImages(() => [file, file, file]);
+    setImages((images) => [...images, file]);
     setImage(file);
   };
 
   useEffect(() => {
-    convertImgToFile(petImg);
+    data.images.map((img) => convertImgToFile(img.url));
   }, []);
 
   return (
@@ -46,7 +45,7 @@ const BigPetCard = ({ isAdmin, data }: { isAdmin: boolean; data: Pet }) => {
       <div className="mx-auto flex w-full flex-col items-center justify-between gap-8 md:h-80 md:flex-row md:items-start">
         <div className="relative w-80">
           {!isAdmin ? (
-            <PetThumbnails petImages={imgs} />
+            <PetThumbnails petImages={imgs} origin={data.origin} />
           ) : (
             <AddThumbnail
               valueOrigin={petFrom}
