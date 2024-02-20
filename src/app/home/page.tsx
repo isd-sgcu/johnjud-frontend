@@ -21,13 +21,13 @@ const MainPage = () => {
 
   return (
     <>
-      <Container className="flex flex-col items-center justify-center md:flex-row md:space-x-9">
+      <Container className="grid grid-cols-1 items-center md:grid-cols-2 md:gap-9 lg:grid-cols-3">
         <div>
-          <div className="flex aspect-[4/3] w-full items-center justify-center rounded-2xl bg-primary-variant-2 md:w-[30vw]">
+          <div className="flex aspect-[4/3] w-full flex-col items-center justify-center rounded-2xl bg-primary-variant-2">
             <img src={JohnjudImage} alt="Johnjud" className="px-10 py-7" />
           </div>
         </div>
-        <div className="flex w-full flex-col items-center space-y-6 md:items-start">
+        <div className="flex w-full flex-col items-center space-y-6 md:items-start lg:col-span-2">
           <div className="hidden md:flex">
             <Heading onSearch quantity={data?.metadata.total} />
           </div>
@@ -42,18 +42,20 @@ const MainPage = () => {
         <Heading onSearch quantity={data?.metadata.total} />
       </Container>
       <Container className="space-y-8">
-        <div className="flex flex-col items-center justify-center gap-8 lg:flex-row lg:justify-between">
-          <div>
-            <div className="hidden w-[60vw] md:block lg:w-[30vw]">
+        <div className="grid grid-cols-1 gap-8 lg:grid-cols-3">
+          <div className="flex flex-col items-center justify-center">
+            <div className="hidden w-1/2 md:block lg:w-full">
               <Banner />
             </div>
           </div>
-          <PetSuggestionList
-            isLoading={isLoading}
-            data={data?.pets.slice(0, 8)}
-          />
+          <div className="col-span-2">
+            <PetSuggestionList
+              isLoading={isLoading}
+              data={data?.pets.slice(0, 8)}
+            />
+          </div>
         </div>
-        <div className="flex items-center justify-center lg:justify-end">
+        <div className="flex items-center justify-center lg:justify-end lg:pr-12">
           <Button
             text="ดูสัตว์เลี้ยงทั้งหมด"
             variant="primary"

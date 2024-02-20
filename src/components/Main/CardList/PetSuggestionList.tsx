@@ -16,7 +16,7 @@ const PetSuggestionList: React.FC<PetSuggestionListProps> = ({
   }
 
   return (
-    <div className="flex flex-wrap justify-center gap-2 md:gap-6 lg:justify-end">
+    <div className="flex flex-wrap justify-center gap-1.5 md:gap-8 md:gap-y-4">
       {data?.map((pet: Pet) => (
         <MiniPetCard
           key={pet.id}
