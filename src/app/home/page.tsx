@@ -23,7 +23,7 @@ const MainPage = () => {
     <>
       <Container className="flex flex-col items-center justify-center md:flex-row md:space-x-9">
         <div>
-          <div className="flex w-full items-center justify-center rounded-2xl bg-primary-variant-2 md:w-[30vw]">
+          <div className="flex aspect-[4/3] w-full items-center justify-center rounded-2xl bg-primary-variant-2 md:w-[30vw]">
             <img src={JohnjudImage} alt="Johnjud" className="px-10 py-7" />
           </div>
         </div>
