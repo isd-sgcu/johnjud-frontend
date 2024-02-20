@@ -6,8 +6,8 @@ import { PetIcon } from "@/components/Filter/Icon";
 import Heading from "@/components/Pets/Heading";
 import PetSearch from "@/components/Search/PetSearch";
 import MainLayout from "@/layouts/MainLayout";
-import { Pet } from "@/types/pets";
 import { filterState } from "@/types/filter";
+import { Pet } from "@/types/pets";
 import { Icon } from "@iconify/react/dist/iconify.js";
 
 import { useCallback, useState } from "react";
@@ -15,8 +15,6 @@ import { Link } from "react-router-dom";
 
 import { usePetsQuery } from "@/hooks/queries/usePetsQuery";
 const Pets = () => {
-  
-
   const [isOpenFilterPanel, setIsOpenFilterPanel] = useState(false);
 
   const toggleIsOpenFilterPanel = useCallback(() => {
@@ -55,7 +53,11 @@ const Pets = () => {
               isOpen={isOpenFilterPanel}
               onClick={toggleIsOpenFilterPanel}
             />
-            <Filter isOpen={isOpenFilterPanel} filters={filters} setFilters={setFilters}/>
+            <Filter
+              isOpen={isOpenFilterPanel}
+              filters={filters}
+              setFilters={setFilters}
+            />
           </div>
         </div>
         <div className="w-full xl:w-auto">
