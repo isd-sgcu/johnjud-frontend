@@ -31,7 +31,7 @@ const Details = ({ isAdmin, data }: { isAdmin: boolean; data: Pet }) => {
   return (
     <>
       <BigPetCard isAdmin={isAdmin} data={data} />
-      <div className="my-8 flex gap-20 xl:justify-between xl:pr-24">
+      <div className="mx-auto my-8 flex max-w-[1536px] gap-20 xl:justify-between xl:pr-24">
         <EditInfoAndSubmit
           value={petInfo}
           setValue={setPetInfo}

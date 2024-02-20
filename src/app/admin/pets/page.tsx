@@ -39,11 +39,11 @@ const Pets = () => {
 
   return (
     <>
-      <div className="flex justify-between px-6 lg:block lg:px-12">
-        <Link to="/admin/">
+      <Container>
+        <Link to="/home">
           <Icon icon="ion:chevron-back" className="h-8 w-8 text-primary" />
         </Link>
-      </div>
+      </Container>
       <Container>
         <Heading onSearch quantity={data?.metadata.total} />
       </Container>
