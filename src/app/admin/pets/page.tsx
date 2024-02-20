@@ -37,7 +37,6 @@ const Pets = () => {
     maxAge: 30,
   });
 
-  const { data } = usePetsQuery(filters) || {};
   return (
     <>
       <div className="flex justify-between px-6 lg:block lg:px-12">
