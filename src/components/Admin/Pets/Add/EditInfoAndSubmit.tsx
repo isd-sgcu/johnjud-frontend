@@ -37,11 +37,13 @@ const EditInfoAndSubmit = (props: EditInfoAndSubmitProps) => {
       const addNoneInfo = showInfo;
       if (addNoneInfo.age === "") addNoneInfo["age"] = "-";
       if (addNoneInfo.nature === "") addNoneInfo["nature"] = "-";
+      if (addNoneInfo.gender === "") addNoneInfo["gender"] = "-";
       props.setValue(addNoneInfo);
     } else {
       const removeEmptyInfo = props.value;
       if (removeEmptyInfo.age === "-") removeEmptyInfo["age"] = "";
       if (removeEmptyInfo.nature === "-") removeEmptyInfo["nature"] = "";
+      if (removeEmptyInfo.gender === "-") removeEmptyInfo["gender"] = "";
       setShowInfo(removeEmptyInfo);
     }
     setEnableEdit(!enableEdit);
@@ -89,6 +91,13 @@ const EditInfoAndSubmit = (props: EditInfoAndSubmitProps) => {
     }
   };
 
+  const genderType =
+    showInfo.gender != "-"
+      ? showInfo.gender === "female"
+        ? "ตัวเมีย"
+        : "ตัวผู้"
+      : "-";
+
   return (
     <div className="flex w-full flex-col">
       {/* EditInfo */}
@@ -131,7 +140,7 @@ const EditInfoAndSubmit = (props: EditInfoAndSubmitProps) => {
             <DropdownInputInfo
               text={"เพศ:"}
               icon={"ph:gender-intersex"}
-              value={showInfo.gender}
+              value={genderType}
               setValue={(newOption) =>
                 handleOnChangeDropDown(newOption, "gender")
               }

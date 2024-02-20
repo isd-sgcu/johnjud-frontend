@@ -9,7 +9,7 @@ import { useState } from "react";
 
 const Details = ({ isAdmin, data }: { isAdmin: boolean; data: Pet }) => {
   const [petInfo, setPetInfo] = useState<info>({
-    gender: data.gender,
+    gender: data.gender as "male" | "female",
     type: data.type,
     color: data.color,
     age: data.birthdate,
