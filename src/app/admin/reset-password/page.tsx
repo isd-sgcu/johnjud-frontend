@@ -43,7 +43,7 @@ const resetPassword = () => {
     <Container>
       <div className="mx-auto flex min-h-screen w-80 flex-col items-center justify-center gap-12">
         <div className="flex flex-col items-center">
-          <div className="py-3 text-5xl font-bold text-primary">
+          <div className="py-3 text-5xl font-bold text-accent-red">
             รีเซ็ตรหัสผ่าน
           </div>
           <div className="text-xl font-medium text-accent-gray">
@@ -72,7 +72,7 @@ const resetPassword = () => {
             <Button
               type="submit"
               text={"เปลี่ยนรหัสผ่าน"}
-              variant={"primary"}
+              variant={"accent-red"}
               rounded="2xl"
               className="w-full text-xl font-semibold"
             />
