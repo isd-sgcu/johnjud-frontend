@@ -7,6 +7,7 @@ import Heading from "@/components/Pets/Heading";
 import PetSearch from "@/components/Search/PetSearch";
 import { usePetsQuery } from "@/hooks/queries/usePetsQuery";
 import MainLayout from "@/layouts/MainLayout";
+import { filterState } from "@/types/filter";
 import { Pet } from "@/types/pets";
 import { useCallback, useState } from "react";
 
@@ -17,7 +18,20 @@ const Pets = () => {
     setIsOpenFilterPanel((prev) => !prev);
   }, []);
 
-  const { data, isLoading } = usePetsQuery();
+  const [filters, setFilters] = useState<filterState>({
+    dog: false,
+    cat: false,
+    male: false,
+    female: false,
+    white: false,
+    black: false,
+    brown: false,
+    blonde: false,
+    minAge: 0,
+    maxAge: 30,
+  });
+
+  const { data, isLoading } = usePetsQuery(filters) || {};
 
   return (
     <>
@@ -31,7 +45,11 @@ const Pets = () => {
             isOpen={isOpenFilterPanel}
             onClick={toggleIsOpenFilterPanel}
           />
-          <Filter isOpen={isOpenFilterPanel} />
+          <Filter
+            isOpen={isOpenFilterPanel}
+            filters={filters}
+            setFilters={setFilters}
+          />
         </div>
       </Container>
       <Container>
