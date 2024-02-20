@@ -16,7 +16,7 @@ import PetsPageFallback from "@/components/Fallback/PetsPageFallback";
 import { usePetsQuery } from "@/hooks/queries/usePetsQuery";
 import AdminLayout from "@/layouts/AdminLayout";
 const Pets = () => {
-  const { data, isLoading } = usePetsQuery();
+  
 
   const [isOpenFilterPanel, setIsOpenFilterPanel] = useState(false);
 
@@ -36,7 +36,9 @@ const Pets = () => {
     minAge: 0,
     maxAge: 30,
   });
-
+  
+  const { data, isLoading } = usePetsQuery(filters);
+  
   return (
     <>
       <div className="flex justify-between px-6 lg:block lg:px-12">
@@ -79,7 +81,7 @@ const Pets = () => {
           <PetsPageFallback />
         ) : (
           <div className="flex flex-wrap items-center justify-center gap-6 lg:gap-9">
-            {data?.pets.map((pet: Pet) => (
+            {data?.pets?.map((pet: Pet) => (
               <PetCard
                 key={pet.id}
                 id={pet.id}
