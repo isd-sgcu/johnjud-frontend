@@ -16,8 +16,6 @@ import PetsPageFallback from "@/components/Fallback/PetsPageFallback";
 import { usePetsQuery } from "@/hooks/queries/usePetsQuery";
 import AdminLayout from "@/layouts/AdminLayout";
 const Pets = () => {
-  
-
   const [isOpenFilterPanel, setIsOpenFilterPanel] = useState(false);
 
   const toggleIsOpenFilterPanel = useCallback(() => {
@@ -36,9 +34,9 @@ const Pets = () => {
     minAge: 0,
     maxAge: 30,
   });
-  
+
   const { data, isLoading } = usePetsQuery(filters);
-  
+
   return (
     <>
       <div className="flex justify-between px-6 lg:block lg:px-12">
