@@ -5,7 +5,7 @@ const Footer = () => {
   const style = usePathStyle();
 
   return (
-    <div className={`z-10 mt-auto p-6 ${style.color}`}>
+    <div className={`z-10 mt-auto space-y-4 p-6 ${style.color}`}>
       <div className="flex w-full shrink-0 flex-row justify-between">
         <div className="flex w-56 flex-col items-start justify-start gap-4 lg:w-full lg:flex-row lg:items-center lg:gap-11">
           <div className="flex flex-row items-center justify-center space-x-3">
