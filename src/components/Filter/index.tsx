@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { tv } from "tailwind-variants";
 import FilterPanel from "./FilterPanel";
 import { NumberInput, ToggleInput } from "./Input";
@@ -26,6 +26,7 @@ const filter = tv({
 const Filter = ({ isOpen }: FilterProps) => {
   const { base, headingContainer, heading, headingLine, filterContainer } =
     filter({ isOpen });
+  
 
   const [filters, setFilters] = useState({
     dog: false,
@@ -37,22 +38,23 @@ const Filter = ({ isOpen }: FilterProps) => {
     brown: false,
     blonde: false,
     minAge: 0,
-    maxAge: 0,
+    maxAge: 100,
   });
 
   const handleToggleChange = (filterKey: keyof typeof filters) => (event: React.ChangeEvent<HTMLInputElement>) => {
     setFilters((prevFilters) => ({
       ...prevFilters,
-      [filterKey]: event.target.checked,
+      [filterKey]: event.target.type === 'checkbox' ? event.target.checked : Number(event.target.value),
     }));
   };
 
-  const handleNumberInputChange = (filterKey: keyof typeof filters) => (event: any) => {
+  const handleAgeChange = (key: 'minAge' | 'maxAge', value: number) => {
     setFilters((prevFilters) => ({
       ...prevFilters,
-      [filterKey]: Number(event.target.value),
+      [key]: value,
     }));
   };
+
 
   return (
     <div className={base()}>
@@ -123,13 +125,13 @@ const Filter = ({ isOpen }: FilterProps) => {
             id="age-min"
             text="ต่ำสุด"
             value={filters.minAge}
-            onChange={handleNumberInputChange("minAge")}
+            setValue={(value) => handleAgeChange('minAge', value)}
           />
           <NumberInput
             id="age-max"
             text="สูงสุด"
             value={filters.maxAge}
-            onChange={handleNumberInputChange("maxAge")}
+            setValue={(value) => handleAgeChange('maxAge', value)}
           />
         </FilterPanel>
       </div>
