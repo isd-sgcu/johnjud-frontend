@@ -22,9 +22,15 @@ const DropdownInputInfo = (props: DropdownInputInfoProps) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [currentOption, setCurrentOption] = useState<OptionType | null>(null);
 
-  useEffect(() => setCurrentOption(
-    props.option.find(option => option.value === props.value) as OptionType
-  ),[props.value]);
+  useEffect(
+    () =>
+      setCurrentOption(
+        props.option.find(
+          (option) => option.value === props.value
+        ) as OptionType
+      ),
+    [props.value]
+  );
 
   const handleOnChangeOption = (newVal: OptionType | null) => {
     setCurrentOption(newVal);

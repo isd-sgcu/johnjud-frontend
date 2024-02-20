@@ -32,15 +32,15 @@ interface EditInfoAndSubmitProps {
 const EditInfoAndSubmit = (props: EditInfoAndSubmitProps) => {
   const [showInfo, setShowInfo] = useState<info>(props.value);
   const [enableEdit, setEnableEdit] = useState(false);
-  
+
   const handleOnClickEdit = () => {
     if (enableEdit) {
-      const addNoneInfo = {...showInfo};
+      const addNoneInfo = { ...showInfo };
       if (addNoneInfo.age === "") addNoneInfo["age"] = "-";
       if (addNoneInfo.nature === "") addNoneInfo["nature"] = "-";
       props.setValue(addNoneInfo);
     } else {
-      const removeEmptyInfo = {...props.value};
+      const removeEmptyInfo = { ...props.value };
       if (removeEmptyInfo.age === "-") removeEmptyInfo["age"] = "";
       if (removeEmptyInfo.nature === "-") removeEmptyInfo["nature"] = "";
       setShowInfo(removeEmptyInfo);
@@ -90,7 +90,7 @@ const EditInfoAndSubmit = (props: EditInfoAndSubmitProps) => {
     }
   };
 
-  useEffect(() => setShowInfo(props.value),[props.value]);
+  useEffect(() => setShowInfo(props.value), [props.value]);
 
   return (
     <div className="flex w-full flex-col">

@@ -28,7 +28,7 @@ const MainPage = () => {
         </div>
         <div className="flex w-full flex-col items-center space-y-6 md:items-start">
           <div className="hidden md:flex">
-            <Heading onSearch quantity={data?.metadata.total} /> 
+            <Heading onSearch quantity={data?.metadata.total} />
           </div>
           <Search variant="green" />
           <Filter />
@@ -38,7 +38,7 @@ const MainPage = () => {
         <Divider variant="primary" />
       </Container>
       <Container className="md:hidden">
-        <Heading onSearch quantity={data?.metadata.total} /> 
+        <Heading onSearch quantity={data?.metadata.total} />
       </Container>
       <Container className="flex justify-center md:justify-between">
         <div className="hidden md:flex md:w-4/12">

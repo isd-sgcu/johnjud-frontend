@@ -1,36 +1,39 @@
-import { PetsResponse, PutPetRequest, updatePet } from "@/api/pets";
+import { PetsResponse, PutPetRequest } from "@/api/pets";
 import logo from "@/assets/details/logo.png";
+import AddSmallPicture from "@/components/Admin/Pets/Add/AddSmallPicture";
+import AddThumbnail from "@/components/Admin/Pets/Add/AddThumbnail";
 import EditInfoAndSubmit, {
   info,
 } from "@/components/Admin/Pets/Add/EditInfoAndSubmit";
+import EditName from "@/components/Admin/Pets/Add/EditName";
+import EditText from "@/components/Admin/Pets/Add/EditText";
+import Container from "@/components/Container";
+import { useUpdatePet } from "@/hooks/mutation/useUpdatePet";
+import { useConvertImgUrltoFile } from "@/hooks/useConvertImgUrltoFile";
 import { usePageParams } from "@/hooks/usePageParams";
 import MainLayout from "@/layouts/MainLayout";
+import { Pet } from "@/types/pets";
+import { Icon } from "@iconify/react/dist/iconify.js";
 import { useEffect, useMemo, useState } from "react";
 import SmallPetCardList from "../../SmallPetCardList";
-import Container from "@/components/Container";
-import { Icon } from "@iconify/react/dist/iconify.js";
-import EditName from "@/components/Admin/Pets/Add/EditName";
-import { Pet } from "@/types/pets";
 import PetThumbnails from "../PetThumbnails";
-import AddThumbnail from "@/components/Admin/Pets/Add/AddThumbnail";
-import EditText from "@/components/Admin/Pets/Add/EditText";
-import AddSmallPicture from "@/components/Admin/Pets/Add/AddSmallPicture";
-import {useConvertImgUrltoFile} from "@/hooks/useConvertImgUrltoFile";
 
 interface DetailsProps {
   isAdmin: boolean;
   data: PetsResponse;
 }
 
-const Details = (props : DetailsProps) => {
-  const {id} = usePageParams(["id"]);
+const Details = (props: DetailsProps) => {
+  const mutaion = useUpdatePet();
+
+  const { id } = usePageParams(["id"]);
   const [isFav, setIsFav] = useState(false);
   const [name, setName] = useState("");
   const [text, setText] = useState("");
   const [origin, setOrigin] = useState("fromClub");
   const [thumbnail, setThumbnail] = useState<File | null>(null);
   const [images, setImages] = useState<(File | null)[]>([]);
-  const pet = useMemo(getPet,[props.data, id]);
+  const pet = useMemo(getPet, [props.data, id]);
   const [enableSubmit, setEnableSubmit] = useState(false);
   const [petInfo, setPetInfo] = useState<info>({
     type: "-",
@@ -39,7 +42,7 @@ const Details = (props : DetailsProps) => {
     age: "-",
     nature: "-",
     vaccine: false,
-    sterile: false, 
+    sterile: false,
   });
 
   useEffect(() => {
@@ -54,7 +57,7 @@ const Details = (props : DetailsProps) => {
     } else {
       setEnableSubmit(true);
     }
-  }, [petInfo.gender, petInfo.type, petInfo.color, petInfo.age, name]);  
+  }, [petInfo.gender, petInfo.type, petInfo.color, petInfo.age, name]);
 
   useEffect(() => {
     convertImgUrltoFile();
@@ -69,23 +72,22 @@ const Details = (props : DetailsProps) => {
       nature: pet.habit,
       vaccine: pet.is_vaccinated,
       sterile: pet.is_sterile,
-    })
-  },[props.data, id])
+    });
+  }, [props.data, id]);
 
-  function getPet(){
+  function getPet() {
     return props.data.pets.find((pet) => pet.id === id) as Pet;
   }
 
-  function convertImgUrltoFile(){
-    if(pet.images === null) return;
+  function convertImgUrltoFile() {
+    if (pet.images === null) return;
 
     pet.images.forEach(async (image, index) => {
       const response = await useConvertImgUrltoFile(image);
-      if(index === 0) {
+      if (index === 0) {
         setThumbnail(response);
-      }
-      else {
-        setImages(images => {
+      } else {
+        setImages((images) => {
           const newImages = [...images];
           newImages[index] = response;
           return newImages;
@@ -94,11 +96,11 @@ const Details = (props : DetailsProps) => {
     });
   }
 
-  function handleFavPressed(){
+  function handleFavPressed() {
     setIsFav(!isFav);
-  };
-  
-  async function handleSubmit(){
+  }
+
+  async function handleSubmit() {
     const data: PutPetRequest = {
       type: petInfo.type,
       name: name,
@@ -109,12 +111,17 @@ const Details = (props : DetailsProps) => {
       caption: text,
       is_sterile: petInfo.sterile,
       is_vaccinated: petInfo.vaccine,
+      is_visible: pet.is_visible,
       origin: origin,
-    }
+    };
     console.log(data);
-    const res = updatePet(data, id);
-    console.log(res);
-  };
+    mutaion.mutate({
+      body: data,
+      id: id,
+    });
+  }
+
+  if (mutaion.data !== undefined) console.log(mutaion.data);
 
   return (
     <>
@@ -126,10 +133,7 @@ const Details = (props : DetailsProps) => {
             className="h-8 w-8 cursor-pointer"
           />
           <div className="md:hidden">
-            <EditName 
-              value={name} 
-              setValue={setName} 
-              isAdmin={props.isAdmin} />
+            <EditName value={name} setValue={setName} isAdmin={props.isAdmin} />
           </div>
         </div>
 
@@ -150,26 +154,20 @@ const Details = (props : DetailsProps) => {
 
           <div className="flex w-full flex-col items-start gap-8 overflow-auto md:h-full md:flex-1">
             <div className="hidden md:block">
-              <EditName 
-                value={name} 
-                setValue={setName} 
-                isAdmin={props.isAdmin} 
+              <EditName
+                value={name}
+                setValue={setName}
+                isAdmin={props.isAdmin}
               />
             </div>
-            <EditText 
-              value={text} 
-              setValue={setText} 
-              isAdmin={props.isAdmin} 
-            />
+            <EditText value={text} setValue={setText} isAdmin={props.isAdmin} />
           </div>
         </div>
-        {props.isAdmin && 
-          <AddSmallPicture 
-            value={images} 
-            setValue={setImages} 
-          />}
+        {props.isAdmin && (
+          <AddSmallPicture value={images} setValue={setImages} />
+        )}
       </Container>
-      
+
       {/* edit info */}
       <div className="my-8 flex gap-20 xl:justify-between xl:pr-24">
         <EditInfoAndSubmit

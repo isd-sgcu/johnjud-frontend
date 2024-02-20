@@ -18,10 +18,10 @@ const AddSmallPicture = (props: AddSmallPictureProps) => {
       {Array.from(props.value).map((picture, index) => {
         return (
           <>
-            {picture && 
+            {picture && (
               <div
-              className="flex aspect-square w-[60%] max-w-48 flex-shrink-0 snap-start items-center justify-center bg-white"
-              key={index}
+                className="flex aspect-square w-[60%] max-w-48 flex-shrink-0 snap-start items-center justify-center bg-white"
+                key={index}
               >
                 <img
                   src={URL.createObjectURL(picture)}
@@ -29,9 +29,8 @@ const AddSmallPicture = (props: AddSmallPictureProps) => {
                   className="h-full w-full rounded-3xl border-2  border-accent-gray-variant border-opacity-50 object-cover object-center"
                 />
               </div>
-            }
+            )}
           </>
-          
         );
       })}
 

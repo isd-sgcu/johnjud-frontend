@@ -36,23 +36,39 @@ const postPet = async (data: postPetRequest): Promise<postPetResponse> => {
 };
 
 //ver.1 omit images
-type PutPetRequest = Omit<Pet, "id" | "images" | "is_club_pet" | "pattern" | "status" | "is_visible"> & {
-  origin : string,
-}
+type PutPetRequest = Omit<
+  Pet,
+  "id" | "images" | "is_club_pet" | "pattern" | "status"
+> & {
+  origin: string;
+};
 
-interface PutPetResponse extends Pet {};
+interface PutPetResponse extends Pet {}
 
-const putToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJodHRwczovL2pvaG5qdWQuaXNkLnNnY3UuaW4udGgiLCJleHAiOjE3MDgxNjk3NjAsImlhdCI6MTcwODE2NjE2MCwidXNlcl9pZCI6ImM0YTI1OTFlLTZjNWEtNDliNS05NDhkLTU0MDJkMjcxNGZlMiIsImF1dGhfc2Vzc2lvbl9pZCI6IjRmN2I2MmMzLWI3NDAtNDJjMC1hMjMzLWQ3NzYzZGFlOTBlMyJ9.4WkYKIyo9jXuzec5jqrH8mJk8L6IHq260HGSbP_hIK0"
+const putToken =
+  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJodHRwczovL2pvaG5qdWQuaXNkLnNnY3UuaW4udGgiLCJleHAiOjE3MDgzNDIyNjYsImlhdCI6MTcwODMzODY2NiwidXNlcl9pZCI6ImM0YTI1OTFlLTZjNWEtNDliNS05NDhkLTU0MDJkMjcxNGZlMiIsImF1dGhfc2Vzc2lvbl9pZCI6ImZiYTBjMjBiLTVjNWQtNGI0OC1iNzE0LTExMDhiMmIxNGMyNSJ9.W3YxFsMMUo-SZlfGSV_TW0TVTseV3kxjtdf_NU2g_q0";
 
-const updatePet = async (data : PutPetRequest, id : string) : Promise<PutPetResponse> => {
-  const response = await axios.put(`${import.meta.env.VITE_API_URL}/pets/${id}`, data, {
-    headers : {
-      Authorization: `Bearer ${putToken}`
+const updatePet = async (
+  data: PutPetRequest,
+  id: string
+): Promise<PutPetResponse> => {
+  const response = await axios.put(
+    `${import.meta.env.VITE_API_URL}/pets/${id}`,
+    data,
+    {
+      headers: {
+        Authorization: `Bearer ${putToken}`,
+      },
     }
-  });
+  );
   return response.data;
-}
-
+};
 
 export { getPets, postPet, updatePet };
-export type { PetsResponse, postPetRequest, postPetResponse, PutPetRequest, PutPetResponse };
+export type {
+  PetsResponse,
+  PutPetRequest,
+  PutPetResponse,
+  postPetRequest,
+  postPetResponse,
+};

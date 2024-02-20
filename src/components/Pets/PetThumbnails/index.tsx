@@ -8,7 +8,7 @@ interface PetThumbnailsProps {
   petImages: Image[];
 }
 
-const PetThumbnails = (props : PetThumbnailsProps) => {
+const PetThumbnails = (props: PetThumbnailsProps) => {
   return (
     <div className="relative aspect-square min-w-40 rounded-[20px] sm:min-w-80">
       <div className="absolute -top-1 right-4 z-10">
@@ -53,7 +53,7 @@ const PetThumbnails = (props : PetThumbnailsProps) => {
           showStatus={false}
           showIndicators={false}
         >
-          {props.petImages.map(image => (
+          {props.petImages.map((image) => (
             <div key={image.id}>
               <img
                 src={image.url}
