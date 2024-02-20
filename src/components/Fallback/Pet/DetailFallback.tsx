@@ -1,4 +1,4 @@
-import logo from "@/assets/details/logo.png";
+import logo from "@/assets/details/logo.webp";
 
 const DetailFallback = () => {
   return (

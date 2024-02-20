@@ -17,7 +17,7 @@ const TopBar = ({
     >
       <Link to="/home" className="flex items-center gap-3 ">
         {style.logo && (
-          <img src={style.logo} alt="logo" className="h-12 w-12" />
+          <img src={style.logo} alt="logo" className="h-12 w-12 rounded-full" />
         )}
         <div className="text-lg font-bold text-white">JOHNJUD</div>
       </Link>
