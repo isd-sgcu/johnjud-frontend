@@ -14,10 +14,6 @@ const Navbar = () => {
     setIsShow(toggle);
   }, [toggle]);
 
-  useEffect(() => {
-    document.documentElement.style.setProperty("--theme", style.theme);
-  }, [style.theme]);
-
   return (
     <>
       <DarkBackground isExist={toggle} isShow={isShow} setToggle={setToggle} />
