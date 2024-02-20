@@ -11,7 +11,7 @@ const useCreatePet = () => {
       toast.success("เพิ่มสัตว์เลี้ยงสำเร็จ");
       setTimeout(() => {
         navigate("/admin/pets");
-      }, 2000);
+      }, 1500);
     },
     onError: () => {
       toast.error("มีบางอย่างผิดพลาด");
