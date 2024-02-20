@@ -1,15 +1,15 @@
-import { useMemo, useState } from "react";
+import { useMemo } from "react";
 import { tv } from "tailwind-variants";
 
 interface ToggleProps {
   visibility: boolean;
   className?: string;
-  onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
+  onClick: (event: React.MouseEvent<HTMLButtonElement>) => void;
 }
 
 const toggleSwitch = tv({
   slots: {
-    base: "flex w-24 cursor-pointer items-center rounded-[20px] p-2",
+    base: "flex w-24 cursor-pointer items-center rounded-[20px] p-2 flex-shrink-0",
     switchStyle:
       "min-h-9 min-w-9 transform rounded-full bg-white transition duration-500",
     textStyle:
@@ -31,22 +31,21 @@ const toggleSwitch = tv({
 
 const TogglePetButton = ({ visibility, onClick }: ToggleProps) => {
   const { base, switchStyle, textStyle } = toggleSwitch();
-  const [isVisible, setIsVisible] = useState(visibility);
 
   const variant = useMemo(() => {
-    return isVisible ? "enabled" : "disabled";
-  }, [isVisible]);
+    return visibility ? "enabled" : "disabled";
+  }, [visibility]);
 
   const text = useMemo(() => {
-    return isVisible ? "มองเห็น" : "ปิดการมองเห็น";
-  }, [isVisible]);
+    return visibility ? "มองเห็น" : "ปิดการมองเห็น";
+  }, [visibility]);
 
   return (
     <button
       className={base({ variant })}
       onClick={(event: React.MouseEvent<HTMLButtonElement>) => {
-        onClick && onClick(event);
-        setIsVisible(!isVisible);
+        event.preventDefault();
+        onClick(event);
       }}
     >
       <div className={switchStyle({ variant })}></div>

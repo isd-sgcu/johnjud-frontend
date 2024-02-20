@@ -4,13 +4,11 @@ const UtcStringToYearMonth = ({ utcString }: { utcString: string }) => {
   const birthdate = dayjs(utcString);
   const currentUtcTime = dayjs();
 
-  const yearsDifference = currentUtcTime.diff(birthdate, "year");
-  const remainingMonths = currentUtcTime.diff(birthdate, "month") % 12;
+  const years = currentUtcTime.diff(birthdate, "year");
+  const months = currentUtcTime.diff(birthdate, "month") % 12;
+  const days = currentUtcTime.diff(birthdate, "day") % 30;
 
-  const years = yearsDifference;
-  const months = remainingMonths;
-
-  return { years, months };
+  return { years, months, days };
 };
 
 const UtcStringToYear = ({ utcString }: { utcString: string }) => {

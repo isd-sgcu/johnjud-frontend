@@ -1,7 +1,7 @@
 import HoroBgContainer from "@/components/Horo/HoroBgContainer";
 import HoroResult from "@/components/Horo/HoroResult";
 import SelectCard from "@/components/Horo/SelectCard";
-import HoroDatas from "@/utils/horo";
+import HoroDatas from "@/utils/horoResult";
 import { useCallback, useMemo, useState } from "react";
 import HoroFirstPage from "./HoroFirstPage";
 
@@ -14,6 +14,10 @@ const HoroGame = () => {
     return shuffled.slice(0, 9);
   }, []);
   const cardList = useMemo(() => shuffledCards.map((data) => data.img), []);
+  const downloadAndShareList = useMemo(
+    () => shuffledCards.map((data) => data.downloadShare),
+    []
+  );
   const titleList = useMemo(() => shuffledCards.map((data) => data.title), []);
   const textList = useMemo(() => shuffledCards.map((data) => data.content), []);
 
@@ -46,6 +50,7 @@ const HoroGame = () => {
           selectedCard !== null && (
             <HoroResult
               resultImage={cardList[selectedCard]}
+              resultDownloadandShare={downloadAndShareList[selectedCard]}
               resultName={titleList[selectedCard]}
               resultText={textList[selectedCard]}
             />
