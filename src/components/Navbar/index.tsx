@@ -1,5 +1,6 @@
 import usePathStyle from "@/hooks/usePathStyle";
 import { useEffect, useState } from "react";
+import SEO from "../SEO";
 import DarkBackground from "./DarkBackground";
 import SideBar from "./SideBar";
 import TopBar from "./TopBar";
@@ -16,6 +17,7 @@ const Navbar = () => {
 
   return (
     <>
+      <SEO theme={style.theme} />
       <DarkBackground isExist={toggle} isShow={isShow} setToggle={setToggle} />
       <TopBar style={style} setToggle={setToggle} />
       <SideBar
