@@ -1,10 +1,11 @@
-import { useState } from "react";
 import { tv } from "tailwind-variants";
 import FilterPanel from "./FilterPanel";
 import { NumberInput, ToggleInput } from "./Input";
-
+import { filterState } from "@/types/filter";
 interface FilterProps {
   isOpen: boolean;
+  filters: filterState;
+  setFilters: (filter: filterState) => void;
 }
 
 const filter = tv({
@@ -23,37 +24,28 @@ const filter = tv({
   },
 });
 
-const Filter = ({ isOpen }: FilterProps) => {
+const Filter = ({ isOpen, filters, setFilters }: FilterProps) => {
   const { base, headingContainer, heading, headingLine, filterContainer } =
     filter({ isOpen });
 
-  const [filters, setFilters] = useState({
-    dog: false,
-    cat: false,
-    male: false,
-    female: false,
-    white: false,
-    black: false,
-    brown: false,
-    blonde: false,
-    minAge: 0,
-    maxAge: 30,
-  });
+
 
   const handleToggleChange =
-    (filterKey: keyof typeof filters) =>
+    (filterKey: keyof filterState) =>
     (event: React.ChangeEvent<HTMLInputElement>) => {
-      setFilters((prevFilters) => ({
-        ...prevFilters,
+      const updatedFilters = {
+        ...filters,
         [filterKey]: event.target.checked,
-      }));
+      };
+      setFilters(updatedFilters);
     };
 
   const handleAgeChange = (key: "minAge" | "maxAge", value: number) => {
-    setFilters((prevFilters) => ({
-      ...prevFilters,
+    const updatedFilters = {
+      ...filters,
       [key]: value,
-    }));
+    };
+    setFilters(updatedFilters);
   };
 
   return (
