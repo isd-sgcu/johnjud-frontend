@@ -56,6 +56,8 @@ const adminCreate = () => {
   const postPetMutation = useCreatePet();
 
   const handleSubmit = async () => {
+    if (info.gender === "-") return; // already detect "-" by disable post button
+
     const allImageFile: File[] = await Promise.all(
       thumbnail ? [thumbnail, ...pictures] : pictures
     );
@@ -73,9 +75,7 @@ const adminCreate = () => {
       )
     )
       .filter((id) => id !== undefined)
-      .map((id) => id ?? ""); // map for ts type checking
-
-    if (info.gender === "-") return; // already detect "-" by disable post button
+      .map((id) => id ?? ""); // map for bypass ts type checking
 
     const petData: postPetRequest = {
       type: info.type,
