@@ -1,3 +1,4 @@
+import PetPageFallback from "@/components/Fallback/PetPageFallback";
 import Details from "@/components/Pets/Details/Details";
 import SmallPetCardList from "@/components/SmallPetCardList";
 import { usePetQuery } from "@/hooks/queries/usePetQuery";
@@ -13,10 +14,12 @@ const EditPet = () => {
 
   return (
     <>
-      {petData && (
-        <Details isLoading={petDataLoading} isAdmin={true} data={petData} />
+      {petDataLoading || !petData ? (
+        <PetPageFallback />
+      ) : (
+        <Details isAdmin={true} data={petData} />
       )}
-      {data && <SmallPetCardList isLoading={isLoading} pets={data.pets} />}
+      <SmallPetCardList isLoading={isLoading} pets={data?.pets} />
     </>
   );
 };
