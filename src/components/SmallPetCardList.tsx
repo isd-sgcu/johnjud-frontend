@@ -1,7 +1,18 @@
 import SmallPetCard from "@/components/Card/SmallPetCard";
 import { Pet } from "@/types/pets";
+import SmallPetCardListFallback from "./Fallback/SmallPetCardListFallback";
 
-const SmallPetCardList = ({ pets }: { pets: Pet[] }) => {
+const SmallPetCardList = ({
+  isLoading,
+  pets,
+}: {
+  isLoading: boolean;
+  pets: Pet[];
+}) => {
+  if (isLoading && !pets) {
+    return <SmallPetCardListFallback />;
+  }
+
   return (
     <div className="flex space-x-6 overflow-x-auto bg-primary/50 px-10 py-6">
       {pets.map((pet: Pet) => (

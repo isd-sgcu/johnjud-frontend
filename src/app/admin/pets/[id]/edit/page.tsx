@@ -6,15 +6,17 @@ import { usePageParams } from "@/hooks/usePageParams";
 import MainLayout from "@/layouts/MainLayout";
 
 const EditPet = () => {
-  const { data } = usePetsQuery();
+  const { data, isLoading } = usePetsQuery();
   const param = usePageParams(["id"]);
 
-  const { data: petData } = usePetQuery(param.id);
+  const { data: petData, isLoading: petDataLoading } = usePetQuery(param.id);
 
   return (
     <>
-      {petData && <Details isAdmin={true} data={petData} />}
-      {data && <SmallPetCardList pets={data.pets} />}
+      {petData && (
+        <Details isLoading={petDataLoading} isAdmin={true} data={petData} />
+      )}
+      {data && <SmallPetCardList isLoading={isLoading} pets={data.pets} />}
     </>
   );
 };
