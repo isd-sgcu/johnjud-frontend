@@ -14,7 +14,6 @@ const AddThumbnail = (props: AddThumbnailProps) => {
     if (selectedImg && selectedImg.length !== 0) {
       props.setThumbnail(selectedImg[0]);
     }
-    console.log(props.valueThumbnail);
   };
 
   return (
@@ -66,7 +65,7 @@ const AddThumbnail = (props: AddThumbnailProps) => {
         <label htmlFor="thumbnailPicturePencil">
           <Icon
             icon="custom:pencil"
-            className="h-8 w-8 cursor-pointer rounded-full bg-white p-1 shadow-md"
+            className="h-8 w-8 cursor-pointer rounded-full bg-white p-1 shadow-md hover:brightness-90"
           />
         </label>
       </div>

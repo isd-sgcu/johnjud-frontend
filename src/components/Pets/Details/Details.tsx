@@ -1,5 +1,5 @@
 import { PetsResponse } from "@/api/pets";
-import logo from "@/assets/details/logo.png";
+import logo from "@/assets/details/logo.webp";
 import EditInfoAndSubmit, {
   info,
 } from "@/components/Admin/Pets/Add/EditInfoAndSubmit";
@@ -18,7 +18,9 @@ const Details = ({
 }) => {
   const param = usePageParams(["id"]);
   const [petInfo, setPetInfo] = useState<info>({
-    gender: "ครับ",
+    gender: "-",
+    type: "-",
+    color: "-",
     age: "ครับ",
     nature: "ครับ",
     vaccine: true,
@@ -27,9 +29,8 @@ const Details = ({
 
   const [isFav, setIsFav] = useState(false);
 
-  const handleSubmit = (showInfo: info) => {
-    setPetInfo(showInfo);
-    console.log(showInfo);
+  const handleSubmit = () => {
+    console.log(petInfo);
   };
 
   const handleFavPressed = () => {

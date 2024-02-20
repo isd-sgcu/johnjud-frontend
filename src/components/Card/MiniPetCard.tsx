@@ -1,3 +1,4 @@
+import dog from "@/assets/dog.webp";
 import { UtcStringToYear } from "@/utils/dateConverter";
 import { useMemo } from "react";
 import { Link } from "react-router-dom";
@@ -5,7 +6,7 @@ import { Link } from "react-router-dom";
 interface MiniPetCardProps {
   id: string;
   name: string;
-  image: string;
+  image: string | undefined;
   habit: string;
   gender: string;
   birthdate: string;
@@ -35,16 +36,24 @@ const MiniPetCard = ({
     <Link to={linkTo}>
       <div className="w-40 rounded-2xl bg-white shadow-md">
         <div className="flex h-28 w-full rounded-2xl">
-          <img className="w-full rounded-2xl" src={image} alt={name} />
+          <img
+            className="w-full rounded-2xl object-cover object-center"
+            src={image ? image : dog}
+            alt={name}
+          />
         </div>
         <div className="space-y-2 px-3 py-2">
           <div>
-            <div className="text-base font-semibold text-black">{name}</div>
-            <div className="space-x-1">
-              <span className="text-sm font-normal text-accent-gray">
-                งานอดิเรก:
-              </span>
-              <span className="text-sm font-normal text-black">{habit}</span>
+            <div className="line-clamp-1 text-base font-semibold text-black">
+              {name}
+            </div>
+            <div className="flex flex-row space-x-1">
+              <div className="w-1/3 text-sm font-normal text-accent-gray">
+                habits:
+              </div>
+              <div className="line-clamp-1 text-sm font-normal text-black">
+                {habit}
+              </div>
             </div>
           </div>
           <div className="space-x-1.5">

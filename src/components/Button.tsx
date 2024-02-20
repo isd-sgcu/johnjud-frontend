@@ -4,7 +4,7 @@ import { tv } from "tailwind-variants";
 interface ButtonProps {
   text: string;
   icon?: string;
-
+  type?: "button" | "submit";
   variant:
     | "primary"
     | "accent-red"
@@ -20,7 +20,7 @@ interface ButtonProps {
 
 const button = tv({
   slots: {
-    base: "px-6 py-2 disabled:cursor-not-allowed hover:brightness-90",
+    base: "px-6 py-2 disabled:cursor-not-allowed hover:brightness-90 outline-none",
     containerStyle: "flex flex-row justify-center items-center gap-2",
     iconStyle: "h-6 w-6",
   },
@@ -70,6 +70,7 @@ const Button = ({
   icon,
   variant,
   rounded = "none",
+  type = "button",
   className,
   onClick,
 }: ButtonProps) => {
@@ -77,7 +78,7 @@ const Button = ({
 
   return (
     <button
-      type="button"
+      type={type}
       onClick={onClick}
       className={base({ class: className })}
       disabled={variant == "disabled"}

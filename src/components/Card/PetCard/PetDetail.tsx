@@ -11,7 +11,7 @@ const PetDetail = (props: PetDetailProps) => {
       <div>
         <Icon icon={props.icon} className="relative h-5 w-5" />
       </div>
-      <div>{props.description}</div>
+      <p className="line-clamp-1">{props.description}</p>
     </div>
   );
 };

@@ -1,3 +1,4 @@
+import dog from "@/assets/dog.webp";
 import { UtcStringToYearMonth } from "@/utils/dateConverter";
 import { Icon } from "@iconify/react";
 import { useMemo } from "react";
@@ -6,7 +7,7 @@ import { Link } from "react-router-dom";
 interface SmallPetCardProps {
   id: string;
   name: string;
-  image: string;
+  image: string | undefined;
   gender: string;
   birthdate: string;
   status: string;
@@ -28,8 +29,13 @@ const SmallPetCard = ({
     return "/pets/" + id;
   }, [id]);
 
-  const { years, months } = useMemo(() => {
-    return UtcStringToYearMonth({ utcString: birthdate });
+  const age = useMemo(() => {
+    const { years, months, days } = UtcStringToYearMonth({
+      utcString: birthdate,
+    });
+
+    const age = years > 0 ? `${years} ปี ` : "";
+    return age + (months > 0 ? `${months} เดือน ` : `${days} วัน`);
   }, [birthdate]);
 
   return (
@@ -37,7 +43,11 @@ const SmallPetCard = ({
       <div className="w-48 rounded-2xl bg-white p-3 shadow-md">
         <div className="space-y-2">
           <div className="flex justify-center rounded-2xl ">
-            <img className="rounded-2xl shadow-lg" src={image} alt={name} />
+            <img
+              className="aspect-[4/3] w-full rounded-2xl object-cover object-center shadow-lg"
+              src={image ? image : dog}
+              alt={name}
+            />
           </div>
           <div className="space-y-2">
             <div className="text-nowrap text-base font-semibold text-black">
@@ -61,7 +71,7 @@ const SmallPetCard = ({
                     <Icon icon="ph:gift" className="h-5 w-5 text-accent-gray" />
                   </div>
                   <div className="text-xs font-normal text-accent-gray">
-                    อายุ {years} ปี {months} เดือน
+                    อายุ {age}
                   </div>
                 </div>
               </div>
