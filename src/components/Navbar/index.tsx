@@ -5,12 +5,14 @@ import SideBar from "./SideBar";
 import TopBar from "./TopBar";
 
 const Navbar = () => {
+  const style = usePathStyle();
+
   const [toggle, setToggle] = useState(false);
   const [isShow, setIsShow] = useState(false);
+
   useEffect(() => {
     setIsShow(toggle);
   }, [toggle]);
-  const style = usePathStyle();
 
   return (
     <>

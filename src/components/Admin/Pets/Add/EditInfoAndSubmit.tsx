@@ -1,7 +1,7 @@
 import Button from "@/components/Button";
 import { colorOption, genderOption, typeOption } from "@/utils/PetInfoOption";
 import { Icon } from "@iconify/react";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import DateInputInfo from "./DateInputInfo";
 import DropdownInputInfo, { OptionType } from "./DropdownInputInfo";
@@ -32,15 +32,14 @@ interface EditInfoAndSubmitProps {
 const EditInfoAndSubmit = (props: EditInfoAndSubmitProps) => {
   const [showInfo, setShowInfo] = useState<info>(props.value);
   const [enableEdit, setEnableEdit] = useState(false);
-
   const handleOnClickEdit = () => {
     if (enableEdit) {
-      const addNoneInfo = { ...showInfo };
+      const addNoneInfo = showInfo;
       if (addNoneInfo.age === "") addNoneInfo["age"] = "-";
       if (addNoneInfo.nature === "") addNoneInfo["nature"] = "-";
       props.setValue(addNoneInfo);
     } else {
-      const removeEmptyInfo = { ...props.value };
+      const removeEmptyInfo = props.value;
       if (removeEmptyInfo.age === "-") removeEmptyInfo["age"] = "";
       if (removeEmptyInfo.nature === "-") removeEmptyInfo["nature"] = "";
       setShowInfo(removeEmptyInfo);

@@ -5,16 +5,17 @@ import Filter from "@/components/Filter";
 import { PetIcon } from "@/components/Filter/Icon";
 import Heading from "@/components/Pets/Heading";
 import PetSearch from "@/components/Search/PetSearch";
-import MainLayout from "@/layouts/MainLayout";
 import { Pet } from "@/types/pets";
 import { Icon } from "@iconify/react/dist/iconify.js";
 
 import { useCallback, useState } from "react";
 import { Link } from "react-router-dom";
 
+import PetsPageFallback from "@/components/Fallback/PetsPageFallback";
 import { usePetsQuery } from "@/hooks/queries/usePetsQuery";
+import AdminLayout from "@/layouts/AdminLayout";
 const Pets = () => {
-  const { data } = usePetsQuery();
+  const { data, isLoading } = usePetsQuery();
 
   const [isOpenFilterPanel, setIsOpenFilterPanel] = useState(false);
 
@@ -80,5 +81,6 @@ const Pets = () => {
   );
 };
 
-export const Layout = MainLayout;
 export default Pets;
+
+export const Layout = AdminLayout;
