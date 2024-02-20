@@ -15,6 +15,7 @@ import { Link } from "react-router-dom";
 import PetsPageFallback from "@/components/Fallback/PetsPageFallback";
 import { usePetsQuery } from "@/hooks/queries/usePetsQuery";
 import AdminLayout from "@/layouts/AdminLayout";
+import useFavoriteStore from "@/store/favStore";
 const Pets = () => {
   const [isOpenFilterPanel, setIsOpenFilterPanel] = useState(false);
 
@@ -36,6 +37,7 @@ const Pets = () => {
   });
 
   const { data, isLoading } = usePetsQuery(filters);
+  const { favorites } = useFavoriteStore();
 
   return (
     <>
@@ -91,7 +93,7 @@ const Pets = () => {
                 birthDate={pet.birthdate}
                 habit={pet.habit}
                 isSterile={pet.is_sterile}
-                isLiked={false}
+                isLiked={favorites.find((fav) => fav === pet.id) ? true : false}
                 isVisibled={pet.is_visible}
               />
             ))}

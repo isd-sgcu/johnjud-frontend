@@ -7,6 +7,7 @@ import Heading from "@/components/Pets/Heading";
 import PetSearch from "@/components/Search/PetSearch";
 import { usePetsQuery } from "@/hooks/queries/usePetsQuery";
 import MainLayout from "@/layouts/MainLayout";
+import useFavoriteStore from "@/store/favStore";
 import { filterState } from "@/types/filter";
 import { Pet } from "@/types/pets";
 import { useCallback, useState } from "react";
@@ -32,6 +33,7 @@ const Pets = () => {
   });
 
   const { data, isLoading } = usePetsQuery(filters);
+  const { favorites } = useFavoriteStore();
 
   return (
     <>
@@ -69,7 +71,7 @@ const Pets = () => {
                 birthDate={pet.birthdate}
                 habit={pet.habit}
                 isSterile={pet.is_sterile}
-                isLiked={false}
+                isLiked={favorites.find((fav) => fav === pet.id) ? true : false}
                 isVisibled={pet.is_visible}
               />
             ))}

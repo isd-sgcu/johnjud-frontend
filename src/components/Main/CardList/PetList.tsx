@@ -1,5 +1,6 @@
 import PetCard from "@/components/Card/PetCard/index";
 import PetListFallback from "@/components/Fallback/Main/PetListFallback";
+import useFavoriteStore from "@/store/favStore";
 import { Pet } from "@/types/pets";
 import React from "react";
 
@@ -9,6 +10,8 @@ interface PetListProps {
 }
 
 const PetList: React.FC<PetListProps> = ({ isLoading, data }) => {
+  const { favorites } = useFavoriteStore();
+
   if (isLoading && !data) {
     return <PetListFallback />;
   }
@@ -27,7 +30,7 @@ const PetList: React.FC<PetListProps> = ({ isLoading, data }) => {
           birthDate={pet.birthdate}
           habit={pet.habit}
           isSterile={pet.is_sterile}
-          isLiked={false}
+          isLiked={favorites.find((fav) => fav === pet.id) ? true : false}
           isVisibled={pet.is_visible}
         />
       ))}
