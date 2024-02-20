@@ -1,6 +1,6 @@
 import { useMemo } from "react";
 import { useLocation } from "react-router-dom";
-import logoPrimary from "../assets/navbar/logoPrimary.svg";
+import logoPrimary from "../assets/navbar/logoPrimary.webp";
 import logoSecondary from "../assets/navbar/logoSecondary.svg";
 
 const usePathStyle = () => {
