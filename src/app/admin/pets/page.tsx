@@ -5,6 +5,7 @@ import Filter from "@/components/Filter";
 import { PetIcon } from "@/components/Filter/Icon";
 import Heading from "@/components/Pets/Heading";
 import PetSearch from "@/components/Search/PetSearch";
+import { filterState } from "@/types/filter";
 import { Pet } from "@/types/pets";
 import { Icon } from "@iconify/react/dist/iconify.js";
 
@@ -22,6 +23,19 @@ const Pets = () => {
   const toggleIsOpenFilterPanel = useCallback(() => {
     setIsOpenFilterPanel((prev) => !prev);
   }, []);
+
+  const [filters, setFilters] = useState<filterState>({
+    dog: false,
+    cat: false,
+    male: false,
+    female: false,
+    white: false,
+    black: false,
+    brown: false,
+    blonde: false,
+    minAge: 0,
+    maxAge: 30,
+  });
 
   return (
     <>
@@ -41,7 +55,11 @@ const Pets = () => {
               isOpen={isOpenFilterPanel}
               onClick={toggleIsOpenFilterPanel}
             />
-            <Filter isOpen={isOpenFilterPanel} />
+            <Filter
+              isOpen={isOpenFilterPanel}
+              filters={filters}
+              setFilters={setFilters}
+            />
           </div>
         </div>
         <div className="w-full xl:w-auto">

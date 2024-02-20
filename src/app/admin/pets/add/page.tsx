@@ -17,6 +17,7 @@ import EditText from "../../../../components/Admin/Pets/Add/EditText";
 
 import { useCreatePet } from "@/hooks/mutation/usePostPet";
 import AdminLayout from "@/layouts/AdminLayout";
+import dayjs from "dayjs";
 const adminCreate = () => {
   const { data, isLoading } = usePetsQuery();
 
@@ -79,8 +80,8 @@ const adminCreate = () => {
     const petData: postPetRequest = {
       type: info.type,
       name: name,
-      birthdate: info.age,
-      gender: info.gender as "male" | "female",
+      birthdate: dayjs(info.age).toISOString(),
+      gender: info.gender,
       color: info.color,
       pattern: "a", // remove later
       habit: info.nature,
