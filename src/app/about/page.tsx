@@ -1,9 +1,10 @@
-import johnjudLogo from "@/assets/johnjud-with-text.png";
+import johnjudLogo from "@/assets/johnjud-with-text.webp";
+import Container from "@/components/Container";
 import MainLayout from "@/layouts/MainLayout";
 
 const About = () => {
   return (
-    <div className="mt-2 justify-center lg:ml-[7.5%] lg:mr-[12%] lg:grid lg:grid-cols-3">
+    <Container className="justify-center lg:grid lg:grid-cols-3">
       <div className="relative flex flex-col items-center">
         <div className="flex flex-col">
           <div className="text-center text-xl lg:text-start">เกี่ยวกับ</div>
@@ -112,7 +113,7 @@ const About = () => {
           </div>
         </div>
       </div>
-    </div>
+    </Container>
   );
 };
 
