@@ -10,7 +10,6 @@ import { usePetsQuery } from "@/hooks/queries/usePetsQuery";
 import MainLayout from "@/layouts/MainLayout";
 import { useNavigate } from "react-router-dom";
 
-import adsImage1 from "@/assets/ads/1.jpg";
 import PetList from "@/components/Main/CardList/PetList";
 import PetSuggestionList from "@/components/Main/CardList/PetSuggestionList";
 
@@ -46,7 +45,7 @@ const MainPage = () => {
         <div className="flex flex-col items-center justify-center gap-8 lg:flex-row lg:justify-between">
           <div>
             <div className="hidden w-[60vw] md:block lg:w-[30vw]">
-              <Banner imageUrl={adsImage1} />
+              <Banner />
             </div>
           </div>
           <PetSuggestionList
@@ -68,7 +67,7 @@ const MainPage = () => {
         <Divider variant="primary" />
       </Container>
       <Container className="flex md:hidden">
-        <Banner imageUrl={adsImage1} />
+        <Banner />
       </Container>
       <Container className="flex items-center justify-center md:hidden">
         <Divider variant="primary" />
