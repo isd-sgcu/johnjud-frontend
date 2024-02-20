@@ -152,7 +152,7 @@ const adminCreate = () => {
         </div>
       </div>
       <div className="hidden md:block">
-        {data && <SmallPetCardList isLoading={isLoading} pets={data.pets} />}
+        <SmallPetCardList isLoading={isLoading} pets={data?.pets} />
       </div>
     </>
   );

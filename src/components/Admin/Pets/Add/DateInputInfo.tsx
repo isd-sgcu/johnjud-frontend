@@ -19,7 +19,8 @@ const DateInputInfo = (props: DateInputInfoProps) => {
   };
 
   const birthdate = useMemo(() => {
-    return dayjs(props.value).format("MMMM DD, YYYY");
+    if (props.value != "-") return dayjs(props.value).format("MMMM DD, YYYY");
+    return "-";
   }, [props.value]);
 
   return (
@@ -40,7 +41,9 @@ const DateInputInfo = (props: DateInputInfoProps) => {
             />
           </div>
         ) : (
-          <div className="ml-2 font-semibold">{birthdate}</div>
+          <div className="ml-2 font-semibold">
+            {birthdate ? birthdate : "-"}
+          </div>
         )}
       </div>
     </div>

@@ -9,8 +9,8 @@ import TextInputInfo from "./TextInputInfo";
 import ToggleInputInfo from "./ToggleInputInfo";
 
 export type info = {
-  type: string;
-  gender: string;
+  type: "dog" | "cat" | "-";
+  gender: "male" | "female" | "-";
   color: string;
   age: string;
   nature: string;
@@ -37,13 +37,11 @@ const EditInfoAndSubmit = (props: EditInfoAndSubmitProps) => {
       const addNoneInfo = showInfo;
       if (addNoneInfo.age === "") addNoneInfo["age"] = "-";
       if (addNoneInfo.nature === "") addNoneInfo["nature"] = "-";
-      if (addNoneInfo.gender === "") addNoneInfo["gender"] = "-";
       props.setValue(addNoneInfo);
     } else {
       const removeEmptyInfo = props.value;
       if (removeEmptyInfo.age === "-") removeEmptyInfo["age"] = "";
       if (removeEmptyInfo.nature === "-") removeEmptyInfo["nature"] = "";
-      if (removeEmptyInfo.gender === "-") removeEmptyInfo["gender"] = "";
       setShowInfo(removeEmptyInfo);
     }
     setEnableEdit(!enableEdit);
