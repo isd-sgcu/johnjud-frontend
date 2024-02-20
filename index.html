@@ -34,5 +34,14 @@
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
+    <script>
+      if (window.location.pathname.includes("/admin")) {
+        document.documentElement.style.setProperty("--theme", "#C81425");
+      } else if (window.location.pathname.includes("/horo")) {
+        document.documentElement.style.setProperty("--theme", "#3D0D40");
+      } else {
+        document.documentElement.style.setProperty("--theme", "#08878E");
+      }
+    </script>
   </body>
 </html>
