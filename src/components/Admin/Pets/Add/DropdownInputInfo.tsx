@@ -104,7 +104,7 @@ const DropdownInputInfo = (props: DropdownInputInfoProps) => {
           </div>
         ) : (
           <div className={`ml-2 font-semibold`}>
-            {currentOption ? currentOption.label : "-"}
+            {currentOption ? currentOption.label : props.value}
           </div>
         )}
       </div>
