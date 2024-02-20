@@ -31,7 +31,7 @@ const Pets = () => {
     maxAge: 30,
   });
 
-  const { data, isLoading } = usePetsQuery(filters) || {};
+  const { data, isLoading } = usePetsQuery(filters);
 
   return (
     <>
@@ -57,7 +57,7 @@ const Pets = () => {
           <PetsPageFallback />
         ) : (
           <div className="flex flex-wrap items-center justify-center gap-6 lg:gap-9">
-            {data?.pets.map((pet: Pet) => (
+            {data?.pets?.map((pet: Pet) => (
               <PetCard
                 key={pet.id}
                 id={pet.id}
