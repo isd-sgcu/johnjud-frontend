@@ -1,17 +1,21 @@
 import PetCard from "@/components/Card/PetCard/index";
+import PetListFallback from "@/components/Fallback/Main/PetListFallback";
 import { Pet } from "@/types/pets";
 import React from "react";
 
-interface BigPetCardContainerProps {
-  petsData: Pet[];
+interface PetListProps {
+  isLoading: boolean;
+  data: Pet[] | undefined;
 }
 
-const BigPetCardContainer: React.FC<BigPetCardContainerProps> = ({
-  petsData,
-}) => {
+const PetList: React.FC<PetListProps> = ({ isLoading, data }) => {
+  if (isLoading && !data) {
+    return <PetListFallback />;
+  }
+
   return (
-    <div className="flex space-x-9 overflow-x-auto">
-      {petsData.map((pet: Pet) => (
+    <div className="flex space-x-9 overflow-x-auto py-2">
+      {data?.map((pet: Pet) => (
         <PetCard
           key={pet.id}
           id={pet.id}
@@ -30,4 +34,4 @@ const BigPetCardContainer: React.FC<BigPetCardContainerProps> = ({
     </div>
   );
 };
-export default BigPetCardContainer;
+export default PetList;

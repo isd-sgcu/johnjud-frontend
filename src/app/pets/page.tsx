@@ -1,5 +1,6 @@
 import PetCard from "@/components/Card/PetCard";
 import Container from "@/components/Container";
+import PetsPageFallback from "@/components/Fallback/PetsPageFallback";
 import Filter from "@/components/Filter";
 import { PetIcon } from "@/components/Filter/Icon";
 import Heading from "@/components/Pets/Heading";
@@ -16,7 +17,8 @@ const Pets = () => {
     setIsOpenFilterPanel((prev) => !prev);
   }, []);
 
-  const { data } = usePetsQuery();
+  const { data, isLoading } = usePetsQuery();
+
   return (
     <>
       <Container>
@@ -33,24 +35,28 @@ const Pets = () => {
         </div>
       </Container>
       <Container>
-        <div className="flex flex-wrap items-center justify-center gap-6 lg:gap-9">
-          {data?.pets.map((pet: Pet) => (
-            <PetCard
-              key={pet.id}
-              id={pet.id}
-              image={pet.images ? pet.images[0]?.url : undefined}
-              type={pet.type}
-              name={pet.name}
-              status={pet.status}
-              gender={pet.gender}
-              birthDate={pet.birthdate}
-              habit={pet.habit}
-              isSterile={pet.is_sterile}
-              isLiked={false}
-              isVisibled={pet.is_visible}
-            />
-          ))}
-        </div>
+        {isLoading ? (
+          <PetsPageFallback />
+        ) : (
+          <div className="flex flex-wrap items-center justify-center gap-6 lg:gap-9">
+            {data?.pets.map((pet: Pet) => (
+              <PetCard
+                key={pet.id}
+                id={pet.id}
+                image={pet.images ? pet.images[0]?.url : undefined}
+                type={pet.type}
+                name={pet.name}
+                status={pet.status}
+                gender={pet.gender}
+                birthDate={pet.birthdate}
+                habit={pet.habit}
+                isSterile={pet.is_sterile}
+                isLiked={false}
+                isVisibled={pet.is_visible}
+              />
+            ))}
+          </div>
+        )}
       </Container>
     </>
   );

@@ -11,6 +11,8 @@ interface DateInputInfoProps {
 }
 
 const DateInputInfo = (props: DateInputInfoProps) => {
+  const maxDate = new Date().toISOString().split("T")[0];
+
   const handleOnChange = (event: ChangeEvent<HTMLInputElement>) => {
     const date = event.target.value;
     props.onChange(date);
@@ -32,6 +34,7 @@ const DateInputInfo = (props: DateInputInfoProps) => {
               className="w-full rounded-lg border border-accent-gray-variant px-2 py-1 font-semibold"
               onChange={handleOnChange}
               value={props.value}
+              max={maxDate}
             />
           </div>
         ) : (

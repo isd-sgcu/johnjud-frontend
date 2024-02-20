@@ -1,4 +1,5 @@
 import Bubble from "@/assets/faq/bubble.svg";
+import Container from "@/components/Container";
 import QuestionBox from "@/components/QuestionBox";
 import MainLayout from "@/layouts/MainLayout";
 
@@ -27,8 +28,8 @@ const Questions = [
 
 const Faq = () => {
   return (
-    <div className="relative flex justify-center">
-      <div className="relative mt-9 max-w-2xl px-10 pb-16 text-teal-600">
+    <Container className="relative flex justify-center">
+      <div className="relative mt-9 max-w-2xl text-teal-600">
         <div className="mb-6 flex max-w-2xl flex-col items-center">
           <div className="mb-3 items-center text-4xl font-semibold leading-normal">
             <p>คำถามที่พบบ่อย</p>
@@ -52,7 +53,7 @@ const Faq = () => {
           );
         })}
       </div>
-    </div>
+    </Container>
   );
 };
 
