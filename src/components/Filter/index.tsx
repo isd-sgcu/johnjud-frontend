@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { tv } from "tailwind-variants";
 import FilterPanel from "./FilterPanel";
 import { NumberInput, ToggleInput } from "./Input";
@@ -26,6 +27,33 @@ const Filter = ({ isOpen }: FilterProps) => {
   const { base, headingContainer, heading, headingLine, filterContainer } =
     filter({ isOpen });
 
+  const [filters, setFilters] = useState({
+    dog: false,
+    cat: false,
+    male: false,
+    female: false,
+    white: false,
+    black: false,
+    brown: false,
+    blonde: false,
+    minAge: 0,
+    maxAge: 0,
+  });
+
+  const handleToggleChange = (filterKey: keyof typeof filters) => (event: React.ChangeEvent<HTMLInputElement>) => {
+    setFilters((prevFilters) => ({
+      ...prevFilters,
+      [filterKey]: event.target.checked,
+    }));
+  };
+
+  const handleNumberInputChange = (filterKey: keyof typeof filters) => (event: any) => {
+    setFilters((prevFilters) => ({
+      ...prevFilters,
+      [filterKey]: Number(event.target.value),
+    }));
+  };
+
   return (
     <div className={base()}>
       <div className={headingContainer()}>
@@ -34,25 +62,75 @@ const Filter = ({ isOpen }: FilterProps) => {
       </div>
       <div className={filterContainer()}>
         <FilterPanel heading="ประเภทสัตว์เลี้ยง">
-          <ToggleInput id="type-dog" text="สุนัข" />
-          <ToggleInput id="type-cat" text="แมว" />
+          <ToggleInput
+            id="type-dog"
+            text="สุนัข"
+            checked={filters.dog}
+            onChange={handleToggleChange("dog")}
+          />
+          <ToggleInput
+            id="type-cat"
+            text="แมว"
+            checked={filters.cat}
+            onChange={handleToggleChange("cat")}
+          />
         </FilterPanel>
 
         <FilterPanel heading="เพศ">
-          <ToggleInput id="gender-male" text="ผู้" />
-          <ToggleInput id="gender-female" text="เมีย" />
+          <ToggleInput
+            id="gender-male"
+            text="ผู้"
+            checked={filters.male}
+            onChange={handleToggleChange("male")}
+          />
+          <ToggleInput
+            id="gender-female"
+            text="เมีย"
+            checked={filters.female}
+            onChange={handleToggleChange("female")}
+          />
         </FilterPanel>
 
         <FilterPanel heading="สี">
-          <ToggleInput id="color-white" text="ขาว" />
-          <ToggleInput id="color-black" text="ดำ" />
-          <ToggleInput id="color-brown" text="น้ำตาล" />
-          <ToggleInput id="color-blonde" text="บลอนด์" />
+          <ToggleInput
+            id="color-white"
+            text="ขาว"
+            checked={filters.white}
+            onChange={handleToggleChange("white")}
+          />
+          <ToggleInput
+            id="color-black"
+            text="ดำ"
+            checked={filters.black}
+            onChange={handleToggleChange("black")}
+          />
+          <ToggleInput
+            id="color-brown"
+            text="น้ำตาล"
+            checked={filters.brown}
+            onChange={handleToggleChange("brown")}
+          />
+          <ToggleInput
+            id="color-blonde"
+            text="บลอนด์"
+            checked={filters.blonde}
+            onChange={handleToggleChange("blonde")}
+          />
         </FilterPanel>
 
         <FilterPanel heading="อายุ">
-          <NumberInput id="age-min" text="ต่ำสุด" />
-          <NumberInput id="age-max" text="สูงสุด" />
+          <NumberInput
+            id="age-min"
+            text="ต่ำสุด"
+            value={filters.minAge}
+            onChange={handleNumberInputChange("minAge")}
+          />
+          <NumberInput
+            id="age-max"
+            text="สูงสุด"
+            value={filters.maxAge}
+            onChange={handleNumberInputChange("maxAge")}
+          />
         </FilterPanel>
       </div>
     </div>

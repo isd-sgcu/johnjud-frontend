@@ -1,6 +1,5 @@
-import { PetsResponse, getPets, GetPetsFilter } from "@/api/pets";
+import { GetPetsFilter, PetsResponse, getPets } from "@/api/pets";
 import { useQuery } from "@tanstack/react-query";
-
 
 const usePetsQuery = (filters?: GetPetsFilter) => {
   return useQuery<PetsResponse>({
@@ -10,4 +9,4 @@ const usePetsQuery = (filters?: GetPetsFilter) => {
   });
 };
 
-export { usePetsQuery }; 
+export { usePetsQuery };

@@ -1,10 +1,7 @@
- 
-
 import useAuthStore from "@/store/authStore";
 import { Meta } from "@/types/common";
 import { Pet } from "@/types/pets";
 import axios from "axios";
-
 
 interface PetsResponse {
   pets: Pet[];
@@ -12,17 +9,15 @@ interface PetsResponse {
 }
 
 interface GetPetsFilter {
-    type?: string;
-    gender?: string;
-    color?: string;
-    minAge?: number;
-    maxAge?: number;
+  type?: string;
+  gender?: string;
+  color?: string;
+  minAge?: number;
+  maxAge?: number;
 }
 
-
 const getPets = async (filters: GetPetsFilter) => {
-
-  const queryParams = new URLSearchParams(filters as any).toString();
+  const queryParams = new URLSearchParams(filters as any ).toString();
 
   const response = await axios.get<PetsResponse>(
     `${import.meta.env.VITE_API_URL}/pets${queryParams}`
@@ -55,4 +50,4 @@ const postPet = async (data: postPetRequest): Promise<postPetResponse> => {
 };
 
 export { getPets, postPet };
-export type { PetsResponse, postPetRequest, postPetResponse, GetPetsFilter };
+export type { GetPetsFilter, PetsResponse, postPetRequest, postPetResponse };
