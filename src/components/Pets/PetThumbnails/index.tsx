@@ -4,7 +4,7 @@ import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 
 interface PetThumbnailsProps {
-  petImages: Array<string>;
+  petImages: string[];
   origin: string;
 }
 
@@ -53,14 +53,15 @@ const PetThumbnails = ({ petImages, origin }: PetThumbnailsProps) => {
           showStatus={false}
           showIndicators={false}
         >
-          {petImages.map((item, index) => (
-            <div key={index}>
-              <img
-                src={item}
-                className="z-0 aspect-square max-w-80 rounded-2xl object-cover object-center"
-              />
-            </div>
-          ))}
+          {petImages &&
+            Array.from(petImages).map((item, index) => (
+              <div key={index}>
+                <img
+                  src={item}
+                  className="z-0 aspect-square max-w-80 rounded-2xl object-cover object-center"
+                />
+              </div>
+            ))}
         </Carousel>
       </div>
     </div>

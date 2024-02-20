@@ -5,7 +5,6 @@ import { usePetQuery } from "@/hooks/queries/usePetQuery";
 import { usePageParams } from "@/hooks/usePageParams";
 import MainLayout from "@/layouts/MainLayout";
 import { Icon } from "@iconify/react/dist/iconify.js";
-import { Link } from "react-router-dom";
 
 const AdoptionPage = () => {
   const param = usePageParams(["id"]);
@@ -15,14 +14,12 @@ const AdoptionPage = () => {
   return (
     data && (
       <>
-        <div className="flex justify-between px-6 lg:block lg:px-12">
-          <Link to={`/pets/${param.id}`}>
-            <Icon icon={"ion:chevron-back"} className="h-8 w-8 text-primary" />
-          </Link>
-          <h2 className="visible flex flex-row justify-between text-4xl font-bold text-primary underline md:hidden">
-            {data.name}
-          </h2>
-        </div>
+        <button type="button" onClick={() => window.history.back()}>
+          <Icon icon="ion:chevron-back" className="h-8 w-8 cursor-pointer" />
+        </button>
+        <h2 className="visible flex flex-row justify-between text-4xl font-bold text-primary underline md:hidden">
+          {data.name}
+        </h2>
 
         <Container className="flex flex-col items-center gap-8 md:flex-row md:items-start md:justify-between">
           <PetThumbnails petImages={petImagesArray} origin={data?.origin} />
