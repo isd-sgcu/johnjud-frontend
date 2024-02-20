@@ -18,7 +18,7 @@ const PetInfo = () => {
       ) : (
         <Details isAdmin={false} data={petData} />
       )}
-      {<SmallPetCardList isLoading={isLoading} pets={data?.pets} />}
+      <SmallPetCardList isLoading={isLoading} pets={data?.pets} />
     </>
   );
 };
