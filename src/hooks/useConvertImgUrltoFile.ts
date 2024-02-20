@@ -6,7 +6,9 @@ export async function useConvertImgUrltoFile(
   try {
     const response = await fetch(image.url);
     const blob = await response.blob();
-    return new File([blob], image.id);
+    return new File([blob], image.id, {
+      type: "image/png",
+    });
   } catch (err) {
     return null;
   }

@@ -8,7 +8,7 @@ import EditInfoAndSubmit, {
 import EditName from "@/components/Admin/Pets/Add/EditName";
 import EditText from "@/components/Admin/Pets/Add/EditText";
 import Container from "@/components/Container";
-//import { useDeleteImage } from "@/hooks/mutation/useDeleteImage";
+import { useDeleteImage } from "@/hooks/mutation/useDeleteImage";
 import { useCreateImage } from "@/hooks/mutation/usePostImage";
 import { useUpdatePet } from "@/hooks/mutation/useUpdatePet";
 import { useConvertImgUrltoFile } from "@/hooks/useConvertImgUrltoFile";
@@ -28,9 +28,9 @@ interface DetailsProps {
 const Details = (props: DetailsProps) => {
   const postImageMutation = useCreateImage();
   const updatePetMutaion = useUpdatePet();
-  //const deleteImageMutation = useDeleteImage();
+  const deleteImageMutation = useDeleteImage();
 
-  if (updatePetMutaion.data !== undefined) console.log(updatePetMutaion.data);
+  //if (updatePetMutaion.data !== undefined) console.log(updatePetMutaion.data);
 
   const { id } = usePageParams(["id"]);
   const [isFav, setIsFav] = useState(false);
@@ -107,30 +107,28 @@ const Details = (props: DetailsProps) => {
   }
 
   async function handleSubmit() {
+    //check is pending
+    if (postImageMutation.isPending || updatePetMutaion.isPending) return;
+
     //clear old images
-    /* pet.images?.forEach((image) => {
-      deleteImageMutation.mutate(image.id)
-    }); */
+    pet.images?.forEach((image) => {
+      deleteImageMutation.mutateAsync(image.id);
+    });
 
     //create new images
-    const allImageFile: File[] = await Promise.all(
-      thumbnail ? [thumbnail, ...images] : images
-    );
+    const allImageFile: File[] = thumbnail
+      ? [thumbnail, ...images]
+      : [...images];
+    console.log(allImageFile);
 
     // post image and get id : assume this is correct
-    const allImage: string[] = (
-      await Promise.all(
-        allImageFile.map(async (image) => {
-          const imageResponse = await postImageMutation.mutateAsync({
-            file: image,
-          });
-          console.log(imageResponse);
-          return imageResponse.id;
-        })
-      )
-    )
-      .filter((id) => id !== undefined)
-      .map((id) => id ?? ""); // map for ts type checking
+    allImageFile.forEach(async (image) => {
+      const imageResponse = await postImageMutation.mutateAsync({
+        file: image,
+        pet_id: id,
+      });
+      console.log(imageResponse);
+    });
 
     const data: PutPetRequest = {
       type: petInfo.type,
@@ -144,9 +142,8 @@ const Details = (props: DetailsProps) => {
       is_vaccinated: petInfo.vaccine,
       is_visible: pet.is_visible,
       origin: origin,
-      images: allImage,
     };
-    console.log(data);
+    //console.log(data);
     updatePetMutaion.mutate({
       body: data,
       id: id,

@@ -7,6 +7,7 @@ interface AddSmallPictureProps {
 
 const AddSmallPicture = (props: AddSmallPictureProps) => {
   const { value, setValue } = props;
+  console.log(value);
   const handleOnChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const selectedFiles = event.target.files;
     if (selectedFiles && selectedFiles.length !== 0) {
@@ -28,6 +29,7 @@ const AddSmallPicture = (props: AddSmallPictureProps) => {
   return (
     <div className="flex w-full snap-x flex-row gap-4 overflow-x-auto scroll-smooth pb-2">
       {Array.from(value).map((picture, index) => {
+        if (!picture) return;
         return (
           <div
             className="relative flex aspect-square w-[60%] max-w-48 flex-shrink-0 snap-start items-center justify-center bg-white"

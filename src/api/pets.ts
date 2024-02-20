@@ -90,7 +90,6 @@ type PutPetRequest = Omit<
   | "contact"
 > & {
   origin: string;
-  images: string[];
 };
 
 const updatePet = async (data: PutPetRequest, id: string): Promise<Pet> => {
