@@ -1,14 +1,26 @@
-import { PetsResponse } from "@/api/pets";
 import logo from "@/assets/details/logo.webp";
 import EditInfoAndSubmit, {
   info,
 } from "@/components/Admin/Pets/Add/EditInfoAndSubmit";
+import PetPageFallback from "@/components/Fallback/PetPageFallback";
 import BigPetCard from "@/components/Pets/Details/BigPetCard";
 import MainLayout from "@/layouts/MainLayout";
 import { Pet } from "@/types/pets";
 import { useState } from "react";
 
-const Details = ({ isAdmin, data }: { isAdmin: boolean; data: Pet }) => {
+const Details = ({
+  isLoading,
+  isAdmin,
+  data,
+}: {
+  isLoading: boolean;
+  isAdmin: boolean;
+  data: Pet;
+}) => {
+  if (isLoading && !data) {
+    return <PetPageFallback />;
+  }
+
   const [petInfo, setPetInfo] = useState<info>({
     gender: data.gender as "male" | "female",
     type: data.type,
@@ -31,7 +43,7 @@ const Details = ({ isAdmin, data }: { isAdmin: boolean; data: Pet }) => {
 
   return (
     <>
-      <BigPetCard isAdmin={isAdmin} data={data} />
+      <BigPetCard isLoading={isLoading} isAdmin={isAdmin} data={data} />
       <div className="my-8 flex gap-20 xl:justify-between xl:pr-24">
         <EditInfoAndSubmit
           value={petInfo}

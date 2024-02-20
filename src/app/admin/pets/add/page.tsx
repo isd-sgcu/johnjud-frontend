@@ -18,7 +18,7 @@ import EditText from "../../../../components/Admin/Pets/Add/EditText";
 import { useCreatePet } from "@/hooks/mutation/usePostPet";
 import AdminLayout from "@/layouts/AdminLayout";
 const adminCreate = () => {
-  const { data } = usePetsQuery();
+  const { data, isLoading } = usePetsQuery();
 
   const [name, setName] = useState("กรุณาใส่ชื่อ...");
   const [text, setText] = useState("");
@@ -151,7 +151,7 @@ const adminCreate = () => {
         </div>
       </div>
       <div className="hidden md:block">
-        {data && <SmallPetCardList pets={data.pets} />}
+        {data && <SmallPetCardList isLoading={isLoading} pets={data.pets} />}
       </div>
     </>
   );
