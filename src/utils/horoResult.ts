@@ -9,16 +9,16 @@ import d2 from "@/assets/download-share/TheEmpress.png";
 import d1 from "@/assets/download-share/TheHighPriestess.png";
 import d9 from "@/assets/download-share/TwoOfCups.png";
 import d4 from "@/assets/download-share/WheelOfFortune.png";
-import card1 from "@/assets/horo/9-card-for-horo/1.png";
-import card10 from "@/assets/horo/9-card-for-horo/10.png";
-import card2 from "@/assets/horo/9-card-for-horo/2.png";
-import card3 from "@/assets/horo/9-card-for-horo/3.png";
-import card4 from "@/assets/horo/9-card-for-horo/4.png";
-import card5 from "@/assets/horo/9-card-for-horo/5.png";
-import card6 from "@/assets/horo/9-card-for-horo/6.png";
-import card7 from "@/assets/horo/9-card-for-horo/7.png";
-import card8 from "@/assets/horo/9-card-for-horo/8.png";
-import card9 from "@/assets/horo/9-card-for-horo/9.png";
+import card1 from "@/assets/horo/9-card-for-horo/1.webp";
+import card10 from "@/assets/horo/9-card-for-horo/10.webp";
+import card2 from "@/assets/horo/9-card-for-horo/2.webp";
+import card3 from "@/assets/horo/9-card-for-horo/3.webp";
+import card4 from "@/assets/horo/9-card-for-horo/4.webp";
+import card5 from "@/assets/horo/9-card-for-horo/5.webp";
+import card6 from "@/assets/horo/9-card-for-horo/6.webp";
+import card7 from "@/assets/horo/9-card-for-horo/7.webp";
+import card8 from "@/assets/horo/9-card-for-horo/8.webp";
+import card9 from "@/assets/horo/9-card-for-horo/9.webp";
 
 interface HoroData {
   img: string;

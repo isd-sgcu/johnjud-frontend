@@ -6,7 +6,7 @@ import { usePetsQuery } from "@/hooks/queries/usePetsQuery";
 import { Icon } from "@iconify/react";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import johnjudLogo from "../../../../assets/johnjud-with-text.png";
+import johnjudLogo from "../../../../assets/johnjud-with-text.webp";
 import AddSmallPicture from "../../../../components/Admin/Pets/Add/AddSmallPicture";
 import AddThumbnail from "../../../../components/Admin/Pets/Add/AddThumbnail";
 import EditInfoAndSubmit, {
