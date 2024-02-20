@@ -34,8 +34,8 @@ const MiniPetCard = ({
 
   return (
     <Link to={linkTo}>
-      <div className="w-44 rounded-2xl bg-white shadow-md">
-        <div className="flex h-32 w-full rounded-2xl">
+      <div className="w-40 rounded-2xl bg-white shadow-md">
+        <div className="flex h-28 w-full rounded-2xl">
           <img
             className="w-full rounded-2xl object-cover object-center"
             src={image ? image : dog}

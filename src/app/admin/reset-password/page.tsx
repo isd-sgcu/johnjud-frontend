@@ -2,16 +2,19 @@ import Button from "@/components/Button";
 import Container from "@/components/Container";
 import useResetPassword from "@/hooks/auth/useResetPassword";
 import MainLayout from "@/layouts/MainLayout";
+import useAuthStore from "@/store/authStore";
 import { Icon } from "@iconify/react/dist/iconify.js";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 type formValue = {
   password: string;
 };
 
 const resetPassword = () => {
+  const navigate = useNavigate();
+  const { isLoggedIn } = useAuthStore();
   const { register, handleSubmit } = useForm<formValue>();
   const { mutate } = useResetPassword();
 
@@ -23,6 +26,12 @@ const resetPassword = () => {
     const token = window.location.pathname.split("/").pop() || null;
     setResetPasswordToken(token);
   }, []);
+
+  useEffect(() => {
+    if (isLoggedIn) {
+      navigate("/admin/pets");
+    }
+  }, [isLoggedIn, navigate]);
 
   const onSubmit = (data: formValue) => {
     if (resetPasswordToken) {

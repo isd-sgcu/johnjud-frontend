@@ -3,8 +3,7 @@ import SmallPetCardList from "@/components/SmallPetCardList";
 import { usePetQuery } from "@/hooks/queries/usePetQuery";
 import { usePetsQuery } from "@/hooks/queries/usePetsQuery";
 import { usePageParams } from "@/hooks/usePageParams";
-import MainLayout from "@/layouts/MainLayout";
-
+import AdminLayout from "@/layouts/AdminLayout";
 const EditPet = () => {
   const { data } = usePetsQuery();
   const param = usePageParams(["id"]);
@@ -19,5 +18,6 @@ const EditPet = () => {
   );
 };
 
-export const Layout = MainLayout;
 export default EditPet;
+
+export const Layout = AdminLayout;

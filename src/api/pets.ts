@@ -8,6 +8,10 @@ interface PetsResponse {
   metadata: Meta;
 }
 
+interface DeletePetResponse {
+  success: boolean;
+}
+
 const getPets = async () => {
   const response = await axios.get<PetsResponse>(
     `${import.meta.env.VITE_API_URL}/pets`
@@ -58,5 +62,20 @@ const updateVisibility = async (
   return response.data;
 };
 
-export { getPets, postPet, updateVisibility };
+const deletePet = async (id: string) => {
+  const { accessToken } = useAuthStore.getState();
+
+  const response = await axios.delete<DeletePetResponse>(
+    `${import.meta.env.VITE_API_URL}/pets/${id}`,
+    {
+      headers: {
+        Authorization: `Bearer ${accessToken}`,
+      },
+    }
+  );
+
+  return response.data;
+};
+
+export { deletePet, getPets, postPet, updateVisibility };
 export type { PetsResponse, postPetRequest };
