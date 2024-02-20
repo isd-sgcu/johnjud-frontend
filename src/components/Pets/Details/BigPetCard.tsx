@@ -10,15 +10,7 @@ import { useEffect, useMemo, useState } from "react";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import PetThumbnails from "../PetThumbnails";
 
-const BigPetCard = ({
-  isLoading,
-  isAdmin,
-  data,
-}: {
-  isLoading: boolean;
-  isAdmin: boolean;
-  data: Pet;
-}) => {
+const BigPetCard = ({ isAdmin, data }: { isAdmin: boolean; data: Pet }) => {
   const [name, setName] = useState(data.name);
   const [text, setText] = useState(data.caption);
   const [petFrom, setPetFrom] = useState(data.origin);
@@ -65,11 +57,7 @@ const BigPetCard = ({
       <div className="mx-auto flex w-full flex-col items-center justify-between gap-8 md:h-80 md:flex-row md:items-start">
         <div className="relative w-80">
           {!isAdmin ? (
-            <PetThumbnails
-              isLoading={isLoading}
-              petImages={imgs}
-              origin={data.origin}
-            />
+            <PetThumbnails petImages={imgs} origin={data.origin} />
           ) : (
             <AddThumbnail
               valueOrigin={petFrom}

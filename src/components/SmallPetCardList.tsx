@@ -3,11 +3,11 @@ import { Pet } from "@/types/pets";
 import SmallPetCardListFallback from "./Fallback/SmallPetCardListFallback";
 
 const SmallPetCardList = ({
-  isLoading,
   pets,
+  isLoading,
 }: {
+  pets: Pet[] | undefined;
   isLoading: boolean;
-  pets: Pet[];
 }) => {
   if (isLoading && !pets) {
     return <SmallPetCardListFallback />;
@@ -15,7 +15,7 @@ const SmallPetCardList = ({
 
   return (
     <div className="flex space-x-6 overflow-x-auto bg-primary/50 px-10 py-6">
-      {pets.map((pet: Pet) => (
+      {pets?.map((pet: Pet) => (
         <SmallPetCard
           key={pet.id}
           id={pet.id}

@@ -8,7 +8,7 @@ import { Icon } from "@iconify/react/dist/iconify.js";
 
 const AdoptionPage = () => {
   const param = usePageParams(["id"]);
-  const { data, isLoading } = usePetQuery(param.id);
+  const { data } = usePetQuery(param.id);
   const petImagesArray = data?.images.map((img) => img.url) as string[];
 
   return (
@@ -22,11 +22,7 @@ const AdoptionPage = () => {
         </h2>
 
         <Container className="flex flex-col items-center gap-8 md:flex-row md:items-start md:justify-between">
-          <PetThumbnails
-            isLoading={isLoading}
-            petImages={petImagesArray}
-            origin={data?.origin}
-          />
+          <PetThumbnails petImages={petImagesArray} origin={data?.origin} />
           <div>
             <h2 className="mb-8 hidden text-4xl font-bold text-primary underline md:block">
               {data.name}

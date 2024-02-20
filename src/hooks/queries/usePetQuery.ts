@@ -1,4 +1,4 @@
-import { getPet } from "@/api/getPet";
+import { getPet } from "@/api/pets";
 import { Pet } from "@/types/pets";
 import { useQuery } from "@tanstack/react-query";
 
