@@ -17,7 +17,7 @@ interface GetPetsFilter {
 }
 
 const getPets = async (filters: GetPetsFilter) => {
-  const queryParams = new URLSearchParams(filters as any ).toString();
+  const queryParams = new URLSearchParams(filters as any).toString();
 
   const response = await axios.get<PetsResponse>(
     `${import.meta.env.VITE_API_URL}/pets${queryParams}`
