@@ -5,6 +5,7 @@ import TogglePetButton from "@/components/Card/PetCard/TogglePetButton";
 import Modal from "@/components/Modal";
 import { useDeletePet } from "@/hooks/mutation/useDeletePet";
 import { useUpdateVisibility } from "@/hooks/mutation/useUpdateVisibility";
+import useStore from "@/store/favStore";
 import { UtcStringToYearMonth } from "@/utils/dateConverter";
 import { Icon } from "@iconify/react";
 import { useCallback, useMemo, useState } from "react";
@@ -82,8 +83,16 @@ const PetCard = ({
     return status === "adopted" ? "disabled" : "accent-red";
   }, [status]);
 
+  const addToFavorites = useStore((state) => state.addToFavorites);
+  const removeFromFavorites = useStore((state) => state.removeFromFavorites);
+
   const handleLikePet = (event: React.MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
+    if (liked) {
+      removeFromFavorites(id);
+    } else {
+      addToFavorites(id);
+    }
     setLiked((prev) => !prev);
     console.log("liked : " + id);
   };
