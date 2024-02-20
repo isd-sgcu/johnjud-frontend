@@ -2,22 +2,21 @@ interface NumberInputProps {
   id: string;
   text: string;
   value: number;
-  onChange: (event: any) => void;
+  setValue: (value: number) => void;
 }
 
 const NumberInput: React.FC<NumberInputProps> = ({
   id,
   text,
   value,
-  onChange,
+  setValue
 }) => {
+  
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const newValue = e.target.value;
-    onChange(Number(newValue));
+      setValue(Number(e.target.value));
   };
-
-  const increment = () => onChange(Math.min(value + 1, 100));
-  const decrement = () => onChange(Math.max(value - 1, 0));
+  const increment = () => setValue(Math.min(value + 1, 100));
+  const decrement = () => setValue(Math.max(value - 1, 0));
 
   return (
     <div className="flex cursor-pointer flex-row justify-between gap-2 rounded-full bg-accent-red bg-opacity-80 px-4 py-2 text-white">
