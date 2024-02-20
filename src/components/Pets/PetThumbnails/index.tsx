@@ -1,24 +1,14 @@
 import PetBadge from "@/components/Admin/Pets/Add/PetBadge";
-import ThumbnailFallback from "@/components/Fallback/Pet/ThumbnailFallback";
 import { Icon } from "@iconify/react";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 
 interface PetThumbnailsProps {
-  isLoading: boolean;
   petImages: string[];
   origin: string;
 }
 
-const PetThumbnails = ({
-  isLoading,
-  petImages,
-  origin,
-}: PetThumbnailsProps) => {
-  if (isLoading && !petImages) {
-    return <ThumbnailFallback />;
-  }
-
+const PetThumbnails = ({ petImages, origin }: PetThumbnailsProps) => {
   return (
     <div className="relative aspect-square min-w-40 rounded-[20px] sm:min-w-80">
       <div className="absolute -top-1 right-4 z-10">
