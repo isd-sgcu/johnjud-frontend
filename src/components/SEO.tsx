@@ -1,3 +1,4 @@
+import thumbnail from "@/assets/thumbnail.webp";
 import { Helmet } from "react-helmet";
 
 interface SEOProps {
@@ -9,7 +10,7 @@ const SEO = (props: SEOProps) => {
   const title = "JohnJud";
   const description =
     "ชมรมสวัสดิภาพสัตว์ เป็นชมรมจิตอาสาที่มีหน้าที่เข้าไปช่วยสอดส่องดูแลสุขภาพและเพิ่มสวัสดิภาพที่ดีขึ้นให้แก่สุนัขและแมวจรจัด ภายในบริเวณจุฬาลงกรณ์มหาวิทยาลัยและชุมชนโดยรอบ";
-  const image = "/thumbnail.webp";
+  const image = thumbnail;
 
   return (
     <Helmet
