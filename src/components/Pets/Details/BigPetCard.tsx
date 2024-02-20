@@ -1,3 +1,4 @@
+import dog from "@/assets/dog.webp";
 import AddSmallPicture from "@/components/Admin/Pets/Add/AddSmallPicture";
 import AddThumbnail from "@/components/Admin/Pets/Add/AddThumbnail";
 import EditName from "@/components/Admin/Pets/Add/EditName";
@@ -5,7 +6,7 @@ import EditText from "@/components/Admin/Pets/Add/EditText";
 import Container from "@/components/Container";
 import { Pet } from "@/types/pets";
 import { Icon } from "@iconify/react/dist/iconify.js";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import PetThumbnails from "../PetThumbnails";
 
@@ -15,18 +16,29 @@ const BigPetCard = ({ isAdmin, data }: { isAdmin: boolean; data: Pet }) => {
   const [petFrom, setPetFrom] = useState(data.origin);
   const [image, setImage] = useState<File | null>(null);
   const [images, setImages] = useState<File[]>([]);
-  const imgs = data.images.map((img) => img.url);
 
   const convertImgToFile = async (imgFilePath: string) => {
     const response = await fetch(imgFilePath);
     const blob = await response.blob();
     const file = new File([blob], "image.jpg", { type: blob.type });
-    setImages((images) => [...images, file]);
-    setImage(file);
+    return file;
   };
 
+  const imgs = useMemo(() => {
+    if (!data.images) return [dog];
+    return data.images?.map((img) => img.url);
+  }, [data.images]);
+
   useEffect(() => {
-    data.images.map((img) => convertImgToFile(img.url));
+    if (!data.images || !isAdmin) return;
+
+    // Set 1st image to thumbnail
+    convertImgToFile(data.images[0].url).then((file) => setImage(file));
+
+    // Set the rest of the images to images
+    const imgFiles = data.images.map((img) => img.url).slice(1);
+    const imgPromises = imgFiles.map((img) => convertImgToFile(img));
+    Promise.all(imgPromises).then((files) => setImages(files));
   }, []);
 
   return (
