@@ -29,8 +29,13 @@ const SmallPetCard = ({
     return "/pets/" + id;
   }, [id]);
 
-  const { years, months } = useMemo(() => {
-    return UtcStringToYearMonth({ utcString: birthdate });
+  const age = useMemo(() => {
+    const { years, months, days } = UtcStringToYearMonth({
+      utcString: birthdate,
+    });
+
+    const age = years > 0 ? `${years} ปี ` : "";
+    return age + (months > 0 ? `${months} เดือน ` : `${days} วัน`);
   }, [birthdate]);
 
   return (
@@ -66,7 +71,7 @@ const SmallPetCard = ({
                     <Icon icon="ph:gift" className="h-5 w-5 text-accent-gray" />
                   </div>
                   <div className="text-xs font-normal text-accent-gray">
-                    อายุ {years} ปี {months} เดือน
+                    อายุ {age}
                   </div>
                 </div>
               </div>

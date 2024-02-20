@@ -62,8 +62,12 @@ const PetCard = ({
   }, [id]);
 
   const age = useMemo(() => {
-    const { years, months } = UtcStringToYearMonth({ utcString: birthDate });
-    return years + " ปี " + months + " เดือน";
+    const { years, months, days } = UtcStringToYearMonth({
+      utcString: birthDate,
+    });
+
+    const age = years > 0 ? `${years} ปี ` : "";
+    return age + (months > 0 ? `${months} เดือน ` : `${days} วัน`);
   }, [birthDate]);
 
   const petGender = useMemo(() => {
