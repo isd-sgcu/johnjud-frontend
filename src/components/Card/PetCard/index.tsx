@@ -2,13 +2,10 @@ import dog from "@/assets/dog.webp";
 import Button from "@/components/Button";
 import PetDetail from "@/components/Card/PetCard/PetDetail";
 import TogglePetButton from "@/components/Card/PetCard/TogglePetButton";
-<<<<<<< HEAD
-import useStore from "@/store/favStore";
-=======
 import Modal from "@/components/Modal";
 import { useDeletePet } from "@/hooks/mutation/useDeletePet";
 import { useUpdateVisibility } from "@/hooks/mutation/useUpdateVisibility";
->>>>>>> dev
+import useStore from "@/store/favStore";
 import { UtcStringToYearMonth } from "@/utils/dateConverter";
 import { Icon } from "@iconify/react";
 import { useCallback, useMemo, useState } from "react";
@@ -28,28 +25,7 @@ type PetCardProps = {
   isVisibled: boolean;
 };
 
-<<<<<<< HEAD
-const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
-  event.preventDefault();
-  event.stopPropagation();
-};
-
-const toggleHandle = (event: React.MouseEvent<HTMLButtonElement>) => {
-  handleClick(event);
-};
-
-const likeHandle = (event: React.MouseEvent<HTMLButtonElement>) => {
-  handleClick(event);
-};
-
-const adoptHandle = (event: React.MouseEvent<HTMLButtonElement>) => {
-  handleClick(event);
-};
-
-const PetCard: React.FC<PetCardProps> = ({
-=======
 const PetCard = ({
->>>>>>> dev
   id,
   image,
   name,
@@ -107,53 +83,16 @@ const PetCard = ({
     return status === "adopted" ? "disabled" : "accent-red";
   }, [status]);
 
-<<<<<<< HEAD
   const addToFavorites = useStore((state) => state.addToFavorites);
   const removeFromFavorites = useStore((state) => state.removeFromFavorites);
-  const handleFavoriteClick = () => {
+
+  const handleLikePet = (event: React.MouseEvent<HTMLButtonElement>) => {
+    event.preventDefault();
     if (liked) {
       removeFromFavorites(id);
     } else {
       addToFavorites(id);
     }
-    setLiked((prev) => !prev);
-  };
-
-  return (
-    <Link to={linkTo}>
-      <div className="flex w-80 flex-col items-start justify-start rounded-2xl bg-white p-4 shadow">
-        <img
-          src={image}
-          alt={name}
-          className="mb-4 h-72 w-72 rounded-2xl object-cover object-center shadow"
-        />
-        <div className="mb-2 flex w-72 flex-row items-center justify-between">
-          <p className="text-2xl font-bold text-black">{name}</p>
-          {role === "user" && (
-            <button onClick={handleFavoriteClick}>
-              {isLiked ? "Remove from Favorites" : "Add to Favorites"}
-            </button>
-          )}
-          {role === "user" && (
-            <button onClick={handleFavoriteClick}>
-            <Icon
-              icon={role === "user" ? likedHeart : "ph:pencil-simple"}
-              className="relative h-8 w-8 text-accent-red"
-            />
-            </button>
-          )}
-        </div>
-        <div className="flex w-72 flex-row items-end justify-between">
-          <div className=" items-center space-y-1">
-            <PetDetail
-              icon={"ph:paw-print"}
-              description={`${petGender}, อายุ ${years} ปี ${months} เดือน`}
-            />
-            <PetDetail icon={"ph:music-notes"} description={habit} />
-            <PetDetail icon={"ph:medal"} description={petSterile} />
-=======
-  const handleLikePet = (event: React.MouseEvent<HTMLButtonElement>) => {
-    event.preventDefault();
     setLiked((prev) => !prev);
     console.log("liked : " + id);
   };
@@ -221,7 +160,6 @@ const PetCard = ({
                 onClick={toggleVisibility}
               />
             )}
->>>>>>> dev
           </div>
         </div>
       </Link>
