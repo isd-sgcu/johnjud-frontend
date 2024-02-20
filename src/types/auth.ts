@@ -1,7 +1,7 @@
 interface AuthState {
   accessToken: string | null;
   refreshToken: string | null;
-  isLoggedIn: boolean;
+  isLoggedIn: boolean | null;
   expriedAt: Date | null;
   setAuth: (accessToken: string, refreshToken: string, expriedAt: Date) => void;
   clearAuth: () => void;

@@ -6,7 +6,7 @@ const useAuthStore = create<AuthState>()(
     (set, get) => ({
       accessToken: null,
       refreshToken: null,
-      isLoggedIn: false,
+      isLoggedIn: null,
       expriedAt: null,
       setAuth: (accessToken: string, refreshToken: string, expriedAt: Date) => {
         set({ accessToken, refreshToken, expriedAt, isLoggedIn: true });

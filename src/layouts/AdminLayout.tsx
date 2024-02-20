@@ -13,15 +13,15 @@ type MainLayoutProps = {
 
 const AdminLayout = ({ children }: MainLayoutProps) => {
   const navigate = useNavigate();
-  const { isLoggedIn, refreshToken } = useAuthStore();
+  const { isLoggedIn, refreshToken, validateSession } = useAuthStore();
   const { mutate } = useRefreshToken();
 
   useEffect(() => {
-    if (!isLoggedIn) {
+    if (isLoggedIn == false) {
       navigate("/admin");
     }
 
-    if (isLoggedIn && refreshToken) {
+    if (isLoggedIn && refreshToken && validateSession()) {
       mutate({ refresh_token: refreshToken });
     }
   }, [isLoggedIn]);
