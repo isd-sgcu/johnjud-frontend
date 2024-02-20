@@ -6,10 +6,9 @@ import Heading from "@/components/Pets/Heading";
 import PetSearch from "@/components/Search/PetSearch";
 import { usePetsQuery } from "@/hooks/queries/usePetsQuery";
 import MainLayout from "@/layouts/MainLayout";
+import { filterState } from "@/types/filter";
 import { Pet } from "@/types/pets";
 import { useCallback, useState } from "react";
-import { filterState } from "@/types/filter";
-import { useEffect } from "react";
 
 const Pets = () => {
   const [isOpenFilterPanel, setIsOpenFilterPanel] = useState(false);
@@ -31,11 +30,7 @@ const Pets = () => {
     maxAge: 30,
   });
 
-  useEffect(() => {
-    console.log(filters);
-  },[filters]);
-  
-  const { data } = usePetsQuery();
+  const { data } = usePetsQuery(filters) || {};
   return (
     <>
       <Container>
@@ -48,12 +43,16 @@ const Pets = () => {
             isOpen={isOpenFilterPanel}
             onClick={toggleIsOpenFilterPanel}
           />
-          <Filter isOpen={isOpenFilterPanel} filters = {filters} setFilters = {setFilters} />
+          <Filter
+            isOpen={isOpenFilterPanel}
+            filters={filters}
+            setFilters={setFilters}
+          />
         </div>
       </Container>
       <Container>
         <div className="flex flex-wrap items-center justify-center gap-6 lg:gap-9">
-          {data?.pets.map((pet: Pet) => (
+          {data?.pets?.map((pet: Pet) => (
             <PetCard
               key={pet.id}
               id={pet.id}

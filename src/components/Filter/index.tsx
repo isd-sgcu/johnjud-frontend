@@ -1,7 +1,7 @@
+import { filterState } from "@/types/filter";
 import { tv } from "tailwind-variants";
 import FilterPanel from "./FilterPanel";
 import { NumberInput, ToggleInput } from "./Input";
-import { filterState } from "@/types/filter";
 interface FilterProps {
   isOpen: boolean;
   filters: filterState;
@@ -27,8 +27,6 @@ const filter = tv({
 const Filter = ({ isOpen, filters, setFilters }: FilterProps) => {
   const { base, headingContainer, heading, headingLine, filterContainer } =
     filter({ isOpen });
-
-
 
   const handleToggleChange =
     (filterKey: keyof filterState) =>
