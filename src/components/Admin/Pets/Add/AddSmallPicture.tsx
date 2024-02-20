@@ -7,7 +7,6 @@ interface AddSmallPictureProps {
 
 const AddSmallPicture = (props: AddSmallPictureProps) => {
   const { value, setValue } = props;
-  console.log(value);
   const handleOnChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const selectedFiles = event.target.files;
     if (selectedFiles && selectedFiles.length !== 0) {

@@ -30,8 +30,6 @@ const Details = (props: DetailsProps) => {
   const updatePetMutaion = useUpdatePet();
   const deleteImageMutation = useDeleteImage();
 
-  //if (updatePetMutaion.data !== undefined) console.log(updatePetMutaion.data);
-
   const { id } = usePageParams(["id"]);
   const [isFav, setIsFav] = useState(false);
   const [name, setName] = useState("");
@@ -119,15 +117,13 @@ const Details = (props: DetailsProps) => {
     const allImageFile: File[] = thumbnail
       ? [thumbnail, ...images]
       : [...images];
-    console.log(allImageFile);
 
     // post image and get id : assume this is correct
-    allImageFile.forEach(async (image) => {
-      const imageResponse = await postImageMutation.mutateAsync({
+    allImageFile.forEach((image) => {
+      postImageMutation.mutateAsync({
         file: image,
         pet_id: id,
       });
-      console.log(imageResponse);
     });
 
     const data: PutPetRequest = {
@@ -143,7 +139,6 @@ const Details = (props: DetailsProps) => {
       is_visible: pet.is_visible,
       origin: origin,
     };
-    //console.log(data);
     updatePetMutaion.mutate({
       body: data,
       id: id,
