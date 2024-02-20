@@ -2,16 +2,19 @@ import Button from "@/components/Button";
 import Container from "@/components/Container";
 import useResetPassword from "@/hooks/auth/useResetPassword";
 import MainLayout from "@/layouts/MainLayout";
+import useAuthStore from "@/store/authStore";
 import { Icon } from "@iconify/react/dist/iconify.js";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 type formValue = {
   password: string;
 };
 
 const resetPassword = () => {
+  const navigate = useNavigate();
+  const { isLoggedIn } = useAuthStore();
   const { register, handleSubmit } = useForm<formValue>();
   const { mutate } = useResetPassword();
 
@@ -24,6 +27,12 @@ const resetPassword = () => {
     setResetPasswordToken(token);
   }, []);
 
+  useEffect(() => {
+    if (isLoggedIn) {
+      navigate("/admin/pets");
+    }
+  }, [isLoggedIn, navigate]);
+
   const onSubmit = (data: formValue) => {
     if (resetPasswordToken) {
       mutate({ ...data, token: resetPasswordToken });
@@ -34,7 +43,7 @@ const resetPassword = () => {
     <Container>
       <div className="mx-auto flex min-h-screen w-80 flex-col items-center justify-center gap-12">
         <div className="flex flex-col items-center">
-          <div className="py-3 text-5xl font-bold text-primary">
+          <div className="py-3 text-5xl font-bold text-accent-red">
             รีเซ็ตรหัสผ่าน
           </div>
           <div className="text-xl font-medium text-accent-gray">
@@ -63,7 +72,7 @@ const resetPassword = () => {
             <Button
               type="submit"
               text={"เปลี่ยนรหัสผ่าน"}
-              variant={"primary"}
+              variant={"accent-red"}
               rounded="2xl"
               className="w-full text-xl font-semibold"
             />

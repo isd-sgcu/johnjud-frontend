@@ -1,7 +1,5 @@
 import type { SignInCredentials } from "@/api/auth/signIn";
-import checkIcon from "@/assets/formIcon/check.svg";
-import lockIcon from "@/assets/formIcon/lock.svg";
-import userIcon from "@/assets/formIcon/user.svg";
+import { Icon } from "@iconify/react";
 import React from "react";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
@@ -25,7 +23,7 @@ const LoginForm: React.FC<LoginFormProps> = ({ mutation }) => {
     >
       <div className="flex w-full flex-col items-center justify-center space-y-4">
         <div className="flex w-full items-center rounded-lg bg-accent-light-gray px-2.5 py-2.5 outline-none">
-          <img src={userIcon} alt="Icon" className="mx-2" />
+          <Icon icon="ph:user-bold" className="mx-2 h-6 w-6 text-accent-gray" />
           <input
             {...register("email", { required: true })}
             type="email"
@@ -35,7 +33,7 @@ const LoginForm: React.FC<LoginFormProps> = ({ mutation }) => {
           />
         </div>
         <div className="flex w-full items-center rounded-lg bg-accent-light-gray px-2.5 py-2.5 outline-none">
-          <img src={lockIcon} alt="Icon" className="mx-2" />
+          <Icon icon="ph:lock-bold" className="mx-2 h-6 w-6 text-accent-gray" />
           <input
             {...register("password", { required: true })}
             type="password"
@@ -53,7 +51,7 @@ const LoginForm: React.FC<LoginFormProps> = ({ mutation }) => {
             />
             <div className="flex h-5 w-5 items-center justify-center rounded-sm bg-accent-light-gray peer-checked:hidden" />
             <div className="hidden h-5 w-5 items-center justify-center rounded-sm bg-primary peer-checked:flex">
-              <img src={checkIcon} alt="Icon" className="h-4 w-4" />
+              <Icon icon="ph:check-bold" className="h-4 w-4 text-white" />
             </div>
 
             <span className="ml-2 text-black">จดจำฉัน</span>
@@ -70,7 +68,7 @@ const LoginForm: React.FC<LoginFormProps> = ({ mutation }) => {
         <Button
           type="submit"
           text="เข้าสู่ระบบ"
-          variant="primary"
+          variant="accent-red"
           rounded="2xl"
           className="w-full px-0 text-xl font-semibold md:w-auto md:px-28"
         />

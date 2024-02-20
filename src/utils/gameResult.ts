@@ -5,13 +5,13 @@ import Dc7 from "@/assets/download-share/แมวสลิด.png";
 import Dc1 from "@/assets/download-share/แมวสามสี.png";
 import Dc6 from "@/assets/download-share/แมวส้ม.png";
 import Dc2 from "@/assets/download-share/แมวเปรอะ.png";
-import Cat1 from "@/assets/game/ResultImage/ANS-1-แมวสามสี.jpg";
-import Cat2 from "@/assets/game/ResultImage/ANS-2-แมวเปรอะ.jpg";
-import Cat3 from "@/assets/game/ResultImage/ANS-3-แมวดำ.jpg";
-import Cat4 from "@/assets/game/ResultImage/ANS-4-แมวศุภลักษณ์.jpg";
-import Cat5 from "@/assets/game/ResultImage/ANS-5-แมววิเชียรมาศ.jpg";
-import Cat6 from "@/assets/game/ResultImage/ANS-6-แมวส้ม.jpg";
-import Cat7 from "@/assets/game/ResultImage/ANS-7-แมวสลิด.jpg";
+import Cat1 from "@/assets/game/ResultImage/ANS-1-แมวสามสี.webp";
+import Cat2 from "@/assets/game/ResultImage/ANS-2-แมวเปรอะ.webp";
+import Cat3 from "@/assets/game/ResultImage/ANS-3-แมวดำ.webp";
+import Cat4 from "@/assets/game/ResultImage/ANS-4-แมวศุภลักษณ์.webp";
+import Cat5 from "@/assets/game/ResultImage/ANS-5-แมววิเชียรมาศ.webp";
+import Cat6 from "@/assets/game/ResultImage/ANS-6-แมวส้ม.webp";
+import Cat7 from "@/assets/game/ResultImage/ANS-7-แมวสลิด.webp";
 
 interface ResultProps {
   role: string;

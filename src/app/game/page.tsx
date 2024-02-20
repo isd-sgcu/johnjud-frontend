@@ -8,7 +8,7 @@ import { download } from "@/utils/download";
 import Results from "@/utils/gameResult";
 import { shareWeb } from "@/utils/shareWeb";
 import { useEffect, useState } from "react";
-import lastStoryIcon from "../../assets/game/StoryIcons/7/2.png";
+import lastStoryIcon from "../../assets/game/StoryIcons/7/2.webp";
 
 const GameFirstpage = () => {
   const [start, setStart] = useState(false);

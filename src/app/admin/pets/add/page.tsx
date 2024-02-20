@@ -6,7 +6,7 @@ import { usePetsQuery } from "@/hooks/queries/usePetsQuery";
 import { Icon } from "@iconify/react";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import johnjudLogo from "../../../../assets/johnjud-with-text.png";
+import johnjudLogo from "../../../../assets/johnjud-with-text.webp";
 import AddSmallPicture from "../../../../components/Admin/Pets/Add/AddSmallPicture";
 import AddThumbnail from "../../../../components/Admin/Pets/Add/AddThumbnail";
 import EditInfoAndSubmit, {
@@ -16,7 +16,7 @@ import EditName from "../../../../components/Admin/Pets/Add/EditName";
 import EditText from "../../../../components/Admin/Pets/Add/EditText";
 
 import { useCreatePet } from "@/hooks/mutation/usePostPet";
-import MainLayout from "../../../../layouts/MainLayout";
+import AdminLayout from "@/layouts/AdminLayout";
 const adminCreate = () => {
   const { data } = usePetsQuery();
 
@@ -159,4 +159,4 @@ const adminCreate = () => {
 
 export default adminCreate;
 
-export const Layout = MainLayout;
+export const Layout = AdminLayout;

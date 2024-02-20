@@ -6,8 +6,12 @@ import {
 import useAuthStore from "@/store/authStore";
 import { calculateExpiryTime } from "@/utils/calculateExpiryTime";
 import { useMutation, UseMutationOptions } from "@tanstack/react-query";
+import { useNavigate } from "react-router-dom";
 
 const useRefreshToken = () => {
+  const navigate = useNavigate();
+  const { clearAuth } = useAuthStore();
+
   const mutationOptions: UseMutationOptions<
     RefreshTokenResponse,
     Error,
@@ -21,8 +25,9 @@ const useRefreshToken = () => {
         .getState()
         .setAuth(data.access_token, data.refresh_token, expriedAt);
     },
-    onError: (error: Error) => {
-      console.log(error);
+    onError: () => {
+      clearAuth();
+      navigate("/admin");
     },
   };
 
