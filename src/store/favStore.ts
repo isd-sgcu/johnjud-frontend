@@ -9,7 +9,7 @@ interface StoreState {
 }
 
 // Create the store
-const useStore = create<StoreState>(
+const useStore = create<StoreState>()(
   persist(
     (set) => ({
       favorites: [],
@@ -22,7 +22,6 @@ const useStore = create<StoreState>(
     }),
     {
       name: "favoritesStore", // Name for the localStorage key
-      getStorage: () => localStorage, // Use localStorage for persistence
     }
   )
 );
