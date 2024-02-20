@@ -100,11 +100,12 @@ const PetCard: React.FC<PetCardProps> = ({
   const addToFavorites = useStore((state) => state.addToFavorites);
   const removeFromFavorites = useStore((state) => state.removeFromFavorites);
   const handleFavoriteClick = () => {
-    if (isLiked) {
+    if (liked) {
       removeFromFavorites(id);
     } else {
       addToFavorites(id);
     }
+    setLiked((prev) => !prev);
   };
 
   return (
@@ -123,10 +124,12 @@ const PetCard: React.FC<PetCardProps> = ({
             </button>
           )}
           {role === "user" && (
+            <button onClick={handleFavoriteClick}>
             <Icon
               icon={role === "user" ? likedHeart : "ph:pencil-simple"}
               className="relative h-8 w-8 text-accent-red"
             />
+            </button>
           )}
         </div>
         <div className="flex w-72 flex-row items-end justify-between">
