@@ -8,6 +8,7 @@ import EditInfoAndSubmit, {
 import EditName from "@/components/Admin/Pets/Add/EditName";
 import EditText from "@/components/Admin/Pets/Add/EditText";
 import Container from "@/components/Container";
+//import { useDeleteImage } from "@/hooks/mutation/useDeleteImage";
 import { useCreateImage } from "@/hooks/mutation/usePostImage";
 import { useUpdatePet } from "@/hooks/mutation/useUpdatePet";
 import { useConvertImgUrltoFile } from "@/hooks/useConvertImgUrltoFile";
@@ -18,8 +19,6 @@ import { Icon } from "@iconify/react/dist/iconify.js";
 import { useEffect, useMemo, useState } from "react";
 import SmallPetCardList from "../../SmallPetCardList";
 import PetThumbnails from "../PetThumbnails";
-import axios from "axios";
-import { useDeleteImage } from "@/hooks/mutation/useDeleteImage";
 
 interface DetailsProps {
   isAdmin: boolean;
@@ -29,7 +28,7 @@ interface DetailsProps {
 const Details = (props: DetailsProps) => {
   const postImageMutation = useCreateImage();
   const updatePetMutaion = useUpdatePet();
-  const deleteImageMutation = useDeleteImage();
+  //const deleteImageMutation = useDeleteImage();
 
   if (updatePetMutaion.data !== undefined) console.log(updatePetMutaion.data);
 
