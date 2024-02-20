@@ -9,7 +9,7 @@ interface StoreState {
 }
 
 // Create the store
-const useStore = create<StoreState>()(
+const useFavoriteStore = create<StoreState>()(
   persist(
     (set) => ({
       favorites: [],
@@ -26,4 +26,4 @@ const useStore = create<StoreState>()(
   )
 );
 
-export default useStore;
+export default useFavoriteStore;
