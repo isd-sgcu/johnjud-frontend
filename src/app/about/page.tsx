@@ -1,4 +1,4 @@
-import johnjudLogo from "@/assets/johnjud-with-text.png";
+import johnjudLogo from "@/assets/johnjud-with-text.webp";
 import Container from "@/components/Container";
 import MainLayout from "@/layouts/MainLayout";
 

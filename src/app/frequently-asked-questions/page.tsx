@@ -1,7 +1,7 @@
-import Bubble from "@/assets/faq/bubble.svg";
 import Container from "@/components/Container";
 import QuestionBox from "@/components/QuestionBox";
 import MainLayout from "@/layouts/MainLayout";
+import { Icon } from "@iconify/react";
 
 const Questions = [
   {
@@ -35,7 +35,7 @@ const Faq = () => {
             <p>คำถามที่พบบ่อย</p>
           </div>
           <div className="relative flex w-full rounded-full bg-white p-3 shadow">
-            <img src={Bubble} alt="_blank" />
+            <Icon icon="@custom:md:bubble-green" className="h-6 w-6" />
             <input
               type="text"
               placeholder="ค้นหาคำถาม"
