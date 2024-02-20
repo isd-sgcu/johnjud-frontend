@@ -9,13 +9,12 @@ const NumberInput: React.FC<NumberInputProps> = ({
   id,
   text,
   value,
-  setValue
-}) => {
-  
+  setValue,
+}: NumberInputProps) => {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-      setValue(Number(e.target.value));
+    setValue(Number(e.target.value));
   };
-  const increment = () => setValue(Math.min(value + 1, 100));
+  const increment = () => setValue(Math.min(value + 1, 30));
   const decrement = () => setValue(Math.max(value - 1, 0));
 
   return (
