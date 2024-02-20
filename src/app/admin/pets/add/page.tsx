@@ -80,7 +80,7 @@ const adminCreate = () => {
     const petData: postPetRequest = {
       type: info.type,
       name: name,
-      birthdate: info.age,
+      birthdate: dayjs(info.age).toISOString(),
       gender: info.gender as "male" | "female",
       color: info.color,
       pattern: "a", // remove later
