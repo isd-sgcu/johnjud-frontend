@@ -24,6 +24,7 @@ describe("first page", () => {
   it("can navigate to home page", () => {
     cy.get("button").contains("กดดูเลย").should("exist");
     cy.get("button").contains("กดดูเลย").click();
+    cy.wait(2000);
   });
 });
 
@@ -45,6 +46,7 @@ describe("home page", () => {
   it("can navigate to home page", () => {
     cy.get("#open-sidebar").click();
     cy.get("a").contains("สัตว์เลี้ยง").click();
+    cy.wait(2000);
   });
 });
 
@@ -80,6 +82,7 @@ describe("pets page", () => {
     )
       .eq(1)
       .click();
+    cy.wait(2000);
   });
 });
 
@@ -137,5 +140,24 @@ describe("pet detail page", () => {
 
   it("can navigate to pet adoption page", () => {
     cy.get("button").contains("รับเลี้ยงเลย").click();
+    cy.wait(2000);
+  });
+});
+
+describe("pet adoption page", () => {
+  it("should have carousel", () => {
+    cy.get("div.carousel.carousel-slider").should("exist");
+  });
+
+  it("should have pet name", () => {
+    cy.get("h2.text-3xl.font-bold.text-primary").should("exist");
+  });
+
+  it("should have pet name", () => {
+    cy.get("h3").contains("ข้อตกลงการรับเลี้ยง").should("exist");
+    cy.get("button.bg-accent-red").contains("รับเลี้ยงเลย").should("exist");
+    cy.get("button.bg-accent-red").contains("รับเลี้ยงเลย").click();
+
+    cy.get("button.bg-primary").contains("รับเลี้ยงเลย").should("exist");
   });
 });
