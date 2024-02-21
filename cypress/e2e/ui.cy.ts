@@ -74,10 +74,68 @@ describe("pets page", () => {
   });
 
   it("can navigate to pet detail page", () => {
+    // TODO: Add Random Click
     cy.get(
       "div.flex.w-80.flex-col.items-start.justify-start.rounded-2xl.bg-white.p-4.shadow"
     )
-      .first()
+      .eq(1)
       .click();
+  });
+});
+
+describe("pet detail page", () => {
+  it("should have carousel", () => {
+    cy.get("div.carousel.carousel-slider").should("exist");
+  });
+
+  it("should have pet name", () => {
+    cy.get("h2.text-3xl.font-bold.text-primary").should("exist");
+  });
+
+  it("should have description", () => {
+    cy.get("textarea").should("exist");
+  });
+
+  it("should have like button", () => {
+    cy.get("#like-button").should("exist");
+  });
+
+  it("should have gender detail", () => {
+    cy.get("div").contains("เพศ").should("exist");
+  });
+
+  it("should have type detail", () => {
+    cy.get("div").contains("ชนิด").should("exist");
+  });
+
+  it("should have birthdate detail", () => {
+    cy.get("div").contains("วันเกิด").should("exist");
+  });
+
+  it("should have habit detail", () => {
+    cy.get("div").contains("นิสัย").should("exist");
+  });
+
+  it("should have vaccinate detail", () => {
+    cy.get("button").contains("ฉีดวัคซีนแล้ว").should("exist");
+  });
+
+  it("should have sterile detail", () => {
+    cy.get("button").contains("ทำหมันแล้ว").should("exist");
+  });
+
+  it("should have adoption button", () => {
+    cy.get("button").contains("รับเลี้ยงเลย").should("exist");
+  });
+
+  it("should have small pet card", () => {
+    cy.get("div.w-48.rounded-2xl.bg-white.p-3.shadow-md").should(
+      "have.length.at.least",
+      8
+    );
+  });
+
+  it("can navigate to pet adoption page", () => {
+    cy.get("button").contains("รับเลี้ยงเลย").click();
   });
 });
