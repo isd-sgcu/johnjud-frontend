@@ -13,24 +13,34 @@ const AdoptionPage = () => {
 
   return (
     data && (
-      <>
-        <button type="button" onClick={() => window.history.back()}>
-          <Icon icon="ion:chevron-back" className="h-8 w-8 cursor-pointer" />
-        </button>
-        <h2 className="visible flex flex-row justify-between text-4xl font-bold text-primary underline md:hidden">
-          {data.name}
-        </h2>
+      <Container className="space-y-8">
+        <div className="flex items-center justify-between text-primary">
+          <button type="button" onClick={() => window.history.back()}>
+            <Icon icon="ion:chevron-back" className="h-8 w-8 cursor-pointer" />
+          </button>
+          <div className="md:hidden">
+            <div className="relative flex flex-col">
+              <h2 className="flex break-all pl-1 text-right text-3xl font-bold text-primary md:text-left">
+                {data.name}
+              </h2>
+              <div className="mt-1 h-[3px] w-full rounded-full bg-primary" />
+            </div>
+          </div>
+        </div>
 
-        <Container className="flex flex-col items-center gap-8 md:flex-row md:items-start md:justify-between">
+        <div className="flex flex-col items-center gap-8 md:flex-row md:items-start md:justify-between">
           <PetThumbnails petImages={petImagesArray} origin={data?.origin} />
-          <div>
-            <h2 className="mb-8 hidden text-4xl font-bold text-primary underline md:block">
-              {data.name}
-            </h2>
+          <div className="flex flex-col items-start gap-8">
+            <div className="relative flex flex-col">
+              <h2 className="flex break-all pl-1 text-right text-3xl font-bold text-primary md:text-left">
+                {data.name}
+              </h2>
+              <div className="mt-1 h-[3px] w-full rounded-full bg-primary" />
+            </div>
             <TermsAndConditions />
           </div>
-        </Container>
-      </>
+        </div>
+      </Container>
     )
   );
 };
