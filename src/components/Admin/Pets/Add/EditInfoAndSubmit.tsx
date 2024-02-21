@@ -119,15 +119,17 @@ const EditInfoAndSubmit = (props: EditInfoAndSubmitProps) => {
             </div>
           ) : (
             <div className="ml-2">
-              <Icon
-                icon={
-                  props.isFav
-                    ? "ph:heart-straight-fill"
-                    : "ph:heart-straight-bold"
-                }
-                className="h-6 w-6 cursor-pointer text-accent-red"
-                onClick={props.handleFavPressed}
-              />
+              <button type="button" id="like-button">
+                <Icon
+                  icon={
+                    props.isFav
+                      ? "ph:heart-straight-fill"
+                      : "ph:heart-straight-bold"
+                  }
+                  className="h-6 w-6 cursor-pointer text-accent-red"
+                  onClick={props.handleFavPressed}
+                />
+              </button>
             </div>
           )}
         </div>

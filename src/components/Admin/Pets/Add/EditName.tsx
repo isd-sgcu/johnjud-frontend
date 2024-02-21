@@ -51,9 +51,9 @@ const EditName = (props: EditNameProps) => {
           />
         )}
         <div className="relative flex flex-col">
-          <div className="flex break-all pl-1 text-right text-3xl font-bold text-primary md:text-left">
+          <h2 className="flex break-all pl-1 text-right text-3xl font-bold text-primary md:text-left">
             {props.value}
-          </div>
+          </h2>
           <div className="mt-1 h-[3px] w-full rounded-full bg-primary" />
         </div>
 

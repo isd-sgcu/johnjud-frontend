@@ -9,7 +9,7 @@ const TermsAndConditions = () => {
   return (
     <>
       <div className="rounded-2xl bg-white p-6 shadow">
-        <h1 className="text-2xl font-bold text-red-700">ข้อตกลงการรับเลี้ยง</h1>
+        <h3 className="text-2xl font-bold text-red-700">ข้อตกลงการรับเลี้ยง</h3>
         <div className="ml-4 py-4">
           <ul className="list-decimal">
             <li className="font-bold">
