@@ -1,15 +1,15 @@
 import catImage from "@/assets/main/catImage.svg";
-import johnjudLogo from "@/assets/main/johnjudLogo.svg";
+import johnjudLogo from "@/assets/navbar/logoPrimary.webp";
 import Button from "@/components/Button";
 import GameLayout from "@/layouts/GameLayout";
 import { Link } from "react-router-dom";
 
 const Main = () => {
   return (
-    <div className="relative flex min-h-[80svh] w-full shrink-0 flex-col justify-between bg-primary pt-7 xl:pt-16">
+    <div className="relative flex w-full shrink-0 flex-col justify-between bg-primary pt-7 md:min-h-[80svh] xl:pt-16">
       <div className="xl:flex xl:flex-row-reverse xl:justify-center xl:gap-5">
         <img
-          className="mx-auto h-36 w-36 md:h-44 md:w-44 xl:mx-0"
+          className="mx-auto h-36 w-36 rounded-full md:h-44 md:w-44 xl:mx-0"
           src={johnjudLogo}
           alt="Johnjud Logo"
         />
@@ -29,7 +29,11 @@ const Main = () => {
         </div>
       </div>
       <div className="relative">
-        <img src={catImage} alt="Cat Image" className="mx-auto aspect-[3/4]" />
+        <img
+          src={catImage}
+          alt="Cat Image"
+          className="mx-auto aspect-square object-contain object-bottom"
+        />
         <div className="absolute bottom-16 left-1/2 min-w-64 -translate-x-1/2 transform">
           <Link to={"/home"}>
             <Button
