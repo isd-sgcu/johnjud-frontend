@@ -31,7 +31,7 @@ const AdoptionPage = () => {
         <div className="flex flex-col items-center gap-8 md:flex-row md:items-start md:justify-between">
           <PetThumbnails petImages={petImagesArray} origin={data?.origin} />
           <div className="flex flex-col items-start gap-8">
-            <div className="relative flex flex-col">
+            <div className="relative hidden flex-col md:flex">
               <h2 className="flex break-all pl-1 text-right text-3xl font-bold text-primary md:text-left">
                 {data.name}
               </h2>
