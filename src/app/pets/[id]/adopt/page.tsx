@@ -1,3 +1,4 @@
+import dog from "@/assets/dog.webp";
 import Container from "@/components/Container";
 import PetThumbnails from "@/components/Pets/PetThumbnails";
 import TermsAndConditions from "@/components/Pets/TermsAndConditions";
@@ -5,12 +6,16 @@ import { usePetQuery } from "@/hooks/queries/usePetQuery";
 import { usePageParams } from "@/hooks/usePageParams";
 import MainLayout from "@/layouts/MainLayout";
 import { Icon } from "@iconify/react/dist/iconify.js";
+import { useMemo } from "react";
 
 const AdoptionPage = () => {
   const param = usePageParams(["id"]);
   const { data } = usePetQuery(param.id);
-  const petImagesArray = data?.images.map((img) => img.url) as string[];
 
+  const petImagesArray = useMemo(() => {
+    if (!data?.images) return [dog];
+    return data.images?.map((img) => img.url);
+  }, [data?.images]);
   return (
     data && (
       <>
