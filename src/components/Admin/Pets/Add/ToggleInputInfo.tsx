@@ -9,7 +9,7 @@ interface ToggleInputInfoProps {
 }
 const ToggleInputInfo = (props: ToggleInputInfoProps) => {
   return (
-    <div
+    <button
       className={
         "flex h-fit w-fit select-none flex-row items-center rounded-full px-3 py-1 " +
         (props.value ? "bg-accent-red " : "bg-accent-gray bg-opacity-50 ") +
@@ -32,7 +32,7 @@ const ToggleInputInfo = (props: ToggleInputInfoProps) => {
       >
         {props.text}
       </div>
-    </div>
+    </button>
   );
 };
 export default ToggleInputInfo;
