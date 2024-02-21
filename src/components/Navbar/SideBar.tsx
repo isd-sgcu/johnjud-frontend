@@ -27,6 +27,7 @@ const SideBar = ({
         <div className="flex flex-row items-center justify-end">
           <button
             type="button"
+            id="close-sidebar"
             onClick={() => setToggle(false)}
             className="cursor-pointer outline-none"
           >
