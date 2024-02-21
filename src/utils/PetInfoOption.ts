@@ -22,12 +22,23 @@ const typeOption: OptionType[] = [
   },
 ];
 
-const color: string[] = ["ครีม", "ดำ", "เทา", "น้ำตาล"];
-const colorOption: OptionType[] = color.map((col) => {
-  return {
-    label: col,
-    value: col,
-  };
-});
+const colorOption: OptionType[] = [
+  {
+    label: "ขาว",
+    value: "white",
+  },
+  {
+    label: "ดำ",
+    value: "black",
+  },
+  {
+    label: "น้ำตาล",
+    value: "brown",
+  },
+  {
+    label: "บลอนด์",
+    value: "blonde",
+  },
+];
 
 export { colorOption, genderOption, typeOption };
