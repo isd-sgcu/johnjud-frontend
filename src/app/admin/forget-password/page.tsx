@@ -41,9 +41,9 @@ const ForgetPassword = () => {
         onSubmit={handleSubmit(onSubmit)}
       >
         <div className="flex flex-col items-center">
-          <div className="py-2 text-4xl font-bold text-accent-red lg:py-3 lg:text-5xl">
+          <h1 className="py-2 text-4xl font-bold text-accent-red lg:py-3 lg:text-5xl">
             ลืมรหัสผ่าน?
-          </div>
+          </h1>
           <div className="text-base font-medium text-accent-gray lg:text-xl">
             กรุณากรอกอีเมลที่ท่านใช้สมัคร
           </div>
