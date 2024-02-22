@@ -9,15 +9,28 @@ import Search from "@/components/Search/PetSearch";
 import { usePetsQuery } from "@/hooks/queries/usePetsQuery";
 import MainLayout from "@/layouts/MainLayout";
 import { useNavigate } from "react-router-dom";
-
+import { filterState } from "@/types/filter";
+import { useState } from "react";
 import PetList from "@/components/Main/CardList/PetList";
 import PetSuggestionList from "@/components/Main/CardList/PetSuggestionList";
 
 // Page
 const MainPage = () => {
   const navigate = useNavigate();
-
-  const { data, isLoading } = usePetsQuery();
+  
+  const [filters, setFilters] = useState<filterState>({
+    dog: false,
+    cat: false,
+    male: false,
+    female: false,
+    white: false,
+    black: false,
+    brown: false,
+    blonde: false,
+    minAge: 0,
+    maxAge: 30,
+  });
+  const { data, isLoading } = usePetsQuery(filters);
 
   return (
     <>
@@ -32,7 +45,7 @@ const MainPage = () => {
             <Heading onSearch quantity={data?.metadata.total} />
           </div>
           <Search variant="green" />
-          <Filter />
+          <Filter filters = {filters} setFilters = {setFilters}/>
         </div>
       </Container>
       <Container className="flex items-center justify-center md:hidden">
@@ -51,7 +64,7 @@ const MainPage = () => {
           <div className="col-span-2">
             <PetSuggestionList
               isLoading={isLoading}
-              data={data?.pets.slice(0, 8)}
+              data={data?.pets?.slice(0, 8)}
             />
           </div>
         </div>
