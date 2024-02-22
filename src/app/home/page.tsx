@@ -3,21 +3,21 @@ import Button from "@/components/Button";
 import Container from "@/components/Container";
 import Divider from "@/components/Divider";
 import Banner from "@/components/Main/Banner";
+import PetList from "@/components/Main/CardList/PetList";
+import PetSuggestionList from "@/components/Main/CardList/PetSuggestionList";
 import Filter from "@/components/Main/Filter";
 import Heading from "@/components/Pets/Heading";
 import Search from "@/components/Search/PetSearch";
 import { usePetsQuery } from "@/hooks/queries/usePetsQuery";
 import MainLayout from "@/layouts/MainLayout";
-import { useNavigate } from "react-router-dom";
 import { filterState } from "@/types/filter";
 import { useState } from "react";
-import PetList from "@/components/Main/CardList/PetList";
-import PetSuggestionList from "@/components/Main/CardList/PetSuggestionList";
+import { useNavigate } from "react-router-dom";
 
 // Page
 const MainPage = () => {
   const navigate = useNavigate();
-  
+
   const [filters, setFilters] = useState<filterState>({
     dog: false,
     cat: false,
@@ -30,6 +30,7 @@ const MainPage = () => {
     minAge: 0,
     maxAge: 30,
   });
+
   const { data, isLoading } = usePetsQuery(filters);
 
   return (
@@ -45,7 +46,7 @@ const MainPage = () => {
             <Heading onSearch quantity={data?.metadata.total} />
           </div>
           <Search variant="green" />
-          <Filter filters = {filters} setFilters = {setFilters}/>
+          <Filter filters={filters} setFilters={setFilters} />
         </div>
       </Container>
       <Container className="flex items-center justify-center md:hidden">
