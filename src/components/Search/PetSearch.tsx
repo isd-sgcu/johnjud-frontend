@@ -8,7 +8,7 @@ import React, { useEffect } from "react";
 interface PetSearchProps {
   variant: "red" | "green";
   filter: filterState;
-  setFilters: React.Dispatch<React.SetStateAction<filterState>>
+  setFilters: React.Dispatch<React.SetStateAction<filterState>>;
 }
 
 const PetSearch: React.FC<PetSearchProps> = ({
@@ -16,10 +16,11 @@ const PetSearch: React.FC<PetSearchProps> = ({
   filter,
   setFilters,
 }) => {
+  const [inputValue, setInputValue] = React.useState<string>(
+    filter.search || ""
+  );
 
-  const [inputValue, setInputValue] = React.useState<string>(filter.search || "");
-
-  // add debouce time for delay 
+  // add debouce time for delay
   useEffect(() => {
     const delayDebounce = setTimeout(() => {
       setFilters({ ...filter, search: inputValue });

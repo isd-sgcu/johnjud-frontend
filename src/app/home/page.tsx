@@ -17,7 +17,7 @@ import { useNavigate } from "react-router-dom";
 // Page
 const MainPage = () => {
   const navigate = useNavigate();
-  
+
   const [filters, setFilters] = useState<filterState>({
     search: "",
     dog: false,

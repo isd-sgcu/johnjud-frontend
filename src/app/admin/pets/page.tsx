@@ -52,7 +52,7 @@ const Pets = () => {
       </Container>
       <Container className="flex flex-col items-center space-y-6">
         <div className="flex w-full flex-row gap-x-4">
-          <PetSearch variant="red" filter={filters} setFilters={setFilters}/>
+          <PetSearch variant="red" filter={filters} setFilters={setFilters} />
           <div className="relative">
             <PetIcon
               isOpen={isOpenFilterPanel}
