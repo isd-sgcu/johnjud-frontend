@@ -22,7 +22,6 @@ const getPet = async (id: string): Promise<Pet> => {
 };
 
 const getPets = async (filters?: filterState) => {
-  console.log(filters);
   const params = convertFiltertoParams(filters);
   const response = await axios.get<PetsResponse>(
     `${import.meta.env.VITE_API_URL}/pets?${params}`
