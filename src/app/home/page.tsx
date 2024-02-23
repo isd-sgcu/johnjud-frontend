@@ -17,8 +17,9 @@ import { useNavigate } from "react-router-dom";
 // Page
 const MainPage = () => {
   const navigate = useNavigate();
-
+  
   const [filters, setFilters] = useState<filterState>({
+    search: "",
     dog: false,
     cat: false,
     male: false,
@@ -30,9 +31,7 @@ const MainPage = () => {
     minAge: 0,
     maxAge: 30,
   });
-
   const { data, isLoading } = usePetsQuery(filters);
-
   return (
     <>
       <Container className="grid grid-cols-1 items-center md:grid-cols-2 md:gap-9 lg:grid-cols-3">
@@ -45,7 +44,7 @@ const MainPage = () => {
           <div className="hidden md:flex">
             <Heading onSearch quantity={data?.metadata.total} />
           </div>
-          <Search variant="green" />
+          <Search variant="green" filter={filters} setFilters={setFilters} />
           <Filter filters={filters} setFilters={setFilters} />
         </div>
       </Container>
