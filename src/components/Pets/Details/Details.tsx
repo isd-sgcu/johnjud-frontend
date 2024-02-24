@@ -1,5 +1,6 @@
 import { PutPetRequest } from "@/api/pets";
 import logo from "@/assets/details/logo.webp";
+import dog from "@/assets/dog.webp";
 import AddSmallPicture from "@/components/Admin/Pets/Add/AddSmallPicture";
 import AddThumbnail from "@/components/Admin/Pets/Add/AddThumbnail";
 import EditInfoAndSubmit, {
@@ -17,7 +18,6 @@ import { Pet } from "@/types/pets";
 import { Icon } from "@iconify/react/dist/iconify.js";
 import { useEffect, useMemo, useState } from "react";
 import PetThumbnails from "../PetThumbnails";
-import dog from "@/assets/dog.webp";
 
 interface DetailsProps {
   isAdmin: boolean;
@@ -59,7 +59,6 @@ const Details = (props: DetailsProps) => {
     return props.data.images?.map((img) => img.url);
   }, [props.data.images]);
 
-
   useEffect(() => {
     if (
       petInfo.gender === "-" ||
@@ -88,7 +87,6 @@ const Details = (props: DetailsProps) => {
       vaccine: props.data.is_vaccinated,
       sterile: props.data.is_sterile,
     });
-    console.log(props.data);
   }, [props.data, id]);
 
   function convertImgUrltoFile() {
@@ -96,7 +94,9 @@ const Details = (props: DetailsProps) => {
     if (!props.data.images || !props.isAdmin) return;
 
     // Set 1st image to thumbnail
-    convertImgToFile(props.data.images[0].url).then((file) => setThumbnail(file));
+    convertImgToFile(props.data.images[0].url).then((file) =>
+      setThumbnail(file)
+    );
 
     // Set the rest of the images to images
     const imgFiles = props.data.images.map((img) => img.url).slice(1);
@@ -122,8 +122,6 @@ const Details = (props: DetailsProps) => {
       ? [thumbnail, ...images]
       : [...images];
 
-    console.log(allImageFile);
-
     // post image and get id : assume this is correct
     allImageFile.forEach((image) => {
       postImageMutation.mutateAsync({
@@ -146,7 +144,6 @@ const Details = (props: DetailsProps) => {
       origin: origin,
     };
 
-    console.log(data);
     updatePetMutaion.mutate({
       body: data,
       id: id,
@@ -156,40 +153,46 @@ const Details = (props: DetailsProps) => {
   return (
     <>
       <Container className="flex flex-col gap-8">
-      {/* header */}
-      <div className="flex items-center justify-between text-primary">
-        <button type="button" onClick={() => window.history.back()}>
-          <Icon icon="ion:chevron-back" className="h-8 w-8 cursor-pointer" />
-        </button>
-        <div className="md:hidden">
-          <EditName value={name} setValue={setName} isAdmin={props.isAdmin} />
-        </div>
-      </div>
-
-      {/* thumbnail */}
-      <div className="mx-auto flex w-full flex-col items-center justify-between gap-8 md:h-80 md:flex-row md:items-start">
-        <div className="relative w-80">
-          {!props.isAdmin ? (
-            <PetThumbnails petImages={imgs} origin={origin} />
-          ) : (
-            <AddThumbnail
-              valueOrigin={origin}
-              setOrigin={setOrigin}
-              valueThumbnail={thumbnail}
-              setThumbnail={setThumbnail}
-            />
-          )}
-        </div>
-
-        <div className="flex w-full flex-col items-start gap-8 overflow-auto md:h-full md:flex-1">
-          <div className="hidden md:block">
+        {/* header */}
+        <div className="flex items-center justify-between text-primary">
+          <button type="button" onClick={() => window.history.back()}>
+            <Icon icon="ion:chevron-back" className="h-8 w-8 cursor-pointer" />
+          </button>
+          <div className="md:hidden">
             <EditName value={name} setValue={setName} isAdmin={props.isAdmin} />
           </div>
-          <EditText value={text} setValue={setText} isAdmin={props.isAdmin} />
         </div>
-      </div>
-      {props.isAdmin && <AddSmallPicture value={images} setValue={setImages} />}
-    </Container>
+
+        {/* thumbnail */}
+        <div className="mx-auto flex w-full flex-col items-center justify-between gap-8 md:h-80 md:flex-row md:items-start">
+          <div className="relative w-80">
+            {!props.isAdmin ? (
+              <PetThumbnails petImages={imgs} origin={origin} />
+            ) : (
+              <AddThumbnail
+                valueOrigin={origin}
+                setOrigin={setOrigin}
+                valueThumbnail={thumbnail}
+                setThumbnail={setThumbnail}
+              />
+            )}
+          </div>
+
+          <div className="flex w-full flex-col items-start gap-8 overflow-auto md:h-full md:flex-1">
+            <div className="hidden md:block">
+              <EditName
+                value={name}
+                setValue={setName}
+                isAdmin={props.isAdmin}
+              />
+            </div>
+            <EditText value={text} setValue={setText} isAdmin={props.isAdmin} />
+          </div>
+        </div>
+        {props.isAdmin && (
+          <AddSmallPicture value={images} setValue={setImages} />
+        )}
+      </Container>
 
       {/* edit info */}
       <div className="my-8 flex gap-20 xl:justify-between xl:pr-24">

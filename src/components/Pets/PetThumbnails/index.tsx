@@ -1,5 +1,4 @@
 import PetBadge from "@/components/Admin/Pets/Add/PetBadge";
-import { Image } from "@/types/common";
 import { Icon } from "@iconify/react";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";

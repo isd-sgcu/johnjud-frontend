@@ -91,7 +91,6 @@ const EditInfoAndSubmit = (props: EditInfoAndSubmitProps) => {
 
   useEffect(() => setShowInfo(props.value), [props.value]);
 
-  useEffect(() => setShowInfo(props.value), [props.value]);
   const genderType =
     showInfo.gender != "-"
       ? showInfo.gender === "female"
