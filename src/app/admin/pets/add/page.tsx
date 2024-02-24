@@ -1,4 +1,5 @@
 import { postPetRequest } from "@/api/pets";
+import logo from "@/assets/details/logo.webp";
 import Container from "@/components/Container";
 import SmallPetCardList from "@/components/SmallPetCardList";
 import { useCreateImage } from "@/hooks/mutation/usePostImage";
@@ -6,7 +7,6 @@ import { usePetsQuery } from "@/hooks/queries/usePetsQuery";
 import { Icon } from "@iconify/react";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import johnjudLogo from "../../../../assets/johnjud-with-text.webp";
 import AddSmallPicture from "../../../../components/Admin/Pets/Add/AddSmallPicture";
 import AddThumbnail from "../../../../components/Admin/Pets/Add/AddThumbnail";
 import EditInfoAndSubmit, {
@@ -17,8 +17,9 @@ import EditText from "../../../../components/Admin/Pets/Add/EditText";
 
 import { useCreatePet } from "@/hooks/mutation/usePostPet";
 import AdminLayout from "@/layouts/AdminLayout";
+import dayjs from "dayjs";
 const adminCreate = () => {
-  const { data } = usePetsQuery();
+  const { data, isLoading } = usePetsQuery();
 
   const [name, setName] = useState("กรุณาใส่ชื่อ...");
   const [text, setText] = useState("");
@@ -55,6 +56,8 @@ const adminCreate = () => {
   const postPetMutation = useCreatePet();
 
   const handleSubmit = async () => {
+    if (info.gender === "-") return; // already detect "-" by disable post button
+
     const allImageFile: File[] = await Promise.all(
       thumbnail ? [thumbnail, ...pictures] : pictures
     );
@@ -72,15 +75,13 @@ const adminCreate = () => {
       )
     )
       .filter((id) => id !== undefined)
-      .map((id) => id ?? ""); // map for ts type checking
-
-    if (info.gender === "-") return; // already detect "-" by disable post button
+      .map((id) => id ?? ""); // map for bypass ts type checking
 
     const petData: postPetRequest = {
       type: info.type,
       name: name,
-      birthdate: info.age,
-      gender: info.gender,
+      birthdate: dayjs(info.age).toISOString(),
+      gender: info.gender as "male" | "female",
       color: info.color,
       pattern: "a", // remove later
       habit: info.nature,
@@ -99,14 +100,14 @@ const adminCreate = () => {
   return (
     <>
       {/* Icon return & small EditName */}
-      <div className="flex justify-between px-6 lg:block lg:px-12">
+      <Container>
         <Link to="/admin/pets/">
           <Icon icon="ion:chevron-back" className="h-8 w-8 text-primary" />
         </Link>
         <div className="visible flex w-full flex-col md:hidden">
           <EditName value={name} setValue={setName} isAdmin />
         </div>
-      </div>
+      </Container>
 
       <Container className="flex flex-col gap-8 md:flex-row">
         {/* Thumpnail */}
@@ -133,25 +134,18 @@ const adminCreate = () => {
         <AddSmallPicture value={pictures} setValue={setPictures} />
       </Container>
 
-      <div className="flex flex-col lg:flex-row">
-        {/* Edit info + Pose Button*/}
-        <div className="flex w-full flex-col lg:h-full">
-          <EditInfoAndSubmit
-            value={info}
-            setValue={setInfo}
-            onSubmit={handleSubmit}
-            enableSubmit={enableSubmit}
-            isAdmin
-          />
-        </div>
-
-        {/* large Logo */}
-        <div className="hidden w-1/3 shrink-0 justify-center object-contain lg:flex">
-          <img src={johnjudLogo} className="flex h-64 w-44"></img>
-        </div>
+      <div className="mx-auto my-8 flex max-w-[1536px] gap-20 xl:justify-between xl:pr-24">
+        <EditInfoAndSubmit
+          value={info}
+          setValue={setInfo}
+          onSubmit={handleSubmit}
+          enableSubmit={enableSubmit}
+          isAdmin
+        />
+        <img src={logo} alt="logo" className="hidden h-64 w-64 xl:block" />
       </div>
       <div className="hidden md:block">
-        {data && <SmallPetCardList pets={data.pets} />}
+        <SmallPetCardList isLoading={isLoading} pets={data?.pets} />
       </div>
     </>
   );

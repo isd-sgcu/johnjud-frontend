@@ -91,10 +91,18 @@ const EditInfoAndSubmit = (props: EditInfoAndSubmitProps) => {
 
   useEffect(() => setShowInfo(props.value), [props.value]);
 
+  useEffect(() => setShowInfo(props.value), [props.value]);
+  const genderType =
+    showInfo.gender != "-"
+      ? showInfo.gender === "female"
+        ? "ตัวเมีย"
+        : "ตัวผู้"
+      : "-";
+
   return (
-    <div className="flex w-full flex-col">
+    <div className="w-full">
       {/* EditInfo */}
-      <div className="flex w-full flex-col border-2 border-accent-gray-variant border-opacity-50 bg-white px-6 py-6 lg:rounded-r-2xl lg:py-8 lg:pl-[12.5%] lg:pr-0">
+      <div className="flex flex-col border-2 border-accent-gray-variant border-opacity-50 bg-white px-6 py-6 lg:rounded-r-2xl lg:py-8 lg:pl-[12.5%] lg:pr-0 2xl:rounded-2xl">
         {/* Header */}
         <div className="flex flex-row items-center justify-between lg:pr-[5%]">
           <div className="relative flex flex-col">
@@ -114,15 +122,17 @@ const EditInfoAndSubmit = (props: EditInfoAndSubmitProps) => {
             </div>
           ) : (
             <div className="ml-2">
-              <Icon
-                icon={
-                  props.isFav
-                    ? "ph:heart-straight-fill"
-                    : "ph:heart-straight-bold"
-                }
-                className="h-6 w-6 cursor-pointer text-accent-red"
-                onClick={props.handleFavPressed}
-              />
+              <button type="button" id="like-button">
+                <Icon
+                  icon={
+                    props.isFav
+                      ? "ph:heart-straight-fill"
+                      : "ph:heart-straight-bold"
+                  }
+                  className="h-6 w-6 cursor-pointer text-accent-red"
+                  onClick={props.handleFavPressed}
+                />
+              </button>
             </div>
           )}
         </div>
@@ -133,7 +143,7 @@ const EditInfoAndSubmit = (props: EditInfoAndSubmitProps) => {
             <DropdownInputInfo
               text={"เพศ:"}
               icon={"ph:gender-intersex"}
-              value={showInfo.gender}
+              value={genderType}
               setValue={(newOption) =>
                 handleOnChangeDropDown(newOption, "gender")
               }

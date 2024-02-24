@@ -21,11 +21,17 @@ const TopBar = ({
         )}
         <div className="text-lg font-bold text-white">JOHNJUD</div>
       </Link>
-      <Icon
-        icon="radix-icons:hamburger-menu"
-        className="h-8 w-8 cursor-pointer text-white"
+      <button
+        type="button"
+        id="open-sidebar"
         onClick={() => setToggle(true)}
-      />
+        className="outline-none"
+      >
+        <Icon
+          icon="radix-icons:hamburger-menu"
+          className="h-8 w-8 cursor-pointer text-white"
+        />
+      </button>
     </div>
   );
 };

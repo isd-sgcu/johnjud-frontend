@@ -1,6 +1,8 @@
 import useAuthStore from "@/store/authStore";
 import { Meta } from "@/types/common";
+import { filterState } from "@/types/filter";
 import { Pet } from "@/types/pets";
+import { convertFiltertoParams } from "@/utils/convertFiltertoParams";
 import axios from "axios";
 
 interface PetsResponse {
@@ -12,9 +14,17 @@ interface DeletePetResponse {
   success: boolean;
 }
 
-const getPets = async () => {
+const getPet = async (id: string): Promise<Pet> => {
+  const response = await axios.get<Pet>(
+    `${import.meta.env.VITE_API_URL}/pets/${id}`
+  );
+  return response.data;
+};
+
+const getPets = async (filters?: filterState) => {
+  const params = convertFiltertoParams(filters);
   const response = await axios.get<PetsResponse>(
-    `${import.meta.env.VITE_API_URL}/pets`
+    `${import.meta.env.VITE_API_URL}/pets?${params}`
   );
   return response.data;
 };

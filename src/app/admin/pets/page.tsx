@@ -5,6 +5,7 @@ import Filter from "@/components/Filter";
 import { PetIcon } from "@/components/Filter/Icon";
 import Heading from "@/components/Pets/Heading";
 import PetSearch from "@/components/Search/PetSearch";
+import { filterState } from "@/types/filter";
 import { Pet } from "@/types/pets";
 import { Icon } from "@iconify/react/dist/iconify.js";
 
@@ -13,22 +14,37 @@ import { Link } from "react-router-dom";
 
 import { usePetsQuery } from "@/hooks/queries/usePetsQuery";
 import AdminLayout from "@/layouts/AdminLayout";
+import useFavoriteStore from "@/store/favStore";
 const Pets = () => {
-  const { data } = usePetsQuery();
-
   const [isOpenFilterPanel, setIsOpenFilterPanel] = useState(false);
 
   const toggleIsOpenFilterPanel = useCallback(() => {
     setIsOpenFilterPanel((prev) => !prev);
   }, []);
 
+  const [filters, setFilters] = useState<filterState>({
+    dog: false,
+    cat: false,
+    male: false,
+    female: false,
+    white: false,
+    black: false,
+    brown: false,
+    blonde: false,
+    minAge: 0,
+    maxAge: 30,
+  });
+
+  const { data, isLoading } = usePetsQuery(filters);
+  const { favorites } = useFavoriteStore();
+
   return (
     <>
-      <div className="flex justify-between px-6 lg:block lg:px-12">
-        <Link to="/admin/">
+      <Container>
+        <Link to="/home">
           <Icon icon="ion:chevron-back" className="h-8 w-8 text-primary" />
         </Link>
-      </div>
+      </Container>
       <Container>
         <Heading onSearch quantity={data?.metadata?.total} />
         {/* dont forget to delete ? after metadata, if Boom read this it's mean that Tee forgot LOL*/}
@@ -41,7 +57,11 @@ const Pets = () => {
               isOpen={isOpenFilterPanel}
               onClick={toggleIsOpenFilterPanel}
             />
-            <Filter isOpen={isOpenFilterPanel} />
+            <Filter
+              isOpen={isOpenFilterPanel}
+              filters={filters}
+              setFilters={setFilters}
+            />
           </div>
         </div>
         <div className="w-full xl:w-auto">
@@ -57,24 +77,28 @@ const Pets = () => {
         </div>
       </Container>
       <Container>
-        <div className="flex flex-wrap items-center justify-center gap-6 lg:gap-9">
-          {data?.pets.map((pet: Pet) => (
-            <PetCard
-              key={pet.id}
-              id={pet.id}
-              image={pet.images && pet.images[0].url}
-              type={pet.type}
-              name={pet.name}
-              status={pet.status}
-              gender={pet.gender}
-              birthDate={pet.birthdate}
-              habit={pet.habit}
-              isSterile={pet.is_sterile}
-              isLiked={false}
-              isVisibled={pet.is_visible}
-            />
-          ))}
-        </div>
+        {isLoading ? (
+          <PetsPageFallback />
+        ) : (
+          <div className="flex flex-wrap items-center justify-center gap-6 lg:gap-9">
+            {data?.pets?.map((pet: Pet) => (
+              <PetCard
+                key={pet.id}
+                id={pet.id}
+                image={pet.images ? pet.images[0].url : undefined}
+                type={pet.type}
+                name={pet.name}
+                status={pet.status}
+                gender={pet.gender}
+                birthDate={pet.birthdate}
+                habit={pet.habit}
+                isSterile={pet.is_sterile}
+                isLiked={favorites.find((fav) => fav === pet.id) ? true : false}
+                isVisibled={pet.is_visible}
+              />
+            ))}
+          </div>
+        )}
       </Container>
     </>
   );

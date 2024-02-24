@@ -27,6 +27,7 @@ const SideBar = ({
         <div className="flex flex-row items-center justify-end">
           <button
             type="button"
+            id="close-sidebar"
             onClick={() => setToggle(false)}
             className="cursor-pointer outline-none"
           >
@@ -80,6 +81,13 @@ const SideBar = ({
             >
               <Icon icon="ph:info" color="white" className="h-6 w-6" />
               <span>เกี่ยวกับเรา</span>
+            </Link>
+            <Link
+              to="/profile"
+              className="flex cursor-pointer items-center gap-1.5 xl:gap-4"
+            >
+              <Icon icon="ph:heart" color="white" className="h-6 w-6" />
+              <span>รายการที่ชอบ</span>
             </Link>
             <Link
               to="/admin"
