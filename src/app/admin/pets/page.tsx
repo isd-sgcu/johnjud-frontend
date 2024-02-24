@@ -15,6 +15,7 @@ import { Link } from "react-router-dom";
 import { usePetsQuery } from "@/hooks/queries/usePetsQuery";
 import AdminLayout from "@/layouts/AdminLayout";
 import useFavoriteStore from "@/store/favStore";
+import PetPageFallback from "@/components/Fallback/PetPageFallback";
 const Pets = () => {
   const [isOpenFilterPanel, setIsOpenFilterPanel] = useState(false);
 
@@ -78,7 +79,7 @@ const Pets = () => {
       </Container>
       <Container>
         {isLoading ? (
-          <PetsPageFallback />
+          <PetPageFallback />
         ) : (
           <div className="flex flex-wrap items-center justify-center gap-6 lg:gap-9">
             {data?.pets?.map((pet: Pet) => (

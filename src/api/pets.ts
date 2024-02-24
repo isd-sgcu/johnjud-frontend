@@ -117,5 +117,5 @@ const updatePet = async (data: PutPetRequest, id: string): Promise<Pet> => {
   return response.data;
 };
 
-export { deletePet, getPets, postPet, updatePet, updateVisibility };
+export { deletePet, getPet, getPets, postPet, updatePet, updateVisibility };
 export type { PetsResponse, PutPetRequest, postPetRequest };

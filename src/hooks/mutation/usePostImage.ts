@@ -7,7 +7,7 @@ const useCreateImage = () => {
   return useMutation({
     mutationFn: (data: postImageRequest) => postImage(data),
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ["pets"] });
+      queryClient.invalidateQueries({ queryKey: ["pet"] });
     },
   });
 };

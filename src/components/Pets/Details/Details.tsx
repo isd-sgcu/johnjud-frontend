@@ -1,4 +1,4 @@
-import { PetsResponse, PutPetRequest } from "@/api/pets";
+import { PutPetRequest } from "@/api/pets";
 import logo from "@/assets/details/logo.webp";
 import AddSmallPicture from "@/components/Admin/Pets/Add/AddSmallPicture";
 import AddThumbnail from "@/components/Admin/Pets/Add/AddThumbnail";
@@ -11,18 +11,17 @@ import Container from "@/components/Container";
 import { useDeleteImage } from "@/hooks/mutation/useDeleteImage";
 import { useCreateImage } from "@/hooks/mutation/usePostImage";
 import { useUpdatePet } from "@/hooks/mutation/useUpdatePet";
-import { useConvertImgUrltoFile } from "@/hooks/useConvertImgUrltoFile";
 import { usePageParams } from "@/hooks/usePageParams";
 import MainLayout from "@/layouts/MainLayout";
 import { Pet } from "@/types/pets";
 import { Icon } from "@iconify/react/dist/iconify.js";
 import { useEffect, useMemo, useState } from "react";
-import SmallPetCardList from "../../SmallPetCardList";
 import PetThumbnails from "../PetThumbnails";
+import dog from "@/assets/dog.webp";
 
 interface DetailsProps {
   isAdmin: boolean;
-  data: PetsResponse;
+  data: Pet;
 }
 
 const Details = (props: DetailsProps) => {
@@ -37,7 +36,6 @@ const Details = (props: DetailsProps) => {
   const [origin, setOrigin] = useState("fromClub");
   const [thumbnail, setThumbnail] = useState<File | null>(null);
   const [images, setImages] = useState<File[]>([]);
-  const pet = useMemo(getPet, [props.data, id]);
   const [enableSubmit, setEnableSubmit] = useState(false);
   const [petInfo, setPetInfo] = useState<info>({
     type: "-",
@@ -48,6 +46,19 @@ const Details = (props: DetailsProps) => {
     vaccine: false,
     sterile: false,
   });
+
+  const convertImgToFile = async (imgFilePath: string) => {
+    const response = await fetch(imgFilePath);
+    const blob = await response.blob();
+    const file = new File([blob], "image.png", { type: "image/png" });
+    return file;
+  };
+
+  const imgs = useMemo(() => {
+    if (!props.data.images) return [dog];
+    return props.data.images?.map((img) => img.url);
+  }, [props.data.images]);
+
 
   useEffect(() => {
     if (
@@ -65,39 +76,32 @@ const Details = (props: DetailsProps) => {
 
   useEffect(() => {
     convertImgUrltoFile();
-    setName(pet.name);
-    setText(pet.caption);
-    setOrigin(pet.origin);
+    setName(props.data.name);
+    setText(props.data.caption);
+    setOrigin(props.data.origin);
     setPetInfo({
-      type: pet.type as "dog" | "cat" | "-",
-      gender: pet.gender,
-      color: pet.color,
-      age: pet.birthdate,
-      nature: pet.habit,
-      vaccine: pet.is_vaccinated,
-      sterile: pet.is_sterile,
+      type: props.data.type as "dog" | "cat" | "-",
+      gender: props.data.gender,
+      color: props.data.color,
+      age: props.data.birthdate,
+      nature: props.data.habit,
+      vaccine: props.data.is_vaccinated,
+      sterile: props.data.is_sterile,
     });
+    console.log(props.data);
   }, [props.data, id]);
 
-  function getPet() {
-    return props.data.pets.find((pet) => pet.id === id) as Pet;
-  }
-
   function convertImgUrltoFile() {
-    if (pet.images === null) return;
+    //check isPending
+    if (!props.data.images || !props.isAdmin) return;
 
-    pet.images.forEach(async (image, index) => {
-      const response = await useConvertImgUrltoFile(image);
-      if (index === 0) {
-        setThumbnail(response);
-      } else {
-        setImages((images) => {
-          const newImages = [...images];
-          newImages[index - 1] = response as File;
-          return newImages;
-        });
-      }
-    });
+    // Set 1st image to thumbnail
+    convertImgToFile(props.data.images[0].url).then((file) => setThumbnail(file));
+
+    // Set the rest of the images to images
+    const imgFiles = props.data.images.map((img) => img.url).slice(1);
+    const imgPromises = imgFiles.map((img) => convertImgToFile(img));
+    Promise.all(imgPromises).then((files) => setImages(files));
   }
 
   function handleFavPressed() {
@@ -109,7 +113,7 @@ const Details = (props: DetailsProps) => {
     if (postImageMutation.isPending || updatePetMutaion.isPending) return;
 
     //clear old images
-    pet.images?.forEach((image) => {
+    props.data.images?.forEach((image) => {
       deleteImageMutation.mutateAsync(image.id);
     });
 
@@ -117,6 +121,8 @@ const Details = (props: DetailsProps) => {
     const allImageFile: File[] = thumbnail
       ? [thumbnail, ...images]
       : [...images];
+
+    console.log(allImageFile);
 
     // post image and get id : assume this is correct
     allImageFile.forEach((image) => {
@@ -136,9 +142,11 @@ const Details = (props: DetailsProps) => {
       caption: text,
       is_sterile: petInfo.sterile,
       is_vaccinated: petInfo.vaccine,
-      is_visible: pet.is_visible,
+      is_visible: props.data.is_visible,
       origin: origin,
     };
+
+    console.log(data);
     updatePetMutaion.mutate({
       body: data,
       id: id,
@@ -148,47 +156,40 @@ const Details = (props: DetailsProps) => {
   return (
     <>
       <Container className="flex flex-col gap-8">
-        {/* header */}
-        <div className="flex items-center justify-between text-primary">
-          <Icon
-            icon="material-symbols-light:arrow-back-ios-new"
-            className="h-8 w-8 cursor-pointer"
-          />
-          <div className="md:hidden">
+      {/* header */}
+      <div className="flex items-center justify-between text-primary">
+        <button type="button" onClick={() => window.history.back()}>
+          <Icon icon="ion:chevron-back" className="h-8 w-8 cursor-pointer" />
+        </button>
+        <div className="md:hidden">
+          <EditName value={name} setValue={setName} isAdmin={props.isAdmin} />
+        </div>
+      </div>
+
+      {/* thumbnail */}
+      <div className="mx-auto flex w-full flex-col items-center justify-between gap-8 md:h-80 md:flex-row md:items-start">
+        <div className="relative w-80">
+          {!props.isAdmin ? (
+            <PetThumbnails petImages={imgs} origin={origin} />
+          ) : (
+            <AddThumbnail
+              valueOrigin={origin}
+              setOrigin={setOrigin}
+              valueThumbnail={thumbnail}
+              setThumbnail={setThumbnail}
+            />
+          )}
+        </div>
+
+        <div className="flex w-full flex-col items-start gap-8 overflow-auto md:h-full md:flex-1">
+          <div className="hidden md:block">
             <EditName value={name} setValue={setName} isAdmin={props.isAdmin} />
           </div>
+          <EditText value={text} setValue={setText} isAdmin={props.isAdmin} />
         </div>
-
-        {/* thumbnail */}
-        <div className="mx-auto flex w-full flex-col items-center justify-between gap-8 md:h-80 md:flex-row md:items-start">
-          <div className="relative w-80">
-            {!props.isAdmin ? (
-              <PetThumbnails petImages={pet.images} />
-            ) : (
-              <AddThumbnail
-                valueOrigin={origin}
-                setOrigin={setOrigin}
-                valueThumbnail={thumbnail}
-                setThumbnail={setThumbnail}
-              />
-            )}
-          </div>
-
-          <div className="flex w-full flex-col items-start gap-8 overflow-auto md:h-full md:flex-1">
-            <div className="hidden md:block">
-              <EditName
-                value={name}
-                setValue={setName}
-                isAdmin={props.isAdmin}
-              />
-            </div>
-            <EditText value={text} setValue={setText} isAdmin={props.isAdmin} />
-          </div>
-        </div>
-        {props.isAdmin && (
-          <AddSmallPicture value={images} setValue={setImages} />
-        )}
-      </Container>
+      </div>
+      {props.isAdmin && <AddSmallPicture value={images} setValue={setImages} />}
+    </Container>
 
       {/* edit info */}
       <div className="my-8 flex gap-20 xl:justify-between xl:pr-24">
@@ -204,8 +205,6 @@ const Details = (props: DetailsProps) => {
         />
         <img src={logo} alt="logo" className="hidden h-64 w-64 xl:block" />
       </div>
-
-      <SmallPetCardList pets={props.data.pets} />
     </>
   );
 };
