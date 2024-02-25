@@ -42,7 +42,6 @@ const deleteImage = async (id: string) => {
       },
     }
   );
-  console.log(response);
 };
 
 export { deleteImage, postImage };
