@@ -16,6 +16,7 @@ import PetsPageFallback from "@/components/Fallback/PetsPageFallback";
 import { usePetsAdminQuery } from "@/hooks/queries/usePetsAdminQuery";
 import AdminLayout from "@/layouts/AdminLayout";
 import useFavoriteStore from "@/store/favStore";
+
 const Pets = () => {
   const [isOpenFilterPanel, setIsOpenFilterPanel] = useState(false);
 
@@ -48,7 +49,8 @@ const Pets = () => {
         </Link>
       </Container>
       <Container>
-        <Heading onSearch quantity={data?.metadata.total} />
+        <Heading onSearch quantity={data?.metadata?.total} />
+        {/* dont forget to delete ? after metadata, if Boom read this it's mean that Tee forgot LOL*/}
       </Container>
       <Container className="flex flex-col items-center space-y-6">
         <div className="flex w-full flex-row gap-x-4">

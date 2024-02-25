@@ -102,5 +102,42 @@ const deletePet = async (id: string) => {
   return response.data;
 };
 
-export { deletePet, getPet, getPets, getPetsAdmin, postPet, updateVisibility };
-export type { PetsResponse, postPetRequest };
+type PutPetRequest = Omit<
+  Pet,
+  | "id"
+  | "images"
+  | "is_club_pet"
+  | "pattern"
+  | "status"
+  | "address"
+  | "adopt_by"
+  | "contact"
+> & {
+  origin: string;
+};
+
+const updatePet = async (data: PutPetRequest, id: string): Promise<Pet> => {
+  const { accessToken } = useAuthStore.getState();
+
+  const response = await axios.put(
+    `${import.meta.env.VITE_API_URL}/pets/${id}`,
+    data,
+    {
+      headers: {
+        Authorization: `Bearer ${accessToken}`,
+      },
+    }
+  );
+  return response.data;
+};
+
+export {
+  deletePet,
+  getPet,
+  getPets,
+  getPetsAdmin,
+  postPet,
+  updatePet,
+  updateVisibility,
+};
+export type { PetsResponse, PutPetRequest, postPetRequest };
