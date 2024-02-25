@@ -50,9 +50,7 @@ const Details = ({ isAdmin, data }: { isAdmin: boolean; data: Pet }) => {
           onSubmit={handleSubmit}
           isAdmin={isAdmin}
           isFav={favorites.find((fav) => fav === data.id) ? true : false}
-          handleFavPressed={(event: React.MouseEvent<HTMLButtonElement>) =>
-            handleFavPressed(event)
-          }
+          handleFavPressed={handleFavPressed}
           id={data.id}
         />
         <img src={logo} alt="logo" className="hidden h-64 w-64 xl:block" />
