@@ -25,7 +25,7 @@ interface EditInfoAndSubmitProps {
   enableSubmit?: boolean;
   isAdmin: boolean;
   isFav?: boolean;
-  handleFavPressed?: () => void;
+  handleFavPressed?: (event: React.MouseEvent<HTMLButtonElement>) => void;
   id?: string;
 }
 
@@ -119,7 +119,11 @@ const EditInfoAndSubmit = (props: EditInfoAndSubmitProps) => {
             </div>
           ) : (
             <div className="ml-2">
-              <button type="button" id="like-button">
+              <button
+                type="button"
+                id="like-button"
+                onClick={props.handleFavPressed}
+              >
                 <Icon
                   icon={
                     props.isFav
@@ -127,7 +131,6 @@ const EditInfoAndSubmit = (props: EditInfoAndSubmitProps) => {
                       : "ph:heart-straight-bold"
                   }
                   className="h-6 w-6 cursor-pointer text-accent-red"
-                  onClick={props.handleFavPressed}
                 />
               </button>
             </div>
