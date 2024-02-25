@@ -15,7 +15,7 @@ function useUpdatePet() {
       return updatePet(data.body, data.id);
     },
     onSuccess: () => {
-      toast.success("เเก้ไขข้อมูลสัตว์เลี้ยงสำเร็จ");
+      toast.success("แก้ไขข้อมูลสัตว์เลี้ยงสำเร็จ");
       queryClient.invalidateQueries({ queryKey: ["pets"] });
     },
     onError: () => {
