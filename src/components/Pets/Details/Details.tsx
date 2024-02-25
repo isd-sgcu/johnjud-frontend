@@ -16,9 +16,9 @@ import { usePageParams } from "@/hooks/usePageParams";
 import MainLayout from "@/layouts/MainLayout";
 import { Pet } from "@/types/pets";
 import { Icon } from "@iconify/react/dist/iconify.js";
+import dayjs from "dayjs";
 import { useEffect, useMemo, useState } from "react";
 import PetThumbnails from "../PetThumbnails";
-import dayjs from "dayjs";
 
 interface DetailsProps {
   isAdmin: boolean;
@@ -113,10 +113,15 @@ const Details = (props: DetailsProps) => {
     //check is pending
     if (postImageMutation.isPending || updatePetMutaion.isPending) return;
 
-    //clear old images
-    props.data.images?.forEach((image) => {
-      deleteImageMutation.mutateAsync(image.id);
-    });
+    const deletedImages = props.data.images?.map((image) =>
+      deleteImageMutation.mutateAsync(image.id)
+    );
+
+    try {
+      await Promise.all(deletedImages);
+    } catch (err) {
+      return;
+    }
 
     //create new images
     const allImageFile: File[] = thumbnail
