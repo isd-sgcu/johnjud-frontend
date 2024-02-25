@@ -21,6 +21,10 @@ const convertFiltertoParams = (filters?: filterState) => {
   }
   const params: Record<string, string | number> = {};
 
+  if (filters.search) {
+    params.search = filters.search;
+  }
+
   if (filters.dog && filters.cat) {
     // skip
   } else if (filters.dog) {

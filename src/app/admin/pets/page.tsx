@@ -24,6 +24,7 @@ const Pets = () => {
   }, []);
 
   const [filters, setFilters] = useState<filterState>({
+    search: "",
     dog: false,
     cat: false,
     male: false,
@@ -51,7 +52,7 @@ const Pets = () => {
       </Container>
       <Container className="flex flex-col items-center space-y-6">
         <div className="flex w-full flex-row gap-x-4">
-          <PetSearch variant="red" />
+          <PetSearch variant="red" filter={filters} setFilters={setFilters} />
           <div className="relative">
             <PetIcon
               isOpen={isOpenFilterPanel}
