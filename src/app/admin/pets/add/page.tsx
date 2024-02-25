@@ -3,7 +3,6 @@ import logo from "@/assets/details/logo.webp";
 import Container from "@/components/Container";
 import SmallPetCardList from "@/components/SmallPetCardList";
 import { useCreateImage } from "@/hooks/mutation/usePostImage";
-import { usePetsQuery } from "@/hooks/queries/usePetsQuery";
 import { Icon } from "@iconify/react";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
@@ -16,10 +15,11 @@ import EditName from "../../../../components/Admin/Pets/Add/EditName";
 import EditText from "../../../../components/Admin/Pets/Add/EditText";
 
 import { useCreatePet } from "@/hooks/mutation/usePostPet";
+import { usePetsAdminQuery } from "@/hooks/queries/usePetsAdminQuery";
 import AdminLayout from "@/layouts/AdminLayout";
 import dayjs from "dayjs";
 const adminCreate = () => {
-  const { data, isLoading } = usePetsQuery();
+  const { data, isLoading } = usePetsAdminQuery();
 
   const [name, setName] = useState("กรุณาใส่ชื่อ...");
   const [text, setText] = useState("");
