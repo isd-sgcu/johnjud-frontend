@@ -12,10 +12,10 @@ import { Icon } from "@iconify/react/dist/iconify.js";
 import { useCallback, useState } from "react";
 import { Link } from "react-router-dom";
 
-import PetPageFallback from "@/components/Fallback/PetPageFallback";
 import { usePetsAdminQuery } from "@/hooks/queries/usePetsAdminQuery";
 import AdminLayout from "@/layouts/AdminLayout";
 import useFavoriteStore from "@/store/favStore";
+import PetsPageFallback from "@/components/Fallback/PetsPageFallback";
 
 const Pets = () => {
   const [isOpenFilterPanel, setIsOpenFilterPanel] = useState(false);
@@ -80,7 +80,7 @@ const Pets = () => {
       </Container>
       <Container>
         {isLoading ? (
-          <PetPageFallback />
+          <PetsPageFallback />
         ) : (
           <div className="flex flex-wrap items-center justify-center gap-6 lg:gap-9">
             {data?.pets?.map((pet: Pet) => (
