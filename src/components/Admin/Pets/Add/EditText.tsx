@@ -13,19 +13,13 @@ const EditText = (props: EditTextProps) => {
   const saveRef = useRef(null);
 
   const handleClickEdit = () => {
-    if (enableEdit) {
-      props.setValue(showText);
-    } else {
-      setShowText(props.value);
-    }
     setEnableEdit(!enableEdit);
   };
 
   const [enableEdit, setEnableEdit] = useState(false);
-  const [showText, setShowText] = useState(props.value);
   const handleOnChange = (event: React.FormEvent<HTMLTextAreaElement>) => {
     const element = event.target as HTMLInputElement;
-    setShowText(element.value);
+    props.setValue(element.value);
   };
 
   // focus at the end of text when enable
@@ -40,7 +34,7 @@ const EditText = (props: EditTextProps) => {
   return (
     <div className={`relative flex min-h-60 w-full md:h-full md:min-h-0`}>
       <TextareaAutosize
-        value={showText}
+        value={props.value}
         className={
           "w-full break-words rounded-3xl border-2 border-opacity-50 bg-white p-4 drop-shadow-sm" +
           (enableEdit ? "border-black" : "border-accent-gray-variant")

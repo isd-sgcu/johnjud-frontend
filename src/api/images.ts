@@ -31,5 +31,15 @@ const postImage = async (
   return response.data;
 };
 
-export { postImage };
+const deleteImage = async (id: string) => {
+  const { accessToken } = useAuthStore.getState();
+
+  await axios.delete(`${import.meta.env.VITE_API_URL}/images/${id}`, {
+    headers: {
+      Authorization: `Bearer ${accessToken}`,
+    },
+  });
+};
+
+export { deleteImage, postImage };
 export type { postImageRequest, postImageResponse };

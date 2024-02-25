@@ -1,7 +1,7 @@
 import Button from "@/components/Button";
 import { colorOption, genderOption, typeOption } from "@/utils/PetInfoOption";
 import { Icon } from "@iconify/react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import DateInputInfo from "./DateInputInfo";
 import DropdownInputInfo, { OptionType } from "./DropdownInputInfo";
@@ -88,6 +88,8 @@ const EditInfoAndSubmit = (props: EditInfoAndSubmitProps) => {
       });
     }
   };
+
+  useEffect(() => setShowInfo(props.value), [props.value]);
 
   const genderType =
     showInfo.gender != "-"

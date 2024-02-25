@@ -69,7 +69,6 @@ const adminCreate = () => {
           const imageResponse = await postImageMutation.mutateAsync({
             file: image,
           });
-          console.log(imageResponse);
           return imageResponse.id;
         })
       )
