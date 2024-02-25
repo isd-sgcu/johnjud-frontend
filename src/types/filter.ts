@@ -1,4 +1,5 @@
 interface filterState {
+  search: string;
   dog: boolean;
   cat: boolean;
   male: boolean;

@@ -3,22 +3,35 @@ import Button from "@/components/Button";
 import Container from "@/components/Container";
 import Divider from "@/components/Divider";
 import Banner from "@/components/Main/Banner";
+import PetList from "@/components/Main/CardList/PetList";
+import PetSuggestionList from "@/components/Main/CardList/PetSuggestionList";
 import Filter from "@/components/Main/Filter";
 import Heading from "@/components/Pets/Heading";
 import Search from "@/components/Search/PetSearch";
 import { usePetsQuery } from "@/hooks/queries/usePetsQuery";
 import MainLayout from "@/layouts/MainLayout";
+import { filterState } from "@/types/filter";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-
-import PetList from "@/components/Main/CardList/PetList";
-import PetSuggestionList from "@/components/Main/CardList/PetSuggestionList";
 
 // Page
 const MainPage = () => {
   const navigate = useNavigate();
 
-  const { data, isLoading } = usePetsQuery();
-
+  const [filters, setFilters] = useState<filterState>({
+    search: "",
+    dog: false,
+    cat: false,
+    male: false,
+    female: false,
+    white: false,
+    black: false,
+    brown: false,
+    blonde: false,
+    minAge: 0,
+    maxAge: 30,
+  });
+  const { data, isLoading } = usePetsQuery(filters);
   return (
     <>
       <Container className="grid grid-cols-1 items-center md:grid-cols-2 md:gap-9 lg:grid-cols-3">
@@ -31,8 +44,8 @@ const MainPage = () => {
           <div className="hidden md:flex">
             <Heading onSearch quantity={data?.metadata.total} />
           </div>
-          <Search variant="green" />
-          <Filter />
+          <Search variant="green" filter={filters} setFilters={setFilters} />
+          <Filter filters={filters} setFilters={setFilters} />
         </div>
       </Container>
       <Container className="flex items-center justify-center md:hidden">
@@ -51,7 +64,7 @@ const MainPage = () => {
           <div className="col-span-2">
             <PetSuggestionList
               isLoading={isLoading}
-              data={data?.pets.slice(0, 8)}
+              data={data?.pets?.slice(0, 8)}
             />
           </div>
         </div>
