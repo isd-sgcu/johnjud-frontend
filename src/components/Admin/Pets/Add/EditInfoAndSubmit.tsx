@@ -91,13 +91,6 @@ const EditInfoAndSubmit = (props: EditInfoAndSubmitProps) => {
 
   useEffect(() => setShowInfo(props.value), [props.value]);
 
-  const genderType =
-    showInfo.gender != "-"
-      ? showInfo.gender === "female"
-        ? "ตัวเมีย"
-        : "ตัวผู้"
-      : "-";
-
   return (
     <div className="w-full">
       {/* EditInfo */}
@@ -145,7 +138,7 @@ const EditInfoAndSubmit = (props: EditInfoAndSubmitProps) => {
             <DropdownInputInfo
               text={"เพศ:"}
               icon={"ph:gender-intersex"}
-              value={genderType}
+              value={showInfo.gender}
               setValue={(newOption) =>
                 handleOnChangeDropDown(newOption, "gender")
               }

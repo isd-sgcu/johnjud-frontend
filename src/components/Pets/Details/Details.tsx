@@ -18,6 +18,7 @@ import { Pet } from "@/types/pets";
 import { Icon } from "@iconify/react/dist/iconify.js";
 import { useEffect, useMemo, useState } from "react";
 import PetThumbnails from "../PetThumbnails";
+import dayjs from "dayjs";
 
 interface DetailsProps {
   isAdmin: boolean;
@@ -82,7 +83,7 @@ const Details = (props: DetailsProps) => {
       type: props.data.type as "dog" | "cat" | "-",
       gender: props.data.gender,
       color: props.data.color,
-      age: props.data.birthdate,
+      age: dayjs(props.data.birthdate).toISOString(),
       nature: props.data.habit,
       vaccine: props.data.is_vaccinated,
       sterile: props.data.is_sterile,
