@@ -29,6 +29,21 @@ const getPets = async (filters?: filterState) => {
   return response.data;
 };
 
+const getPetsAdmin = async (filters?: filterState) => {
+  const { accessToken } = useAuthStore.getState();
+  const params = convertFiltertoParams(filters);
+  const response = await axios.get<PetsResponse>(
+    `${import.meta.env.VITE_API_URL}/pets/admin?${params}`,
+    {
+      headers: {
+        "Context-Type": "multipart/form-data",
+        Authorization: `Bearer ${accessToken}`,
+      },
+    }
+  );
+  return response.data;
+};
+
 type postPetRequest = Omit<
   Pet,
   "id" | "images" | "is_club_pet" | "address" | "adopt_by" | "contact"
@@ -87,7 +102,7 @@ const deletePet = async (id: string) => {
   return response.data;
 };
 
-//ver.1 omit images
+
 type PutPetRequest = Omit<
   Pet,
   | "id"
@@ -117,5 +132,5 @@ const updatePet = async (data: PutPetRequest, id: string): Promise<Pet> => {
   return response.data;
 };
 
-export { deletePet, getPet, getPets, postPet, updatePet, updateVisibility };
+export { deletePet, getPet, getPets, getPetsAdmin, postPet, updatePet, updateVisibility };
 export type { PetsResponse, PutPetRequest, postPetRequest };
