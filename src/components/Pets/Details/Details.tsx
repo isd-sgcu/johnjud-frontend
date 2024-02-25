@@ -14,7 +14,6 @@ import { useCreateImage } from "@/hooks/mutation/usePostImage";
 import { useUpdatePet } from "@/hooks/mutation/useUpdatePet";
 import { usePageParams } from "@/hooks/usePageParams";
 import MainLayout from "@/layouts/MainLayout";
-import useFavoriteStore from "@/store/favStore";
 import { Pet } from "@/types/pets";
 import { Icon } from "@iconify/react/dist/iconify.js";
 import { useEffect, useMemo, useState } from "react";
