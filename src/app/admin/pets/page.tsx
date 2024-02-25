@@ -12,10 +12,10 @@ import { Icon } from "@iconify/react/dist/iconify.js";
 import { useCallback, useState } from "react";
 import { Link } from "react-router-dom";
 
+import PetsPageFallback from "@/components/Fallback/PetsPageFallback";
 import { usePetsAdminQuery } from "@/hooks/queries/usePetsAdminQuery";
 import AdminLayout from "@/layouts/AdminLayout";
 import useFavoriteStore from "@/store/favStore";
-import PetsPageFallback from "@/components/Fallback/PetsPageFallback";
 
 const Pets = () => {
   const [isOpenFilterPanel, setIsOpenFilterPanel] = useState(false);
