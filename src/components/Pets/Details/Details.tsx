@@ -4,10 +4,12 @@ import EditInfoAndSubmit, {
 } from "@/components/Admin/Pets/Add/EditInfoAndSubmit";
 import BigPetCard from "@/components/Pets/Details/BigPetCard";
 import MainLayout from "@/layouts/MainLayout";
+import useFavoriteStore from "@/store/favStore";
 import { Pet } from "@/types/pets";
 import { useState } from "react";
 
 const Details = ({ isAdmin, data }: { isAdmin: boolean; data: Pet }) => {
+  const { favorites } = useFavoriteStore();
   const [petInfo, setPetInfo] = useState<info>({
     gender: data.gender as "male" | "female",
     type: data.type as "dog" | "cat" | "-",
@@ -19,13 +21,23 @@ const Details = ({ isAdmin, data }: { isAdmin: boolean; data: Pet }) => {
   });
 
   const [isFav, setIsFav] = useState(false);
+  const addToFavorites = useFavoriteStore((state) => state.addToFavorites);
+  const removeFromFavorites = useFavoriteStore(
+    (state) => state.removeFromFavorites
+  );
 
   const handleSubmit = () => {
     console.log(petInfo);
   };
 
-  const handleFavPressed = () => {
-    setIsFav(!isFav);
+  const handleFavPressed = (event: React.MouseEvent<HTMLButtonElement>) => {
+    event.preventDefault();
+    if (isFav) {
+      removeFromFavorites(data.id);
+    } else {
+      addToFavorites(data.id);
+    }
+    setIsFav((prev) => !prev);
   };
 
   return (
@@ -37,8 +49,10 @@ const Details = ({ isAdmin, data }: { isAdmin: boolean; data: Pet }) => {
           setValue={setPetInfo}
           onSubmit={handleSubmit}
           isAdmin={isAdmin}
-          isFav={isFav}
-          handleFavPressed={handleFavPressed}
+          isFav={favorites.find((fav) => fav === data.id) ? true : false}
+          handleFavPressed={(event: React.MouseEvent<HTMLButtonElement>) =>
+            handleFavPressed(event)
+          }
           id={data.id}
         />
         <img src={logo} alt="logo" className="hidden h-64 w-64 xl:block" />
