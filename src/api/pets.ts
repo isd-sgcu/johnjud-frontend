@@ -102,7 +102,6 @@ const deletePet = async (id: string) => {
   return response.data;
 };
 
-
 type PutPetRequest = Omit<
   Pet,
   | "id"
@@ -132,5 +131,13 @@ const updatePet = async (data: PutPetRequest, id: string): Promise<Pet> => {
   return response.data;
 };
 
-export { deletePet, getPet, getPets, getPetsAdmin, postPet, updatePet, updateVisibility };
+export {
+  deletePet,
+  getPet,
+  getPets,
+  getPetsAdmin,
+  postPet,
+  updatePet,
+  updateVisibility,
+};
 export type { PetsResponse, PutPetRequest, postPetRequest };
