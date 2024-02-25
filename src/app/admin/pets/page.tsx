@@ -13,9 +13,10 @@ import { useCallback, useState } from "react";
 import { Link } from "react-router-dom";
 
 import PetPageFallback from "@/components/Fallback/PetPageFallback";
-import { usePetsQuery } from "@/hooks/queries/usePetsQuery";
+import { usePetsAdminQuery } from "@/hooks/queries/usePetsAdminQuery";
 import AdminLayout from "@/layouts/AdminLayout";
 import useFavoriteStore from "@/store/favStore";
+
 const Pets = () => {
   const [isOpenFilterPanel, setIsOpenFilterPanel] = useState(false);
 
@@ -36,7 +37,7 @@ const Pets = () => {
     maxAge: 30,
   });
 
-  const { data, isLoading } = usePetsQuery(filters);
+  const { data, isLoading } = usePetsAdminQuery(filters);
   const { favorites } = useFavoriteStore();
 
   return (
