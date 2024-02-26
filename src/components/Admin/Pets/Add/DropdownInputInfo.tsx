@@ -79,6 +79,7 @@ const DropdownInputInfo = (props: DropdownInputInfoProps) => {
                 formatCreateLabel={(inputValue) =>
                   `สร้างตัวเลือกใหม่ "${inputValue}"`
                 }
+                defaultValue={currentOption}
               />
             ) : (
               <Select
@@ -109,6 +110,7 @@ const DropdownInputInfo = (props: DropdownInputInfoProps) => {
                 maxMenuHeight={200}
                 onMenuOpen={() => setIsMenuOpen(true)}
                 onMenuClose={() => setIsMenuOpen(false)}
+                defaultValue={currentOption}
               />
             )}
           </div>
