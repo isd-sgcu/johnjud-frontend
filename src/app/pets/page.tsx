@@ -3,7 +3,7 @@ import Container from "@/components/Container";
 import PetsPageFallback from "@/components/Fallback/PetsPageFallback";
 import Filter from "@/components/Filter";
 import { PetIcon } from "@/components/Filter/Icon";
-import NoPetFound from "@/components/NoPetFound"; 
+import NoPetFound from "@/components/NoPetFound";
 import Heading from "@/components/Pets/Heading";
 import PetSearch from "@/components/Search/PetSearch";
 import { usePetsQuery } from "@/hooks/queries/usePetsQuery";
@@ -78,7 +78,7 @@ const Pets = () => {
             ))}
           </div>
         ) : (
-          <NoPetFound /> 
+          <NoPetFound />
         )}
       </Container>
     </>

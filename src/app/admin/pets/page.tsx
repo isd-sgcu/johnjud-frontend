@@ -4,7 +4,7 @@ import Container from "@/components/Container";
 import PetsPageFallback from "@/components/Fallback/PetsPageFallback";
 import Filter from "@/components/Filter";
 import { PetIcon } from "@/components/Filter/Icon";
-import NoPetFound from "@/components/NoPetFound"; 
+import NoPetFound from "@/components/NoPetFound";
 import Heading from "@/components/Pets/Heading";
 import PetSearch from "@/components/Search/PetSearch";
 import { usePetsAdminQuery } from "@/hooks/queries/usePetsAdminQuery";
@@ -80,9 +80,9 @@ const Pets = () => {
       <Container>
         {isLoading ? (
           <PetsPageFallback />
-        ) : data?.pets && data.pets.length > 0 ? (
+        ) : data?.metadata.total || 0 > 0 ? (
           <div className="flex flex-wrap items-center justify-center gap-6 lg:gap-9">
-            {data.pets.map((pet: Pet) => (
+            {data?.pets?.map((pet: Pet) => (
               <PetCard
                 key={pet.id}
                 id={pet.id}
