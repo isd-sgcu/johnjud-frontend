@@ -3,7 +3,7 @@ import Container from "@/components/Container";
 import PetsPageFallback from "@/components/Fallback/PetsPageFallback";
 import Filter from "@/components/Filter";
 import { PetIcon } from "@/components/Filter/Icon";
-import NoPetFound from "@/components/NoPetFound"; // Make sure to import your NoPetFound component
+import NoPetFound from "@/components/NoPetFound"; 
 import Heading from "@/components/Pets/Heading";
 import PetSearch from "@/components/Search/PetSearch";
 import { usePetsQuery } from "@/hooks/queries/usePetsQuery";
@@ -58,7 +58,7 @@ const Pets = () => {
       <Container>
         {isLoading ? (
           <PetsPageFallback />
-        ) : data?.metadata?.total || 0 > 0 ? (
+        ) : data?.metadata.total || 0 > 0 ? (
           <div className="flex flex-wrap items-center justify-center gap-6 lg:gap-9">
             {data?.pets?.map((pet: Pet) => (
               <PetCard
@@ -78,7 +78,7 @@ const Pets = () => {
             ))}
           </div>
         ) : (
-          <NoPetFound /> // Render NoPetFound when there are no pets
+          <NoPetFound /> 
         )}
       </Container>
     </>
