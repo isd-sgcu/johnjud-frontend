@@ -1,5 +1,6 @@
 import MiniPetCard from "@/components/Card/MiniPetCard";
 import PetSuggestionListFallback from "@/components/Fallback/Main/PetSuggestionListFallback";
+import NoPetFound from "@/components/NoPetFound";
 import { Pet } from "@/types/pets";
 import React from "react";
 interface PetSuggestionListProps {
@@ -15,6 +16,9 @@ const PetSuggestionList: React.FC<PetSuggestionListProps> = ({
     return <PetSuggestionListFallback />;
   }
 
+  if (!data && !isLoading) {
+    return <NoPetFound />;
+  }
   return (
     <div className="flex flex-wrap justify-center gap-1.5 md:gap-8 md:gap-y-4">
       {data?.map((pet: Pet) => (

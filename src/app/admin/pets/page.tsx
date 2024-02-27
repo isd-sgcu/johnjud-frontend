@@ -1,21 +1,20 @@
 import Button from "@/components/Button";
 import PetCard from "@/components/Card/PetCard";
 import Container from "@/components/Container";
+import PetsPageFallback from "@/components/Fallback/PetsPageFallback";
 import Filter from "@/components/Filter";
 import { PetIcon } from "@/components/Filter/Icon";
+import NoPetFound from "@/components/NoPetFound"; // Ensure this is correctly imported
 import Heading from "@/components/Pets/Heading";
 import PetSearch from "@/components/Search/PetSearch";
-import { filterState } from "@/types/filter";
-import { Pet } from "@/types/pets";
-import { Icon } from "@iconify/react/dist/iconify.js";
-
-import { useCallback, useState } from "react";
-import { Link } from "react-router-dom";
-
-import PetsPageFallback from "@/components/Fallback/PetsPageFallback";
 import { usePetsAdminQuery } from "@/hooks/queries/usePetsAdminQuery";
 import AdminLayout from "@/layouts/AdminLayout";
 import useFavoriteStore from "@/store/favStore";
+import { filterState } from "@/types/filter";
+import { Pet } from "@/types/pets";
+import { Icon } from "@iconify/react/dist/iconify.js";
+import { useCallback, useState } from "react";
+import { Link } from "react-router-dom";
 
 const Pets = () => {
   const [isOpenFilterPanel, setIsOpenFilterPanel] = useState(false);
@@ -50,7 +49,6 @@ const Pets = () => {
       </Container>
       <Container>
         <Heading onSearch quantity={data?.metadata?.total} />
-        {/* dont forget to delete ? after metadata, if Boom read this it's mean that Tee forgot LOL*/}
       </Container>
       <Container className="flex flex-col items-center space-y-6">
         <div className="flex w-full flex-row gap-x-4">
@@ -82,9 +80,9 @@ const Pets = () => {
       <Container>
         {isLoading ? (
           <PetsPageFallback />
-        ) : (
+        ) : data?.pets && data.pets.length > 0 ? (
           <div className="flex flex-wrap items-center justify-center gap-6 lg:gap-9">
-            {data?.pets?.map((pet: Pet) => (
+            {data.pets.map((pet: Pet) => (
               <PetCard
                 key={pet.id}
                 id={pet.id}
@@ -101,6 +99,8 @@ const Pets = () => {
               />
             ))}
           </div>
+        ) : (
+          <NoPetFound />
         )}
       </Container>
     </>
@@ -108,5 +108,4 @@ const Pets = () => {
 };
 
 export default Pets;
-
 export const Layout = AdminLayout;
