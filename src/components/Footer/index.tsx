@@ -21,6 +21,7 @@ const Footer = () => {
           {/*Text*/}
           <div className="flex flex-col items-center justify-center space-y-4 self-stretch text-xs font-normal text-white md:w-96 lg:text-sm">
             <div className="flex w-full text-balance lg:self-auto">
+              ชมรมนิสิตสัตวแพทย์จุฬาฯเพื่อสวัสดิภาพสัตว์ <br />
               สโมสรนิสิตคณะสัตวแพทยศาสตร์ จุฬาลงกรณ์มหาวิทยาลัย ถนนอังรีดูนังต์
               แขวงปทุมวัน เขตปทุมวัน กรุงเทพ ฯ 10330
             </div>
