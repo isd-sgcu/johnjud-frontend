@@ -1,7 +1,8 @@
 import { filterState } from "@/types/filter";
+import { useState } from "react";
 import { tv } from "tailwind-variants";
 import FilterPanel from "./FilterPanel";
-import { NumberInput, ToggleInput } from "./Input";
+import { ToggleInput } from "./Input";
 interface FilterProps {
   isOpen: boolean;
   filters: filterState;
@@ -13,7 +14,7 @@ const filter = tv({
     base: "absolute right-0 mt-4 space-y-4 rounded-2xl bg-white p-4 shadow z-40",
     headingContainer: "space-y-1",
     heading: "text-accent-red font-semibold",
-    headingLine: "bg-accent-red h-0.5 w-60 rounded-full",
+    headingLine: "bg-accent-red h-0.5 w-72 rounded-full",
     filterContainer: "space-y-3 max-h-72 overflow-y-auto",
   },
   variants: {
@@ -38,11 +39,33 @@ const Filter = ({ isOpen, filters, setFilters }: FilterProps) => {
       setFilters(updatedFilters);
     };
 
-  const handleAgeChange = (key: "minAge" | "maxAge", value: number) => {
+  const [ageState, setAgeState] = useState<"kid" | "adult" | "old" | "overall">(
+    "overall"
+  );
+
+  const handleAgeChange = (value: "kid" | "adult" | "old" | "overall") => {
     const updatedFilters = {
       ...filters,
-      [key]: value,
     };
+
+    if (value === ageState) {
+      setAgeState("overall");
+      updatedFilters.minAge = 0;
+      updatedFilters.maxAge = 30;
+    } else {
+      setAgeState(value);
+      if (value === "kid") {
+        updatedFilters.minAge = 0;
+        updatedFilters.maxAge = 1;
+      } else if (value === "adult") {
+        updatedFilters.minAge = 1;
+        updatedFilters.maxAge = 6;
+      } else if (value === "old") {
+        updatedFilters.minAge = 7;
+        updatedFilters.maxAge = 30;
+      }
+    }
+
     setFilters(updatedFilters);
   };
 
@@ -111,17 +134,35 @@ const Filter = ({ isOpen, filters, setFilters }: FilterProps) => {
         </FilterPanel>
 
         <FilterPanel heading="อายุ">
-          <NumberInput
+          {/* <NumberInput
             id="age-min"
             text="ต่ำสุด"
             value={filters.minAge}
-            setValue={(value) => handleAgeChange("minAge", value)}
+            setValue={(value) => handleAgeChange(""minAge", value")}
           />
           <NumberInput
             id="age-max"
             text="สูงสุด"
             value={filters.maxAge}
             setValue={(value) => handleAgeChange("maxAge", value)}
+          /> */}
+          <ToggleInput
+            id="age-kid"
+            text="เด็ก"
+            checked={ageState === "kid"}
+            onChange={() => handleAgeChange("kid")}
+          />
+          <ToggleInput
+            id="age-adult"
+            text="โต"
+            checked={ageState === "adult"}
+            onChange={() => handleAgeChange("adult")}
+          />
+          <ToggleInput
+            id="age-old"
+            text="สูงวัย"
+            checked={ageState === "old"}
+            onChange={() => handleAgeChange("old")}
           />
         </FilterPanel>
       </div>
