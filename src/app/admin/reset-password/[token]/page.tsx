@@ -1,31 +1,26 @@
 import Button from "@/components/Button";
 import Container from "@/components/Container";
 import useResetPassword from "@/hooks/auth/useResetPassword";
+import { usePageParams } from "@/hooks/usePageParams";
 import MainLayout from "@/layouts/MainLayout";
 import useAuthStore from "@/store/authStore";
 import { Icon } from "@iconify/react/dist/iconify.js";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useForm } from "react-hook-form";
-import { Link, useNavigate } from "react-router-dom";
+import toast from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 
 type formValue = {
   password: string;
 };
 
 const resetPassword = () => {
+  const param = usePageParams(["token"]);
+
   const navigate = useNavigate();
   const { isLoggedIn } = useAuthStore();
   const { register, handleSubmit } = useForm<formValue>();
   const { mutate } = useResetPassword();
-
-  const [resetPasswordToken, setResetPasswordToken] = useState<string | null>(
-    null
-  );
-
-  useEffect(() => {
-    const token = window.location.pathname.split("/").pop() || null;
-    setResetPasswordToken(token);
-  }, []);
 
   useEffect(() => {
     if (isLoggedIn) {
@@ -34,8 +29,12 @@ const resetPassword = () => {
   }, [isLoggedIn, navigate]);
 
   const onSubmit = (data: formValue) => {
-    if (resetPasswordToken) {
-      mutate({ ...data, token: resetPasswordToken });
+    if (data.password.length < 6) {
+      toast.error("รหัสผ่านต้องมีความยาวอย่างน้อย 6 ตัวอักษร");
+      return;
+    }
+    if (param.token) {
+      mutate({ password: data.password, token: param.token });
     }
   };
 
@@ -68,15 +67,13 @@ const resetPassword = () => {
               className="w-full bg-accent-light-gray outline-none placeholder:font-semibold placeholder:text-accent-gray"
             />
           </div>
-          <Link to="/admin">
-            <Button
-              type="submit"
-              text={"เปลี่ยนรหัสผ่าน"}
-              variant={"accent-red"}
-              rounded="2xl"
-              className="w-full text-xl font-semibold"
-            />
-          </Link>
+          <Button
+            type="submit"
+            text={"เปลี่ยนรหัสผ่าน"}
+            variant={"accent-red"}
+            rounded="2xl"
+            className="w-full text-xl font-semibold"
+          />
         </form>
       </div>
     </Container>
