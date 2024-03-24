@@ -4,6 +4,7 @@ import {
   ResetPasswordResponse,
 } from "@/api/auth/password/resetPassword";
 import { useMutation, UseMutationOptions } from "@tanstack/react-query";
+import toast from "react-hot-toast";
 
 const useResetPassword = () => {
   const mutationOptions: UseMutationOptions<
@@ -14,10 +15,10 @@ const useResetPassword = () => {
     mutationFn: (credentials: ResetPasswordCredentials) =>
       resetPassword(credentials.password, credentials.token),
     onSuccess: () => {
-      console.log("reset password successful");
+      toast.success("Reset Password Successfully");
     },
-    onError: (error: Error) => {
-      console.log(error);
+    onError: () => {
+      toast.error("มีบางอย่างผิดพลาด");
     },
   };
 
