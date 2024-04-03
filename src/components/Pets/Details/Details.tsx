@@ -14,6 +14,7 @@ import { useCreateImage } from "@/hooks/mutation/usePostImage";
 import { useUpdatePet } from "@/hooks/mutation/useUpdatePet";
 import { usePageParams } from "@/hooks/usePageParams";
 import MainLayout from "@/layouts/MainLayout";
+import useFavoriteStore from "@/store/favStore";
 import { Pet } from "@/types/pets";
 import { Icon } from "@iconify/react/dist/iconify.js";
 import dayjs from "dayjs";
@@ -29,9 +30,12 @@ const Details = (props: DetailsProps) => {
   const postImageMutation = useCreateImage();
   const updatePetMutaion = useUpdatePet();
   const deleteImageMutation = useDeleteImage();
+  const { favorites } = useFavoriteStore();
 
   const { id } = usePageParams(["id"]);
-  const [isFav, setIsFav] = useState(false);
+  const [isFav, setIsFav] = useState(
+    favorites.find((fav) => fav === id) ? true : false
+  );
   const [name, setName] = useState("");
   const [text, setText] = useState("");
   const [origin, setOrigin] = useState("fromClub");
@@ -105,8 +109,18 @@ const Details = (props: DetailsProps) => {
     Promise.all(imgPromises).then((files) => setImages(files));
   }
 
+  const addToFavorites = useFavoriteStore((state) => state.addToFavorites);
+  const removeFromFavorites = useFavoriteStore(
+    (state) => state.removeFromFavorites
+  );
+
   function handleFavPressed() {
-    setIsFav(!isFav);
+    if (isFav) {
+      removeFromFavorites(id);
+    } else {
+      addToFavorites(id);
+    }
+    setIsFav((prev) => !prev);
   }
 
   async function handleSubmit() {
