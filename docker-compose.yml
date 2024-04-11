@@ -6,3 +6,5 @@ services:
     ports:
       - 80:5173
     container_name: johnjud-frontend
+    environment:
+      - VITE_API_URL=https://preview-api.johnjud.isd.sgcu.in.th/v1
