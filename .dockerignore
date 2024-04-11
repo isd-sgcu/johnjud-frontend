@@ -5,3 +5,4 @@ Dockerfile
 README.md
 .prettierrc
 docker-compose.yml
+.env
