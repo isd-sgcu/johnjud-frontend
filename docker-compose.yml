@@ -4,5 +4,5 @@ services:
     build:
       context: .
     ports:
-      - 80:4173
+      - 80:5173
     container_name: johnjud-frontend
