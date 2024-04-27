@@ -4,17 +4,24 @@ interface ToggleButtonProps {
   id: string;
   text: string;
   checked: boolean;
+  textSize?: string;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-const ToggleInput = ({ id, text, checked, onChange }: ToggleButtonProps) => {
+const ToggleInput = ({
+  id,
+  text,
+  checked,
+  textSize = "text-md",
+  onChange,
+}: ToggleButtonProps) => {
   return (
     <label
       htmlFor={id}
-      className="flex w-28 cursor-pointer flex-row justify-between rounded-full bg-accent-red bg-opacity-80 px-4 py-2 text-white"
+      className="flex w-28 cursor-pointer flex-row items-center justify-between space-x-1 text-nowrap rounded-full bg-accent-red bg-opacity-80 px-4 py-2 text-white"
     >
-      <span>{text}</span>
-      <div className="flex h-6 w-6 flex-col items-center justify-center rounded-full bg-white">
+      <span className={textSize}>{text}</span>
+      <div className="flex h-6 w-6 flex-shrink-0 flex-col items-center justify-center rounded-full bg-white">
         <input
           type="checkbox"
           id={id}

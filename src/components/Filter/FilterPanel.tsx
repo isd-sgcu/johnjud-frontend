@@ -15,8 +15,10 @@ const FilterPanel = ({ heading, children }: FilterPanelProps) => {
     <>
       <FilterButton text={heading} isOpen={isOpen} onClick={toggleOpen} />
       {isOpen && (
-        <div className="flex flex-wrap items-center justify-center gap-2">
-          {children}
+        <div className="w-full max-h-32 overflow-y-auto scroll-smooth">
+          <div className="flex flex-wrap items-center justify-center gap-2">
+            {children}
+          </div>
         </div>
       )}
     </>
