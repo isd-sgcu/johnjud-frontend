@@ -38,11 +38,10 @@ const Filter = ({ isOpen, filters, setFilters }: FilterProps) => {
       };
       setFilters(updatedFilters);
     };
-  
+
   const [ageState, setAgeState] = useState<"kid" | "adult" | "old" | "overall">(
     "overall"
   );
-
 
   const handleAgeChange = (value: "kid" | "adult" | "old" | "overall") => {
     const updatedFilters = {

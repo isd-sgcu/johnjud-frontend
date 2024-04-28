@@ -58,7 +58,7 @@ const convertFiltertoParams = (filters?: filterState) => {
     "orangeSpots",
     "dirtySpots",
   ];
-  
+
   const selectedColors = colorKeys.filter((color) => filters[color]);
   if (selectedColors.length > 0 && selectedColors.length < colorKeys.length) {
     params["color"] = selectedColors.join(",");

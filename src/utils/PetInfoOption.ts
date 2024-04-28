@@ -81,8 +81,8 @@ const colorOption: OptionType[] = [
   },
   {
     label: "แต้มเปรอะ",
-    value: "dirtySpots"
-  }
+    value: "dirtySpots",
+  },
 ];
 
 export { colorOption, genderOption, typeOption };
