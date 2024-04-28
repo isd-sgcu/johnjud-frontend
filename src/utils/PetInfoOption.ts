@@ -39,6 +39,50 @@ const colorOption: OptionType[] = [
     label: "บลอนด์",
     value: "blonde",
   },
+  {
+    label: "สลิด",
+    value: "tabby",
+  },
+  {
+    label: "ขาวดำ",
+    value: "whiteBlack",
+  },
+  {
+    label: "ขาวส้ม",
+    value: "whiteOrange",
+  },
+  {
+    label: "เปรอะ",
+    value: "tortoiseShell",
+  },
+  {
+    label: "สามสี",
+    value: "calico",
+  },
+  {
+    label: "เทา",
+    value: "gray",
+  },
+  {
+    label: "ครีม",
+    value: "cream",
+  },
+  {
+    label: "แต้มน้ำตาล",
+    value: "brownSpots",
+  },
+  {
+    label: "แต้มเทา",
+    value: "greySpots",
+  },
+  {
+    label: "แต้มส้ม",
+    value: "orangeSpots",
+  },
+  {
+    label: "แต้มเปรอะ",
+    value: "dirtySpots"
+  }
 ];
 
 export { colorOption, genderOption, typeOption };
