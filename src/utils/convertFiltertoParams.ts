@@ -46,7 +46,19 @@ const convertFiltertoParams = (filters?: filterState) => {
     "black",
     "brown",
     "blonde",
+    "tabby",
+    "whiteBlack",
+    "whiteOrange",
+    "tortoiseShell",
+    "calico",
+    "gray",
+    "cream",
+    "brownSpots",
+    "greySpots",
+    "orangeSpots",
+    "dirtySpots",
   ];
+
   const selectedColors = colorKeys.filter((color) => filters[color]);
   if (selectedColors.length > 0 && selectedColors.length < colorKeys.length) {
     params["color"] = selectedColors.join(",");
@@ -66,6 +78,7 @@ const convertFiltertoParams = (filters?: filterState) => {
         `${encodeURIComponent(key)}=${encodeURIComponent(value)}`
     )
     .join("&");
+
   return queryString;
 };
 
