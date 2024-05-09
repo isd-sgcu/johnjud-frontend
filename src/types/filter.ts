@@ -8,6 +8,17 @@ interface filterState {
   black: boolean;
   brown: boolean;
   blonde: boolean;
+  tabby: boolean;
+  whiteBlack: boolean;
+  whiteOrange: boolean;
+  tortoiseShell: boolean;
+  calico: boolean;
+  gray: boolean;
+  cream: boolean;
+  brownSpots: boolean;
+  greySpots: boolean;
+  orangeSpots: boolean;
+  dirtySpots: boolean;
   minAge: number;
   maxAge: number;
 }
