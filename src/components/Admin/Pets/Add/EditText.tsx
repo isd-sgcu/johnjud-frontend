@@ -43,7 +43,7 @@ const EditText = (props: EditTextProps) => {
         ref={ref}
         disabled={!enableEdit}
         placeholder={
-          !enableEdit ? "ฝากรับเลี้ยงผ๋มด้วยงับ" : "ใส่ข้อความตรงนี้..."
+          !props.isAdmin ? "ฝากรับเลี้ยงผ๋มด้วยงับ" : "ใส่ข้อความตรงนี้..."
         }
       />
       {props.isAdmin && (
