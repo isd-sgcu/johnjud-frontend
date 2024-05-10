@@ -32,7 +32,7 @@ const EditText = (props: EditTextProps) => {
   }, [enableEdit]);
 
   return (
-    <div className={`relative flex min-h-60 w-full md:h-full md:min-h-0`}>
+    <div className="relative flex min-h-60 w-full md:h-full md:min-h-0">
       <TextareaAutosize
         value={props.value}
         className={
@@ -42,7 +42,9 @@ const EditText = (props: EditTextProps) => {
         onChange={handleOnChange}
         ref={ref}
         disabled={!enableEdit}
-        placeholder="ใส่ข้อความตรงนี้..."
+        placeholder={
+          !enableEdit ? "ฝากรับเลี้ยงผ๋มด้วยงับ" : "ใส่ข้อความตรงนี้..."
+        }
       />
       {props.isAdmin && (
         <div ref={saveRef} tabIndex={0}>

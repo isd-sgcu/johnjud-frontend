@@ -184,29 +184,37 @@ const Details = (props: DetailsProps) => {
         </div>
 
         {/* thumbnail */}
-        <div className="mx-auto flex w-full flex-col items-center justify-between gap-8 md:h-80 md:flex-row md:items-start">
-          <div className="relative w-80">
-            {!props.isAdmin ? (
-              <PetThumbnails petImages={imgs} origin={origin} />
-            ) : (
-              <AddThumbnail
-                valueOrigin={origin}
-                setOrigin={setOrigin}
-                valueThumbnail={thumbnail}
-                setThumbnail={setThumbnail}
-              />
-            )}
+        <div className="flex flex-col gap-8 md:grid md:grid-cols-5 md:gap-16 lg:grid-cols-7">
+          <div className="col-span-2">
+            <div className="relative aspect-square w-full">
+              {!props.isAdmin ? (
+                <PetThumbnails petImages={imgs} origin={origin} />
+              ) : (
+                <AddThumbnail
+                  valueOrigin={origin}
+                  setOrigin={setOrigin}
+                  valueThumbnail={thumbnail}
+                  setThumbnail={setThumbnail}
+                />
+              )}
+            </div>
           </div>
 
-          <div className="flex w-full flex-col items-start gap-8 overflow-auto md:h-full md:flex-1">
-            <div className="hidden md:block">
-              <EditName
-                value={name}
-                setValue={setName}
+          <div className="md:col-span-3 lg:col-span-5">
+            <div className="flex w-full flex-col items-start gap-8 overflow-auto md:h-full md:flex-1">
+              <div className="hidden md:block">
+                <EditName
+                  value={name}
+                  setValue={setName}
+                  isAdmin={props.isAdmin}
+                />
+              </div>
+              <EditText
+                value={text}
+                setValue={setText}
                 isAdmin={props.isAdmin}
               />
             </div>
-            <EditText value={text} setValue={setText} isAdmin={props.isAdmin} />
           </div>
         </div>
         {props.isAdmin && (

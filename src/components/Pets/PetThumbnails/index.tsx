@@ -10,12 +10,12 @@ interface PetThumbnailsProps {
 
 const PetThumbnails = ({ petImages, origin }: PetThumbnailsProps) => {
   return (
-    <div className="relative aspect-square min-w-40 rounded-[20px] sm:min-w-80">
+    <div className="relatitve rounded-[20px]">
       <div className="absolute -top-1 right-4 z-10">
         {/* Recieved where they're from */}
         <PetBadge value={origin} setValue={() => {}} isEditabled={false} />
       </div>
-      <div className="z-80 relative max-h-80 max-w-80 rounded-2xl">
+      <div className="z-80 relative aspect-square w-full rounded-2xl">
         <Carousel
           renderArrowPrev={(clickHandler: () => void) => {
             return (
@@ -58,7 +58,7 @@ const PetThumbnails = ({ petImages, origin }: PetThumbnailsProps) => {
               <div key={index}>
                 <img
                   src={item}
-                  className="z-0 aspect-square max-w-80 rounded-2xl object-cover object-center"
+                  className="z-0 aspect-square rounded-2xl object-cover object-center"
                 />
               </div>
             ))}
