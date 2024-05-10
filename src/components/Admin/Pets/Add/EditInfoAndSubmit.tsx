@@ -10,7 +10,7 @@ import ToggleInputInfo from "./ToggleInputInfo";
 
 export type info = {
   type: "dog" | "cat" | "-";
-  gender: "male" | "female" | "-";
+  gender: "male" | "female" | "-" | "";
   color: string;
   age: string;
   nature: string;
@@ -138,7 +138,11 @@ const EditInfoAndSubmit = (props: EditInfoAndSubmitProps) => {
             <DropdownInputInfo
               text={"เพศ:"}
               icon={"ph:gender-intersex"}
-              value={showInfo.gender}
+              value={
+                !enableEdit && showInfo.gender === ""
+                  ? "ไม่ระบุเพศ"
+                  : showInfo.gender
+              }
               setValue={(newOption) =>
                 handleOnChangeDropDown(newOption, "gender")
               }
