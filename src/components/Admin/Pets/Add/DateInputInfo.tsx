@@ -1,5 +1,6 @@
 import { Icon } from "@iconify/react/dist/iconify.js";
 import dayjs from "dayjs";
+import "dayjs/locale/th";
 import { ChangeEvent, useMemo } from "react";
 
 interface DateInputInfoProps {
@@ -19,7 +20,9 @@ const DateInputInfo = (props: DateInputInfoProps) => {
   };
 
   const birthdate = useMemo(() => {
-    if (props.value != "-") return dayjs(props.value).format("MMMM DD, YYYY");
+    dayjs.locale("th");
+
+    if (props.value != "-") return dayjs(props.value).format("DD MMMM YYYY");
     return "-";
   }, [props.value]);
 
