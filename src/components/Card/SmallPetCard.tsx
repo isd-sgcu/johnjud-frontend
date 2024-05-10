@@ -21,8 +21,10 @@ const SmallPetCard = ({
   birthdate,
   status,
 }: SmallPetCardProps) => {
-  const genderAns = useMemo(() => {
-    return gender === "male" ? "ผู้" : "เมีย";
+  const genderInfo = useMemo(() => {
+    if (gender === "male") return "เพศผู้";
+    if (gender === "female") return "เพศเมีย";
+    return "ไม่ระบุเพศ";
   }, [gender]);
 
   const linkTo = useMemo(() => {
@@ -63,7 +65,7 @@ const SmallPetCard = ({
                     />
                   </div>
                   <div className="text-xs font-normal  text-accent-gray">
-                    ตัว{genderAns}
+                    {genderInfo}
                   </div>
                 </div>
                 <div className="flex flex-row items-center justify-start gap-2">

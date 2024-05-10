@@ -39,7 +39,7 @@ const Faq = () => {
             <input
               type="text"
               placeholder="ค้นหาคำถาม"
-              className="ml-3 w-full rounded-md bg-transparent text-black"
+              className="ml-3 w-full rounded-md bg-transparent text-black outline-none"
             />{" "}
           </div>
         </div>
