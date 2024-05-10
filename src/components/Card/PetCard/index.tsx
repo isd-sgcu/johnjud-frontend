@@ -72,7 +72,9 @@ const PetCard = ({
   }, [birthDate]);
 
   const petGender = useMemo(() => {
-    return gender === "female" ? "ตัวเมีย" : "ตัวผู้";
+    if (gender === "male") return "ตัวผู้";
+    if (gender === "female") return "ตัวเมีย";
+    return null;
   }, [gender]);
 
   const petSterile = useMemo(() => {
@@ -103,6 +105,13 @@ const PetCard = ({
     event.preventDefault();
     navigate(`/pets/${id}/adopt`);
   };
+
+  const petDetail = useMemo(() => {
+    if (petGender && age) {
+      return `${petGender}, ${age}`;
+    }
+    return age;
+  }, [petGender, age]);
 
   return (
     <>
@@ -141,10 +150,7 @@ const PetCard = ({
           </div>
           <div className="flex w-full flex-row items-end justify-between gap-2">
             <div className="w-3/5 space-y-1">
-              <PetDetail
-                icon={"ph:paw-print"}
-                description={`${petGender}, ${age}`}
-              />
+              <PetDetail icon={"ph:paw-print"} description={petDetail} />
               <PetDetail icon={"ph:music-notes"} description={habit} />
               <PetDetail icon={"ph:medal"} description={petSterile} />
             </div>

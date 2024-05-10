@@ -10,7 +10,7 @@ import ToggleInputInfo from "./ToggleInputInfo";
 
 export type info = {
   type: "dog" | "cat" | "-";
-  gender: "male" | "female" | "-";
+  gender: "male" | "female" | "-" | "";
   color: string;
   age: string;
   nature: string;
@@ -138,7 +138,11 @@ const EditInfoAndSubmit = (props: EditInfoAndSubmitProps) => {
             <DropdownInputInfo
               text={"เพศ:"}
               icon={"ph:gender-intersex"}
-              value={showInfo.gender}
+              value={
+                !enableEdit && showInfo.gender === ""
+                  ? "ไม่ระบุเพศ"
+                  : showInfo.gender
+              }
               setValue={(newOption) =>
                 handleOnChangeDropDown(newOption, "gender")
               }
@@ -198,7 +202,7 @@ const EditInfoAndSubmit = (props: EditInfoAndSubmitProps) => {
                 onClick={() => handleOnClickButton("vaccine")}
                 enableEdit={enableEdit}
                 icon={"ph:eyedropper"}
-                text={"ฉีดวัคซีนแล้ว"}
+                text={showInfo["vaccine"] ? "ฉีดวัคซีนแล้ว" : "ยังไม่ฉีดวัคซีน"}
               />
 
               {/* Sterile */}
@@ -207,7 +211,7 @@ const EditInfoAndSubmit = (props: EditInfoAndSubmitProps) => {
                 onClick={() => handleOnClickButton("sterile")}
                 enableEdit={enableEdit}
                 icon={"ph:medal"}
-                text={"ทำหมันแล้ว"}
+                text={showInfo["sterile"] ? "ทำหมันแล้ว" : "ยังไม่ทำหมัน"}
               />
             </div>
 

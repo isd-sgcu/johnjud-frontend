@@ -1,5 +1,5 @@
 import dog from "@/assets/dog.webp";
-import { UtcStringToYear } from "@/utils/dateConverter";
+import dayjs from "dayjs";
 import { useMemo } from "react";
 import { Link } from "react-router-dom";
 
@@ -20,16 +20,24 @@ const MiniPetCard = ({
   gender,
   birthdate,
 }: MiniPetCardProps) => {
-  const genderAns = useMemo(() => {
-    return gender === "male" ? "ผู้" : "เมีย";
+  const genderInfo = useMemo(() => {
+    if (gender === "male") return "เพศผู้";
+    if (gender === "female") return "เพศเมีย";
+    return null;
   }, [gender]);
 
   const linkTo = useMemo(() => {
     return "/pets/" + id;
   }, [id]);
 
-  const years = useMemo(() => {
-    return UtcStringToYear({ utcString: birthdate });
+  const age = useMemo(() => {
+    const year = dayjs().diff(dayjs(birthdate), "year");
+    const month = dayjs().diff(dayjs(birthdate), "month");
+    const day = dayjs().diff(dayjs(birthdate), "day");
+
+    if (year > 0) return year + " ขวบ";
+    if (month > 0) return month + " เดือน";
+    return day + " วัน";
   }, [birthdate]);
 
   return (
@@ -57,11 +65,13 @@ const MiniPetCard = ({
             </div>
           </div>
           <div className="space-x-1.5">
-            <span className="rounded-xl bg-accent-blue-variant px-2 py-0.5 text-sm font-semibold text-accent-blue">
-              เพศ{genderAns}
-            </span>
+            {genderInfo && (
+              <span className="rounded-xl bg-accent-blue-variant px-2 py-0.5 text-sm font-semibold text-accent-blue">
+                {genderInfo}
+              </span>
+            )}
             <span className="rounded-xl bg-accent-light-gray px-2 py-0.5 text-sm font-semibold text-black">
-              {years} ขวบ
+              {age}
             </span>
           </div>
         </div>
