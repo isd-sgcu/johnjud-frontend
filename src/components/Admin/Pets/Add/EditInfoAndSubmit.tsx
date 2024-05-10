@@ -202,7 +202,7 @@ const EditInfoAndSubmit = (props: EditInfoAndSubmitProps) => {
                 onClick={() => handleOnClickButton("vaccine")}
                 enableEdit={enableEdit}
                 icon={"ph:eyedropper"}
-                text={"ฉีดวัคซีนแล้ว"}
+                text={showInfo["vaccine"] ? "ฉีดวัคซีนแล้ว" : "ยังไม่ฉีดวัคซีน"}
               />
 
               {/* Sterile */}
@@ -211,7 +211,7 @@ const EditInfoAndSubmit = (props: EditInfoAndSubmitProps) => {
                 onClick={() => handleOnClickButton("sterile")}
                 enableEdit={enableEdit}
                 icon={"ph:medal"}
-                text={"ทำหมันแล้ว"}
+                text={showInfo["sterile"] ? "ทำหมันแล้ว" : "ยังไม่ทำหมัน"}
               />
             </div>
 
