@@ -20,8 +20,10 @@ const MiniPetCard = ({
   gender,
   birthdate,
 }: MiniPetCardProps) => {
-  const genderAns = useMemo(() => {
-    return gender === "male" ? "ผู้" : "เมีย";
+  const genderInfo = useMemo(() => {
+    if (gender === "male") return "เพศผู้";
+    if (gender === "female") return "เพศเมีย";
+    return null;
   }, [gender]);
 
   const linkTo = useMemo(() => {
@@ -63,9 +65,11 @@ const MiniPetCard = ({
             </div>
           </div>
           <div className="space-x-1.5">
-            <span className="rounded-xl bg-accent-blue-variant px-2 py-0.5 text-sm font-semibold text-accent-blue">
-              เพศ{genderAns}
-            </span>
+            {genderInfo && (
+              <span className="rounded-xl bg-accent-blue-variant px-2 py-0.5 text-sm font-semibold text-accent-blue">
+                {genderInfo}
+              </span>
+            )}
             <span className="rounded-xl bg-accent-light-gray px-2 py-0.5 text-sm font-semibold text-black">
               {age}
             </span>
