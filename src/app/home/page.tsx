@@ -43,6 +43,8 @@ const MainPage = () => {
     maxAge: 30,
   });
   const { data, isLoading } = usePetsQuery(filters);
+  console.log(data);
+
   return (
     <>
       <Container className="grid grid-cols-1 items-center md:grid-cols-2 md:gap-9 lg:grid-cols-3">
@@ -53,7 +55,7 @@ const MainPage = () => {
         </div>
         <div className="flex w-full flex-col items-center space-y-6 md:items-start lg:col-span-2">
           <div className="hidden md:flex">
-            <Heading onSearch quantity={data?.metadata.total} />
+            <Heading onSearch quantity={data?.metadata?.total} />
           </div>
           <Search variant="green" filter={filters} setFilters={setFilters} />
           <Filter filters={filters} setFilters={setFilters} />
@@ -63,7 +65,7 @@ const MainPage = () => {
         <Divider variant="primary" />
       </Container>
       <Container className="md:hidden">
-        <Heading onSearch quantity={data?.metadata.total} />
+        <Heading onSearch quantity={data?.metadata?.total} />
       </Container>
       <Container className="space-y-8">
         <div className="grid grid-cols-1 gap-8 lg:grid-cols-3">
