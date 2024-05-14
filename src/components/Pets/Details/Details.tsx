@@ -132,7 +132,7 @@ const Details = (props: DetailsProps) => {
     );
 
     try {
-      await Promise.all(deletedImages);
+      deletedImages && (await Promise.all(deletedImages));
     } catch (err) {
       return;
     }
