@@ -97,21 +97,21 @@ const TermsAndConditions = () => {
           </p>
         ) : (
           <ul className="text-primary">
-            <li className="flex justify-between">
+            <li className="grid grid-cols-4">
               ชื่อ:
-              <span className="flex-1 px-2 text-left text-accent-gray">
+              <span className="flex-1 px-2 text-left col-span-3 text-accent-gray">
                 {pet?.adopt_by || "-"}
               </span>
             </li>
-            <li className="flex justify-between">
+            <li className="grid grid-cols-4">
               เบอร์:
-              <span className="flex-1 px-2 text-left text-accent-gray">
+              <span className="flex-1 px-2 text-left col-span-3 text-accent-gray">
                 {pet?.adopt_by || "-"}
               </span>
             </li>
-            <li className="flex justify-between">
+            <li className="grid grid-cols-4">
               ไอดีไลน์:
-              <span className="flex-1 px-2 text-left text-accent-gray">
+              <span className="flex-1 px-2 text-left col-span-3 text-accent-gray">
                 {pet?.adopt_by || "-"}
               </span>
             </li>
