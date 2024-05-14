@@ -132,7 +132,7 @@ const EditInfoAndSubmit = (props: EditInfoAndSubmitProps) => {
           )}
         </div>
 
-        <div className="mt-4 flex flex-col lg:grid lg:grid-cols-2 lg:divide-x-2">
+        <div className="mt-4 flex flex-col lg:grid lg:grid-cols-3 lg:divide-x-2">
           <div className="flex flex-col space-y-3 lg:space-y-4 lg:pr-8">
             {/* Gender */}
             <DropdownInputInfo
@@ -193,6 +193,35 @@ const EditInfoAndSubmit = (props: EditInfoAndSubmitProps) => {
               icon={"ph:music-notes"}
             />
           </div>
+
+          <section className="p-4">
+            <span className="text-xl font-bold text-primary">
+              ติดต่อเจ้าของ
+            </span>
+            <ul className="text-primary">
+              <li className="grid grid-cols-4">
+                <span>ชื่อ:</span>
+
+                <span className="flex-1 px-2 text-left font-semibold col-span-3 text-black">
+                  {showInfo?.nature || "-"}
+                </span>
+              </li>
+              <li className="grid grid-cols-4">
+                <span>เบอร์:</span>
+
+                <span className="flex-1 px-2 text-left font-semibold col-span-3 text-black">
+                  {showInfo?.nature || "-"}
+                </span>
+              </li>
+              <li className="grid grid-cols-4">
+                <span>ไอดีไลน์:</span>
+
+                <span className="flex-1 px-2 text-left font-semibold col-span-3 text-black">
+                  {showInfo?.nature || "-"}
+                </span>
+              </li>
+            </ul>
+          </section>
 
           <div className="mt-3 flex flex-col lg:justify-between lg:px-[10%]">
             <div className="flex flex-row flex-wrap justify-center gap-4 lg:flex-col">
