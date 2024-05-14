@@ -50,6 +50,9 @@ const Details = (props: DetailsProps) => {
     nature: "-",
     vaccine: false,
     sterile: false,
+    address: "-",
+    adopt_by: "-",
+    contact: "-"
   });
 
   const convertImgToFile = async (imgFilePath: string) => {
@@ -91,6 +94,9 @@ const Details = (props: DetailsProps) => {
       nature: props.data.habit,
       vaccine: props.data.is_vaccinated,
       sterile: props.data.is_sterile,
+      adopt_by: props.data.adopt_by,
+      contact: props.data.contact,
+      address: props.data.address,
     });
   }, [props.data, id]);
 

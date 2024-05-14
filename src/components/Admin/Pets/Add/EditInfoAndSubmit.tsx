@@ -16,6 +16,9 @@ export type info = {
   nature: string;
   vaccine: boolean;
   sterile: boolean;
+  address: string;
+  contact: string;
+  adopt_by: string;
 };
 
 interface EditInfoAndSubmitProps {
@@ -198,28 +201,27 @@ const EditInfoAndSubmit = (props: EditInfoAndSubmitProps) => {
             <span className="text-xl font-bold text-primary">
               ติดต่อเจ้าของ
             </span>
-            <ul className="text-primary">
-              <li className="grid grid-cols-4">
-                <span>ชื่อ:</span>
+            <ul className="flex flex-col gap-2">
+              <TextInputInfo
+                text="ชื่อ:"
+                value={showInfo.adopt_by}
+                enableEdit={enableEdit}
+                onChange={(event) => handleOnChangeTextArea(event, "adopt_by")}
+              />
 
-                <span className="flex-1 px-2 text-left font-semibold col-span-3 text-black">
-                  {showInfo?.nature || "-"}
-                </span>
-              </li>
-              <li className="grid grid-cols-4">
-                <span>เบอร์:</span>
+              <TextInputInfo
+                text="เบอร์:"
+                value={showInfo.contact}
+                enableEdit={enableEdit}
+                onChange={(event) => handleOnChangeTextArea(event, "contact")}
+              />
 
-                <span className="flex-1 px-2 text-left font-semibold col-span-3 text-black">
-                  {showInfo?.nature || "-"}
-                </span>
-              </li>
-              <li className="grid grid-cols-4">
-                <span>ไอดีไลน์:</span>
-
-                <span className="flex-1 px-2 text-left font-semibold col-span-3 text-black">
-                  {showInfo?.nature || "-"}
-                </span>
-              </li>
+              <TextInputInfo
+                text="ไอดีไลน์:"
+                value={showInfo.address}
+                enableEdit={enableEdit}
+                onChange={(event) => handleOnChangeTextArea(event, "address")}
+              />
             </ul>
           </section>
 
