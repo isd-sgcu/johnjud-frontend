@@ -14,7 +14,7 @@ const useSignOut = () => {
       navigate("/admin");
     },
     onError: (error: Error) => {
-      console.log(error);
+      // console.log(error);
       clearAuth();
       navigate("/admin");
     },

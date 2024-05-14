@@ -1,10 +1,13 @@
+import { PetContext } from "@/app/pets/[id]/adopt/page";
 import Button from "@/components/Button";
 import Modal from "@/components/Modal";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 
 const TermsAndConditions = () => {
   const [open, setOpen] = useState(false);
+  const pet = useContext(PetContext);
+  // console.log(pet)
 
   return (
     <>
@@ -61,24 +64,59 @@ const TermsAndConditions = () => {
       </div>
 
       <Modal
-        title="กรุณาติดต่อชมรม"
+        title={pet?.origin == "club" ? "กรุณาติดต่อชมรม" : "ติดต่อเจ้าของ"}
         open={open}
         setOpen={setOpen}
         button={
-          <Link to="https://www.facebook.com/CUVETforAnimalWelfareClub/">
+          pet?.origin == "club" ? (
+            <Link to="https://www.facebook.com/CUVETforAnimalWelfareClub/">
+              <Button
+                key="adopt-modal"
+                text="รับเลี้ยงเลย"
+                variant="primary"
+                rounded="2xl"
+                className="w-full font-bold md:w-auto md:px-24"
+              />
+            </Link>
+          ) : (
             <Button
               key="adopt-modal"
-              text="รับเลี้ยงเลย"
-              variant="primary"
+              text="ปิด"
+              variant="accent-red"
               rounded="2xl"
               className="w-full font-bold md:w-auto md:px-24"
+              onClick={() => setOpen(false)}
             />
-          </Link>
+          )
         }
       >
-        <p className="text-accent-gray">
-          กรุณาติดต่อที่ Facebook ของชมรม โดยสามารถคลิกที่ปุ่มด้านล่างนี้ได้เลย
-        </p>
+        {pet?.origin == "club" ? (
+          <p className="text-accent-gray">
+            กรุณาติดต่อที่ Facebook ของชมรม
+            โดยสามารถคลิกที่ปุ่มด้านล่างนี้ได้เลย
+          </p>
+        ) : (
+          <ul className="text-primary">
+            <li className="flex justify-between">
+              ชื่อ:
+              <span className="flex-1 px-2 text-left text-accent-gray">
+                {pet?.adopt_by || "-"}
+              </span>
+            </li>
+            <li className="flex justify-between">
+              เบอร์:
+              <span className="flex-1 px-2 text-left text-accent-gray">
+                {pet?.adopt_by || "-"}
+              </span>
+            </li>
+            <li className="flex justify-between">
+              ไอดีไลน์:
+              <span className="flex-1 px-2 text-left text-accent-gray">
+                {pet?.adopt_by || "-"}
+              </span>
+            </li>
+          </ul>
+        )}
       </Modal>
     </>
   );

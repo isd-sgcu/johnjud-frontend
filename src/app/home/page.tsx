@@ -43,7 +43,7 @@ const MainPage = () => {
     maxAge: 30,
   });
   const { data, isLoading } = usePetsQuery(filters);
-  console.log(data);
+  // console.log(data);
 
   return (
     <>
