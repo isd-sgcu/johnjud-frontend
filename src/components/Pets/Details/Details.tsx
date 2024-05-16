@@ -43,16 +43,16 @@ const Details = (props: DetailsProps) => {
   const [images, setImages] = useState<File[]>([]);
   const [enableSubmit, setEnableSubmit] = useState(false);
   const [petInfo, setPetInfo] = useState<info>({
-    type: "-",
-    gender: "-",
-    color: "-",
-    age: "-",
-    nature: "-",
-    vaccine: false,
-    sterile: false,
-    contact: "-",
-    owner: "-",
-    tel: "-",
+    type: props.data.type as "dog" | "cat" | "-",
+    gender: props.data.gender,
+    color: props.data.color,
+    age: dayjs(props.data.birthdate).toISOString(),
+    nature: props.data.habit,
+    vaccine: props.data.is_vaccinated,
+    sterile: props.data.is_sterile,
+    owner: props.data.owner,
+    tel: props.data.tel,
+    contact: props.data.contact,
   });
 
   const convertImgToFile = async (imgFilePath: string) => {
@@ -140,6 +140,7 @@ const Details = (props: DetailsProps) => {
     try {
       deletedImages && (await Promise.all(deletedImages));
     } catch (err) {
+      console.log(err);
       return;
     }
 
