@@ -262,9 +262,9 @@ const EditInfoAndSubmit = (props: EditInfoAndSubmitProps) => {
                 </p>
                 <Button
                   className="w-full text-2xl font-semibold"
-                  text="โพสต์เลย"
+                  text={enableEdit ? "โปรดบันทึกข้อมูลก่อนโพสต์" : "โพสต์เลย"}
                   onClick={props.onSubmit}
-                  variant={props.enableSubmit ? "accent-red" : "disabled"}
+                  variant={props.enableSubmit && !enableEdit ? "accent-red" : "disabled"}
                   rounded="full"
                 />
               </div>
