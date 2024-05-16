@@ -46,7 +46,7 @@ const getPetsAdmin = async (filters?: filterState) => {
 
 type postPetRequest = Omit<
   Pet,
-  "id" | "images" | "is_club_pet" | "address" | "adopt_by" | "contact"
+  "id" | "images" | "is_club_pet" | "contact" | "owner" | "contact"
 > & {
   images: string[]; // image id
 };
@@ -109,9 +109,6 @@ type PutPetRequest = Omit<
   | "is_club_pet"
   | "pattern"
   | "status"
-  | "address"
-  | "adopt_by"
-  | "contact"
 > & {
   origin: string;
 };

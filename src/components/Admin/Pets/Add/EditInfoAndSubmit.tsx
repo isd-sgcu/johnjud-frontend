@@ -16,9 +16,9 @@ export type info = {
   nature: string;
   vaccine: boolean;
   sterile: boolean;
-  address: string;
+  tel: string;
   contact: string;
-  adopt_by: string;
+  owner: string;
 };
 
 interface EditInfoAndSubmitProps {
@@ -204,23 +204,23 @@ const EditInfoAndSubmit = (props: EditInfoAndSubmitProps) => {
             <ul className="flex flex-col gap-2">
               <TextInputInfo
                 text="ชื่อ:"
-                value={showInfo.adopt_by}
+                value={showInfo.owner}
                 enableEdit={enableEdit}
-                onChange={(event) => handleOnChangeTextArea(event, "adopt_by")}
+                onChange={(event) => handleOnChangeTextArea(event, "owner")}
               />
 
               <TextInputInfo
                 text="เบอร์:"
-                value={showInfo.contact}
+                value={showInfo.tel}
                 enableEdit={enableEdit}
-                onChange={(event) => handleOnChangeTextArea(event, "contact")}
+                onChange={(event) => handleOnChangeTextArea(event, "tel")}
               />
 
               <TextInputInfo
                 text="ไอดีไลน์:"
-                value={showInfo.address}
+                value={showInfo.contact}
                 enableEdit={enableEdit}
-                onChange={(event) => handleOnChangeTextArea(event, "address")}
+                onChange={(event) => handleOnChangeTextArea(event, "contact")}
               />
             </ul>
           </section>

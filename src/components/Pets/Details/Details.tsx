@@ -50,9 +50,9 @@ const Details = (props: DetailsProps) => {
     nature: "-",
     vaccine: false,
     sterile: false,
-    address: "-",
-    adopt_by: "-",
-    contact: "-"
+    contact: "-",
+    owner: "-",
+    tel: "-"
   });
 
   const convertImgToFile = async (imgFilePath: string) => {
@@ -94,9 +94,9 @@ const Details = (props: DetailsProps) => {
       nature: props.data.habit,
       vaccine: props.data.is_vaccinated,
       sterile: props.data.is_sterile,
-      adopt_by: props.data.adopt_by,
+      owner: props.data.owner,
+      tel: props.data.tel,
       contact: props.data.contact,
-      address: props.data.address,
     });
   }, [props.data, id]);
 
@@ -168,6 +168,9 @@ const Details = (props: DetailsProps) => {
       is_vaccinated: petInfo.vaccine,
       is_visible: props.data.is_visible,
       origin: origin,
+      tel: petInfo.tel,
+      contact: petInfo.contact,
+      owner: petInfo.owner
     };
 
     updatePetMutaion.mutate({
