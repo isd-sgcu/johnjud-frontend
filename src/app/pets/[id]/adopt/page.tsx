@@ -14,6 +14,7 @@ export const PetContext = createContext<Pet | null>(null);
 const AdoptionPage = () => {
   const param = usePageParams(["id"]);
   const { data } = usePetQuery(param.id);
+  console.log(data);
 
   const petImagesArray = useMemo(() => {
     if (!data?.images) return [dog];

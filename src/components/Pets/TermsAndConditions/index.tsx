@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 const TermsAndConditions = () => {
   const [open, setOpen] = useState(false);
   const pet = useContext(PetContext);
-  // console.log(pet)
+  console.log(pet)
 
   return (
     <>
@@ -100,19 +100,19 @@ const TermsAndConditions = () => {
             <li className="grid grid-cols-4">
               ชื่อ:
               <span className="flex-1 px-2 text-left col-span-3 text-accent-gray">
-                {pet?.adopt_by || "-"}
+                {pet?.owner || "-"}
               </span>
             </li>
             <li className="grid grid-cols-4">
               เบอร์:
               <span className="flex-1 px-2 text-left col-span-3 text-accent-gray">
-                {pet?.adopt_by || "-"}
+                {pet?.tel || "-"}
               </span>
             </li>
             <li className="grid grid-cols-4">
               ไอดีไลน์:
               <span className="flex-1 px-2 text-left col-span-3 text-accent-gray">
-                {pet?.adopt_by || "-"}
+                {pet?.contact || "-"}
               </span>
             </li>
           </ul>

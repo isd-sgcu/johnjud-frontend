@@ -3,8 +3,8 @@ type Pet = {
   name: string;
   pattern: string;
   birthdate: string;
-  address: string;
-  adopt_by: string;
+  tel: string;
+  owner: string;
   caption: string;
   color: string;
   contact: string;
