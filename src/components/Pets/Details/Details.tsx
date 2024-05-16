@@ -52,7 +52,7 @@ const Details = (props: DetailsProps) => {
     sterile: false,
     contact: "-",
     owner: "-",
-    tel: "-"
+    tel: "-",
   });
 
   const convertImgToFile = async (imgFilePath: string) => {
@@ -170,7 +170,7 @@ const Details = (props: DetailsProps) => {
       origin: origin,
       tel: petInfo.tel,
       contact: petInfo.contact,
-      owner: petInfo.owner
+      owner: petInfo.owner,
     };
 
     updatePetMutaion.mutate({

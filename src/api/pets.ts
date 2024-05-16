@@ -104,11 +104,7 @@ const deletePet = async (id: string) => {
 
 type PutPetRequest = Omit<
   Pet,
-  | "id"
-  | "images"
-  | "is_club_pet"
-  | "pattern"
-  | "status"
+  "id" | "images" | "is_club_pet" | "pattern" | "status"
 > & {
   origin: string;
 };

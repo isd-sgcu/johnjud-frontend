@@ -19,7 +19,7 @@ const useSignIn = () => {
       navigate("/admin/pets");
     },
     onError: (error: Error) => {
-      // console.log(error);
+      console.log(error);
     },
   };
 

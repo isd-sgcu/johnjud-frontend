@@ -14,10 +14,10 @@ const useForgetPassword = () => {
     mutationFn: (credentials: ForgetPasswordCredentials) =>
       forgetPassword(credentials.email),
     onSuccess: () => {
-      // console.log("forget password successful");
+      console.log("forget password successful");
     },
     onError: (error: Error) => {
-      // console.log(error);
+      console.log(error);
     },
   };
 
