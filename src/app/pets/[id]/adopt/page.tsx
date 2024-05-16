@@ -41,16 +41,20 @@ const AdoptionPage = () => {
             </div>
           </div>
 
-          <div className="flex flex-col items-center gap-8 md:flex-row md:items-start md:justify-between">
-            <PetThumbnails petImages={petImagesArray} origin={data?.origin} />
-            <div className="flex flex-col items-start gap-8">
-              <div className="relative hidden flex-col md:flex">
-                <h2 className="flex break-all pl-1 text-right text-3xl font-bold text-primary md:text-left">
-                  {data.name}
-                </h2>
-                <div className="mt-1 h-[3px] w-full rounded-full bg-primary" />
+          <div className="flex flex-col gap-8 md:grid md:grid-cols-5 md:gap-16 lg:grid-cols-7">
+            <div className="col-span-2 lg:col-span-3 relative">
+              <PetThumbnails petImages={petImagesArray} origin={data?.origin} />
+            </div>
+            <div className="md:col-span-3 lg:col-span-4">
+              <div className="flex flex-col items-start gap-8">
+                <div className="relative hidden flex-col md:flex">
+                  <h2 className="flex break-all pl-1 text-right text-3xl font-bold text-primary md:text-left">
+                    {data.name}
+                  </h2>
+                  <div className="mt-1 h-[3px] w-full rounded-full bg-primary" />
+                </div>
+                <TermsAndConditions />
               </div>
-              <TermsAndConditions />
             </div>
           </div>
         </Container>
