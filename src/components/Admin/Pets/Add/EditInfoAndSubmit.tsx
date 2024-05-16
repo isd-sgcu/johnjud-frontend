@@ -218,7 +218,11 @@ const EditInfoAndSubmit = (props: EditInfoAndSubmitProps) => {
 
               <TextInputInfo
                 text="ไอดีไลน์:"
-                value={showInfo.contact}
+                value={
+                  showInfo.contact[0] == "@" || showInfo.contact == ""
+                    ? showInfo.contact
+                    : "@" + showInfo.contact
+                }
                 enableEdit={enableEdit}
                 onChange={(event) => handleOnChangeTextArea(event, "contact")}
               />
