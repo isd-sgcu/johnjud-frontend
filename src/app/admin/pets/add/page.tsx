@@ -35,6 +35,9 @@ const adminCreate = () => {
     nature: "-",
     vaccine: false,
     sterile: false,
+    owner: "-",
+    tel: "-",
+    contact: "-",
   });
 
   const [enableSubmit, setEnableSubmit] = useState(false);
@@ -91,6 +94,9 @@ const adminCreate = () => {
       is_visible: true,
       origin: `${origin === "fromClub" ? "club" : "entrust"}`,
       images: allImage,
+      tel: info.tel,
+      contact: info.contact,
+      owner: info.owner,
     };
 
     postPetMutation.mutate(petData);

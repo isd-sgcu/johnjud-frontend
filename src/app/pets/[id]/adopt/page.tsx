@@ -5,12 +5,16 @@ import TermsAndConditions from "@/components/Pets/TermsAndConditions";
 import { usePetQuery } from "@/hooks/queries/usePetQuery";
 import { usePageParams } from "@/hooks/usePageParams";
 import MainLayout from "@/layouts/MainLayout";
+import { Pet } from "@/types/pets";
 import { Icon } from "@iconify/react/dist/iconify.js";
-import { useMemo } from "react";
+import { createContext, useMemo } from "react";
+
+export const PetContext = createContext<Pet | null>(null);
 
 const AdoptionPage = () => {
   const param = usePageParams(["id"]);
   const { data } = usePetQuery(param.id);
+  console.log(data);
 
   const petImagesArray = useMemo(() => {
     if (!data?.images) return [dog];
@@ -18,34 +22,43 @@ const AdoptionPage = () => {
   }, [data?.images]);
   return (
     data && (
-      <Container className="space-y-8">
-        <div className="flex items-center justify-between text-primary">
-          <button type="button" onClick={() => window.history.back()}>
-            <Icon icon="ion:chevron-back" className="h-8 w-8 cursor-pointer" />
-          </button>
-          <div className="md:hidden">
-            <div className="relative flex flex-col">
-              <h2 className="flex break-all pl-1 text-right text-3xl font-bold text-primary md:text-left">
-                {data.name}
-              </h2>
-              <div className="mt-1 h-[3px] w-full rounded-full bg-primary" />
+      <PetContext.Provider value={data}>
+        <Container className="space-y-8">
+          <div className="flex items-center justify-between text-primary">
+            <button type="button" onClick={() => window.history.back()}>
+              <Icon
+                icon="ion:chevron-back"
+                className="h-8 w-8 cursor-pointer"
+              />
+            </button>
+            <div className="md:hidden">
+              <div className="relative flex flex-col">
+                <h2 className="flex break-all pl-1 text-right text-3xl font-bold text-primary md:text-left">
+                  {data.name}
+                </h2>
+                <div className="mt-1 h-[3px] w-full rounded-full bg-primary" />
+              </div>
             </div>
           </div>
-        </div>
 
-        <div className="flex flex-col items-center gap-8 md:flex-row md:items-start md:justify-between">
-          <PetThumbnails petImages={petImagesArray} origin={data?.origin} />
-          <div className="flex flex-col items-start gap-8">
-            <div className="relative hidden flex-col md:flex">
-              <h2 className="flex break-all pl-1 text-right text-3xl font-bold text-primary md:text-left">
-                {data.name}
-              </h2>
-              <div className="mt-1 h-[3px] w-full rounded-full bg-primary" />
+          <div className="flex flex-col gap-8 md:grid md:grid-cols-5 md:gap-16 lg:grid-cols-7">
+            <div className="relative col-span-2">
+              <PetThumbnails petImages={petImagesArray} origin={data?.origin} />
             </div>
-            <TermsAndConditions />
+            <div className="md:col-span-3 lg:col-span-5">
+              <div className="flex flex-col items-start gap-8">
+                <div className="relative hidden flex-col md:flex">
+                  <h2 className="flex break-all pl-1 text-right text-3xl font-bold text-primary md:text-left">
+                    {data.name}
+                  </h2>
+                  <div className="mt-1 h-[3px] w-full rounded-full bg-primary" />
+                </div>
+                <TermsAndConditions />
+              </div>
+            </div>
           </div>
-        </div>
-      </Container>
+        </Container>
+      </PetContext.Provider>
     )
   );
 };
