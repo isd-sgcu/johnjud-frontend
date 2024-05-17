@@ -1,30 +1,15 @@
 import background from "@/assets/background/background.png";
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
-import useRefreshToken from "@/hooks/auth/useRefreshToken";
 import useAuthStore from "@/store/authStore";
-import { useEffect } from "react";
 import { Toaster } from "react-hot-toast";
-import { useNavigate } from "react-router-dom";
 
 type MainLayoutProps = {
   children: React.ReactNode;
 };
 
 const AdminLayout = ({ children }: MainLayoutProps) => {
-  const navigate = useNavigate();
-  const { isLoggedIn, refreshToken, validateSession } = useAuthStore();
-  const { mutate } = useRefreshToken();
-
-  useEffect(() => {
-    if (isLoggedIn == false) {
-      navigate("/admin");
-    }
-
-    if (isLoggedIn && refreshToken && validateSession()) {
-      mutate({ refresh_token: refreshToken });
-    }
-  }, [isLoggedIn]);
+  const isLoggedIn = useAuthStore((state) => state.isLoggedIn);
 
   return (
     <>
