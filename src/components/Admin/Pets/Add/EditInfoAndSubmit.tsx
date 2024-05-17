@@ -16,6 +16,9 @@ export type info = {
   nature: string;
   vaccine: boolean;
   sterile: boolean;
+  tel: string;
+  contact: string;
+  owner: string;
 };
 
 interface EditInfoAndSubmitProps {
@@ -132,7 +135,7 @@ const EditInfoAndSubmit = (props: EditInfoAndSubmitProps) => {
           )}
         </div>
 
-        <div className="mt-4 flex flex-col lg:grid lg:grid-cols-2 lg:divide-x-2">
+        <div className="mt-4 flex flex-col lg:grid lg:grid-cols-3 lg:divide-x-2">
           <div className="flex flex-col space-y-3 lg:space-y-4 lg:pr-8">
             {/* Gender */}
             <DropdownInputInfo
@@ -194,6 +197,38 @@ const EditInfoAndSubmit = (props: EditInfoAndSubmitProps) => {
             />
           </div>
 
+          <section className="p-4">
+            <span className="text-xl font-bold text-primary">
+              ติดต่อเจ้าของ
+            </span>
+            <ul className="flex flex-col gap-2">
+              <TextInputInfo
+                text="ชื่อ:"
+                value={showInfo.owner}
+                enableEdit={enableEdit}
+                onChange={(event) => handleOnChangeTextArea(event, "owner")}
+              />
+
+              <TextInputInfo
+                text="เบอร์:"
+                value={showInfo.tel}
+                enableEdit={enableEdit}
+                onChange={(event) => handleOnChangeTextArea(event, "tel")}
+              />
+
+              <TextInputInfo
+                text="ไอดีไลน์:"
+                value={
+                  showInfo.contact[0] == "@" || showInfo.contact == ""
+                    ? showInfo.contact
+                    : "@" + showInfo.contact
+                }
+                enableEdit={enableEdit}
+                onChange={(event) => handleOnChangeTextArea(event, "contact")}
+              />
+            </ul>
+          </section>
+
           <div className="mt-3 flex flex-col lg:justify-between lg:px-[10%]">
             <div className="flex flex-row flex-wrap justify-center gap-4 lg:flex-col">
               {/* Vaccine */}
@@ -227,9 +262,13 @@ const EditInfoAndSubmit = (props: EditInfoAndSubmitProps) => {
                 </p>
                 <Button
                   className="w-full text-2xl font-semibold"
-                  text="โพสต์เลย"
+                  text={enableEdit ? "โปรดบันทึกข้อมูลก่อนโพสต์" : "โพสต์เลย"}
                   onClick={props.onSubmit}
-                  variant={props.enableSubmit ? "accent-red" : "disabled"}
+                  variant={
+                    props.enableSubmit && !enableEdit
+                      ? "accent-red"
+                      : "disabled"
+                  }
                   rounded="full"
                 />
               </div>

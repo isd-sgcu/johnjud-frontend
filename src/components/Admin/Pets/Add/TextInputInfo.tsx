@@ -6,14 +6,16 @@ interface TextInputInfoProps {
   value: string;
   enableEdit: boolean;
   onChange: (event: React.FormEvent<HTMLTextAreaElement>) => void;
-  icon: string;
+  icon?: string;
 }
 
 const TextInputInfo = (props: TextInputInfoProps) => {
   return (
     <div className="grid grid-cols-4 gap-2">
       <div className="flex flex-row items-center">
-        <Icon icon={props.icon} className="h-5 w-5 text-primary" />
+        {props.icon && (
+          <Icon icon={props.icon} className="h-5 w-5 text-primary" />
+        )}
         <span className="ml-1 text-nowrap text-primary">{props.text}</span>
       </div>
       <TextareaAutosize

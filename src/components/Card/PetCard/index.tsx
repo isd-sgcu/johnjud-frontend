@@ -98,7 +98,7 @@ const PetCard = ({
       addToFavorites(id);
     }
     setLiked((prev) => !prev);
-    console.log("liked : " + id);
+    // console.log("liked : " + id);
   };
 
   const handleAdopt = (event: React.MouseEvent<HTMLButtonElement>) => {
