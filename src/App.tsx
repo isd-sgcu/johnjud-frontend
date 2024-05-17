@@ -3,9 +3,9 @@ import {
   QueryClient,
   QueryClientProvider,
 } from "@tanstack/react-query";
-import axios from "axios";
 import { StrictMode, Suspense, useState } from "react";
 import { RouterProvider } from "react-router-dom";
+import { refreshToken as getRefreshToken } from "./api/auth/refreshToken";
 import { router } from "./routes";
 import useAuthStore from "./store/authStore";
 import { calculateExpiryTime } from "./utils/calculateExpiryTime";
@@ -39,19 +39,10 @@ function App() {
     if (accessToken == null || refreshToken == null) return;
 
     try {
-      const response = await axios.post(
-        `${import.meta.env.VITE_API_URL}/auth/refreshToken`,
-        {
-          refresh_token: refreshToken,
-        }
-      );
+      const response = await getRefreshToken(refreshToken);
 
-      const expriedAt = calculateExpiryTime(response.data.expires_in);
-      setAuth(
-        response.data.access_token,
-        response.data.refresh_token,
-        expriedAt
-      );
+      const expriedAt = calculateExpiryTime(response.expires_in);
+      setAuth(response.access_token, response.refresh_token, expriedAt);
     } catch (error) {
       clearAuth();
       router.navigate("/admin");
