@@ -42,7 +42,7 @@ const AdoptionPage = () => {
           </div>
 
           <div className="flex flex-col gap-8 md:grid md:grid-cols-5 md:gap-16 lg:grid-cols-7">
-            <div className="col-span-2 relative">
+            <div className="relative col-span-2">
               <PetThumbnails petImages={petImagesArray} origin={data?.origin} />
             </div>
             <div className="md:col-span-3 lg:col-span-5">

@@ -12,7 +12,7 @@ const useDeleteImage = () => {
     },
     onError: () => {
       toast.error("มีบางอย่างผิดพลาด");
-    }
+    },
   });
 };
 

@@ -44,10 +44,7 @@ const getPetsAdmin = async (filters?: filterState) => {
   return response.data;
 };
 
-type postPetRequest = Omit<
-  Pet,
-  "id" | "images" | "is_club_pet"
-> & {
+type postPetRequest = Omit<Pet, "id" | "images" | "is_club_pet"> & {
   images: string[]; // image id
 };
 
