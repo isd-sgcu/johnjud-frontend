@@ -1,6 +1,5 @@
 import { PutPetRequest } from "@/api/pets";
 import logo from "@/assets/details/logo.webp";
-import dog from "@/assets/dog.webp";
 import AddSmallPicture from "@/components/Admin/Pets/Add/AddSmallPicture";
 import AddThumbnail from "@/components/Admin/Pets/Add/AddThumbnail";
 import EditInfoAndSubmit, {
@@ -19,6 +18,7 @@ import { Pet } from "@/types/pets";
 import { Icon } from "@iconify/react/dist/iconify.js";
 import dayjs from "dayjs";
 import { useEffect, useMemo, useState } from "react";
+import toast from "react-hot-toast";
 import PetThumbnails from "../PetThumbnails";
 
 interface DetailsProps {
@@ -26,7 +26,7 @@ interface DetailsProps {
   data: Pet;
 }
 
-const Details = (props: DetailsProps) => {
+const Details = ({ data, isAdmin }: DetailsProps) => {
   const postImageMutation = useCreateImage();
   const updatePetMutaion = useUpdatePet();
   const deleteImageMutation = useDeleteImage();
@@ -36,84 +36,50 @@ const Details = (props: DetailsProps) => {
   const [isFav, setIsFav] = useState(
     favorites.find((fav) => fav === id) ? true : false
   );
+
   const [name, setName] = useState("");
   const [text, setText] = useState("");
   const [origin, setOrigin] = useState("fromClub");
-  const [thumbnail, setThumbnail] = useState<File | null>(null);
-  const [images, setImages] = useState<File[]>([]);
-  const [enableSubmit, setEnableSubmit] = useState(false);
   const [petInfo, setPetInfo] = useState<info>({
-    type: props.data.type as "dog" | "cat" | "-",
-    gender: props.data.gender,
-    color: props.data.color,
-    age: dayjs(props.data.birthdate).toISOString(),
-    nature: props.data.habit,
-    vaccine: props.data.is_vaccinated,
-    sterile: props.data.is_sterile,
-    owner: props.data.owner,
-    tel: props.data.tel,
-    contact: props.data.contact,
+    type: data.type as "dog" | "cat" | "-",
+    gender: data.gender,
+    color: data.color,
+    age: dayjs(data.birthdate).toISOString(),
+    nature: data.habit,
+    vaccine: data.is_vaccinated,
+    sterile: data.is_sterile,
+    owner: data.owner,
+    tel: data.tel,
+    contact: data.contact,
   });
 
-  const convertImgToFile = async (imgFilePath: string) => {
-    const response = await fetch(imgFilePath);
-    const blob = await response.blob();
-    const file = new File([blob], "image.png", { type: "image/png" });
-    return file;
-  };
-
-  const imgs = useMemo(() => {
-    if (!props.data.images) return [dog];
-    return props.data.images?.map((img) => img.url);
-  }, [props.data.images]);
-
-  useEffect(() => {
-    if (
+  const enableSubmit = useMemo(() => {
+    return !(
       petInfo.gender === "-" ||
       petInfo.type === "-" ||
       petInfo.color === "-" ||
       petInfo.age === "-" ||
       name === "กรุณาใส่ชื่อ..."
-    ) {
-      setEnableSubmit(false);
-    } else {
-      setEnableSubmit(true);
-    }
+    );
   }, [petInfo.gender, petInfo.type, petInfo.color, petInfo.age, name]);
 
   useEffect(() => {
-    convertImgUrltoFile();
-    setName(props.data.name);
-    setText(props.data.caption);
-    setOrigin(props.data.origin);
+    setName(data.name);
+    setText(data.caption);
+    setOrigin(data.origin);
     setPetInfo({
-      type: props.data.type as "dog" | "cat" | "-",
-      gender: props.data.gender,
-      color: props.data.color,
-      age: dayjs(props.data.birthdate).toISOString(),
-      nature: props.data.habit,
-      vaccine: props.data.is_vaccinated,
-      sterile: props.data.is_sterile,
-      owner: props.data.owner,
-      tel: props.data.tel,
-      contact: props.data.contact,
+      type: data.type as "dog" | "cat" | "-",
+      gender: data.gender,
+      color: data.color,
+      age: dayjs(data.birthdate).toISOString(),
+      nature: data.habit,
+      vaccine: data.is_vaccinated,
+      sterile: data.is_sterile,
+      owner: data.owner,
+      tel: data.tel,
+      contact: data.contact,
     });
-  }, [props.data, id]);
-
-  function convertImgUrltoFile() {
-    //check isPending
-    if (!props.data.images || !props.isAdmin) return;
-
-    // Set 1st image to thumbnail
-    convertImgToFile(props.data.images[0].url).then((file) =>
-      setThumbnail(file)
-    );
-
-    // Set the rest of the images to images
-    const imgFiles = props.data.images.map((img) => img.url).slice(1);
-    const imgPromises = imgFiles.map((img) => convertImgToFile(img));
-    Promise.all(imgPromises).then((files) => setImages(files));
-  }
+  }, [data, id]);
 
   const addToFavorites = useFavoriteStore((state) => state.addToFavorites);
   const removeFromFavorites = useFavoriteStore(
@@ -129,35 +95,8 @@ const Details = (props: DetailsProps) => {
     setIsFav((prev) => !prev);
   }
 
-  async function handleSubmit() {
-    //check is pending
-    if (postImageMutation.isPending || updatePetMutaion.isPending) return;
-
-    const deletedImages = props.data.images?.map((image) =>
-      deleteImageMutation.mutateAsync(image.id)
-    );
-
-    try {
-      deletedImages && (await Promise.all(deletedImages));
-    } catch (err) {
-      console.log(err);
-      return;
-    }
-
-    //create new images
-    const allImageFile: File[] = thumbnail
-      ? [thumbnail, ...images]
-      : [...images];
-
-    // post image and get id : assume this is correct
-    allImageFile.forEach((image) => {
-      postImageMutation.mutateAsync({
-        file: image,
-        pet_id: id,
-      });
-    });
-
-    const data: PutPetRequest = {
+  const handleSubmit = async () => {
+    const newData: PutPetRequest = {
       type: petInfo.type,
       name: name,
       birthdate: petInfo.age,
@@ -167,18 +106,87 @@ const Details = (props: DetailsProps) => {
       caption: text,
       is_sterile: petInfo.sterile,
       is_vaccinated: petInfo.vaccine,
-      is_visible: props.data.is_visible,
+      is_visible: data.is_visible,
       origin: origin,
       tel: petInfo.tel,
       contact: petInfo.contact,
       owner: petInfo.owner,
     };
 
-    updatePetMutaion.mutate({
-      body: data,
-      id: id,
-    });
-  }
+    toast.promise(
+      updatePetMutaion.mutateAsync({
+        body: newData,
+        id: id,
+      }),
+      {
+        loading: "กำลังบันทึกข้อมูล...",
+        success: "บันทึกข้อมูลสำเร็จ",
+        error: "เกิดข้อผิดพลาดในการบันทึกข้อมูล",
+      }
+    );
+  };
+
+  const {
+    thumbnail,
+    onChangeSmallImages,
+    onDeleteSmallImage,
+    onchangeThumbnail,
+    smallImages,
+  } = useMemo(() => {
+    return {
+      thumbnail: data.images?.[0].url,
+      onchangeThumbnail: (event: React.ChangeEvent<HTMLInputElement>) => {
+        const files = event.target.files;
+        if (!files || files.length === 0) return;
+
+        const newImage = files[0];
+        toast.promise(
+          postImageMutation.mutateAsync({
+            file: newImage,
+            pet_id: id,
+          }),
+          {
+            loading: "กำลังอัพโหลดรูปภาพ...",
+            success: "อัพโหลดรูปภาพสำเร็จ",
+            error: "เกิดข้อผิดพลาดในการอัพโหลดรูปภาพ",
+          }
+        );
+
+        if (data.images?.[0].id) {
+          deleteImageMutation.mutate(data.images?.[0].id);
+        }
+      },
+
+      smallImages: data.images?.slice(1).map((img) => img.url) || [],
+      onChangeSmallImages: (event: React.ChangeEvent<HTMLInputElement>) => {
+        const files = event.target.files;
+        if (files && files.length > 0) {
+          const newImage = files[0];
+          toast.promise(
+            postImageMutation.mutateAsync({
+              file: newImage,
+              pet_id: id,
+            }),
+            {
+              loading: "กำลังอัพโหลดรูปภาพ...",
+              success: "อัพโหลดรูปภาพสำเร็จ",
+              error: "เกิดข้อผิดพลาดในการอัพโหลดรูปภาพ",
+            }
+          );
+        }
+      },
+      onDeleteSmallImage: (index: number) => {
+        const imageId = data.images?.[index + 1].id;
+        if (imageId) {
+          toast.promise(deleteImageMutation.mutateAsync(imageId), {
+            loading: "กำลังลบรูปภาพ...",
+            success: "ลบรูปภาพสำเร็จ",
+            error: "เกิดข้อผิดพลาดในการลบรูปภาพ",
+          });
+        }
+      },
+    };
+  }, [data, id]);
 
   return (
     <>
@@ -189,7 +197,7 @@ const Details = (props: DetailsProps) => {
             <Icon icon="ion:chevron-back" className="h-8 w-8 cursor-pointer" />
           </button>
           <div className="md:hidden">
-            <EditName value={name} setValue={setName} isAdmin={props.isAdmin} />
+            <EditName value={name} setValue={setName} isAdmin={isAdmin} />
           </div>
         </div>
 
@@ -197,14 +205,17 @@ const Details = (props: DetailsProps) => {
         <div className="flex flex-col gap-8 md:grid md:grid-cols-5 md:gap-16 lg:grid-cols-7">
           <div className="col-span-2">
             <div className="relative aspect-square w-full">
-              {!props.isAdmin ? (
-                <PetThumbnails petImages={imgs} origin={origin} />
+              {!isAdmin ? (
+                <PetThumbnails
+                  petImages={data.images.map((img) => img.url)}
+                  origin={origin}
+                />
               ) : (
                 <AddThumbnail
-                  valueOrigin={origin}
+                  origin={origin}
                   setOrigin={setOrigin}
-                  valueThumbnail={thumbnail}
-                  setThumbnail={setThumbnail}
+                  thumbnail={thumbnail}
+                  onChangeThumbnail={onchangeThumbnail}
                 />
               )}
             </div>
@@ -213,22 +224,18 @@ const Details = (props: DetailsProps) => {
           <div className="md:col-span-3 lg:col-span-5">
             <div className="flex w-full flex-col items-start gap-8 overflow-auto md:h-full md:flex-1">
               <div className="hidden md:block">
-                <EditName
-                  value={name}
-                  setValue={setName}
-                  isAdmin={props.isAdmin}
-                />
+                <EditName value={name} setValue={setName} isAdmin={isAdmin} />
               </div>
-              <EditText
-                value={text}
-                setValue={setText}
-                isAdmin={props.isAdmin}
-              />
+              <EditText value={text} setValue={setText} isAdmin={isAdmin} />
             </div>
           </div>
         </div>
-        {props.isAdmin && (
-          <AddSmallPicture value={images} setValue={setImages} />
+        {isAdmin && (
+          <AddSmallPicture
+            images={smallImages}
+            onChange={onChangeSmallImages}
+            onDelete={onDeleteSmallImage}
+          />
         )}
       </Container>
 
@@ -238,7 +245,7 @@ const Details = (props: DetailsProps) => {
           value={petInfo}
           setValue={setPetInfo}
           onSubmit={handleSubmit}
-          isAdmin={props.isAdmin}
+          isAdmin={isAdmin}
           isFav={isFav}
           handleFavPressed={handleFavPressed}
           id={id}
