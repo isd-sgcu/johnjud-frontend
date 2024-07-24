@@ -4,7 +4,7 @@ import Container from "@/components/Container";
 import SmallPetCardList from "@/components/SmallPetCardList";
 import { useCreateImage } from "@/hooks/mutation/usePostImage";
 import { Icon } from "@iconify/react";
-import { useEffect, useState } from "react";
+import { useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 import AddSmallPicture from "../../../../components/Admin/Pets/Add/AddSmallPicture";
 import AddThumbnail from "../../../../components/Admin/Pets/Add/AddThumbnail";
@@ -40,27 +40,20 @@ const adminCreate = () => {
     contact: "-",
   });
 
-  const [enableSubmit, setEnableSubmit] = useState(false);
-  useEffect(() => {
-    if (
+  const enableSubmit = useMemo(() => {
+    return !(
       info.gender === "-" ||
       info.type === "-" ||
       info.color === "-" ||
       info.age === "-" ||
       name === "กรุณาใส่ชื่อ..."
-    ) {
-      setEnableSubmit(false);
-    } else {
-      setEnableSubmit(true);
-    }
+    );
   }, [info.gender, info.type, info.color, info.age, name]);
 
   const postImageMutation = useCreateImage();
   const postPetMutation = useCreatePet();
 
   const handleSubmit = async () => {
-    if (info.gender === "-") return; // already detect "-" by disable post button
-
     const allImageFile: File[] = await Promise.all(
       thumbnail ? [thumbnail, ...pictures] : pictures
     );
@@ -102,6 +95,23 @@ const adminCreate = () => {
     postPetMutation.mutate(petData);
   };
 
+  const onChangeThumbnail = (event: React.ChangeEvent<HTMLInputElement>) => {
+    if (event.target.files) {
+      setThumbnail(event.target.files[0]);
+    }
+  };
+
+  const onChangePictures = (event: React.ChangeEvent<HTMLInputElement>) => {
+    if (event.target.files) {
+      setPictures([...pictures, ...Array.from(event.target.files)]);
+    }
+  };
+
+  const onDeletePicture = (index: number) => {
+    console.log(index);
+    setPictures(pictures.filter((_, i) => i !== index));
+  };
+
   return (
     <>
       {/* Icon return & small EditName */}
@@ -118,9 +128,9 @@ const adminCreate = () => {
         {/* Thumpnail */}
         <div className="w-full max-w-80 self-center md:w-80">
           <AddThumbnail
-            valueThumbnail={thumbnail}
-            setThumbnail={setThumbnail}
-            valueOrigin={origin}
+            thumbnail={thumbnail ? URL.createObjectURL(thumbnail) : null}
+            onChangeThumbnail={onChangeThumbnail}
+            origin={origin}
             setOrigin={setOrigin}
           />
         </div>
@@ -136,7 +146,11 @@ const adminCreate = () => {
 
       {/* Small Picture */}
       <Container>
-        <AddSmallPicture value={pictures} setValue={setPictures} />
+        <AddSmallPicture
+          images={pictures.map((picture) => URL.createObjectURL(picture))}
+          onChange={onChangePictures}
+          onDelete={onDeletePicture}
+        />
       </Container>
 
       <div className="mx-auto my-8 flex max-w-[1536px] gap-20 xl:justify-between xl:pr-24">
