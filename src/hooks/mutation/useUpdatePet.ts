@@ -1,6 +1,5 @@
 import { PutPetRequest, updatePet } from "@/api/pets";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import toast from "react-hot-toast";
 
 interface UpdateMutationParameter {
   body: PutPetRequest;
@@ -15,11 +14,7 @@ function useUpdatePet() {
       return updatePet(data.body, data.id);
     },
     onSuccess: () => {
-      toast.success("แก้ไขข้อมูลสัตว์เลี้ยงสำเร็จ");
       queryClient.invalidateQueries({ queryKey: ["pets"] });
-    },
-    onError: () => {
-      toast.error("มีบางอย่างผิดพลาด");
     },
   });
 }
