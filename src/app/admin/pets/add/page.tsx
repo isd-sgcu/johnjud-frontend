@@ -18,14 +18,15 @@ import { useCreatePet } from "@/hooks/mutation/usePostPet";
 import { usePetsAdminQuery } from "@/hooks/queries/usePetsAdminQuery";
 import AdminLayout from "@/layouts/AdminLayout";
 import dayjs from "dayjs";
+import { toast } from "react-hot-toast";
+
 const adminCreate = () => {
   const { data, isLoading } = usePetsAdminQuery();
 
   const [name, setName] = useState("กรุณาใส่ชื่อ...");
   const [text, setText] = useState("");
   const [thumbnail, setThumbnail] = useState<File | null>(null);
-  const [origin, setOrigin] = useState("fromClub");
-  // origin : fromClub / fromOutside
+  const [origin, setOrigin] = useState("club");
   const [pictures, setPictures] = useState<File[]>([]);
   const [info, setInfo] = useState<info>({
     gender: "-",
@@ -54,45 +55,54 @@ const adminCreate = () => {
   const postPetMutation = useCreatePet();
 
   const handleSubmit = async () => {
-    const allImageFile: File[] = await Promise.all(
-      thumbnail ? [thumbnail, ...pictures] : pictures
-    );
+    const toastLoadingId = toast.loading("กำลังสร้างสัตว์เลี้ยง...");
+    try {
+      const petImages = await uploadPetImages();
+      const petData = createPetData(petImages);
+      postPetMutation.mutate(petData);
+      toast.dismiss(toastLoadingId);
+    } catch (error) {
+      console.error("Failed to create pet:", error);
+      toast.error("Failed to create pet");
+      toast.dismiss(toastLoadingId);
+    }
+  };
 
-    // post image and get id : assume this is correct
-    const allImage: string[] = (
-      await Promise.all(
-        allImageFile.map(async (image) => {
-          const imageResponse = await postImageMutation.mutateAsync({
-            file: image,
-          });
-          return imageResponse.id;
-        })
-      )
-    )
-      .filter((id) => id !== undefined)
-      .map((id) => id ?? ""); // map for bypass ts type checking
+  const uploadPetImages = async (): Promise<string[]> => {
+    const allImageFiles = thumbnail ? [thumbnail, ...pictures] : pictures;
 
-    const petData: postPetRequest = {
+    const uploadedImages: string[] = [];
+
+    for (const image of allImageFiles) {
+      const response = await postImageMutation.mutateAsync({ file: image });
+      if (response.id) {
+        uploadedImages.push(response.id);
+      }
+    }
+
+    return uploadedImages;
+  };
+
+  const createPetData = (petImages: string[]): postPetRequest => {
+    return {
       type: info.type,
       name: name,
       birthdate: dayjs(info.age).toISOString(),
       gender: info.gender as "male" | "female",
       color: info.color,
-      pattern: "a", // remove later
+      pattern: "a",
       habit: info.nature,
       caption: text,
       status: "findHome",
       is_sterile: info.sterile,
       is_vaccinated: info.vaccine,
       is_visible: true,
-      origin: `${origin === "fromClub" ? "club" : "entrust"}`,
-      images: allImage,
+      origin: origin,
+      images: petImages,
       tel: info.tel,
       contact: info.contact,
       owner: info.owner,
     };
-
-    postPetMutation.mutate(petData);
   };
 
   const onChangeThumbnail = (event: React.ChangeEvent<HTMLInputElement>) => {
